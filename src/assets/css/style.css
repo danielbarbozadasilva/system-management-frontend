@@ -1,0 +1,451 @@
+@media (min-width: 100px) {
+    * {
+        box-sizing: border-box;
+    }
+    /* HEADER */
+    header {
+        margin-bottom: 60px;
+    }
+    header .container {
+        max-width: 100%;
+    }
+    /* logo espaço-kids */
+    header .logo-img {
+        width: 160px;
+        height: 50px;
+        margin-left: 50px;
+    }
+    /* display */
+    header .brDtSZ {
+        width: auto!important;
+    }
+    /* Colunas dos formularios */
+    .colunasFormularios {
+        display: flex;
+        /* flex container, transforma os filhos em flex itens */
+        box-shadow: 0px 2px 15px 6px rgba(0, 0, 0, 0.11);
+        padding: 0px 30px;
+    }
+    /* Título introdutório do formulário */
+    .tituloFormIntro {
+        padding: 20px 30px;
+        display: flex;
+        box-shadow: 0px 1px 5px 1.5px rgba(0, 0, 0, 0.11);
+        font-size: 14px;
+    }
+    /* Configuração caso não haja alunos na tabela */
+    #semAlunos {
+        padding: 20px 60px;
+        font-size: 18px;
+    }
+    /* Configuração das colunas dos formulários */
+    .coluna1, .coluna2, .colunadetalhe1, .colunadetalhe2 {
+        /* a primeira fatia ocupará a primeira metade */
+        width: 50%;
+        margin: 80px 35px;
+        line-height: 1.5;
+    }
+    /* Configuração da segunda coluna do formulário */
+    .coluna2 {
+        margin: 160px 35px;
+    }
+    /* Espaçamento interno na coluna 2 do formulário participantes */
+    .colunadetalhe2 {
+        padding-top: 20px;
+    }
+    .nomeoficina .info_oficina {
+        font-size: 20px;
+    }
+    .botaoFormulario {
+        margin-top: 60px
+    }
+    .kids {
+        background-color: #FFFDE7;
+    }
+    body {
+        min-height: 100vh;
+        background: #fafafa;
+    }
+    /* TABELA INSCRITOS */
+    .noparticipants {
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+    .bg-gradient-l-primary-gradient {
+        background-image: linear-gradient(to left, #ff425b, #c42252);
+    }
+    .shadow-redBtn {
+        box-shadow: 0 4px 12px 0 rgb(226 60 82 / 20%);
+    }
+    .px-6 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+    .py-2 {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .font-bold {
+        font-weight: 700;
+    }
+    .border-none {
+        border-style: none;
+    }
+    .rounded-full {
+        border-radius: 9999px;
+    }
+    /* fortm singin */
+    .form-control {
+        height: 48px;
+        background: rgba(0, 0, 0, .05);
+        color: #000;
+        font-size: 16px;
+        border-radius: 50px;
+        border: 1px solid transparent;
+        padding-left: 20px;
+        padding-right: 20px;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+    .form-group .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #000;
+        font-weight: 700;
+    }
+    .text-login {
+        line-height: 1.5;
+        font-weight: 500;
+        color: #000;
+        padding-left: 20px;
+    }
+    .text-cadastro {
+        line-height: 1.5;
+        font-weight: 500;
+        color: #000;
+        padding-bottom: 20px;
+    }
+    .estilo-botao-details {
+        background-image: linear-gradient(to left, #ff425b, #c42252);
+        border: none;
+        font-weight: 700;
+    }
+    .estilo-botao-details:hover {
+        background-image: linear-gradient(to left, #bd616d, #9e596e);
+        border: none;
+        font-weight: 700;
+    }
+    .estiloBotaoDetails {
+        margin-top: 20px;
+    }
+    .text-muted {
+        font-size: 16px;
+        line-height: 1.8;
+        font-weight: 900;
+        background: #f8f9fd;
+        color: gray;
+        letter-spacing: 1px;
+    }
+    .nenhumaOficinaCadastrada {
+        margin: 20px 15px;
+        padding: 20px 30px;
+        display: flex;
+        box-shadow: 0px 1px 5px 1.5px rgb(0 0 0 / 11%);
+        font-size: 16px;
+    }
+    /* FOOTER */
+    footer {
+        position: center;
+        text-align: center;
+        font-size: 24px;
+        /* altera o tamanho da fonte para 24px */
+        display: flex;
+        margin-top: 60px;
+        flex-wrap: wrap;
+        background-image: linear-gradient(to left, #ff425b, #c42252);
+        color: white;
+    }
+    /* conteudo redes sociais */
+    footer .redes-sociais {
+        /* expaçamento interno */
+        margin-top: 63px;
+        /* expaçamento externo, ajusta em relação ao título */
+        position: left;
+        text-align: left;
+    }
+    /* título redes sociais */
+    footer .tituloRedesSociais {
+        margin-left: 35px;
+        margin-bottom: 15px;
+        /* expaçamento externo */
+        text-transform: uppercase;
+        /* caixa alta */
+        font-size: 18px;
+        font-weight: 600;
+        /* altera o peso da fonte, deixando mais pesada */
+        letter-spacing: 3px;
+        /* espaçamento entre as letras */
+        color: white;
+        border-left: 5px solid #fff;
+        padding-left: 30px;
+    }
+    footer .icons-redes-sociais a {
+        font-size: 40px;
+        padding-left: 37px;
+        color: #fff;
+    }
+    /* meu nome centralizado */
+    footer .nome-footer {
+        padding-top: 10px;
+        margin-top: 10px;
+        /* expaçamento externo, deixar o nome embaixo */
+        font-size: 14px;
+        text-transform: uppercase;
+        /* texto em caixa alta */
+        font-weight: 900;
+        /* fonte mais pesada */
+        letter-spacing: 3px;
+        /* espaçamento entre as letras */
+        text-align: center;
+    }
+    footer .imagemFooter {
+        margin-top: 80px;
+        width: 160px;
+        height: 75px;
+        position: center;
+        text-align: center;
+        margin-left: 95px;
+    }
+    footer .infomacoes {
+        padding-top: 50px;
+        text-align: center;
+    }
+    /* Aplica o espaçamento entre os icones e textos */
+    footer .address {
+        padding-top: 10px;
+        /* espaçamento interno acima do endereço */
+    }
+    footer .email {
+        padding-top: 15px;
+        /* espaçamento interno acima do e-mail */
+    }
+    footer .phone {
+        padding-top: 15px;
+        /* espaçamento interno acima do telefone */
+    }
+    /* icones do react no footer */
+    footer .iconeInfoRodape {
+        margin-right: 5px;
+    }
+    /* caso o usuário passe o cursor nos icones */
+    footer i:hover {
+        /* altera a cor */
+        color: #c7b7ba;
+    }
+}
+
+@media (max-width: 400px) {
+    header .logo-img {
+        width: 160px;
+        height: 50px;
+        margin: 0px;
+        padding: 0px;
+    }
+    footer .icons-redes-sociais a {
+        padding: 0px 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .row {
+        margin-right: 15px;
+    }
+    header .logo-img {
+        width: 160px;
+        height: 50px;
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+@media (max-width: 800px) {
+    /* Configuração das colunas dos formulários */
+    .coluna1, .coluna2, .colunadetalhe1, .colunadetalhe2 {
+        /* a primeira fatia ocupará a primeira metade */
+        width: 100%;
+        margin: 0px 0px;
+        line-height: 1.5;
+    }
+    /* Configuração da segunda coluna do formulário */
+    .coluna2 {
+        margin: 0px 0px;
+    }
+    .cardsTelaInicial {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0px;
+    }
+    /* título redes sociais */
+    footer .tituloRedesSociais {
+        padding-right: 13px;
+    }
+    footer .icons-redes-sociais a {
+        padding-right: 13px;
+    }
+    .colunasFormularios {
+        display: flex;
+        flex-direction: column;
+        padding: 20px!important;
+        text-align: left;
+        width: 100%;
+    }
+    .colunadetalhe1 {
+        width: 100%;
+        margin-left: 15px !important;
+        margin-bottom: 0px !important;
+    }
+    .colunadetalhe2 {
+        width: 100%;
+        margin-left: 15px !important;
+        margin-top: 0px !important;
+        padding: 0px!important;
+    }
+}
+
+@media (max-width: 970px) {
+    .container-fluid {
+        margin-left: 30px;
+    }
+    .tabela thead {
+        display: none;
+    }
+    .tabelaParticipante {
+        padding: 20px 0px;
+        box-shadow: 0px 1px 5px 1.5px rgb(0 0 0 / 11%);
+    }
+    .tabela, .tabela tbody, .tabela tr, .tabela td {
+        display: block;
+        width: 100%;
+    }
+    .tabela tr {
+        margin-bottom: 15px;
+    }
+    .tabela td {
+        text-align: right;
+        position: relative;
+    }
+    .tabela td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+    .botaoTabela td {
+        padding: 10px;
+    }
+    /* conteudo redes sociais */
+    footer .redes-sociais {
+        margin-top: 63px;
+        text-align: center;
+    }
+    /* título redes sociais */
+    footer .tituloRedesSociais {
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        /* espaçamento entre as letras */
+        color: white;
+        border: none;
+        margin: 0px;
+        padding-bottom: 15px;
+    }
+    footer .infomacoes {
+        padding-bottom: 45px;
+        text-align: center;
+    }
+    footer .imagemFooter {
+        margin-top: 60px!important;
+    }
+}
+
+@media (max-width: 995px) {
+    footer .imagemFooter {
+       display: none
+    }
+   
+}
+
+@media (min-width: 930px) {
+    @media (max-width: 1070px) {
+        .formularioLogar {
+            margin-left: 75px;
+        }
+        .tabela td {
+            border: none;
+        }
+        .container-fluid {
+            margin-left: 70px;
+        }
+        footer .icons-redes-sociais a {
+            font-size: 40px;
+            padding-left: 20px;
+            color: #fff;
+        }
+       
+    }
+}
+
+@media (max-width: 1200px) {
+    .espacoTabela {
+        display: flex;
+        height: 70px;
+    }
+    .cardsTelaInicial {
+        left: 4%;
+    }
+}
+
+/*  HD - 1366: 768P */
+
+@media (max-width: 1366px) {
+    .cardsTelaInicial {
+        left: 0px!important;
+    }
+    footer .imagemFooter {
+        margin-left: 115px!important;
+    }
+}
+
+/* FULL HD - 1920: 1080P */
+
+@media (max-width: 1920px) {
+    header .container {
+        max-width: 100%;
+    }
+    .cardsTelaInicial {
+        left: 6%;
+        margin-bottom: 50px;
+    }
+    footer .imagemFooter {
+        margin-left: 175px;
+    }
+}
+
+/* 2K - 2048: 1080P */
+
+@media (max-width: 2048px) {
+    .cardsTelaInicial {
+        left: 7%;
+        margin-bottom: 50px;
+    }
+    footer .imagemFooter {
+        margin-left: 175px;
+    }
+}
