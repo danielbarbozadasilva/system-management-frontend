@@ -1,4 +1,4 @@
-const types = {
+export const types = {
   SIGN_IN: 'SIGN_IN',
   SIGN_UP: 'SIGN_UP',
   SIGN_OUT: 'SIGN_OUT',
@@ -6,4 +6,3 @@ const types = {
   SIGN_LOADING: 'SIGN_LOADING',
   SIGN_UPDATE_REGISTER: 'SIGN_UPDATE_REGISTER'
 }
-export default types
