@@ -9,6 +9,7 @@ build/
 coverage/
 fixtures/
 scripts/bench/benchmarks/**/*.js
+.husky/
 
 # React repository clone
 scripts/bench/remote-repo/
