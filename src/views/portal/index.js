@@ -1,6 +1,6 @@
 import { Redirect, Switch } from 'react-router'
 import Route from '~/config/route'
-import Inicio from '~/views/portal/inicio/'
+import Inicio from '~/views/portal/inicio/index'
 import Produto from '~/views/portal/produto'
 
 const Menu = [

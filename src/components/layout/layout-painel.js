@@ -18,7 +18,7 @@ import {
   AccountCircle as AccountCircleIcon,
   ChevronLeft as ChevronLeftIcon
 } from '@material-ui/icons/'
-import { mainListItems } from './painelItem'
+import { mainListItems } from './item-painel'
 
 const drawerWidth = 240
 
