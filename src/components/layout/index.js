@@ -14,4 +14,5 @@ const Layout = ({ children }) => {
 
 export default Layout
 
-const ContainerLayout = styled.div``
+const ContainerLayout = styled.div`
+`
