@@ -13,8 +13,6 @@ import theme from './plugins/theme'
 import CssBaseline from '@material-ui/core/CssBaseline'
 const googleFont = 'https://fonts.googleapis.com/css2?family=Lato&display=swap'
 
-/* Conecto o meu react no redux */
-
 ReactDOM.render(
   <Provider store={store}>
     <Helmet>
