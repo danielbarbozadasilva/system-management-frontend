@@ -1,28 +1,24 @@
 import React from 'react'
+import { Route, Router, Switch } from 'react-router-dom'
 
-import {
-  Router,
-  Switch,
-  Route
-} from 'react-router-dom'
+import AdminView from '~/views/admin/'
+import PortalView from '~/views/portal/'
+import SignIn from '~/views/auth/signin'
 
-// layout
-import Layout from './components/layout'
-
-// views
-import Inicio from './views/inicio'
 import history from './config/history'
 
-const Routers = () => {
-  return (
+const Routers = () => (
+  <>
     <Router history={history}>
-      <Layout>
-        <Switch>
-          <Route exact path="/" component={Inicio} />
-        </Switch>
-      </Layout>
+      <Switch>
+        {/* PORTAL */}
+        <Route exact path="/signin" component={SignIn} />
+        <Route exact path="/" component={PortalView} />
+        {/* ADMIN */}
+        <Route path="/admin" component={AdminView} />
+      </Switch>
     </Router>
-  )
-}
+  </>
+)
 
 export default Routers

@@ -1,9 +1,6 @@
 import { Button, Link, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
-/* Quando tem um parenteses envolvendo um objeto é o mesmo que 'const useStyles = makeStyles((theme) => ({
-'return {} })  */
-
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -12,6 +9,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   toolbarSecondary: {
+    // justifyContent: "space-between",
     overflowX: 'auto',
   },
   toolbarLink: {
