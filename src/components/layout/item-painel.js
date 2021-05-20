@@ -18,6 +18,7 @@ export const mainListItems = (
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Painel" />
+      {/* É o mesmo que = <Link to='/' /> */}
     </ListItem>
     <ListItem button component={Link} to="categoria">
       <ListItemIcon>

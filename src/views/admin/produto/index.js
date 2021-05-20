@@ -1,7 +1,7 @@
 import React from 'react'
 
-function Produtos () {
-  return <div>Pagina Produtos</div>
+function Produto () {
+  return <div>Produto</div>
 }
 
-export default Produtos
+export default Produto
