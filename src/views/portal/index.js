@@ -1,7 +1,11 @@
-import { Redirect, Switch } from 'react-router'
-import Route from '~/config/route'
-import Inicio from '~/views/portal/inicio/index'
-import Produto from '~/views/portal/produto'
+import { Router } from '@reach/router'
+
+import PainelLayout from '~/components/layout/painelLayout.js'
+import Inicio from '~/views/portal/inicio/'
+import Produto from '~/views/admin/produto'
+import Fornecedor from '~/views/admin/fornecedor'
+import Categoria from './categoria/index'
+import Cliente from './cliente/index'
 
 const Menu = [
   {
@@ -13,30 +17,49 @@ const Menu = [
     component: Inicio
   },
   {
+    title: 'Categoria',
+    icons: '',
+    route: '/categoria',
+    visibleMenu: true,
+    enabled: true,
+    component: Categoria
+  },
+  {
     title: 'Produtos',
     icons: '',
     route: '/produto',
     visibleMenu: true,
     enabled: true,
     component: Produto
+  },
+  {
+    title: 'Fornecedor',
+    icons: '',
+    route: '/fornecedor',
+    visibleMenu: true,
+    enabled: true,
+    component: Fornecedor
+  },
+  {
+    title: 'Cliente',
+    icons: '',
+    route: '/cliente',
+    visibleMenu: true,
+    enabled: true,
+    component: Cliente
   }
 ]
 
-const Portal = (props) => {
-  console.log('props portal', props)
+const Admin = (props) => {
   return (
-    <Switch>
-      {Menu.map((item, i) => (
-        <Route
-          key={i}
-          exact
-          path={props.match.path + item.route}
-          component={item.component}
-        />
-      ))}
-      <Route path="*" render={() => <Redirect to="/admin" />} />
-    </Switch>
+    <Router>
+      <PainelLayout path="/">
+        {Menu.map(({ component: Component, route }, i) => (
+          <Component key={i} path={route} />
+        ))}
+      </PainelLayout>
+    </Router>
   )
 }
 
-export default Portal
+export default Admin

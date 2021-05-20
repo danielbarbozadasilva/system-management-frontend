@@ -1,33 +1,34 @@
 import { removeToken, saveAuth } from '~/config/storage'
 import { authService } from '~/services/auth.service'
-import history from '~/config/history'
 import http from '~/config/http'
-import Types from '../types'
+import TYPES from '~/store/types'
+import { navigate } from '@reach/router'
 
 export const signInAction = (data) => {
   return async (dispatch) => {
-    dispatch({ type: Types.SIGN_LOADING, status: true })
+    dispatch({ type: TYPES.SIGN_LOADING, status: true })
 
     try {
       const result = await authService(data)
       if (result.data) {
-        saveAuth(result.data)
-        http.defaults.headers.token = result.data.token
+        saveAuth(result.data?.data)
+        http.defaults.headers.token = result.data.data.token
       }
-      // mandando informação para o reducer
       dispatch({
-        type: Types.SIGN_IN,
-        data: result.data
+        type: TYPES.SIGN_IN,
+        data: result.data?.data
       })
-      history.push('/admin')
+      navigate('/admin')
+
+      // history.push('/admin')
     } catch (error) {
-      dispatch({ type: Types.SIGN_ERROR, data: error })
+      dispatch({ type: TYPES.SIGN_ERROR, data: error })
     }
   }
 }
 // export const signUpAction = (data) => {
 //   return async (dispatch) => {
-//     dispatch({ type: Types.SIGN_LOADING, status: true })
+//     dispatch({ type: TYPES.SIGN_LOADING, status: true })
 //     try {
 //       const result = await registerUserService(data) // liguei para o ezer
 //       if (result.data) {
@@ -35,7 +36,7 @@ export const signInAction = (data) => {
 //         http.defaults.headers.token = result.data.token
 //       }
 //       dispatch({
-//         type: Types.SIGN_UP,
+//         type: TYPES.SIGN_UP,
 //         data: result.data // mandei para a tamara
 //       })
 
@@ -43,14 +44,14 @@ export const signInAction = (data) => {
 //         history.push('/')
 //       }, 5000)
 //     } catch (error) {
-//       dispatch({ type: Types.SIGN_ERROR, data: error })
+//       dispatch({ type: TYPES.SIGN_ERROR, data: error })
 //     }
 //   }
 // }
 export const logoutAction = (data) => {
   return async (dispatch) => {
     removeToken()
-    dispatch({ type: Types.SIGN_OUT })
-    history.push('/signin')
+    dispatch({ type: TYPES.SIGN_OUT })
+    // history.push('/signin')
   }
 }

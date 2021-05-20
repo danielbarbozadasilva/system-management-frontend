@@ -2,7 +2,6 @@ import Types from '../types'
 import { getToken, getUser } from '../../config/storage'
 
 const INITIAL_STATE = {
-  isAdmin: getUser().tipo === '1' || false,
   loading: false,
   token: getToken() || '',
   usuario: getUser() || {},
@@ -27,8 +26,6 @@ const reducer = (state = INITIAL_STATE, action) => {
       // para de carregar
       state.loading = false
 
-      state.isAdmin = action.data.usuario.tipo === '1'
-
       return state
 
     case Types.SIGN_ERROR:
@@ -40,15 +37,12 @@ const reducer = (state = INITIAL_STATE, action) => {
     case Types.SIGN_OUT: // disponibiliza na mesa
       state.token = ''
       state.usuario = {}
-      state.isAdmin = false
       state.error = []
       return state
 
     case Types.SIGN_UP:
       state.registered = true
       state.token = action.data.token
-      state.usuario = action.data.usuario
-      state.isAdmin = action.data.usuario.tipo === '1'
       state.loading = false
       return state
 

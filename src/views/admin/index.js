@@ -1,10 +1,11 @@
-import { Switch, Route } from 'react-router'
+import { Router } from '@reach/router'
 
-import PainelLayout from '~/components/layout/layout-painel'
-
+import PainelLayout from '~/components/layout/painelLayout.js'
 import Inicio from '~/views/portal/inicio/'
 import Produto from '~/views/admin/produto'
 import Fornecedor from '~/views/admin/fornecedor'
+import Categoria from './categoria/index'
+import Cliente from './cliente/index'
 
 const Menu = [
   {
@@ -14,6 +15,14 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: Inicio
+  },
+  {
+    title: 'Categoria',
+    icons: '',
+    route: '/categoria',
+    visibleMenu: true,
+    enabled: true,
+    component: Categoria
   },
   {
     title: 'Produtos',
@@ -30,23 +39,26 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: Fornecedor
+  },
+  {
+    title: 'Cliente',
+    icons: '',
+    route: '/cliente',
+    visibleMenu: true,
+    enabled: true,
+    component: Cliente
   }
 ]
 
 const Admin = (props) => {
   return (
-    <Switch>
-      <PainelLayout>
-        {Menu.map((item, i) => (
-          <Route
-            key={i}
-            exact
-            path={props.match.path + item.route}
-            component={item.component}
-          />
+    <Router>
+      <PainelLayout path="/">
+        {Menu.map(({ component: Component, route }, i) => (
+          <Component key={i} path={route} />
         ))}
       </PainelLayout>
-    </Switch>
+    </Router>
   )
 }
 

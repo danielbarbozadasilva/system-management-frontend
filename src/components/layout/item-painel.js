@@ -6,35 +6,42 @@ import {
   Dashboard as DashboardIcon,
   ShoppingCart as ShoppingCartIcon,
   People as PeopleIcon,
-  More as MoreIcon
+  More as MoreIcon,
+  Apps as MdAppsIcon
 } from '@material-ui/icons'
-import { Link } from 'react-router-dom'
+import { Link } from '@reach/router'
 
 export const mainListItems = (
   <div>
-    <ListItem button component={Link} to="/design">
+    <ListItem button component={Link} to="">
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Painel" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to="categoria">
+      <ListItemIcon>
+        <MdAppsIcon />
+      </ListItemIcon>
+      <ListItemText primary="Categoria" />
+    </ListItem>
+    <ListItem button component={Link} to="produto">
+      <ListItemIcon>
+        <MoreIcon />
+      </ListItemIcon>
+      <ListItemText primary="Produtos" />
+    </ListItem>
+    <ListItem button component={Link} to="fornecedor">
       <ListItemIcon>
         <ShoppingCartIcon />
       </ListItemIcon>
       <ListItemText primary="Fornecedores" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component={Link} to="cliente">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Clientes" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <MoreIcon />
-      </ListItemIcon>
-      <ListItemText primary="Produtos" />
     </ListItem>
   </div>
 )
