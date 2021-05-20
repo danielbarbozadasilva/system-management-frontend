@@ -1,21 +1,22 @@
-import { Button, Link, Toolbar, Typography } from '@material-ui/core'
+import { Button, Toolbar, Link, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { Link as LinkRoute, navigate } from '@reach/router'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    borderBottom: `1px solid ${theme.palette.divider}`
   },
   toolbarTitle: {
-    flex: 1,
+    flex: 1
   },
   toolbarSecondary: {
     // justifyContent: "space-between",
-    overflowX: 'auto',
+    overflowX: 'auto'
   },
   toolbarLink: {
     padding: theme.spacing(1),
-    flexShrink: 0,
-  },
+    flexShrink: 0
+  }
 }))
 
 const Header = () => {
@@ -33,7 +34,11 @@ const Header = () => {
         >
           Pagina Inicial
         </Typography>
-        <Button variant="outlined" size="small">
+        <Button
+          variant="outlined"
+          onClick={() => navigate('/signin')}
+          size="small"
+        >
           Login
         </Button>
       </Toolbar>
@@ -43,34 +48,26 @@ const Header = () => {
         className={classes.toolbarSecondary}
       >
         <Link
+          component={LinkRoute}
           color="inherit"
           noWrap
           key="home"
           variant="h6"
-          href="/"
+          to="/"
           className={classes.toolbarLink}
         >
           Home
         </Link>
         <Link
+          component={LinkRoute}
           color="inherit"
           noWrap
           key="home1"
           variant="h6"
-          href="/"
+          to="/produto"
           className={classes.toolbarLink}
         >
           Sobre
-        </Link>
-        <Link
-          color="inherit"
-          noWrap
-          key="home2"
-          variant="h6"
-          href="/"
-          className={classes.toolbarLink}
-        >
-          Contato
         </Link>
       </Toolbar>
     </div>

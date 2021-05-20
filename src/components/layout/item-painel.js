@@ -18,19 +18,12 @@ export const mainListItems = (
         <DashboardIcon />
       </ListItemIcon>
       <ListItemText primary="Painel" />
-      {/* É o mesmo que = <Link to='/' /> */}
     </ListItem>
     <ListItem button component={Link} to="categoria">
       <ListItemIcon>
         <MdAppsIcon />
       </ListItemIcon>
-      <ListItemText primary="Categoria" />
-    </ListItem>
-    <ListItem button component={Link} to="produto">
-      <ListItemIcon>
-        <MoreIcon />
-      </ListItemIcon>
-      <ListItemText primary="Produtos" />
+      <ListItemText primary="Categorias" />
     </ListItem>
     <ListItem button component={Link} to="fornecedor">
       <ListItemIcon>
@@ -43,6 +36,12 @@ export const mainListItems = (
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Clientes" />
+    </ListItem>
+    <ListItem button component={Link} to="produto">
+      <ListItemIcon>
+        <MoreIcon />
+      </ListItemIcon>
+      <ListItemText primary="Produtos" />
     </ListItem>
   </div>
 )
