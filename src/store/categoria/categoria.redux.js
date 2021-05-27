@@ -3,11 +3,11 @@ import TYPES from '../types'
 const INITIAL_STATE = {
   loading: false,
   all: [],
-  upload: {}
+  upload: {},
+  selected: {}
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
-  // tamara recebe
   switch (action.type) {
     case TYPES.CATEGORY_LOADING:
       state.error = []
@@ -15,6 +15,10 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state
     case TYPES.CATEGORY_ALL:
       state.all = action.data
+      state.loading = false
+      return state
+    case TYPES.CATEGORY_EDIT:
+      state.selected = action.data
       state.loading = false
       return state
     case TYPES.CATEGORY_UPLOAD:

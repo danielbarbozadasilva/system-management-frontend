@@ -1,11 +1,11 @@
 import axios from 'axios' // import da dependencia
 import { getToken } from './storage'
-import store from '../store/index'
+import store from '../store'
 import { logoutAction } from '../store/auth/auth.action'
 
 // definindo a url da api
-const urlApi = process.env.REACT_APP_API
-// const urlApi = "https://projeto-02-backend.herokuapp.com/v1";
+const { REACT_APP_VERSION: version, REACT_APP_API: api } = process.env
+const urlApi = api + version
 
 // criando um client http através do AXIOS
 const http = axios.create({
@@ -18,19 +18,18 @@ if (getToken()) {
   http.defaults.headers.token = getToken()
 }
 
-http.interceptors.response.use((response) => {
-  return response
-}, function (error) {
-  switch (error.response.status) {
-    case 401:
-      store.dispatch(logoutAction())
-      //   history.push('/signin')
-      break
-    case 500:
-      store.dispatch(logoutAction())
-      break
+http.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    switch (error.response.status) {
+      case 401:
+        store.dispatch(logoutAction())
+        // history.push('/signin')
+        break
+      default:
+        break
+    }
   }
-  return Promise.reject(error.response)
-})
+)
 
 export default http

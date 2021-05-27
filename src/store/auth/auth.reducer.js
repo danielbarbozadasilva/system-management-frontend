@@ -21,7 +21,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       state.token = action.data.token
 
       // atribui apenas o objeto usuario (email, senha, tipo) do back
-      state.usuario = action.data.usuario
+      state.usuario = action.data.usuarioDTO
 
       // para de carregar
       state.loading = false
