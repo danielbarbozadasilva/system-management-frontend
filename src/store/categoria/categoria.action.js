@@ -5,7 +5,7 @@ import {
   updateCategory,
   removeCategory
 } from '~/services/categoria.service'
-import TYPES from '~/store/types'
+import Types from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 
 export const create = (data) => {
@@ -19,7 +19,7 @@ export const create = (data) => {
           (progressEvent.loaded * 100) / progressEvent.total
         )
         dispatch({
-          type: TYPES.CATEGORY_UPLOAD,
+          type: Types.CATEGORY_UPLOAD,
           upload: {
             finish: percent === 100,
             percent: percent
@@ -31,7 +31,7 @@ export const create = (data) => {
       const formData = new FormData()
       Object.keys(data).map((k) => formData.append(k, data[k]))
       const result = await categoryCreate(formData, config)
-      dispatch({ type: TYPES.CATEGORY_CREATE, data: result.data })
+      dispatch({ type: Types.CATEGORY_CREATE, data: result.data })
       toastr.success('Categoria', 'Categoria cadastrada com sucesso')
       dispatch(getAll())
     } catch (error) {
@@ -44,23 +44,25 @@ export const create = (data) => {
 export const edit = (id) => {
   return async (dispatch) => {
     dispatch({
-      type: TYPES.CATEGORY_UPLOAD,
+      type: Types.CATEGORY_UPLOAD,
       upload: 0
     })
     try {
       const result = await getCategoryById(id)
-      dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
+      dispatch({ type: Types.CATEGORY_EDIT, data: result.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
   }
 }
+
+// Atualiza a tabela
 export const getAll = () => {
   return async (dispatch) => {
     try {
-      dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
+      dispatch({ type: Types.CATEGORY_LOADING, status: true })
       const result = await getAllCategories()
-      dispatch({ type: TYPES.CATEGORY_ALL, data: result.data.data })
+      dispatch({ type: Types.CATEGORY_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
@@ -69,9 +71,9 @@ export const getAll = () => {
 
 export const update = ({ id, ...data }) => {
   return (dispatch) => {
-    dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
+    dispatch({ type: Types.CATEGORY_LOADING, status: true })
     dispatch({
-      type: TYPES.CATEGORY_UPLOAD,
+      type: Types.CATEGORY_UPLOAD,
       upload: 0
     })
     const config = {
@@ -85,7 +87,7 @@ export const update = ({ id, ...data }) => {
         console.log('percentCompleted', percentCompleted)
 
         dispatch({
-          type: TYPES.CATEGORY_UPLOAD,
+          type: Types.CATEGORY_UPLOAD,
           upload: percentCompleted
         })
       }
@@ -98,10 +100,10 @@ export const update = ({ id, ...data }) => {
         dispatch(edit(id))
         dispatch(getAll())
         toastr.success('Categoria', 'Categoria atualizada com sucesso')
-        dispatch({ type: TYPES.CATEGORY_UPDATE })
+        dispatch({ type: Types.CATEGORY_UPDATE })
       })
       .catch((error) => {
-        dispatch({ type: TYPES.SIGN_ERROR, data: error })
+        dispatch({ type: Types.SIGN_ERROR, data: error })
         toastr.error('Categoria', error.toString())
       })
   }
@@ -110,7 +112,7 @@ export const remove = (id) => {
   return async (dispatch) => {
     try {
       const result = await removeCategory(id)
-      dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
+      dispatch({ type: Types.CATEGORY_EDIT, data: result.data })
       toastr.success('Categoria', 'Removido com sucesso')
       dispatch(getAll())
     } catch (error) {

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   TextField,
   Button,
@@ -11,14 +11,21 @@ import {
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 
-const Form = ({ submit }) => {
+const Form = ({ submit, ...props }) => {
   const [preview, setPreview] = useState('')
-  const percent = useSelector((state) => state.categoria.upload?.percent || 0)
-  const loading = false // useSelector((state) => state.categoria.loading)
-
   const [form, setForm] = useState({
     status: false
   })
+  const [isEdit, setEdit] = useState(false)
+  const percent = useSelector((state) => state.categoria.upload?.percent || 0)
+  const loading = useSelector((state) => state.categoria.loading)
+
+  if (Object.keys(props).length > 0 && !isEdit) {
+    setPreview(process.env.REACT_APP_API + props?.data?.imagem)
+    setForm(props.data)
+    setEdit(true)
+  }
+
   const handleChange = (props) => {
     const { value, name } = props.target
     setForm({
@@ -35,19 +42,6 @@ const Form = ({ submit }) => {
     }
     submit(newForm)
   }
-
-  const cleanup = useCallback(() => {
-    setTimeout(() => {
-      setForm({ status: false })
-      setPreview('')
-    }, 2000)
-  }, [])
-
-  useEffect(() => {
-    if (!loading) {
-      cleanup()
-    }
-  }, [loading, cleanup])
 
   const removeImage = () => {
     delete form.imagem
@@ -149,7 +143,7 @@ const Form = ({ submit }) => {
             onClick={handleSubmit}
             disabled={loading}
           >
-            Enviar
+            {isEdit ? 'Atualizar' : 'Enviar'}
           </Button>
           <Grid container direction="column">
             <LinearProgress variant="determinate" value={percent} />
@@ -183,5 +177,5 @@ const Submit = styled.div`
   margin: ${({ theme: t }) => t.spacing(0.5)};
   .buttonSubmit {
     margin: ${({ theme: t }) => t.spacing(3, 0, 2)};
-  }
-`
+}
+  `

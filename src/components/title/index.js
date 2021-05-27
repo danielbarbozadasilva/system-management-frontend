@@ -28,5 +28,4 @@ const Title = styled(Box)`
 
 Head.propTypes = {
   title: PropTypes.string,
-  // actions: PropTypes.element
 }

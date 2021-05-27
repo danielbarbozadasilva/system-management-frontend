@@ -1,4 +1,4 @@
-import TYPES from '../types'
+import Types from '../types'
 
 const INITIAL_STATE = {
   loading: false,
@@ -9,22 +9,23 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case TYPES.CATEGORY_LOADING:
+    case Types.CATEGORY_LOADING:
       state.error = []
       state.loading = action.status
       return state
-    case TYPES.CATEGORY_ALL:
+    case Types.CATEGORY_ALL:
       state.all = action.data
       state.loading = false
       return state
-    case TYPES.CATEGORY_EDIT:
+    //Ao clicar no icone editar ele vai incluir o item de editar e vai fazer a chamada para popular o editar  
+    case Types.CATEGORY_EDIT:
       state.selected = action.data
       state.loading = false
       return state
-    case TYPES.CATEGORY_UPLOAD:
+    case Types.CATEGORY_UPLOAD:
       state.upload = action.upload
       return state
-    case TYPES.CATEGORY_CREATE:
+    case Types.CATEGORY_CREATE:
       state.loading = false
       return state
     default:
