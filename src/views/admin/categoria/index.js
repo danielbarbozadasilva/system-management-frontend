@@ -23,10 +23,7 @@ const Categoria = () => {
   const loading = useSelector((state) => state.categoria.loading)
   const selected = useSelector((state) => state.categoria.selected)
 
-  // As possiveis operações:
-  // 1 = novo
-  // 2 = editar
-  // 3 = excluir
+  // 1 = novo 2 = editar  3 = excluir
   const callCategoria = useCallback(() => {
     dispatch(getCategories())
   }, [dispatch])
@@ -44,7 +41,7 @@ const Categoria = () => {
       setModal({ tipo, id, status: true })
     }
   }
-  // se ninguem passar nada ele é do tipo 1, então ele chama o cadastro
+
   const closeModal = () => setModal({ status: false, tipo: 1 })
 
   const submitForm = (form) => {
@@ -111,9 +108,6 @@ const Categoria = () => {
 }
 
 export default Categoria
-
-
-
 
 
 // import React, { useCallback, useEffect, useState } from 'react'

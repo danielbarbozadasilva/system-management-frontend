@@ -4,8 +4,9 @@ import store from '../store'
 import { logoutAction } from '../store/auth/auth.action'
 
 // definindo a url da api
-const { REACT_APP_VERSION: version, REACT_APP_API: api } = process.env
-const urlApi = api + version
+const { REACT_APP_API: api, REACT_APP_VERSION: v } = process.env
+const urlApi = api + v
+
 
 // criando um client http através do AXIOS
 const http = axios.create({

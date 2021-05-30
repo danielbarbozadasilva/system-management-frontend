@@ -1,7 +1,7 @@
 import { removeToken, saveAuth } from '~/config/storage'
 import { authService } from '~/services/auth.service'
 import http from '~/config/http'
-import Types from '~/store/types'
+import TYPES from '~/store/types'
 import { navigate } from '@reach/router'
 
 export const signInAction = (data) => {
@@ -51,7 +51,7 @@ export const signInAction = (data) => {
 export const logoutAction = (data) => {
   return async (dispatch) => {
     removeToken()
-    dispatch({ type: Types.SIGN_OUT })
+    dispatch({ type: TYPES.SIGN_OUT })
     // history.push('/signin')
   }
 }

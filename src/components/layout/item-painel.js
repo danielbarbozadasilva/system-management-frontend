@@ -23,7 +23,13 @@ export const mainListItems = (
       <ListItemIcon>
         <MdAppsIcon />
       </ListItemIcon>
-      <ListItemText primary="Categorias" />
+      <ListItemText primary="Categoria" />
+    </ListItem>
+    <ListItem button component={Link} to="produto">
+      <ListItemIcon>
+        <MoreIcon />
+      </ListItemIcon>
+      <ListItemText primary="Produtos" />
     </ListItem>
     <ListItem button component={Link} to="fornecedor">
       <ListItemIcon>
@@ -36,12 +42,6 @@ export const mainListItems = (
         <PeopleIcon />
       </ListItemIcon>
       <ListItemText primary="Clientes" />
-    </ListItem>
-    <ListItem button component={Link} to="produto">
-      <ListItemIcon>
-        <MoreIcon />
-      </ListItemIcon>
-      <ListItemText primary="Produtos" />
     </ListItem>
   </div>
 )

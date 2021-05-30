@@ -1,18 +1,16 @@
 import React from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
-import {
-  CssBaseline,
-  Drawer,
-  AppBar,
-  List,
-  Toolbar,
-  Typography,
-  Divider,
-  IconButton,
-  Container,
-  Hidden
-} from '@material-ui/core'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Drawer from '@material-ui/core/Drawer'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import List from '@material-ui/core/List'
+import Typography from '@material-ui/core/Typography'
+import Divider from '@material-ui/core/Divider'
+import IconButton from '@material-ui/core/IconButton'
+import Container from '@material-ui/core/Container'
+import Hidden from '@material-ui/core/Hidden'
 
 import {
   Menu as MenuIcon,
@@ -21,7 +19,6 @@ import {
   ChevronLeft as ChevronLeftIcon
 } from '@material-ui/icons/'
 import { mainListItems } from './item-painel'
-import { useSelector } from 'react-redux'
 
 const drawerWidth = 240
 
@@ -30,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex'
   },
   toolbar: {
-    paddingRight: 24
+    paddingRight: 24 // keep right padding when drawer closed
   },
   toolbarText: {
     display: 'flex',
@@ -127,25 +124,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Dashboard(props) {
+export default function Dashboard (props) {
   const classes = useStyles()
   const [open, setOpen] = React.useState(true)
-  const [anchorEl, setAnchorEl] = React.useState(null)
-  const usuario = useSelector((state) => state.auth.usuario)
-
   const handleDrawerOpen = () => {
     setOpen(!open)
   }
   const handleDrawerClose = () => {
     setOpen(false)
-  }
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = () => {
-    setAnchorEl(null)
   }
 
   return (
@@ -182,7 +168,7 @@ export default function Dashboard(props) {
             className={classes.user}
           >
             <AccountCircleIcon className={classes.userIcon} />
-            <Typography noWrap>{usuario.email}</Typography>
+            Liniker Silva
           </Typography>
         </Toolbar>
       </AppBar>

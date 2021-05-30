@@ -1,22 +1,23 @@
-import Types from '../types'
+import TYPES from '../types'
 import { getToken, getUser } from '../../config/storage'
 
 const INITIAL_STATE = {
   loading: false,
   token: getToken() || '',
   usuario: getUser() || {},
-  registered: false,
-  error: []
+  error: [],
+  registered: false
 }
+
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case Types.SIGN_LOADING:
+    case TYPES.SIGN_LOADING:
       state.error = []
       state.loading = action.status
       return state
 
-    case Types.SIGN_IN:
+    case TYPES.SIGN_IN:
       // atribui apenas o token do back
       state.token = action.data.token
 
@@ -25,29 +26,26 @@ const reducer = (state = INITIAL_STATE, action) => {
 
       // para de carregar
       state.loading = false
-
+      return state
+      
+    case TYPES.SIGN_UP:
+      state.registered = true
+      state.token = action.data.token
+      state.usuario = action.data.usuario
+      state.loading = false
       return state
 
-    case Types.SIGN_ERROR:
+    case TYPES.SIGN_ERROR:
       // let err = [...state.error, action.data]
       state.loading = false
       // state.error = err
       return state
 
-    case Types.SIGN_OUT: // disponibiliza na mesa
+    case TYPES.SIGN_OUT:
       state.token = ''
       state.usuario = {}
+      state.isAdmin = false
       state.error = []
-      return state
-
-    case Types.SIGN_UP:
-      state.registered = true
-      state.token = action.data.token
-      state.loading = false
-      return state
-
-    case Types.SIGN_UPDATE_REGISTER:
-      state.registered = false
       return state
 
     default:

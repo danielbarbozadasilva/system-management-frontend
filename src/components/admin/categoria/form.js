@@ -177,5 +177,5 @@ const Submit = styled.div`
   margin: ${({ theme: t }) => t.spacing(0.5)};
   .buttonSubmit {
     margin: ${({ theme: t }) => t.spacing(3, 0, 2)};
-}
-  `
+  }
+`
