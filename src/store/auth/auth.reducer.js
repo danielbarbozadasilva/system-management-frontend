@@ -9,7 +9,6 @@ const INITIAL_STATE = {
   registered: false
 }
 
-
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case TYPES.SIGN_LOADING:
@@ -27,7 +26,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       // para de carregar
       state.loading = false
       return state
-      
+
     case TYPES.SIGN_UP:
       state.registered = true
       state.token = action.data.token

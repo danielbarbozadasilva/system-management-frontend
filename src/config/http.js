@@ -7,7 +7,6 @@ import { logoutAction } from '../store/auth/auth.action'
 const { REACT_APP_API: api, REACT_APP_VERSION: v } = process.env
 const urlApi = api + v
 
-
 // criando um client http através do AXIOS
 const http = axios.create({
   baseURL: urlApi
