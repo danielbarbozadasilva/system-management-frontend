@@ -1,8 +1,6 @@
 import { Button, Link, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { Link as LinkRoute } from '@reach/router'
-import { navigate } from '@reach/router'
-
+import { Link as LinkRoute, navigate } from '@reach/router'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -21,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-
 const Header = () => {
   const classes = useStyles()
 
@@ -37,7 +34,7 @@ const Header = () => {
         >
           Pagina Inicial
         </Typography>
-        <Button variant="outlined" size="small" onClick={() =>navigate('/signin')}>
+        <Button variant="outlined" size="small" onClick={() => navigate('/signin')}>
           Login
         </Button>
       </Toolbar>

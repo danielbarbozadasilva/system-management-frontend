@@ -37,7 +37,7 @@ export const Menu = [
     visibleMenu: true,
     enabled: true,
     component: Categoria,
-    authorization: [1,2]
+    authorization: [2]
     // ALTERAR SO PARA 2
   },
   {

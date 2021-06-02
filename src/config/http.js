@@ -30,10 +30,10 @@ http.interceptors.response.use(
 
       case 400:
         toastr.error(error.response.data.mensagem, error.response.data.detalhes.join(','))
-        break;
-        default:
-        toastr.error("Erro: "+error.response.status, "Ocorreu um erro!")
-          break
+        break
+      default:
+        toastr.error('Erro: ' + error.response.status, 'Ocorreu um erro!')
+        break
     }
   }
 )

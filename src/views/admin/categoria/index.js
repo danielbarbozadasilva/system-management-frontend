@@ -55,7 +55,7 @@ const Categoria = () => {
       case 2:
         /* requisição após clicar no botão de atualizar dentro do modal,
         temho os dois dispatchs na action update e editCategory */
-        console.log(categoria);
+        console.log(categoria)
         dispatch(updateCategory(form))
         return
       case 3:
@@ -77,9 +77,8 @@ const Categoria = () => {
     </Button>
   )
 
- 
   return (
-   <>
+    <>
       <Title
         title="Categoria"
         subTitle="Pagina de Categorias"
