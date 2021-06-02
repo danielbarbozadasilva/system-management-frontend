@@ -41,7 +41,7 @@ export const signInAction = (data) => {
 //       })
 
 //       setTimeout(() => {
-//         history.push('/')
+//         .push('/')
 //       }, 5000)
 //     } catch (error) {
 //       dispatch({ type: TYPES.SIGN_ERROR, data: error })

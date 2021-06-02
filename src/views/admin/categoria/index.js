@@ -19,7 +19,7 @@ const Categoria = () => {
   const dispatch = useDispatch()
   const [modal, setModal] = React.useState({})
 
-  const categorias = useSelector((state) => state.categoria.all)
+  const categoria = useSelector((state) => state.categoria.all)
   const loading = useSelector((state) => state.categoria.loading)
   const selected = useSelector((state) => state.categoria.selected)
 
@@ -35,7 +35,7 @@ const Categoria = () => {
   // verifica se o usuário possui 'id', caso tenha faz o dispatch do editCategory
   const toogleModal = (tipo = 1, id = null) => {
     if (id) {
-      /* dispatch para preencher o modal que foi aberto 
+      /* dispatch para preencher o modal que foi aberto
       para que as iformações sejam editadas */
       dispatch(editCategory(id)).then(() =>
         setModal({ tipo, id, status: true })
@@ -53,8 +53,9 @@ const Categoria = () => {
         dispatch(createCategory(form))
         return
       case 2:
-        /* requisição após clicar no botão de atualizar dentro do modal, 
-        temho os dois dispatchs na action update e editCategory*/
+        /* requisição após clicar no botão de atualizar dentro do modal,
+        temho os dois dispatchs na action update e editCategory */
+        console.log(categoria);
         dispatch(updateCategory(form))
         return
       case 3:
@@ -75,8 +76,10 @@ const Categoria = () => {
       Novo
     </Button>
   )
+
+ 
   return (
-    <>
+   <>
       <Title
         title="Categoria"
         subTitle="Pagina de Categorias"
@@ -85,7 +88,7 @@ const Categoria = () => {
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={8}>
-          <DataList data={categorias} loading={loading} modal={toogleModal} />
+          <DataList data={categoria} loading={loading} modal={toogleModal} />
         </Grid>
       </Grid>
 
@@ -109,6 +112,7 @@ const Categoria = () => {
         </>
       </DialogModal>
     </>
+
   )
 }
 
@@ -376,7 +380,7 @@ export default Categoria
 // //       <Grid container spacing={2}>
 // //         <CssBaseline />
 // //         <Grid item md={12} xl={8}>
-// //           <DataList data={categorias} loading={loading} modal={toogleModal} />
+// //           <DataList data={categoria} loading={loading} modal={toogleModal} />
 // //         </Grid>
 // //       </Grid>
 

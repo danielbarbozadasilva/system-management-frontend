@@ -1,72 +1,89 @@
 import { Router } from '@reach/router'
 
+import {
+  Dashboard as DashboardIcon,
+  ShoppingCart as ShoppingCartIcon,
+  People as PeopleIcon,
+  More as MoreIcon,
+  Apps as MdAppsIcon
+} from '@material-ui/icons'
+
 import PainelLayout from '~/components/layout/layout-painel'
 import Inicio from '~/views/portal/inicio/'
-import Produto from '~/views/admin/produto/index'
+import Produto from '~/views/admin/produto'
 import Fornecedor from '~/views/admin/fornecedor'
 import Categoria from './categoria/index'
 import Cliente from './cliente/index'
+import { useSelector } from 'react-redux'
+/*
+  1 - Administrador
+  2 - Fornecedor
+ */
 
-const Menu = [
+export const Menu = [
   {
     title: 'Home',
-    icons: '',
+    icon: <DashboardIcon />,
     route: '/',
-    // Chama a rota '/'
     visibleMenu: true,
     enabled: true,
-    component: Inicio
-    // Chama o componente 'Inicio' que criei em inicio/index;
+    component: Inicio,
+    authorization: [1, 2]
   },
   {
     title: 'Categoria',
-    icons: '',
+    icon: <MdAppsIcon />,
     route: '/categoria',
-    // Chama a rota de  categoria '/categoria'
     visibleMenu: true,
     enabled: true,
-    component: Categoria
-    // Chama o componente 'Categoria' que criei em categoria/index;
+    component: Categoria,
+    authorization: [1,2]
+    // ALTERAR SO PARA 2
   },
   {
     title: 'Produtos',
-    icons: '',
+    icon: <MoreIcon />,
     route: '/produto',
-    // Chama a rota de produto '/produto';
     visibleMenu: true,
     enabled: true,
-    component: Produto
-    // Chama o componente 'Produto' que criei em produto/index;
+    component: Produto,
+    authorization: [2]
   },
   {
     title: 'Fornecedor',
-    icons: '',
+    icon: <ShoppingCartIcon />,
     route: '/fornecedor',
-    // Chama a rota de 'Fornecedor' '/fornecedor'
     visibleMenu: true,
     enabled: true,
-    component: Fornecedor
-    // Chama o componente 'Fornecedor' que criei em fornecedor/index;
+    component: Fornecedor,
+    authorization: [1]
   },
   {
     title: 'Cliente',
-    icons: '',
+    icon: <PeopleIcon />,
     route: '/cliente',
-    // Chama a rota de cliente '/cliente'
     visibleMenu: true,
     enabled: true,
-    component: Cliente
-    // Chama o componente 'Cliente' que criei em cliente/index;
+    component: Cliente,
+    authorization: [2]
   }
 ]
 
 const Admin = (props) => {
+  const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
+  const rotasAutorizadas = Menu.filter((route) =>
+    route.authorization.includes(tipoUsuario)
+  )
+
+  const NotFound = () => <h2>Não autorizado</h2>
+
   return (
     <Router>
       <PainelLayout path="/">
-        {Menu.map(({ component: Component, route }, i) => (
+        {rotasAutorizadas.map(({ component: Component, route }, i) => (
           <Component key={i} path={route} />
         ))}
+        {/* <NotFound default /> */}
       </PainelLayout>
     </Router>
   )

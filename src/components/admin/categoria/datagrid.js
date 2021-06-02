@@ -1,11 +1,11 @@
 import React from 'react'
 import { DataGrid } from '@material-ui/data-grid'
+// import { useDispatch } from 'react-redux'
 import { FiTrash2, FiEdit } from 'react-icons/fi'
 import { IconButton } from '@material-ui/core'
 import styled from 'styled-components'
 
 const DataList = ({ data, modal, loading }) => {
-// Vou passar os actions para dentro do meu componente (Componente genérico)
   const actions = ({ id }) => {
     return (
       <>
@@ -18,6 +18,7 @@ const DataList = ({ data, modal, loading }) => {
       </>
     )
   }
+
   const columns = [
     {
       field: 'status',
@@ -41,7 +42,6 @@ const DataList = ({ data, modal, loading }) => {
 
   return (
     <BoxTable>
-      {/* Pega as linhas e as colunas da 'PROPS'- define que o número de registros por pagina é '10' */}
       <DataGrid rows={data} columns={columns} pageSize={10} />
     </BoxTable>
   )

@@ -35,9 +35,7 @@ export const create = (data) => {
       toastr.success('Categoria', 'Categoria cadastrada com sucesso')
       dispatch(getAll())
     } catch (error) {
-      toastr.error('Categoria', 'deu ruim')
     }
-    console.log('disparar...', data)
   }
 }
 
@@ -51,7 +49,6 @@ export const edit = (id) => {
       const result = await getCategoryById(id)
       dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
     }
   }
 }
@@ -69,7 +66,7 @@ export const getAll = () => {
 /* A única diferença para o create é que mando um dispatch para atualizar
 o modal que está aberto e a tabela inteira */
 
- /* pega as informações e colocar como 'true*, ZERA o MODAL
+/* pega as informações e colocar como 'true*, ZERA o MODAL
  para que o contador da barra de progresso fique sempre ZERO */
 export const update = ({ id, ...data }) => {
   return (dispatch) => {
@@ -104,7 +101,7 @@ export const update = ({ id, ...data }) => {
         dispatch(edit(id))
         dispatch(getAll())
         toastr.success('Categoria', 'Categoria atualizada com sucesso')
-        dispatch({ type: TYPES.CATEGORY_UPDATE })
+        // dispatch({ type: TYPES.CATEGORY_UPDATE })
       })
       .catch((error) => {
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
