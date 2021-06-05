@@ -15,11 +15,9 @@ import Fornecedor from '~/views/admin/fornecedor'
 import Categoria from './categoria/index'
 import Cliente from './cliente/index'
 import { useSelector } from 'react-redux'
-/*
-  1 - Administrador
-  2 - Fornecedor
- */
 
+
+/*1 - Administrador - 2 - Fornecedor*/
 export const Menu = [
   {
     title: 'Home',
@@ -38,7 +36,6 @@ export const Menu = [
     enabled: true,
     component: Categoria,
     authorization: [2]
-    // ALTERAR SO PARA 2
   },
   {
     title: 'Produtos',
@@ -73,6 +70,7 @@ const Admin = (props) => {
   const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
   const rotasAutorizadas = Menu.filter((route) =>
     route.authorization.includes(tipoUsuario)
+    // includes = verifica se o dado está dentro de autorization
   )
 
   const NotFound = () => <h2>Não autorizado</h2>

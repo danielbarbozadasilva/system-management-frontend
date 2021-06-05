@@ -13,7 +13,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   /* Ao ADICIONAR noThrow e Redirect ele redirecionará sem usar
          'componentDidCatch'(registra informações de erro) */
 
-  return <Component {...rest} />
+  return <Component {...resto} />
 } // Caso LOGADO, INJETO O COMPONENTE
 
 const Routers = () => (
