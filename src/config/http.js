@@ -5,8 +5,7 @@ import { logoutAction } from '../store/auth/auth.action'
 import { toastr } from 'react-redux-toastr'
 
 // definindo a url da api
-const { REACT_APP_API: api, REACT_APP_VERSION: v } = process.env
-const urlApi = api + v
+const urlApi = process.env.REACT_APP_API
 
 // criando um client http através do AXIOS
 const http = axios.create({

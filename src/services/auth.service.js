@@ -5,8 +5,9 @@ const authService = async (data) => {
   return {
     ...result,
     usuarioDTO: {
-      id: '60a271b13a6f75319c90b65f',
+      id: '60b7d8abe536e8407017542b',
       email: 'daniel@gmail.com',
+      senha: 'daniel',
       nome: 'daniel',
       tipoUsuario: 2
     }

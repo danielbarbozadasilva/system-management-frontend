@@ -47,7 +47,7 @@ export default function Dashboard(props) {
     },
     toolbar: {
       paddingRight: 24,
-      backgroundColor: userDefinition[tipoUsuario]?.cor || '#666' // keep right padding when drawer closed
+      backgroundColor: userDefinition[tipoUsuario].cor || '#666' // keep right padding when drawer closed
     },
     toolbarText: {
       display: 'flex',
@@ -177,7 +177,7 @@ export default function Dashboard(props) {
             noWrap
             className={classes.title}
           >
-            {userDefinition[tipoUsuario]?.titulo}
+            {userDefinition[tipoUsuario].titulo}
           </Typography>
           <Typography
             component="h4"
@@ -187,7 +187,7 @@ export default function Dashboard(props) {
             className={classes.user}
           >
             <AccountCircleIcon className={classes.userIcon} />
-            Daniel
+            Liniker Silva
           </Typography>
         </Toolbar>
       </AppBar>

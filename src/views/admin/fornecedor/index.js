@@ -9,7 +9,7 @@ import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import {
   getAll as getFornecedor,
   setStatusFornecedor
-} from '~/store/fornecedor/fornecedor.action'
+} from '~/store/fornecedor/action'
 
 function Fornecedor() {
   const dispatch = useDispatch()

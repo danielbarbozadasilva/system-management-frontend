@@ -9,33 +9,14 @@ import {
 } from '~/services/fornecedor.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
+import { navigate } from '@reach/router'
 
 export const create = (data) => {
   return async (dispatch) => {
-    const config = {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      onUploadProgress: function (progressEvent) {
-        const percent = Math.round(
-          (progressEvent.loaded * 100) / progressEvent.total
-        )
-        dispatch({
-          type: TYPES.FORNECEDOR_UPLOAD,
-          upload: {
-            finish: percent === 100,
-            percent: percent
-          }
-        })
-      }
-    }
     try {
-      const formData = new FormData()
-      Object.keys(data).map((k) => formData.append(k, data[k]))
-      const result = await FornecedorCreate(formData, config)
-      dispatch({ type: TYPES.FORNECEDOR_CREATE, data: result.data })
+      const result = await FornecedorCreate(data)
       toastr.success('Fornecedor', 'Fornecedor cadastrada com sucesso')
-      dispatch(getAll())
+      navigate('/signin')
     } catch (error) {
       toastr.error('Fornecedor', 'deu ruim')
     }

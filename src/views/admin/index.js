@@ -17,7 +17,7 @@ import Cliente from './cliente/index'
 import { useSelector } from 'react-redux'
 
 
-/*1 - Administrador - 2 - Fornecedor*/
+/* 1 - Administrador - 2 - Fornecedor */
 export const Menu = [
   {
     title: 'Home',
@@ -70,7 +70,6 @@ const Admin = (props) => {
   const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
   const rotasAutorizadas = Menu.filter((route) =>
     route.authorization.includes(tipoUsuario)
-    // includes = verifica se o dado está dentro de autorization
   )
 
   const NotFound = () => <h2>Não autorizado</h2>
@@ -81,7 +80,7 @@ const Admin = (props) => {
         {rotasAutorizadas.map(({ component: Component, route }, i) => (
           <Component key={i} path={route} />
         ))}
-        {/* <NotFound default /> */}
+        <NotFound default />
       </PainelLayout>
     </Router>
   )
