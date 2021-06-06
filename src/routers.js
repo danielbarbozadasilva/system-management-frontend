@@ -6,7 +6,6 @@ import PortalView from '~/views/portal'
 import AdminView from '~/views/admin/'
 import SignIn from './views/auth/signin'
 
-
 import { isAuthenticated } from './config/storage'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -32,4 +31,3 @@ const Routers = () => (
 )
 
 export default Routers
-

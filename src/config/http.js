@@ -18,7 +18,6 @@ if (getToken()) {
   http.defaults.headers.token = getToken()
 }
 
-
 http.interceptors.response.use(
   (response) => response,
   (error) => {
