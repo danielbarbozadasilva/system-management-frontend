@@ -16,7 +16,6 @@ import Categoria from './categoria/index'
 import Cliente from './cliente/index'
 import { useSelector } from 'react-redux'
 
-
 /* 1 - Administrador - 2 - Fornecedor */
 export const Menu = [
   {

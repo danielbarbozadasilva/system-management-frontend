@@ -1,6 +1,6 @@
 import { Button, Link, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { Link as LinkRoute, navigate } from '@reach/router'
+import { Link as LinkRoute } from '@reach/router'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 1
   },
   toolbarSecondary: {
-    // justifyContent: "space-between",
     overflowX: 'auto'
   },
   toolbarLink: {
@@ -34,8 +33,11 @@ const Header = () => {
         >
           Pagina Inicial
         </Typography>
-        <Button variant="outlined" size="small" onClick={() => navigate('/signin')}>
+        <Button variant="outlined" size="small" component={LinkRoute} to="/signin">
           Login
+        </Button>
+        <Button variant="outlined" size="small" component={LinkRoute} to="/fornecedor_novo">
+          Seja um novo fornecedor
         </Button>
       </Toolbar>
       <Toolbar
