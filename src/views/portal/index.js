@@ -1,4 +1,4 @@
-import Inicio from '~/views/portal/inicio/'
+import Inicio from '~/views/portal/inicio/index'
 import Produto from '~/views/portal/produto'
 import { Router } from '@reach/router'
 import Layout from '~/components/layout'

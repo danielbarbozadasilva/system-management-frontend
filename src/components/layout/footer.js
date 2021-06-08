@@ -2,13 +2,12 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
 
 function Copyright () {
   return (
     <Typography variant="h6" color="textSecondary" align="center">
       <p>Copyright ©  {new Date().getFullYear()} &copy; All Rights Reserved Daniel Barboza da Silva.</p>
-      
+
     </Typography>
   )
 }

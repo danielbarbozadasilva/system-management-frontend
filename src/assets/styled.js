@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const TitlePage = styled.div`
     color: back;
@@ -19,6 +19,6 @@ const Sign = styled.div`
 `
 
 export {
-    Sign,
-    TitlePage
+  Sign,
+  TitlePage
 }

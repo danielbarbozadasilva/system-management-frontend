@@ -9,7 +9,7 @@ export const signInAction = (data) => {
     dispatch({ type: TYPES.SIGN_LOADING, status: true })
 
     try {
-      const result = await authService(data) 
+      const result = await authService(data)
       if (result.data) {
         saveAuth(result.data?.data)
         http.defaults.headers.token = result.data.data.token

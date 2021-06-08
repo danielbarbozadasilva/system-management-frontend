@@ -1,41 +1,39 @@
-import React from 'react';
+import React from 'react'
 import {
-  Card, 
-  CardImg, 
+  Card,
+  CardImg,
   CardBody,
-  CardTitle, 
+  CardTitle,
   Button
-} from 'reactstrap';
-import styled from 'styled-components';
-import '../../assets/css/style.css';
+} from 'reactstrap'
+import styled from 'styled-components'
+import '../../assets/css/style.css'
 
 const CardItem = (props) => {
-
-    const { _id, nome, descricao, status, imagem} = props.item;
-
+  const { _id, nome, descricao, status, imagem } = props.item
 
   return (
     <div>
-       
-      <SCard Style={status ? 'background-color:rgb(252, 245, 255)' : ''}> 
-        <CardImg className="cardimg" src={imagem} alt="categoria"/>
+
+      <SCard Style={status ? 'background-color:rgb(252, 245, 255)' : ''}>
+        <CardImg className="cardimg" src={imagem} alt="categoria" />
 
         <CardBody>
-           
-            <CardTitle className="title">{nome}</CardTitle>
-            <CardTitle><strong>Descrição: </strong>{descricao}</CardTitle>
-          
-            <Button className="primary">Informações</Button>
+
+          <CardTitle className="title">{nome}</CardTitle>
+          <CardTitle><strong>Descrição: </strong>{descricao}</CardTitle>
+
+          <Button className="primary">Informações</Button>
         </CardBody>
 
-    </SCard>
+      </SCard>
     </div>
-  );
-};
+  )
+}
 
-export default CardItem;
+export default CardItem
 
-const SCard =  styled(Card)`
+const SCard = styled(Card)`
     width: 20rem;
     background-color: #FFF;
     font-size: 20px;

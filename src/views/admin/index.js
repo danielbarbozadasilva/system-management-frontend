@@ -9,7 +9,7 @@ import {
 } from '@material-ui/icons'
 
 import PainelLayout from '~/components/layout/layout-painel'
-import Inicio from '~/views/portal/inicio/'
+import Inicio from '~/views/admin/inicio/inicio'
 import Produto from '~/views/admin/produto'
 import Fornecedor from '~/views/admin/fornecedor'
 import Categoria from './categoria/index'

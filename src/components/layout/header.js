@@ -1,4 +1,4 @@
-import { Button, Link, Toolbar, Typography } from '@material-ui/core'
+import { Button, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link as LinkRoute } from '@reach/router'
 

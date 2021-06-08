@@ -9,31 +9,34 @@ import '../../../assets/css/style.css';
 
 const Inicio = () => {
 
-    const dispatch = useDispatch();
+    document.title = "Início";
 
-    // estou pegando o estado categoria no index
-    const categoria = useSelector(state => state.categoria.all);
+    const dispatch = useDispatch();
+    
+    // estou pegando o estado oficina no index
+    const categoria = useSelector((state) => state.categoria.all)
     const loading = useSelector(state => state.auth.loading);
 
     useEffect(() => {
         dispatch(getAll());
     }, [dispatch])
 
-    if (loading) {
-      return <Loading />
-  }
-
-    const Mapearcategorias = (categorias) => categorias.map((item, i) => (
+    const MapearCategoria = (categoria) => categoria.map((item, i) => (
         <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
             <CardItem item={{ ...item, status: true }} />
         </Col>
     ))
 
+    if (loading) {
+        return <Loading />
+    }
+
     return (
         <>
-            <Boxcategorias>
-                {!loading && categoria.length === 0 ? "Não há categorias disponiveis" : Mapearcategorias(categoria)}
-            </Boxcategorias>
+            <BoxCategorias>
+                {!loading && categoria.length === 0 ? "Não há oficinas disponiveis" : MapearCategoria(categoria)}
+                {/* {!isAdmin ? MapearInscritos(categoria) : ""} */}
+            </BoxCategorias>
 
         </>
     )
@@ -43,6 +46,6 @@ const Inicio = () => {
 export default Inicio;
 
 
-const Boxcategorias = styled(Row)`
+const BoxCategorias = styled(Row)`
 
 `
