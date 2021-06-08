@@ -19,7 +19,7 @@ const FornecedorNovo = () => {
   const [uf, setUf] = useState([])
   const [cidades, setCidade] = useState([])
   const [form, setForm] = useState({
-    email: 'daniel@gmail.com',
+    email: 'daniel80barboza@gmail.com',
     senha: 'daniel'
   })
   const loading = useSelector((state) => state.auth.loading)

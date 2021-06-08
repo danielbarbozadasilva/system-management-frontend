@@ -40,7 +40,7 @@ const Header = () => {
           Seja um novo fornecedor
         </Button>
       </Toolbar>
-      <Toolbar
+      {/* <Toolbar
         component="nav"
         variant="dense"
         className={classes.toolbarSecondary}
@@ -67,7 +67,7 @@ const Header = () => {
         >
           Produtos
         </Link>
-      </Toolbar>
+      </Toolbar> */}
     </div>
   )
 }

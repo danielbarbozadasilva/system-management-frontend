@@ -16,7 +16,7 @@ import { CircularProgress } from '@material-ui/core'
 export default function SignIn() {
   const dispatch = useDispatch()
   const [form, setForm] = useState({
-    email: 'daniel@gmail.com',
+    email: 'daniel80barboza@gmail.com',
     senha: 'daniel'
   })
   const loading = useSelector((state) => state.auth.loading)

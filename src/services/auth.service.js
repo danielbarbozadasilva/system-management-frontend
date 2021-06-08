@@ -6,10 +6,11 @@ const authService = async (data) => {
     ...result,
     usuarioDTO: {
       id: '60b7d8abe536e8407017542b',
-      email: 'daniel@gmail.com',
+      email: 'daniel80@gmail.com',
       senha: 'daniel',
-      nome: 'daniel',
-      tipoUsuario: 2
+      nome: 'asdas',
+      tipoUsuario: 2,
+      nomeFantasia: 'xyz'
     }
   }
 }

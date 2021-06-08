@@ -9,13 +9,15 @@ import { reducer as toastrReducer } from 'react-redux-toastr'
 import SignReducer from './auth/auth.reducer'
 import CategoriaReducer from './categoria/categoria.redux'
 import FornecedorReducer from './fornecedor/fornecedor.reducer'
+import ProdutoReducer from './produto/produto.reducer'
 
+// Importação dos Reduces
 const reducers = combineReducers({
   auth: SignReducer,
   toastr: toastrReducer,
   categoria: CategoriaReducer,
-  fornecedor: FornecedorReducer
-
+  fornecedor: FornecedorReducer,
+  produto: ProdutoReducer
 })
 
 // middlewares de redux

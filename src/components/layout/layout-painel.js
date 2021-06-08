@@ -11,33 +11,37 @@ import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
 import Container from '@material-ui/core/Container'
 import Hidden from '@material-ui/core/Hidden'
+import { logoutAction } from '~/store/auth/auth.action'
 
 import {
   Menu as MenuIcon,
   MenuOpen as MenuOpenIcon,
   AccountCircle as AccountCircleIcon,
-  ChevronLeft as ChevronLeftIcon
+  ChevronLeft as ChevronLeftIcon,
+  PowerSettingsNew
 } from '@material-ui/icons/'
 import ListMenu from './item-painel'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { Button } from '@material-ui/core'
 
 const drawerWidth = 240
 
 export default function Dashboard(props) {
-  const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
+  const { nome, tipoUsuario } = useSelector((state) => state.auth.usuario)
+  const dispatch = useDispatch()
 
   const userDefinition = {
     1: {
       titulo: 'Administrador',
-      cor: '#ACDDDE'
+      cor: '#4E6062'
     },
     2: {
       titulo: 'Fornecedor',
-      cor: '#E1F8DC'
+      cor: '#163D5C'
     },
     3: {
       titulo: 'Cliente',
-      cor: '#F7D8BA'
+      cor: '#4B3204'
     }
   }
 
@@ -47,7 +51,7 @@ export default function Dashboard(props) {
     },
     toolbar: {
       paddingRight: 24,
-      backgroundColor: userDefinition[tipoUsuario].cor || '#666' // keep right padding when drawer closed
+      backgroundColor: tipoUsuario ? userDefinition[tipoUsuario].cor : '#666' 
     },
     toolbarText: {
       display: 'flex',
@@ -152,6 +156,9 @@ export default function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false)
   }
+  function handleLogout() {
+    dispatch(logoutAction())
+  }
 
   return (
     <div className={classes.root}>
@@ -177,7 +184,7 @@ export default function Dashboard(props) {
             noWrap
             className={classes.title}
           >
-            {userDefinition[tipoUsuario].titulo}
+            {tipoUsuario ? userDefinition[tipoUsuario].titulo : ''}
           </Typography>
           <Typography
             component="h4"
@@ -187,7 +194,11 @@ export default function Dashboard(props) {
             className={classes.user}
           >
             <AccountCircleIcon className={classes.userIcon} />
-            Liniker Silva
+            {nome}
+            <Button onClick={handleLogout}>
+              <PowerSettingsNew className={classes.userIcon} />
+              Sair
+            </Button>
           </Typography>
         </Toolbar>
       </AppBar>

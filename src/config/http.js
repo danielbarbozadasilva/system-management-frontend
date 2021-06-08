@@ -1,4 +1,4 @@
-import axios from 'axios' // import da dependencia
+import axios from 'axios' 
 import { getToken } from './storage'
 import store from '../store'
 import { logoutAction } from '../store/auth/auth.action'

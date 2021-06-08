@@ -7,11 +7,8 @@ import Link from '@material-ui/core/Link'
 function Copyright () {
   return (
     <Typography variant="h6" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Gestão de Negócio&ensp;
-      </Link>
-      {new Date().getFullYear()}
+      <p>Copyright ©  {new Date().getFullYear()} &copy; All Rights Reserved Daniel Barboza da Silva.</p>
+      
     </Typography>
   )
 }
