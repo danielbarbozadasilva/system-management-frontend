@@ -1,7 +1,8 @@
-import Inicio from '~/views/portal/inicio/index'
+import Inicio from '~/views/portal/inicio/'
 import Produto from '~/views/portal/produto'
 import { Router } from '@reach/router'
 import Layout from '~/components/layout'
+import ClienteNovo from '~/views/auth/cliente.cliente_novo'
 
 const Menu = [
   {
@@ -30,6 +31,7 @@ const Portal = (props) => {
           {Menu.map(({ component: Component, route }, i) => (
             <Component key={i} path={route} />
           ))}
+          <ClienteNovo path="cliente_novo" />
         </Layout>
       </Router>
     </>

@@ -195,8 +195,8 @@ export default function Dashboard(props) {
           >
             <AccountCircleIcon className={classes.userIcon} />
             {nome}
-            <Button onClick={handleLogout}>
-              <PowerSettingsNew className={classes.userIcon} />
+            <Button id="icon-text-signout" onClick={handleLogout}>
+              <PowerSettingsNew id="icon-signout" className={classes.userIcon} />
               Sair
             </Button>
           </Typography>
@@ -211,7 +211,7 @@ export default function Dashboard(props) {
       >
         <Divider />
         <Toolbar className={classes.toolbar}>
-          <div className={classes.toolbarText}>Menu Principal</div>
+          <div id="menuTextDash" className={classes.toolbarText}>Menu Principal</div>
           <div className={classes.toolbarIcon} />
           <Hidden smUp>
             <div className={classes.toolbarIcon}>

@@ -2,23 +2,23 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap");
+  
 
-    * {
-        font-family: 'Lato', sans-serif;
-        margin: 0;
-        padding: 0;
-        outline: 0;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif;
+}
 
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;    
+}
 
-    #root {
-        display: flex;
-        flex-direction: column;
-        height: 100vh;    
-    }
-
-    .estilo-botao{
+.estilo-botao{
     background-image: linear-gradient(to left, #ff425b, #c42252);
     border: none;
     color: #fff;
@@ -29,15 +29,14 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     color: #fff;
     font-weight: 700;   
-
 }
 .estilo-botao-desable{
     background-image: linear-gradient(to left, #ff425b, #c42252);
     border: none;
     color: #fff;    
     font-weight: 700;
-
 }
+
 `
 
 export default GlobalStyle

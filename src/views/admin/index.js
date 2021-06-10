@@ -34,7 +34,7 @@ export const Menu = [
     visibleMenu: true,
     enabled: true,
     component: Categoria,
-    authorization: [2]
+    authorization: [1]
   },
   {
     title: 'Produtos',
@@ -61,7 +61,7 @@ export const Menu = [
     visibleMenu: true,
     enabled: true,
     component: Cliente,
-    authorization: [2]
+    authorization: [1]
   }
 ]
 

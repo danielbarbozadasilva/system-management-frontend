@@ -7,9 +7,10 @@ import multi from 'redux-multi'
 // importação dos reducers
 import { reducer as toastrReducer } from 'react-redux-toastr'
 import SignReducer from './auth/auth.reducer'
-import CategoriaReducer from './categoria/categoria.redux'
+import CategoriaReducer from './categoria/categoria.reducer'
 import FornecedorReducer from './fornecedor/fornecedor.reducer'
 import ProdutoReducer from './produto/produto.reducer'
+import ClienteReducer from './cliente/cliente.reducer'
 
 // Importação dos Reduces
 const reducers = combineReducers({
@@ -17,7 +18,8 @@ const reducers = combineReducers({
   toastr: toastrReducer,
   categoria: CategoriaReducer,
   fornecedor: FornecedorReducer,
-  produto: ProdutoReducer
+  produto: ProdutoReducer,
+  cliente: ClienteReducer
 })
 
 // middlewares de redux

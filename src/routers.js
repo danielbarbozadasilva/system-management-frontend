@@ -1,11 +1,13 @@
+// imports
 import React from 'react'
 import { Router, Redirect } from '@reach/router'
 
-import FornecedorNovo from './views/auth/fornecedor_novo'
+// views
 import PortalView from '~/views/portal'
 import AdminView from '~/views/admin/'
 import SignIn from './views/auth/signin'
 
+// config
 import { isAuthenticated } from './config/storage'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -23,7 +25,6 @@ const Routers = () => (
   <>
     <Router>
       <SignIn path="signin" />
-      <FornecedorNovo path="fornecedor_novo" />
       <PortalView path="/*" />
       <PrivateRoute component={AdminView} path="/admin/*" />
     </Router>
