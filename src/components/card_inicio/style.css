@@ -1,0 +1,51 @@
+*{
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
+.item-icon-coracao {
+  width: 68px;
+  height: 38px;
+  position: absolute;
+  top: 200px;
+  text-align: center;
+  color: #fff;
+  background: #c79c60;
+  border-radius: 50% 50% 0 0;
+  line-height: 45px;
+  font-size: 18px;
+  z-index: 3;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tituloCard {
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.subtituloCard {
+  margin-top: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  color: #222;
+  font-weight: normal;
+  text-align: center;
+  display: block;
+}
+
+.descricaoCard {
+  margin-bottom: 10px;
+  padding-top: 15px;
+  margin-top: 25px;
+  border-top: 1px solid #dcdcdc;
+}
+
+.card-text {
+  text-align: center;
+}

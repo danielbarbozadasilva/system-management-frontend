@@ -1,5 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 
-const theme = createMuiTheme({})
+const theme = createMuiTheme({
+
+})
 
 export default theme

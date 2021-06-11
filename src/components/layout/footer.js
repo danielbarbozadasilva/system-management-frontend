@@ -5,10 +5,9 @@ import Typography from '@material-ui/core/Typography'
 
 function Copyright () {
   return (
-    <Typography variant="h6" color="textSecondary" align="center">
+      <div className="container-fluid">
       <p>Copyright ©  {new Date().getFullYear()} &copy; All Rights Reserved Daniel Barboza da Silva.</p>
-
-    </Typography>
+      </div>
   )
 }
 

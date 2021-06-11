@@ -71,7 +71,7 @@ const Form = ({ submit, ...props }) => {
                 </Button>
               </Grid>
             </Grid>
-          )
+            )
           : (
             <Button
               variant="contained"
@@ -88,7 +88,7 @@ const Form = ({ submit, ...props }) => {
                 onChange={previewImg}
               />
             </Button>
-          )}
+            )}
         <TextField
           size="small"
           margin="normal"

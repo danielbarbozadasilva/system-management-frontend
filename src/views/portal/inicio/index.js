@@ -6,9 +6,9 @@ import { Col, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from '../../../store/categoria/categoria.action'
 import '../../../assets/css/style.css'
+import Buscar from '../../../components/busca/index'
 
 const Inicio = () => {
-
   const dispatch = useDispatch()
 
   // estou pegando o estado categoria no index
@@ -19,18 +19,21 @@ const Inicio = () => {
     dispatch(getAll())
   }, [dispatch])
 
+  
   const MapearCategoria = (categoria) => categoria.map((item, i) => (
     <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
-      <CardItem item={{ ...item, status: true }} />
-    </Col>
-  ))
+        <CardItem item={{ ...item, status: true }} />
+      </Col>
+    ))
+    
+    if (loading) {
+      return <Loading />
+    }
 
-  if (loading) {
-    return <Loading />
-  }
-
-  return (
-    <>
+    
+    return (
+      <>
+      <Buscar/>
       <BoxCategorias>
         {!loading && categoria.length === 0 ? 'Não há categorias disponiveis' : MapearCategoria(categoria)}
       </BoxCategorias>

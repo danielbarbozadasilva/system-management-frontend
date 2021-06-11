@@ -1,34 +1,28 @@
-import React, { useState } from 'react';
-import { NavLink as RRDNavLink } from 'react-router-dom';
+import React, { useState } from 'react'
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   NavItem,
-  NavLink,
   Container,
   Tooltip,
   Nav, UncontrolledDropdown, DropdownItem, DropdownToggle, DropdownMenu
-} from 'reactstrap';
-import styled from 'styled-components';
+} from 'reactstrap'
+import styled from 'styled-components'
 import { Link as LinkRoute } from '@reach/router'
-import { Button, Toolbar, Typography, Link } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import history from '../../config/history';
+import { Link } from '@material-ui/core'
 
-import LogoHeader from '../../assets/img/logo.png';
+import LogoHeader from '../../assets/img/logo.png'
 
-import '../../assets/css/style.css';
-
+import '../../assets/css/style.css'
 
 const Header = (props) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [tooltipOpen, setTooltipOpen] = useState(false)
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [tooltipOpen, setTooltipOpen] = useState(false);
-
-  const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
-  const toggle = () => setIsOpen(!isOpen);
+  const toggleTooltip = () => setTooltipOpen(!tooltipOpen)
+  const toggle = () => setIsOpen(!isOpen)
 
   return (
     <header>
@@ -86,8 +80,8 @@ const Header = (props) => {
           </Link>
           <Tooltip placement="top" isOpen={tooltipOpen} autohide={false} target="logoMain" toggle={toggleTooltip}>
             Pagina Inicial
-                    </Tooltip>
-          <React.Fragment>
+          </Tooltip>
+          <>
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem>
@@ -98,31 +92,29 @@ const Header = (props) => {
                     <SLink exact activeClassName="active" component={LinkRoute} to="/produto">Produtos</SLink>
                   </NavItem>
                   <NavItem>
-                    <SLink exact activeClassName="active" component={LinkRoute} to="/fornecedor_novo">Fornecedores</SLink>
+                    <SLink exact activeClassName="active" component={LinkRoute} to="/fornecedor">Fornecedores</SLink>
                   </NavItem>
                 </>
 
               </Nav>
             </Collapse>
 
-            <Nav >
+            <Nav>
               <NavItem nav inNavbar>
                 <SLink exact activeClassName="active" component={LinkRoute} to="/signin">Logar</SLink>
               </NavItem>
               <UncontrolledDropdown nav inNavbar>
                 <SDropdownToggle nav caret>Inscrever-se</SDropdownToggle>
                 <SDropdownMenu>
-                  <SLink exact activeClassName="active" component={LinkRoute} to="/signin">Cliente</SLink>
+                  <SLink exact activeClassName="active" component={LinkRoute} to="/cliente_cadastro">Cliente</SLink>
                   <DropdownItem divider />
-                  <SLink exact activeClassName="active" component={LinkRoute} to="/signin">Fornecedor</SLink>
-                  <DropdownItem divider />
-                  <SLink exact activeClassName="active" component={LinkRoute} to="/signin">Administrador</SLink>
-                  <DropdownItem divider />
+                  <SLink exact activeClassName="active" component={LinkRoute} to="/fornecedor_cadastro">Fornecedor</SLink>
+                 
                 </SDropdownMenu>
               </UncontrolledDropdown>
             </Nav>
 
-          </React.Fragment>
+          </>
 
           <NavbarToggler onClick={toggle} />
         </Container>
@@ -133,7 +125,6 @@ const Header = (props) => {
 }
 
 export default Header
-
 
 const SNavbar = styled(Navbar)`
     background-color: #F8F9FA!important;
@@ -170,7 +161,6 @@ const SDropdownMenu = styled(DropdownMenu)`
     border:none;
 
 `
-
 
 const SNavbarBrand = styled(NavbarBrand)`
     font-size: 24px;

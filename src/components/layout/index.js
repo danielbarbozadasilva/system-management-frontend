@@ -20,6 +20,10 @@ export default Layout
 const ContainerLayout = styled.div``
 
 const Main = styled.main`
-    width: 85%;
-    flex: 1;
-`
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  overflow-x: hidden; 
+  `

@@ -3,9 +3,7 @@ import {
   getAll as getAllcliente,
   getbyId as getclienteById,
   update as updatecliente,
-  remove as removecliente,
-  ativarCliente,
-  inativaCliente
+  remove as removecliente
 } from '~/services/cliente.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -23,6 +21,7 @@ export const create = (data) => {
     console.log('disparar...', data)
   }
 }
+
 export const edit = (id) => {
   return async (dispatch) => {
     dispatch({
@@ -37,6 +36,7 @@ export const edit = (id) => {
     }
   }
 }
+
 export const getAll = () => {
   return async (dispatch) => {
     try {
@@ -48,6 +48,7 @@ export const getAll = () => {
     }
   }
 }
+
 export const update = ({ id, ...data }) => {
   return (dispatch) => {
     dispatch({ type: TYPES.CLIENTE_LOADING, status: true })
@@ -87,6 +88,7 @@ export const update = ({ id, ...data }) => {
       })
   }
 }
+
 export const remove = (id) => {
   return async (dispatch) => {
     try {
@@ -101,31 +103,29 @@ export const remove = (id) => {
   }
 }
 
-export const setStatuscliente = (id, ativo) => {
-  console.log('cliente mudar status', ativo)
-  return async (dispatch, getState) => {
-    let result
-    try {
-      if (ativo) {
-        result = await inativacliente(id)
-        toastr.success(
-          `cliente ${result.data.data.nomeFantasia}`,
-          'Desativado com sucesso'
-        )
-      } else {
-        result = await ativarcliente(id)
-        toastr.success(
-          `cliente ${result.data.data.nomeFantasia}`,
-          'Ativado com sucesso'
-        )
-      }
-      const all = getState().cliente.all
-      const index = all.findIndex((item) => item.id === id)
-      all[index].status = result.data.data.status
+// export const setStatuscliente = (id, ativo) => {
+//   console.log('cliente mudar status', ativo)
+//   return async (dispatch, getState) => {
+//     let result
+//     try {
+//       if (ativo) {
+//         result = await inativacliente(id)
+//         toastr.success(
+//           `cliente ${result.data.data.nomeFantasia}`,
+//           'Desativado com sucesso'
+//         )
+//       } else {
+//         result = await ativarcliente(id)
+//         toastr.success(
+//           `cliente ${result.data.data.nomeFantasia}`,
+//           'Ativado com sucesso'
+//         )
+//       }
+//       const all = getState().cliente.all
+//       const index = all.findIndex((item) => item.id === id)
+//       all[index].status = result.data.data.status
 
-      dispatch({ type: TYPES.CLIENTE_ALL, data: [...all] })
-    } catch (err) {
-      console.log('###', err)
-    }
-  }
-}
+//       dispatch({ type: TYPES.CLIENTE_ALL, data: [...all] })
+//     } catch (err) {
+//       console.log('###', err)
+//     }

@@ -88,9 +88,12 @@ export default function SignIn() {
           </Submit>
           <Grid container>
             <Grid item>
-              Não tem cadastro?
-              <Link href="#" variant="body2">
-                &ensp;Cadastre-se aqui
+              Não possui cadastro?
+              <Link href="/cliente_cadastro" variant="body2">
+                &ensp;Cliente
+                 </Link>
+              <Link href="/fornecedor_cadastro" variant="body2">
+                &ensp;Fornecedor
               </Link>
             </Grid>
           </Grid>

@@ -1,9 +1,8 @@
-import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import React from 'react'
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap'
 import styled from 'styled-components'
-import '../../assets/css/style.css'
-import { useSelector } from 'react-redux'
-import { FaHeart } from "react-icons/fa";
+import './style.css'
+import { FaHeart } from 'react-icons/fa'
 
 const CardItem = (props) => {
   const { _id, nome, descricao, status, imagem } = props.item
@@ -13,7 +12,7 @@ const CardItem = (props) => {
     <div>
       <SCard>
         {imagem.length > 0 ? (<SCardImg top width="70%" src={process.env.REACT_APP_API + imagem} />) : ''}
-        <div class="item-icon-coracao"><FaHeart /></div>
+        <div className="item-icon-coracao"><FaHeart /></div>
 
         <CardBody>
           <CardTitle className="tituloCard">{nome}</CardTitle>
@@ -25,18 +24,17 @@ const CardItem = (props) => {
       </SCard>
     </div>
 
+  // <div>
+  //   <SCard>
+  //     <CardBody>
+  //       <CardTitle className="title">{nome}</CardTitle>
+  //       {imagem.length>0? (<CardImg top width="100%" class="cardimg" src={process.env.REACT_APP_API + imagem} />):''}
+  //       <CardTitle><strong>Descrição: </strong>{descricao}</CardTitle>
+  //       <Button className="primary">Informações</Button>
+  //     </CardBody>
 
-    // <div>
-    //   <SCard>
-    //     <CardBody>
-    //       <CardTitle className="title">{nome}</CardTitle>
-    //       {imagem.length>0? (<CardImg top width="100%" class="cardimg" src={process.env.REACT_APP_API + imagem} />):''}
-    //       <CardTitle><strong>Descrição: </strong>{descricao}</CardTitle>
-    //       <Button className="primary">Informações</Button>
-    //     </CardBody>
-
-    //   </SCard>
-    // </div>
+  //   </SCard>
+  // </div>
   )
 }
 
@@ -48,11 +46,10 @@ padding: 7px 7px 45px;
 position: relative;
 background-color: #fff;
 box-shadow: -4px 4px 0 #dcdcdc;
-margin-bottom: 25px;
 height: 475px;
 width: 360px;
-margin-left:10px;
-margin-right:10px;
+margin-left: 40px;
+margin-right: 40px;
 
 :hover {
   box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253)!important;
@@ -97,8 +94,6 @@ const SButton = styled(Button)`
   opacity: 0.5;
 }
  `
-
-
 
 //     .title {
 //       font-size: 26px;

@@ -1,16 +1,16 @@
 @media (min-width: 100px) {
-  * {
-    box-sizing: border-box;
-  }
-  /* HEADER */
-  header {
-    margin-bottom: 60px;
+  *{
+    margin: 0;
+    padding: 0;
+    outline: 0;
   }
 
+  /* HEADER */
   header .container {
     max-width: 100%;
+
   }
-  /* logo espaço-kids */
+
   header .logo-img {
     width: 230px;
     padding-top: 10px;
@@ -18,131 +18,8 @@
     padding-left: 30px;
     padding-right: 30px;
   }
-
-  /* BODY - CARDS */
-  .item-icon-coracao {
-    width: 68px;
-    height: 38px;
-    position: absolute;
-    top: 200px;
-    text-align: center;
-    color: #fff;
-    background: #c79c60;
-    border-radius: 50% 50% 0 0;
-    line-height: 45px;
-    font-size: 18px;
-    z-index: 3;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .tituloCard {
-    text-align: center;
-    font-weight: bold;
-    font-size: 16px;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-    font-family: 'Open Sans', sans-serif;
-  }
-
-  .subtituloCard {
-    margin-top: 5px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
-    color: #222;
-    font-weight: normal;
-    text-align: center;
-    display: block;
-  }
-
-  .descricaoCard {
-    margin-bottom: 10px;
-    padding-top: 15px;
-    margin-top: 25px;
-    border-top: 1px solid #dcdcdc;
-  }
-
-  .card-text {
-    text-align: center;
-  }
-
-  /* botão logout usuario */
-  #menuTextDash,
-  #icon-signout,
-  #icon-text-signout {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 13px;
-    color: #fff;
-  }
-
-  .imagem-fundo {
-    width: 100%;
-    height: 130%;
-    position: absolute;
-  }
-  .imagem-paes {
-    width: 60vw;
-  }
-  .secao01 {
-    display: block;
-  }
-  .img02 {
-    width: 300px;
-    min-height: 300px;
-    padding: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .textoPrincipal {
-    font-family: "Berkshire Swash";
-    font-size: 60px;
-    color: rgb(74, 34, 26);
-    white-space: nowrap;
-    margin-top: 130%;
-  }
-  .textoSub {
-    font-family: "Lora";
-    text-transform: uppercase;
-    line-height: 32px;
-    font-weight: 700;
-    font-size: 16px;
-    color: rgb(118, 76, 36);
-    white-space: nowrap;
-    opacity: 1;
-    text-align: center;
-  }
-  .botaoP {
-    text-align: center;
-  }
-  .botaoPrinc {
-    font-family: "Lora";
-    text-align: center;
-    font-weight: 800;
-    font-size: 16px;
-    border-color: rgb(224, 164, 94);
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 30px;
-    color: rgb(74, 34, 26);
-    background-color: rgba(0, 0, 0, 0);
-    width: 160px;
-    height: 50px;
-    opacity: 1;
-    transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out,
-      border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  }
   
-  .botaoPrinc:hover {
-    background-color: rgb(224, 164, 94);
-    border-color: rgb(255, 255, 255);
-    cursor: pointer;
-  }
-  
+
   .botaoLogin {
     background-color: #e0d5d3;
     font-weight: 800;
@@ -150,7 +27,7 @@
     transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out,
       border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   }
-  
+
   .nav-link {
     color: #8b0d32 !important;
     font-weight: 600;
@@ -158,7 +35,7 @@
     letter-spacing: 0.05em;
     margin: 0px 20px;
   }
-  
+
   #idNav1:hover {
     text-decoration: underline;
   }
@@ -177,12 +54,12 @@
   #idNav7:hover {
     text-decoration: underline;
   }
-  
+
   .active {
     text-decoration: underline;
     font-weight: bold;
   }
-  
+
   .btn-outline-primary {
     color: #8b0d32;
     border-color: #8b0d32;
@@ -195,16 +72,16 @@
     transition: color 0.4s ease-in-out, background-color 0.45s ease-in-out,
       border-color 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
   }
-  
+
   .btn-outline-primary:hover {
     background-color: #8b0d32;
   }
-  
+
   .btn-primary {
-    font-family: "Lora";
+    font-family: 'Lora';
     background-color: #8b0d32;
   }
-  
+
   .btn-primary:hover {
     color: #8b0d32;
     border-color: #8b0d32;
@@ -218,7 +95,7 @@
     transition: color 0.25s ease-in-out, background-color 0.2s ease-in-out,
       border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
-  
+
   .chamada-contato {
     border-left: solid 1px #141414;
     color: #501417;
@@ -227,9 +104,9 @@
     font-weight: 500;
     line-height: 1.2;
     font-size: 2.5rem;
-    font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif;
+    font-family: 'Nunito', Helvetica, Arial, Lucida, sans-serif;
   }
-  
+
   #secao03 {
     position: relative;
     line-height: 1.7em;
@@ -237,22 +114,20 @@
     margin-bottom: 5%;
     font-weight: 700;
   }
-  
+
   #secao03 #enviar {
     color: #771700 !important;
     border-color: #edd29a;
     background-color: #edd29a;
     margin-top: 2%;
   }
-  
+
   #secao03 label,
   h1 {
     color: #501417;
     padding-top: 2%;
   }
-  
 
-  
   /* Colunas dos formularios */
   .colunasFormularios {
     display: flex;

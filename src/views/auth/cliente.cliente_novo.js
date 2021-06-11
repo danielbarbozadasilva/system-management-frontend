@@ -14,7 +14,7 @@ import { SignBox, FormStyle, Submit, LoadingSubmit } from './styles'
 import { FormControl, Select } from '@material-ui/core'
 import InputMask from 'react-input-mask'
 
-const clienteNovo = () => {
+const ClienteNovo = () => {
   const dispatch = useDispatch()
   const [uf, setUf] = useState([])
   const [cidades, setCidade] = useState([])
@@ -24,15 +24,15 @@ const clienteNovo = () => {
   })
   const loading = useSelector((state) => state.auth.loading)
 
-  const parseCnpj = (name) => {
+  const ParseCnpj = (name) => {
     if (name === 'cnpj') {
       console.log('teste')
     }
   }
 
-  const handleChange = (props) => {
+  const HandleChange = (props) => {
     const { value, name } = props.target
-    parseCnpj(name)
+    ParseCnpj(name)
 
     setForm({
       ...form,
@@ -40,7 +40,7 @@ const clienteNovo = () => {
     })
   }
 
-  const submitForm = () => {
+  const SubmitForm = () => {
     dispatch(createcliente(form))
   }
 
@@ -61,7 +61,7 @@ const clienteNovo = () => {
       <CssBaseline />
       <SignBox>
         <Typography component="h1" variant="h5">
-          Cadastro de cliente
+          Cadastro de clientes
         </Typography>
         <FormStyle noValidate>
           <InputMask
@@ -69,7 +69,7 @@ const clienteNovo = () => {
             value={form.cnpj || ''}
             disabled={false}
             maskChar=" "
-            onChange={handleChange}
+            onChange={HandleChange}
           >
             {() => (
               <TextField
@@ -100,7 +100,7 @@ const clienteNovo = () => {
             autoComplete="nomeFantasia"
             autoFocus
             value={form.nomeFantasia || ''}
-            onChange={handleChange}
+            onChange={HandleChange}
             disabled={loading}
             size="small"
           />
@@ -115,7 +115,7 @@ const clienteNovo = () => {
             autoComplete="endereco"
             autoFocus
             value={form.endereco || ''}
-            onChange={handleChange}
+            onChange={HandleChange}
             disabled={loading}
             size="small"
           />
@@ -130,7 +130,7 @@ const clienteNovo = () => {
                 <Select
                   native
                   value={form.uf || ''}
-                  onChange={handleChange}
+                  onChange={HandleChange}
                   inputProps={{
                     name: 'uf',
                     id: 'outlined-native-simple'
@@ -157,7 +157,7 @@ const clienteNovo = () => {
                   fullWidth
                   native
                   value={form.cidade || ''}
-                  onChange={handleChange}
+                  onChange={HandleChange}
                   inputProps={{
                     name: 'cidade',
                     id: 'outlined-native-simple'
@@ -186,7 +186,7 @@ const clienteNovo = () => {
             autoComplete="responsavel"
             autoFocus
             value={form.responsavel || ''}
-            onChange={handleChange}
+            onChange={HandleChange}
             disabled={loading}
             size="small"
           />
@@ -195,7 +195,7 @@ const clienteNovo = () => {
             disabled={false}
             maskChar=" "
             value={form.telefone || ''}
-            onChange={handleChange}
+            onChange={HandleChange}
           >
             {() => (
               <TextField
@@ -225,7 +225,7 @@ const clienteNovo = () => {
             autoComplete="email"
             autoFocus
             value={form.email || ''}
-            onChange={handleChange}
+            onChange={HandleChange}
             disabled={loading}
             size="small"
           />
@@ -240,7 +240,7 @@ const clienteNovo = () => {
             id="senha"
             autoComplete="current-password"
             value={form.senha || ''}
-            onChange={handleChange}
+            onChange={HandleChange}
             disabled={loading}
             size="small"
           />
@@ -252,7 +252,7 @@ const clienteNovo = () => {
               fullWidth
               variant="contained"
               color="primary"
-              onClick={submitForm}
+              onClick={SubmitForm}
               disabled={loading}
             >
               {loading ? <LoadingSubmit size={24} /> : 'Entrar'}
@@ -272,4 +272,4 @@ const clienteNovo = () => {
   )
 }
 
-export default clienteNovo
+export default ClienteNovo

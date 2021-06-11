@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+  
+/* Corpo */
+  .container-fluid {
+    padding:0;
+    margin:0;
+    outline:0;
+  }
+ 
+  /* botão logout usuario */
+  #menuTextDash,
+  #icon-signout,
+  #icon-text-signout {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #fff;
+  }
+
+  .imagem-fundo {
+    width: 100%;
+    height: 100%;
+    position: relative;    
+    margin-bottom: 80px;
+  }
+  .imagem-paes {
+    width: 65vw;
+  }
+
+  .img02 {
+    width: 300px;
+    min-height: 300px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .texto-home-inicial{
+    display: block;
+    text-align: center;    
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 98%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    font-family: 'Berkshire Swash', cursive;
+    visibility: visible;
+    line-height: 65px;
+    letter-spacing: 0px;
+    font-weight: 400;
+    font-size: 54px;
+    border-color: rgb(99, 99, 99);
+    color: rgb(74, 34, 26);
+    opacity: 1;
+  }
+
+  .textoPrincipal {
+    font-family: 'Berkshire Swash';
+    font-size: 60px;
+    color: rgb(74, 34, 26);
+    white-space: nowrap;
+  }
+
+  .textoSub {
+    font-family: 'Lora';
+    text-transform: uppercase;
+    line-height: 32px;
+    font-weight: 700;
+    font-size: 16px;
+    color: rgb(118, 76, 36);
+    white-space: nowrap;
+    opacity: 1;
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 5px 0px;
+  }
+  .botaoP {
+    text-align: center;
+  }
+  .botaoPrinc {
+    font-family: 'Lora';
+    text-align: center;
+    font-weight: 800;
+    font-size: 16px;
+    border-color: rgb(224, 164, 94);
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 30px;
+    color: rgb(74, 34, 26);
+    background-color: rgba(0, 0, 0, 0);
+    width: 160px;
+    height: 50px;
+    opacity: 1;
+    margin-top: 15px;
+    transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out,
+      border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .botaoPrinc:hover {
+    background-color: rgb(224, 164, 94);
+    border-color: rgb(255, 255, 255);
+    cursor: pointer;
+  }

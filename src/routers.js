@@ -3,9 +3,12 @@ import React from 'react'
 import { Router, Redirect } from '@reach/router'
 
 // views
-import PortalView from '~/views/portal'
-import AdminView from '~/views/admin/'
-import SignIn from './views/auth/signin'
+import ViewPortal from '~/views/portal'
+import ViewAdmin from '~/views/admin/'
+import ViewSignIn from './views/auth/signin'
+import ViewCadastroFornecedor from './views/auth/fornecedor_novo'
+import ViewCadastroCliente from './views/auth/cliente.cliente_novo'
+import ViewError404 from './views/errors/404';
 
 // config
 import { isAuthenticated } from './config/storage'
@@ -21,12 +24,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return <Component {...rest} />
 } // Caso LOGADO, INJETO O COMPONENTE
 
+
+
 const Routers = () => (
   <>
     <Router>
-      <SignIn path="signin" />
-      <PortalView path="/*" />
-      <PrivateRoute component={AdminView} path="/admin/*" />
+      <ViewPortal path="/*" />
+      <PrivateRoute component={ViewAdmin} path="/admin/*" />
     </Router>
   </>
 )
