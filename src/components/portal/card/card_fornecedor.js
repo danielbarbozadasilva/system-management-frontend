@@ -3,9 +3,10 @@ import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } fr
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
+import { navigate } from "@reach/router"
 
-const CardItem = (props) => {
-  const { _id, nome, descricao, status, imagem } = props.item
+const CardFornecedor = (props) => {
+  const { id, nome, descricao, preco, imagem } = props.item
 
   return (
 
@@ -16,29 +17,17 @@ const CardItem = (props) => {
 
         <CardBody>
           <CardTitle className="tituloCard">{nome}</CardTitle>
-          <CardSubtitle className="subtituloCard">Os mais <strong>Deliciosos</strong></CardSubtitle>
           <hr className="separarTextos" />
           <CardText class="descricaoCard">{descricao}</CardText>
-          <SButton>Acessar</SButton>
+          <CardText class="precoCard">{preco}</CardText>
+          <SButton onClick={() => navigate('/forcenedor/'+id)}>Acessar</SButton>
         </CardBody>
       </SCard>
     </div>
-
-  // <div>
-  //   <SCard>
-  //     <CardBody>
-  //       <CardTitle className="title">{nome}</CardTitle>
-  //       {imagem.length>0? (<CardImg top width="100%" class="cardimg" src={process.env.REACT_APP_API + imagem} />):''}
-  //       <CardTitle><strong>Descrição: </strong>{descricao}</CardTitle>
-  //       <Button className="primary">Informações</Button>
-  //     </CardBody>
-
-  //   </SCard>
-  // </div>
   )
 }
 
-export default CardItem
+export default CardFornecedor
 
 const SCard = styled(Card)`
 border: 1px solid #dcdcdc;

@@ -1,21 +1,16 @@
 
-import ReactSwal from '../../plugins/alert';
-
+import ReactSwal from '../../plugins/alert'
 
 const Error404 = () => {
+  ReactSwal.fire({
+    icon: 'error',
+    title: 'Oops...',
+    text: 'A página não foi encontrada!',
+  })
 
-    ReactSwal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'A página não foi encontrada!',
-    })
-
-      return (
-        null
-      )
-
-
+  return (
+    null
+  )
 }
 
-export default Error404;
-
+export default Error404

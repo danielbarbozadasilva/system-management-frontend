@@ -91,7 +91,7 @@ export default function SignIn() {
               Não possui cadastro?
               <Link href="/cliente_cadastro" variant="body2">
                 &ensp;Cliente
-                 </Link>
+              </Link>
               <Link href="/fornecedor_cadastro" variant="body2">
                 &ensp;Fornecedor
               </Link>

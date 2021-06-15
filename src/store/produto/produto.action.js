@@ -49,6 +49,19 @@ export const getAll = () => {
     }
   }
 }
+
+export const getProdutoPorCategoria = (id) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
+      const result = await getAllProduto()
+      dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
+    }
+  }
+}
+
 export const remove = (id) => {
   return async (dispatch) => {
     try {

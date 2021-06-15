@@ -1,10 +1,17 @@
-import Inicio from '~/views/portal/inicio/'
-import Produto from '~/views/portal/produto'
+import InicioPortal from '~/views/portal/inicio/'
+import ProdutoPortal from '~/views/portal/produto'
+import FornecedorPortal from '~/views/portal/fornecedor'
+
 import Fornecedor from '~/views/auth/fornecedor_novo'
 import Cliente from '~/views/auth/cliente.cliente_novo'
 import SignIn from '~/views/auth/signin'
 import { Router } from '@reach/router'
+
 import Layout from '~/components/layout'
+
+import ViewsCategoria from '~/views/portal/inicio/index'
+import ViewsProduto from '~/views/portal/produto/index'
+import ViewsFornecedor from '~/views/portal/fornecedor/index'
 
 const Menu = [
   {
@@ -13,7 +20,7 @@ const Menu = [
     route: '/',
     visibleMenu: true,
     enabled: true,
-    component: Inicio
+    component: InicioPortal
   },
   {
     title: 'Produtos',
@@ -21,7 +28,15 @@ const Menu = [
     route: '/produto',
     visibleMenu: true,
     enabled: true,
-    component: Produto
+    component: ProdutoPortal
+  },,
+  {
+    title: 'Fornecedor',
+    icons: '',
+    route: '/fornecedor',
+    visibleMenu: true,
+    enabled: true,
+    component: FornecedorPortal
   },
   {
     title: 'Fornecedor_cadastro',
@@ -46,6 +61,27 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: SignIn
+  },{
+    title: 'ViewsCategoria',
+    icons: '',
+    route: '/categoria/:id',
+    visibleMenu: true,
+    enabled: true,
+    component: ViewsCategoria
+  },{
+    title: 'ViewsProduto',
+    icons: '',
+    route: '/produto/:id',
+    visibleMenu: true,
+    enabled: true,
+    component: ViewsProduto
+  },{
+    title: 'ViewsFornecedor',
+    icons: '',
+    route: '/fornecedor/:id',
+    visibleMenu: true,
+    enabled: true,
+    component: ViewsFornecedor
   }
 ]
 

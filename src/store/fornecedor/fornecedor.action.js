@@ -48,6 +48,17 @@ export const getAll = () => {
     }
   }
 }
+export const getProdutosPorFornecedor = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
+      const result = await getAllFornecedor()
+      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
+    }
+  }
+}
 export const update = ({ id, ...data }) => {
   return (dispatch) => {
     dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })

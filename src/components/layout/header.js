@@ -109,7 +109,7 @@ const Header = (props) => {
                   <SLink exact activeClassName="active" component={LinkRoute} to="/cliente_cadastro">Cliente</SLink>
                   <DropdownItem divider />
                   <SLink exact activeClassName="active" component={LinkRoute} to="/fornecedor_cadastro">Fornecedor</SLink>
-                 
+
                 </SDropdownMenu>
               </UncontrolledDropdown>
             </Nav>
