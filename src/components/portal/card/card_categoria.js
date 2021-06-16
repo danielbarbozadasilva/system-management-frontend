@@ -3,16 +3,19 @@ import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } fr
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
+
 import { navigate } from "@reach/router" 
 
 const CardItem = (props) => {
   const { id, nome, descricao, status, imagem } = props.item
 
   return (
-    
+
     <div>
       <SCard>
         {imagem.length > 0 ? (<SCardImg top width="70%" src={process.env.REACT_APP_API + imagem} />) : ''}
+       {console.log(process.env.REACT_APP_API)}
+       {console.log(imagem)}
         <div className="item-icon-coracao"><FaHeart /></div>
 
         <CardBody>
@@ -20,8 +23,8 @@ const CardItem = (props) => {
           <CardSubtitle className="subtituloCard">Os mais <strong>Deliciosos</strong></CardSubtitle>
           <hr className="separarTextos" />
           <CardText class="descricaoCard">{descricao}</CardText>
-
-           <SButton onClick={()=>navigate('/produto/'+id)}>Acessar</SButton>
+          
+           <SButton onClick={()=>navigate('/produto/advanced/categoria/'+id)}>Acessar</SButton>
         </CardBody>
       </SCard>
     </div>

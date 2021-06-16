@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import {getProdutoPorCategoria} from '../../../store/produto/produto.action'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getProdutoPorCategoria } from '../../../store/produto/produto.action'
 import CardProduto from '../../../components/portal/card/card_produto'
 
 import Loading from '../../../components/portal/loading'
@@ -26,6 +26,8 @@ function Produtos (props){
     navigate()
   }, []);        // [] - executa uma única vez
 
+
+
   const MapearProdutos = (produtos) => produtos.map((item, i) => (
     <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
       <CardProduto item={{ ...item, status: true }} />
@@ -35,8 +37,8 @@ function Produtos (props){
   if (loading) {
     return <Loading />
   }
-  
-  {document.title = "Produtos"}
+
+  { document.title = 'Produtos' }
 
   return (
     <>

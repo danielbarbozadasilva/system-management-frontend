@@ -1,9 +1,9 @@
 import React from 'react'
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap'
+import { Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap'
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
-import { navigate } from "@reach/router"
+import { navigate } from '@reach/router'
 
 const CardFornecedor = (props) => {
   const { id, nome, descricao, preco, imagem } = props.item
@@ -20,7 +20,7 @@ const CardFornecedor = (props) => {
           <hr className="separarTextos" />
           <CardText class="descricaoCard">{descricao}</CardText>
           <CardText class="precoCard">{preco}</CardText>
-          <SButton onClick={() => navigate('/forcenedor/'+id)}>Acessar</SButton>
+          <SButton onClick={() => navigate('/forcenedor/' + id)}>Acessar</SButton>
         </CardBody>
       </SCard>
     </div>

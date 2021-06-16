@@ -1,12 +1,12 @@
 import React from 'react'
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap'
+import { Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap'
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
-import { navigate } from "@reach/router"
+import { navigate } from '@reach/router'
 
 const CardProduto = (props) => {
-  const { id, nome, descricao, preco, imagem } = props.item
+  const { id, nome, descricao, preco, categoria, fornecedor, imagem } = props.item
 
   return (
 
@@ -14,13 +14,12 @@ const CardProduto = (props) => {
       <SCard>
         {imagem.length > 0 ? (<SCardImg top width="70%" src={process.env.REACT_APP_API + imagem} />) : ''}
         <div className="item-icon-coracao"><FaHeart /></div>
-
         <CardBody>
           <CardTitle className="tituloCard">{nome}</CardTitle>
           <hr className="separarTextos" />
           <CardText class="descricaoCard">{descricao}</CardText>
           <CardText class="precoCard">{preco}</CardText>
-          <SButton onClick={() => navigate('/fornecedor/'+id)}>Acessar</SButton>
+          {/* <SButton onClick={() => navigate(`/produto/${id}/categoria/${categoria}`)}>Acessar</SButton> */}
         </CardBody>
       </SCard>
     </div>

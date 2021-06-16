@@ -29,7 +29,7 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: ProdutoPortal
-  },,
+  },
   {
     title: 'Fornecedor',
     icons: '',
@@ -61,21 +61,21 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: SignIn
-  },{
+  }, {
     title: 'ViewsCategoria',
     icons: '',
     route: '/categoria/:id',
     visibleMenu: true,
     enabled: true,
     component: ViewsCategoria
-  },{
+  }, {
     title: 'ViewsProduto',
     icons: '',
     route: '/produto/:id',
     visibleMenu: true,
     enabled: true,
     component: ViewsProduto
-  },{
+  }, {
     title: 'ViewsFornecedor',
     icons: '',
     route: '/fornecedor/:id',
