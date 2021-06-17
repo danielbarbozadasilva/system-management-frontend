@@ -2,11 +2,16 @@ import InicioPortal from '~/views/portal/inicio/'
 import ProdutoPortal from '~/views/portal/produto'
 import FornecedorPortal from '~/views/portal/fornecedor'
 
-import Fornecedor from '~/views/auth/fornecedor_novo'
-import Cliente from '~/views/auth/cliente.cliente_novo'
+import Fornecedor from '~/views/auth/singup-fornecedor'
+import Cliente from '~/views/auth/singup-cliente'
 import SignIn from '~/views/auth/signin'
-import { Router } from '@reach/router'
-
+// import { Router } from '@reach/router'
+import {
+  Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import Layout from '~/components/layout'
 
 import ViewsCategoria from '~/views/portal/inicio/index'
@@ -39,17 +44,17 @@ const Menu = [
     component: FornecedorPortal
   },
   {
-    title: 'Fornecedor_cadastro',
+    title: 'FornecedorCadastro',
     icons: '',
-    route: '/fornecedor_cadastro',
+    route: '/fornecedorcadastro',
     visibleMenu: true,
     enabled: true,
     component: Fornecedor
   },
   {
-    title: 'Cliente_Cadastro',
+    title: 'ClienteCadastro',
     icons: '',
-    route: '/cliente_cadastro',
+    route: '/clientecadastro',
     visibleMenu: true,
     enabled: true,
     component: Cliente

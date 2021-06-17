@@ -1,130 +1,107 @@
-import React, { useState } from 'react'
-import Avatar from '@material-ui/core/Avatar'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import Link from '@material-ui/core/Link'
-import Grid from '@material-ui/core/Grid'
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
-import styled from 'styled-components'
-import { signInAction } from '~/store/auth/auth.action'
-import { useDispatch, useSelector } from 'react-redux'
-import { CircularProgress } from '@material-ui/core'
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    Form, FormGroup, Input,
+    Card, Col, CardBody,
+    CardFooter, Alert, Spinner
+} from 'reactstrap';
+import styled from 'styled-components';
+import { Sign } from '../../assets/styled';
+import { signInAction } from '../../store/auth/auth.action'
+import '../../assets/css/style.css';
 
-export default function SignIn() {
-  const dispatch = useDispatch()
-  const [form, setForm] = useState({
-    email: 'daniel80barboza@gmail.com',
-    senha: 'daniel'
-  })
-  const loading = useSelector((state) => state.auth.loading)
 
-  const handleChange = (props) => {
-    const { value, name } = props.target
-    setForm({
-      ...form,
-      [name]: value
+
+const SignIn = () => {
+    const [hasError, setHasError] = useState(false);
+
+    const dispatch = useDispatch();
+
+    // vindo do reducer (tudo que tiver 'state' pega o estado do reducer)
+    const error = useSelector(state => state.auth.error)
+    const loading = useSelector(state => state.auth.loading)
+
+    // estado somente da view
+    const [form, setForm] = useState({
+        email: "",
+        senha: ""
     })
-  }
 
-  const submitForm = () => {
-    dispatch(signInAction(form))
-  }
+    const handleChange = (props) => {
+        const { value, name } = props.target;
+        setForm({
+            ...form,
 
-  return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <SignBox>
-        <AvatarStyle>
-          <LockOutlinedIcon />
-        </AvatarStyle>
-        <Typography component="h1" variant="h5">
-          Login
-        </Typography>
-        <FormStyle noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Informe seu endereço de e-mail"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={form.email || ''}
-            onChange={handleChange}
-            disabled={loading}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="senha"
-            label="Informe sua senha"
-            type="password"
-            id="senha"
-            autoComplete="current-password"
-            value={form.senha || ''}
-            onChange={handleChange}
-            disabled={loading}
-          />
-          <Submit>
-            <Button
-              size="large"
-              className="buttonSubmit"
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              onClick={submitForm}
-              disabled={loading}
-            >
-              {loading ? <LoadingSubmit size={24} /> : 'Entrar'}
-            </Button>
-          </Submit>
-          <Grid container>
-            <Grid item>
-              Não possui cadastro?
-              <Link href="/cliente_cadastro" variant="body2">
-                &ensp;Cliente
-              </Link>
-              <Link href="/fornecedor_cadastro" variant="body2">
-                &ensp;Fornecedor
-              </Link>
-            </Grid>
-          </Grid>
-        </FormStyle>
-      </SignBox>
-    </Container>
-  )
+            //pega o name dos inputs, o name é um array, para cada indice'[]' para cada indice vou inserir um valor e atribui no name
+            [name]: value,
+        });
+    };
+
+    const closeError = () => setHasError(false);
+
+    const submitForm = (event) => {
+        event.preventDefault()
+
+        // manda para o action o meu estado com os dados e depois manda para o 'reducer'
+        dispatch(signInAction(form))
+    }
+
+    const isNotValid = () => form.email.length === 0 || form.senha.length === 0
+
+
+    useEffect(() => {
+        setHasError(error.length > 0)
+    }, [error])
+
+
+    return (
+
+        <Sign>
+                  
+            <Col sm={12} md={12} lg={5}>
+
+                 <Alert color="danger" isOpen={hasError} toggle={closeError}>
+                    <div><strong>OPS !!! </strong> Aconteceu um erro.</div>
+                    <small>Verifique usuário e senha</small>
+                </Alert>
+                <SCard className="formularioLogar">
+                    <h2 tag="h4" className="text-login">Login</h2>
+                    <CardBody>
+                        <Form>  
+                   
+                            <FormGroup>
+                                <label className="label" htmlFor="email">E-mail:</label>
+                                <Input className="form-control" disabled={loading} type="email" name="email" id="email" onChange={handleChange} value={form.email || ""} placeholder="Informe seu E-mail" />
+                            </FormGroup>
+                            <FormGroup>
+                                <label className="label" htmlFor="password">Senha:</label>
+                                <input className="form-control" disabled={loading} type="password" name="senha" id="senha" onChange={handleChange} value={form.senha || ""} placeholder="Informe sua senha" />
+                            </FormGroup>
+                            <button data-testing-id="funnel-survey-select_category-next" className="rounded-full px-6 py-2 shadow-redBtn hover:bg-gradient-l-primary-gradient-solid hover:text-white hover:border-none
+            bg-gradient-l-primary-gradient text-white font-bold border-none
+            " type="button" color={isNotValid() || loading ? 'estilo-botao-desable' : 'estilo-botao'} disabled={isNotValid()} size="sm" onClick={submitForm}>
+                                {loading ? (<><Spinner size="sm" color="light" /> Carregando...</>) : "Entrar"}
+
+                                <i className="icon-angle-right ml-2"></i>  </button>
+
+                        </Form >
+                    </CardBody>
+                    <CardFooter className="text-muted">
+                        Não tem Cadastro? 
+                        <Button onClick={() => navigate('/signup')}>Acessar</Button>
+                    </CardFooter>
+
+                </SCard>
+            </Col>
+        </Sign>
+    )
 }
-const SignBox = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(8)}px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+export default SignIn;
+
+const SCard = styled(Card)`
+    background-color: #FAFAFA;
+    box-shadow: 0px 2px 15px 6px rgba(0,0,0,0.11);
+    padding-top: 15px;
 `
 
-const AvatarStyle = styled(Avatar)`
-  margin: ${({ theme: t }) => t.spacing(1)}px;
-  background-color: ${({ theme: t }) => t.palette.secondary.main};
-`
-
-const FormStyle = styled.form`
-  width: 100%;
-  margin-top: ${({ theme: t }) => t.spacing(1)};
-`
-
-const Submit = styled.div`
-  margin: ${({ theme: t }) => t.spacing(0.5)};
-  .buttonSubmit {
-    margin: ${({ theme: t }) => t.spacing(3, 0, 2)};
-  }
-`
-const LoadingSubmit = styled(CircularProgress)`
-  color: ${({ theme: t }) => t.palette.primary};
-`

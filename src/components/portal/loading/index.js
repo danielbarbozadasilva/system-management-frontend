@@ -1,14 +1,16 @@
-import styled, { keyframes } from 'styled-components'
+import styled, { keyframes } from 'styled-components';
 
 const Loading = () => {
-  return (
-    <LoadingBox>
-      <SLoading />
-    </LoadingBox>
-  )
+
+    return (
+       <LoadingBox>
+           <SLoading />
+       </LoadingBox>
+    )
 }
 
-export default Loading
+export default Loading;
+
 
 const LoadingBox = styled.div`
     width:100%;

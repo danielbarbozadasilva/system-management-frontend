@@ -6,7 +6,7 @@ import { FaHeart } from 'react-icons/fa'
 import { navigate } from '@reach/router'
 
 const CardFornecedor = (props) => {
-  const { id, nome, descricao, preco, imagem } = props.item
+  const { id, cnpj, nomeFantasia, endereco, uf, cidade, responsavel, telefone, produtos, curtidas } = props.item
 
   return (
 
@@ -16,11 +16,18 @@ const CardFornecedor = (props) => {
         <div className="item-icon-coracao"><FaHeart /></div>
 
         <CardBody>
-          <CardTitle className="tituloCard">{nome}</CardTitle>
+          <CardTitle className="tituloCard">{nomeFantasia}</CardTitle>
           <hr className="separarTextos" />
-          <CardText class="descricaoCard">{descricao}</CardText>
-          <CardText class="precoCard">{preco}</CardText>
-          <SButton onClick={() => navigate('/forcenedor/' + id)}>Acessar</SButton>
+          <CardText class="descricaoCard">{cnpj}</CardText>
+          <CardText class="descricaoCard">{endereco}</CardText>
+          <CardText class="descricaoCard">{uf}</CardText>
+          <CardText class="descricaoCard">{cidade}</CardText>
+          <CardText class="descricaoCard">{responsavel}</CardText>
+          <CardText class="descricaoCard">{telefone}</CardText>
+          <CardText class="descricaoCard">{status}</CardText>
+
+          {/* Passar o array */}
+          <SButton onClick={() => navigate('/produto/' + produtos)}>Acessar</SButton>
         </CardBody>
       </SCard>
     </div>
@@ -30,15 +37,15 @@ const CardFornecedor = (props) => {
 export default CardFornecedor
 
 const SCard = styled(Card)`
-border: 1px solid #dcdcdc;
-padding: 7px 7px 45px;
-position: relative;
-background-color: #fff;
-box-shadow: -4px 4px 0 #dcdcdc;
-height: 475px;
-width: 360px;
-margin-left: 40px;
-margin-right: 40px;
+  border: 1px solid #dcdcdc;
+  padding: 7px 7px 45px;
+  position: relative;
+  background-color: #fff;
+  box-shadow: -4px 4px 0 #dcdcdc;
+  height: 475px;
+  width: 360px;
+  margin-left: 40px;
+  margin-right: 40px;
 
 :hover {
   box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253)!important;

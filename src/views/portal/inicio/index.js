@@ -29,8 +29,6 @@ const Inicio = () => {
     return <Loading />
   }
 
-  {document.title = "Home"}
-  
   return (
     <>
       <BuscarCategoria />

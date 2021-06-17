@@ -2,7 +2,7 @@ import {
   create as createProduto,
   getAll as getAllProduto,
   remove as removeProduto,
-  getAllProdutoCategoria as getAllProdutoCategoria
+  getAllProdutoCategoria
 } from '~/services/produto.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -61,7 +61,6 @@ export const getProdutoPorCategoria = (id) => {
     }
   }
 }
-
 
 export const remove = (id) => {
   return async (dispatch) => {

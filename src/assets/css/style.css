@@ -29,7 +29,7 @@
   }
 
   .nav-link {
-    color: #8b0d32 !important;
+    color: rgb(74, 34, 26) !important;
     font-weight: 600;
     font-size: 18px;
     letter-spacing: 0.05em;
@@ -278,6 +278,9 @@
     background-color: #edd29a;
     color: white;
   }
+  footer.rodape{
+    overflow: hidden;
+  }
   /* conteudo redes sociais */
   footer .redes-sociais {
     /* expaçamento interno */
@@ -309,7 +312,6 @@
   }
   /* meu nome centralizado */
   footer .nome-footer {
-    padding-top: 10px;
     margin-top: 10px;
     /* expaçamento externo, deixar o nome embaixo */
     font-size: 14px;
@@ -322,15 +324,15 @@
     text-align: center;
   }
   footer .imagemFooter {
-    margin-top: 80px;
-    width: 160px;
-    height: 75px;
+    margin-top: 30px;
+    width: 140px;
+    height: 120px;
     position: center;
     text-align: center;
     margin-left: 95px;
   }
   footer .infomacoes {
-    padding-top: 50px;
+    padding-top: 30px;
     text-align: center;
   }
   /* Aplica o espaçamento entre os icones e textos */

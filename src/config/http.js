@@ -1,9 +1,10 @@
-import axios from 'axios'
+
+import axios from 'axios' 
 import { getToken } from './storage'
 import store from '../store'
 import { logoutAction } from '../store/auth/auth.action'
-import { toastr } from 'react-redux-toastr'
 
+// definindo a url da api
 const { REACT_APP_VERSION: version, REACT_APP_API: api } = process.env
 const urlApi = api + version
 
@@ -26,12 +27,7 @@ http.interceptors.response.use(
         store.dispatch(logoutAction())
         // history.push('/signin')
         break
-
-      case 400:
-        toastr.error(error.response.data.mensagem, error.response.data.detalhes.join(','))
-        break
       default:
-        toastr.error('Erro: ' + error.response.status, 'Ocorreu um erro!')
         break
     }
   }

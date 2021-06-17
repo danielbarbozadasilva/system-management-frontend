@@ -26,53 +26,6 @@ const Header = (props) => {
 
   return (
     <header>
-
-      {/* <Toolbar className={classes.toolbar}>
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          noWrap
-          className={classes.toolbarTitle}
-        >
-          Pagina Inicial
-        </Typography>
-        <Button variant="outlined" size="small" component={LinkRoute} to="/signin">
-          Login
-        </Button>
-        <Button variant="outlined" size="small" component={LinkRoute} to="/fornecedor_novo">
-          Seja um fornecedor
-        </Button>
-      </Toolbar> */}
-      {/* <Toolbar
-        component="nav"
-        variant="dense"
-        className={classes.toolbarSecondary}
-      >
-        <Link
-          component={LinkRoute}
-          color="inherit"
-          noWrap
-          key="home"
-          variant="h6"
-          to="/"
-          className={classes.toolbarLink}
-        >
-          Home
-        </Link>
-        <Link
-          component={LinkRoute}
-          color="inherit"
-          noWrap
-          key="home1"
-          variant="h6"
-          to="/produto"
-          className={classes.toolbarLink}
-        >
-          Produtos
-        </Link>
-      </Toolbar> */}
-
       <SNavbar className="barraHeader" color="dark" dark expand="lg">
         <Container>
           <Link component={LinkRoute} nowrap to="/" id="logoMain">
@@ -106,9 +59,9 @@ const Header = (props) => {
               <UncontrolledDropdown nav inNavbar>
                 <SDropdownToggle nav caret>Inscrever-se</SDropdownToggle>
                 <SDropdownMenu>
-                  <SLink exact activeClassName="active" component={LinkRoute} to="/cliente_cadastro">Cliente</SLink>
+                  <SLink exact activeClassName="active" component={LinkRoute} to="/clientecadastro">Cliente</SLink>
                   <DropdownItem divider />
-                  <SLink exact activeClassName="active" component={LinkRoute} to="/fornecedor_cadastro">Fornecedor</SLink>
+                  <SLink exact activeClassName="active" component={LinkRoute} to="/fornecedorcadastro">Fornecedor</SLink>
 
                 </SDropdownMenu>
               </UncontrolledDropdown>
@@ -128,17 +81,19 @@ export default Header
 
 const SNavbar = styled(Navbar)`
     background-color: #F8F9FA!important;
-    box-shadow: 0 4px 12px 0 rgb(226 60 82 / 20%);
+    box-shadow: 0 4px 12px 0 rgb(226 60 82 / 30%);
     min-height: 50px;
     padding-bottom: 0.5rem;
     font-size: 18px;
     font-weight: 600;
     border-style: none;
+    z-index: 99999;
+    width: 100%;
 
 `
 
 const SLink = styled(Link)`
-  color: #8b0d32 !important;
+  color: rgb(74, 34, 26) !important;
   font-weight: 600;
   font-size: 18px;
   letter-spacing: 0.05em;
@@ -157,8 +112,8 @@ const SLink = styled(Link)`
 
 `
 const SDropdownMenu = styled(DropdownMenu)`
-    background-color: #edd29a!important;
-    border:none;
+    background-color: #F8F9FA!important;
+    border: 1px #8b0d32;
 
 `
 
@@ -168,8 +123,7 @@ const SNavbarBrand = styled(NavbarBrand)`
 
 `
 const SDropdownToggle = styled(DropdownToggle)`
-    color: #8b0d32 !important;
     padding: 0px 30px;
-
+    color: rgb(74, 34, 26) !important;
 
 `

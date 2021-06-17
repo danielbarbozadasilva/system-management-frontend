@@ -1,55 +1,63 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
-import Link from '@material-ui/core/Link'
+import React from 'react';
+import ImagemFooter from '../../assets/img/footer.png';
+import { FaFacebookSquare, FaInstagramSquare, FaWhatsappSquare } from 'react-icons/fa';
+import { MdLocationOn, MdMailOutline, MdPhone } from 'react-icons/md';
+import '../../assets/css/style.css';
 
-function Copyright() {
-  return (
-    <Typography variant="h6" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Gestão de Negócio&ensp;
-      </Link>
-      {new Date().getFullYear()}
-    </Typography>
-  )
+
+const Footer = (props) => {
+
+    return (
+        <footer className="rodape">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 redes-sociais">
+                        <h3 className="tituloRedesSociais">Redes sociais</h3>
+                        <div className="icons-redes-sociais">
+                            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer"><FaFacebookSquare className="iconeFooter" /></a>
+                            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer"><FaInstagramSquare className="iconeFooter" /></a>
+                            <a href="https://api.whatsapp.com/send?phone=+5521992690225" target="_blank" rel="noreferrer"><FaWhatsappSquare className="iconeFooter" /></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12 " >
+                        <img className="imagemFooter"  src={ImagemFooter} alt="imagem do footer" />
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 infomacoes">
+
+                        <div className="address">
+                            <h6><MdLocationOn className="iconeInfoRodape" />
+                    Endereço: Rua Gomes Yunes, 225</h6>
+                        </div>
+                        <div className="email">
+                            <h6><MdMailOutline className="iconeInfoRodape" />
+                    Email: contato@regale.com</h6>
+                        </div>
+
+                        <div className="phone">
+                            <h6><MdPhone className="iconeInfoRodape" />
+                    Telefone: +55 21 22450548</h6>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nomeFooter">
+                        <h3 className="nome-footer">Developed by Daniel Barboza</h3>
+                    </div>                
+                </div>
+                <div className="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 nomeFooter">
+                        <h3 className="nome-footer">Copyright © 2021 - Todos os direitos reservados</h3>
+                    </div>                
+                </div>
+
+            </div>
+
+        </footer>
+    )
 }
 
-const useStyles = makeStyles((theme) => ({
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(2, 0)
-  }
-}))
+export default Footer;
 
-export default function Footer(props) {
-  const classes = useStyles()
-  const { description, title } = props
 
-  return (
-    <footer className={classes.footer}>
-      <Typography variant="h6" align="center" gutterBottom>
-        Footer
-      </Typography>
-      <Typography
-        variant="subtitle1"
-        align="center"
-        color="textSecondary"
-        component="p"
-      >
-        Infnet - Todos os Direitos Reservados
-      </Typography>
-      <Typography variant="body2" color="textSecondary" align="center">
-        {'Copyright © '}
-        <Link color="inherit" href="https://material-ui.com/">
-          Your Website
-        </Link>{' '}
-        1998 - {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-      <Typography variant="body2" color="textSecondary" align="center">
-        Developed: Daniel Barboza
-      </Typography>
-    </footer>
-  )
-}
