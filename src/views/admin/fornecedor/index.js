@@ -1,18 +1,22 @@
 import React, { useEffect, useCallback } from 'react'
-import { Grid, CssBaseline, IconButton } from '@material-ui/core'
+import { Grid, CssBaseline, IconButton, Tooltip } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Title from '~/components/title'
 import DataList from '~/components/datagrid'
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
+import { More as MoreIcon } from '@material-ui/icons'
 
 import {
   getAll as getFornecedor,
+  obterProduto,
   setStatusFornecedor
-} from '~/store/fornecedor/fornecedor.action'
+} from '~/store/fornecedor/action'
+import ListaProdutos from '~/components/admin/fornecedor/produtos'
 
 function Fornecedor() {
   const dispatch = useDispatch()
+  const [modalProduto, setModalProduto] = React.useState(false)
 
   const fornecedores = useSelector((state) => state.fornecedor.all)
   const loading = useSelector((state) => state.fornecedor.loading)
@@ -29,13 +33,23 @@ function Fornecedor() {
     dispatch(setStatusFornecedor(id, status))
   }
 
+  function openProdutos(row) {
+    dispatch(obterProduto(row.id)).then(() => setModalProduto(true))
+  }
   const actionModal = ({ id, row }) => {
     const status = row.status === 'Ativo'
     return (
       <>
-        <IconButton onClick={() => toggleActive(id, status)} color="primary">
-          <>{!status ? <BsToggleOff /> : <BsToggleOn />}</>
-        </IconButton>
+        <Tooltip title="Listar de Produtos">
+          <IconButton onClick={() => openProdutos(row)} color="primary">
+            <MoreIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title={status ? 'Desativar' : 'Ativar'}>
+          <IconButton onClick={() => toggleActive(id, status)} color="primary">
+            <>{!status ? <BsToggleOff /> : <BsToggleOn />}</>
+          </IconButton>
+        </Tooltip>
       </>
     )
   }
@@ -72,6 +86,7 @@ function Fornecedor() {
           <DataList data={fornecedores} columns={columns} loading={loading} />
         </Grid>
       </Grid>
+      <ListaProdutos open={modalProduto} close={() => setModalProduto(false)} />
     </>
   )
 }

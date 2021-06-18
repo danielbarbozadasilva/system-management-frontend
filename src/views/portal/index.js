@@ -5,13 +5,8 @@ import FornecedorPortal from '~/views/portal/fornecedor'
 import Fornecedor from '~/views/auth/singup-fornecedor'
 import Cliente from '~/views/auth/singup-cliente'
 import SignIn from '~/views/auth/signin'
-// import { Router } from '@reach/router'
-import {
-  Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+import { Router } from '@reach/router'
+
 import Layout from '~/components/layout'
 
 import ViewsCategoria from '~/views/portal/inicio/index'

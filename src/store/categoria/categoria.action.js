@@ -35,7 +35,9 @@ export const create = (data) => {
       toastr.success('Categoria', 'Categoria cadastrada com sucesso')
       dispatch(getAll())
     } catch (error) {
+      toastr.error('Categoria', 'deu ruim')
     }
+    console.log('disparar...', data)
   }
 }
 
@@ -49,6 +51,7 @@ export const edit = (id) => {
       const result = await getCategoryById(id)
       dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
     } catch (error) {
+      toastr.error('aconteceu um erro', error)
     }
   }
 }
@@ -63,11 +66,7 @@ export const getAll = () => {
     }
   }
 }
-/* A única diferença para o create é que mando um dispatch para atualizar
-o modal que está aberto e a tabela inteira */
 
-/* pega as informações e colocar como 'true*, ZERA o MODAL
- para que o contador da barra de progresso fique sempre ZERO */
 export const update = ({ id, ...data }) => {
   return (dispatch) => {
     dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
@@ -79,7 +78,6 @@ export const update = ({ id, ...data }) => {
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      // atualizo
       onUploadProgress: function (progressEvent) {
         const percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
@@ -94,18 +92,21 @@ export const update = ({ id, ...data }) => {
     }
 
     const formData = new FormData()
-
     Object.keys(data).map((k) => formData.append(k, data[k]))
     updateCategory(id, formData, config)
       .then((result) => {
         dispatch(edit(id))
         dispatch(getAll())
         toastr.success('Categoria', 'Categoria atualizada com sucesso')
-        // dispatch({ type: TYPES.CATEGORY_UPDATE })
+        return true
       })
       .catch((error) => {
+        dispatch({ type: TYPES.CATEGORY_LOADING, status: false })
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
         toastr.error('Categoria', error.toString())
+      })
+      .finally(() => {
+        dispatch({ type: TYPES.CATEGORY_LOADING, status: false })
       })
   }
 }

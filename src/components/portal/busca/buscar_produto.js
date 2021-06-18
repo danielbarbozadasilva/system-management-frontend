@@ -3,7 +3,7 @@ import './style.css'
 import ImagemFundo from '../../../assets/img/ImagemFundo.jpg'
 import ImagemPaes from '../../../assets/img/ImagemPaes.png'
 
-function BuscarProduto () {
+function BuscarProduto (props) {
   return (
     <section className="secao01">
       <div>
@@ -21,7 +21,7 @@ function BuscarProduto () {
             <input type="search" className="form-control" placeholder="Digite um produto..." aria-label="Search" />
           </div>
           <div>
-            <button className="btn btn-outline-success botaoPrinc">Buscar</button>
+            <button onClick = {()=>props.propriedade()} className="btn btn-outline-success botaoPrinc">Buscar</button>
           </div>
         </div>
       </div>

@@ -23,7 +23,7 @@ const CardItem = (props) => {
           <CardText class="descricaoCard">{descricao}</CardText>
 
           <SButton onClick={() => navigate(`/produto/${id}`)}>Acessar</SButton>
-          </CardBody>
+        </CardBody>
       </SCard>
     </div>
   )

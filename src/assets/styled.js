@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
 const TitlePage = styled.div`
-    color: back;
+    color: black;
     font-size: 22px;
     font-weight:500;
     padding-bottom: 25px;
@@ -19,6 +19,6 @@ const Sign = styled.div`
 `
 
 export {
-    Sign,
-    TitlePage
+  Sign,
+  TitlePage
 }

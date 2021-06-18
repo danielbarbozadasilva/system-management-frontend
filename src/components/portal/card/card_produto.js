@@ -3,6 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
+import { navigate } from '@reach/router'
 
 const CardProduto = (props) => {
   const { id, nome, descricao, preco, categoria, fornecedor, imagem } = props.item

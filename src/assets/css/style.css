@@ -168,12 +168,22 @@
   .nomeoficina .info_oficina {
     font-size: 20px;
   }
-  .botaoFormulario {
+  #botaoFormulario {
     margin-top: 60px;
   }
   .kids {
     background-color: #fffde7;
   }
+  .linkSignin{
+    text-decoration: none;
+    color: rgb(112, 47, 47);   
+    padding: 0px 10px;
+  }
+  .linkSignin:hover{
+    text-decoration: none;
+    color: rgb(148, 105, 105);   
+  }
+
   body {
     min-height: 100vh;
     background: #fafafa;
@@ -184,7 +194,7 @@
     margin-bottom: 15px;
   }
   .bg-gradient-l-primary-gradient {
-    background-color: #edd29a;
+    background-image: linear-gradient(to left, #4F2821, #aa4938);
   }
   .shadow-redBtn {
     box-shadow: 0 4px 12px 0 rgb(226 60 82 / 20%);

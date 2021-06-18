@@ -55,7 +55,7 @@ export const getProdutoPorCategoria = (id) => {
     try {
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
       const result = await getAllProdutoCategoria(id)
-      dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
+      dispatch({ type: TYPES.PRODUTO_ALL, data: result.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
