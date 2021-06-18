@@ -34,8 +34,6 @@ export const logoutAction = (data) => {
   }
 }
 
-
-
 // import { clearStorage, saveAuth } from '~/config/storage'
 // import { authService } from '~/services/auth.service'
 // import http from '~/config/http'

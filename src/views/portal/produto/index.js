@@ -38,8 +38,8 @@ function Produtos (props) {
 
   return (
     <>
-    {/* getAll */}
-      <BuscarProduto propriedade={(nome)=>console.log(nome)} />
+      {/* getAll */}
+      <BuscarProduto propriedade={(nome) => console.log(nome)} />
       <BoxProdutos>
         {!loading && produtos.length === 0 ? 'Não há produtos disponiveis' : MapearProdutos(produtos)}
       </BoxProdutos>

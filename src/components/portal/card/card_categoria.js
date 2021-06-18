@@ -20,7 +20,7 @@ const CardItem = (props) => {
           <CardTitle className="tituloCard">{nome}</CardTitle>
           <CardSubtitle className="subtituloCard">Os mais <strong>Deliciosos</strong></CardSubtitle>
           <hr className="separarTextos" />
-          <CardText class="descricaoCard">{descricao}</CardText>
+          <CardText className="descricaoCard">{descricao}</CardText>
 
           <SButton onClick={() => navigate(`/produto/${id}`)}>Acessar</SButton>
         </CardBody>

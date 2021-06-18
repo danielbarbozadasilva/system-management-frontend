@@ -11,8 +11,8 @@ import {
   getAll as getFornecedor,
   obterProduto,
   setStatusFornecedor
-} from '~/store/fornecedor/action'
-import ListaProdutos from '~/components/admin/fornecedor/produtos'
+} from '~/store/fornecedor/fornecedor.action'
+import ListaProdutos from '~/components/admin/forncedor/produtos'
 
 function Fornecedor() {
   const dispatch = useDispatch()

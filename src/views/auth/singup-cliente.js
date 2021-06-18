@@ -5,6 +5,8 @@ import { create as createcliente } from '~/store/cliente/cliente.action'
 import { useDispatch, useSelector } from 'react-redux'
 import '../../assets/css/style.css'
 import { FormGroup, Label, Input, Alert, Button, Spinner, FormFeedback } from 'reactstrap'
+import InputMask from 'react-input-mask'
+import { Select } from '@material-ui/core'
 
 const SignUpCliente = () => {
   const dispatch = useDispatch()
@@ -65,19 +67,18 @@ const SignUpCliente = () => {
         }
         break
 
-      // case 'nascimento':
-      //   const datanasc = valor.replaceAll('-', '/')
+        // case 'nascimento':
+        //   const datanasc = valor.replaceAll('-', '/')
 
-      //   const dataAtual = moment().format('YYYY/MM/DD')
+        //   const dataAtual = moment().format('YYYY/MM/DD')
 
-      //   if (!moment(datanasc).isValid) {
-      //     menssage += 'Data inválida!'
-      //   } else if (moment(datanasc).isAfter(dataAtual)) {
-      //     menssage += 'Data maior que a atual!'
-      //   }
+        //   if (!moment(datanasc).isValid) {
+        //     menssage += 'Data inválida!'
+        //   } else if (moment(datanasc).isAfter(dataAtual)) {
+        //     menssage += 'Data maior que a atual!'
+        //   }
 
-      //   break
-
+        //   break
 
       case 'email':
         var filtraEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -145,7 +146,8 @@ const SignUpCliente = () => {
             value={form.nascimento || ''}
             disabled={false}
             maskChar=" "
-            onChange={HandleChange}>
+            onChange={HandleChange}
+          >
             {() => (
               <Input invalid={!!formValidate.nascimento} disabled={loading} type="date" name="nascimento" id="nascimento" onChange={HandleChange} mask="99/99/9999" maskChar=" " value={form.nascimento || ''} />
             )}

@@ -17,13 +17,13 @@ const CardFornecedor = (props) => {
         <CardBody>
           <CardTitle className="tituloCard">{nomeFantasia}</CardTitle>
           <hr className="separarTextos" />
-          <CardText class="descricaoCard">{cnpj}</CardText>
-          <CardText class="descricaoCard">{endereco}</CardText>
-          <CardText class="descricaoCard">{uf}</CardText>
-          <CardText class="descricaoCard">{cidade}</CardText>
-          <CardText class="descricaoCard">{responsavel}</CardText>
-          <CardText class="descricaoCard">{telefone}</CardText>
-          <CardText class="descricaoCard">{status}</CardText>
+          <CardText className="descricaoCard">{cnpj}</CardText>
+          <CardText className="descricaoCard">{endereco}</CardText>
+          <CardText className="descricaoCard">{uf}</CardText>
+          <CardText className="descricaoCard">{cidade}</CardText>
+          <CardText className="descricaoCard">{responsavel}</CardText>
+          <CardText className="descricaoCard">{telefone}</CardText>
+          <CardText className="descricaoCard">{status}</CardText>
 
           {/* Passar o array */}
           <SButton onClick={() => navigate('/produto/' + produtos)}>Acessar</SButton>

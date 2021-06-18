@@ -28,7 +28,7 @@ const Header = (props) => {
     <header>
       <SNavbar className="barraHeader" color="dark" dark expand="lg">
         <Container>
-          <Link component={LinkRoute} nowrap to="/" id="logoMain">
+          <Link component={LinkRoute} to="/" id="logoMain">
             <img className="logo-img" src={LogoHeader} alt="logo" />
           </Link>
           <Tooltip placement="top" isOpen={tooltipOpen} autohide={false} target="logoMain" toggle={toggleTooltip}>
@@ -38,14 +38,14 @@ const Header = (props) => {
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem>
-                  <SLink exact activeClassName="active" component={LinkRoute} to="/">Inicio</SLink>
+                  <SLink component={LinkRoute} to="/">Inicio</SLink>
                 </NavItem>
                 <>
                   <NavItem>
-                    <SLink exact activeClassName="active" component={LinkRoute} to="/produto">Produtos</SLink>
+                    <SLink component={LinkRoute} to="/produto">Produtos</SLink>
                   </NavItem>
                   <NavItem>
-                    <SLink exact activeClassName="active" component={LinkRoute} to="/fornecedor">Fornecedores</SLink>
+                    <SLink component={LinkRoute} to="/fornecedor">Fornecedores</SLink>
                   </NavItem>
                 </>
 
@@ -53,15 +53,15 @@ const Header = (props) => {
             </Collapse>
 
             <Nav>
-              <NavItem nav inNavbar>
-                <SLink exact activeClassName="active" component={LinkRoute} to="/signin">Logar</SLink>
+              <NavItem>
+                <SLink component={LinkRoute} to="/signin">Logar</SLink>
               </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <SDropdownToggle nav caret>Inscrever-se</SDropdownToggle>
+              <UncontrolledDropdown>
+                <SDropdownToggle caret>Inscrever-se</SDropdownToggle>
                 <SDropdownMenu>
-                  <SLink exact activeClassName="active" component={LinkRoute} to="/clientecadastro">Cliente</SLink>
+                  <SLink component={LinkRoute} to="/clientecadastro">Cliente</SLink>
                   <DropdownItem divider />
-                  <SLink exact activeClassName="active" component={LinkRoute} to="/fornecedorcadastro">Fornecedor</SLink>
+                  <SLink component={LinkRoute} to="/fornecedorcadastro">Fornecedor</SLink>
 
                 </SDropdownMenu>
               </UncontrolledDropdown>

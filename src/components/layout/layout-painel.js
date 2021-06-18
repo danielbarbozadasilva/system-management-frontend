@@ -95,7 +95,6 @@ export default function Dashboard(props) {
     },
     drawerPaper: {
       position: 'relative',
-      whiteSpace: 'nowrap',
       width: drawerWidth,
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
@@ -181,7 +180,6 @@ export default function Dashboard(props) {
             component="h1"
             variant="h6"
             color="inherit"
-            noWrap
             className={classes.title}
           >
             {tipoUsuario ? userDefinition[tipoUsuario].titulo : ''}
@@ -190,7 +188,6 @@ export default function Dashboard(props) {
             component="h4"
             variant="h6"
             color="inherit"
-            noWrap
             className={classes.user}
           >
             <AccountCircleIcon className={classes.userIcon} />

@@ -8,18 +8,13 @@ import {
   Apps as MdAppsIcon
 } from '@material-ui/icons'
 
-import PainelLayout from '~/components/layout/painelLayout.js'
-import Inicio from '~/views/admin/inicio/'
+import PainelLayout from '~/components/layout/layout-painel'
+import Inicio from '~/views/admin/inicio/inicio'
 import Produto from '~/views/admin/produto'
 import Fornecedor from '~/views/admin/fornecedor'
 import Categoria from './categoria/index'
 import Cliente from './cliente/index'
 import { useSelector } from 'react-redux'
-/*
-  1 - Administrador
-  2 - Fornecedor
-  3 - Cliente
- */
 
 export const Menu = [
   {
@@ -90,8 +85,6 @@ const Admin = (props) => {
 }
 
 export default Admin
-
-
 
 // import { Router } from '@reach/router'
 

@@ -21,7 +21,7 @@ function BuscarProduto (props) {
             <input type="search" className="form-control" placeholder="Digite um produto..." aria-label="Search" />
           </div>
           <div>
-            <button onClick = {()=>props.propriedade()} className="btn btn-outline-success botaoPrinc">Buscar</button>
+            <button onClick={() => props.propriedade()} className="btn btn-outline-success botaoPrinc">Buscar</button>
           </div>
         </div>
       </div>

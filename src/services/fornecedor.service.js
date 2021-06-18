@@ -19,10 +19,6 @@ export const inativaFornecedor = (id) => http.put(`${baseUrl}/${id}/inativa`)
 
 export const obterListadeProduto = (id) => http.get(`${baseUrl}/${id}/produto`)
 
-
-
-
-
 // import http from '~/config/http'
 
 // const baseUrl = '/fornecedor'

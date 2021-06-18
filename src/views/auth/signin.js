@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   Form, FormGroup, Input,
   Card, Col, CardBody,
-  CardFooter, Alert, Spinner, Button
+  CardFooter, Alert, Spinner
 } from 'reactstrap'
 import styled from 'styled-components'
 import { Sign } from '../../assets/styled'
 import { signInAction } from '../../store/auth/auth.action'
 import '../../assets/css/style.css'
-import { navigate } from '@reach/router'
 
 const SignIn = () => {
   const [hasError, setHasError] = useState(false)
@@ -87,9 +86,9 @@ const SignIn = () => {
             </Form>
           </CardBody>
           <CardFooter className="text-muted">
-            Não possui Cadastro?   
-            <a className="linkSignin" href='/clientecadastro'>Cliente</a>
-            <a className="linkSignin" href='/fornecedorcadastro'>Fornecedor</a>
+            Não possui Cadastro?
+            <a className="linkSignin" href="/clientecadastro">Cliente</a>
+            <a className="linkSignin" href="/fornecedorcadastro">Fornecedor</a>
 
           </CardFooter>
 

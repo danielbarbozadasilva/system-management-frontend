@@ -1,17 +1,17 @@
 import http from '~/config/http'
 
 const baseUrl = '/produto'
-
-const transformarURL =(objeto)=>{
-  let urlQuery = ''  
-  if(objeto){
-      if(objeto.nomeLike){
-        urlQuery += '/?nomeLike='+objeto.nomeLike
-      }
+/// ///////////////////////////////////////////////////
+const transformarURL = (objeto) => {
+  let urlQuery = ''
+  if (objeto) {
+    if (objeto.nomeLike) {
+      urlQuery += '/?nomeLike=' + objeto.nomeLike
     }
-    return urlQuery
+  }
+  return urlQuery
 }
-
+/// ///////////////////////////////////////////////////
 export const getAll = (objeto) => http.get(`${baseUrl}${transformarURL(objeto)}`)
 
 export const remove = (id) => http.delete(`${baseUrl}/${id}`)

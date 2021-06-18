@@ -17,8 +17,8 @@ const CardProduto = (props) => {
         <CardBody>
           <CardTitle className="tituloCard">{nome}</CardTitle>
           <hr className="separarTextos" />
-          <CardText class="descricaoCard">{descricao}</CardText>
-          <CardText class="precoCard">{preco}</CardText>
+          <CardText className="descricaoCard">{descricao}</CardText>
+          <CardText className="precoCard">{preco}</CardText>
           <SButton onClick={() => navigate(`/fornecedor/${fornecedor}`)}>Acessar</SButton>
         </CardBody>
       </SCard>
