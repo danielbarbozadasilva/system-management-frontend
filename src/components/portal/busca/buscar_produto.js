@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './style.css'
 import ImagemFundo from '../../../assets/img/ImagemFundo.jpg'
 import ImagemPaes from '../../../assets/img/ImagemPaes.png'
 
-function BuscarProduto (props) {
+function BuscarProduto(props) {
+  const [info, setInfo] = useState('')
+
   return (
     <section className="secao01">
       <div>
@@ -18,10 +20,10 @@ function BuscarProduto (props) {
           <div className="textoPrincipal">Escolha o seu sabor</div>
           <div className="textoSub">digite um produto</div>
           <div>
-            <input type="search" className="form-control" placeholder="Digite um produto..." aria-label="Search" />
+            <input onChange={(props)=>setInfo(props.target.value)} value={info} type="search" className="form-control" placeholder="Digite um produto..." aria-label="Search" />
           </div>
           <div>
-            <button onClick={() => props.propriedade()} className="btn btn-outline-success botaoPrinc">Buscar</button>
+            <button onClick={() => props.getProdutosByName(info)} className="btn btn-outline-success botaoPrinc">Buscar</button>
           </div>
         </div>
       </div>

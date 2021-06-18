@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProdutoPorCategoria } from '../../../store/produto/produto.action'
-import CardCategoria from '../../../components/portal/card/card_categoria'
+import CardProduto from '../../../components/portal/card/card_produto'
 
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import BuscarProduto from '../../../components/portal/busca/buscar_produto'
 
-function Produtos (props) {
+function Produtos(props) {
   const produtos = useSelector(state => state.produto.all)
   const loading = useSelector(state => state.auth.loading)
 
@@ -26,9 +26,19 @@ function Produtos (props) {
     navigate()
   }, []) // [] - executa uma única vez
 
+
+  // const filtrarProd = () => {
+  //   return produtos.map((item) => {
+  //     return item.produtos.map((prod) => {
+  //       return prod
+  //     })
+  //   })
+
+  // }
+
   const MapearProdutos = (produtos) => produtos.map((item, i) => (
     <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
-      <CardCategoria item={{ ...item, status: true }} />
+      <CardProduto item={{ ...item, status: true }} />
     </Col>
   ))
 
@@ -39,7 +49,7 @@ function Produtos (props) {
   return (
     <>
       {/* getAll */}
-      <BuscarProduto propriedade={(nome) => console.log(nome)} />
+      <BuscarProduto getProdutosByName={(nome) => console.log(nome)} />
       <BoxProdutos>
         {!loading && produtos.length === 0 ? 'Não há produtos disponiveis' : MapearProdutos(produtos)}
       </BoxProdutos>

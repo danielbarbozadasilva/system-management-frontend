@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import UfCidade from '~/util/estados-cidades.json'
 import { create as createcliente } from '~/store/cliente/cliente.action'
 import { useDispatch, useSelector } from 'react-redux'
-import * as moment from 'moment'
 import '../../assets/css/style.css'
 import { FormGroup, Label, Input, Alert, Button, Spinner, FormFeedback } from 'reactstrap'
 
@@ -69,59 +68,10 @@ const SignUpFornecedor = () => {
         var nomeregex = /\d/g
         if (nomeregex.test(valor)) {
           menssage += 'Não pode conter números!'
-        } else if (valor.trim() == '') {
+        } else if (valor.trim() === '') {
           menssage += 'Não pode ser vazio!'
         } else if (valor.length <= 10) {
           menssage += 'Precisa ter mais que 10 caracteres!'
-        }
-        break
-
-      case 'datanascimentoparticipante':
-        const datanasc = valor.replaceAll('-', '/')
-
-        const dataAtual = moment().format('YYYY/MM/DD')
-
-        if (!moment(datanasc).isValid) {
-          menssage += 'Data inválida!'
-        } else if (moment(datanasc).isAfter(dataAtual)) {
-          menssage += 'Data maior que a atual!'
-        }
-
-        break
-
-      case 'nomeparticipante':
-        var nomeregex = /\d/g
-        if (nomeregex.test(valor)) {
-          menssage += 'Nome não pode conter números!'
-        } else if (valor.trim() == '') {
-          menssage += 'Nome não pode ser vazio!'
-        } else if (valor.length <= 10) {
-          menssage += 'Precisa ter mais que 10 caracteres!'
-        }
-        break
-
-      case 'cpf':
-        // Aceita apenas traço(-), ponto(.) e números (0 a 9)
-        var filtraCpf = /(?:\.|-|[0-9])*/
-
-        if (!filtraCpf.test(valor)) {
-          menssage += 'CPF inválido'
-        } else if (valor.trim() == '') {
-          menssage += 'Não pode ser vazio!'
-        } else if (valor.length < 11 && valor.length > 14) {
-          menssage += 'CPF inválido!'
-        }
-        break
-
-      case 'telefone':
-        // Nenhum DDD iniciado por 0 é aceito, e nenhum número de telefone pode iniciar com 0 ou 1.
-        // +55 (11) 98888-8888 / 9999-9999 / 21 98888-8888 / 5511988888888
-        var filtraTelefone = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
-
-        if (!filtraTelefone.test(valor)) {
-          menssage += 'Número de telefone inválido!'
-        } else if (valor.replace(' ', '') == '') {
-          menssage += 'Campo em branco!'
         }
         break
 
@@ -138,7 +88,7 @@ const SignUpFornecedor = () => {
 
         if (!filtraEmail.test(valor)) {
           menssage += 'E-mail inválido!'
-        } else if (valor.replace(' ', '') == '') {
+        } else if (valor.replace(' ', '') === '') {
           menssage += 'Campo em branco!'
         }
         break
@@ -236,7 +186,7 @@ const SignUpFornecedor = () => {
           <FormFeedback>{formValidate.senha || ''}</FormFeedback>
         </FormGroup>
 
-        <Button className="botaoFormulario" className={isNotValid() || loading ? 'estilo-botao-desable' : 'estilo-botao'} disabled={isNotValid()} size="md" block onClick={SubmitForm}>
+        <Button id="botaoFormulario" className={isNotValid() || loading ? 'estilo-botao-desable' : 'estilo-botao'} disabled={isNotValid()} size="md" block onClick={SubmitForm}>
           {loading ? (<><Spinner size="sm" color="light" /> Carregando...</>) : 'Cadastrar'}
         </Button>
         <Alert color="success" isOpen={success} toggle={() => setSuccess(!success)}>

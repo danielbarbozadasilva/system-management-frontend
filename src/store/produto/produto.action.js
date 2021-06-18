@@ -50,6 +50,7 @@ export const getAll = () => {
     }
   }
 }
+
 export const getProdutoPorCategoria = (id) => {
   return async (dispatch) => {
     try {

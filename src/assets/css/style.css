@@ -142,11 +142,7 @@
     box-shadow: 0px 1px 5px 1.5px rgba(0, 0, 0, 0.11);
     font-size: 14px;
   }
-  /* Configuração caso não haja alunos na tabela */
-  #semAlunos {
-    padding: 20px 60px;
-    font-size: 18px;
-  }
+
   /* Configuração das colunas dos formulários */
   .coluna1,
   .coluna2,
@@ -165,15 +161,11 @@
   .colunadetalhe2 {
     padding-top: 20px;
   }
-  .nomeoficina .info_oficina {
-    font-size: 20px;
-  }
+ 
   #botaoFormulario {
     margin-top: 60px;
   }
-  .kids {
-    background-color: #fffde7;
-  }
+
   .linkSignin{
     text-decoration: none;
     color: rgb(112, 47, 47);   
@@ -269,13 +261,7 @@
     color: gray;
     letter-spacing: 1px;
   }
-  .nenhumaOficinaCadastrada {
-    margin: 20px 15px;
-    padding: 20px 30px;
-    display: flex;
-    box-shadow: 0px 1px 5px 1.5px rgb(0 0 0 / 11%);
-    font-size: 16px;
-  }
+
   /* FOOTER */
   footer {
     position: center;
