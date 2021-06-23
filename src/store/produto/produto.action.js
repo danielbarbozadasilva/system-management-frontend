@@ -74,12 +74,11 @@ export const remove = (id) => {
       toastr.error('Categoria', error.toString())
     }
   }
-  
 }
 export const getProducts = (id, nameFilter) => {
   return async (dispatch) => {
     try {
-      const params = {[nameFilter]:id}
+      const params = { [nameFilter]: id }
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
       console.log(params)
       const result = await getAllProduto(params)
@@ -89,4 +88,3 @@ export const getProducts = (id, nameFilter) => {
     }
   }
 }
-

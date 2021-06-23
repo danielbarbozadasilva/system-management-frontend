@@ -15,7 +15,7 @@ function BuscarCategoria () {
         </div>
 
         <div className="texto-home-inicial">
-        <div className="textoPrincipal">Delicias da região</div>
+          <div className="textoPrincipal">Delicias da região</div>
           <div className="textoSub">digite uma categoria</div>
           <div>
             <input type="search" className="form-control" placeholder="Digite uma categoria..." aria-label="Search" />

@@ -1,21 +1,19 @@
 import React from 'react'
 import Header from './header'
 import Footer from './footer'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
-
-  const Layout = (props) => {
-
-    document.title = props.nomeDaPagina;
-    return (
-        <>
-            <Header titulo={props.nomeDaPagina} />
-            <Main className="container-fluid">
-                {props.children}
-            </Main>
-            <Footer />
-        </>
-    )
+const Layout = (props) => {
+  document.title = props.nomeDaPagina
+  return (
+    <>
+      <Header titulo={props.nomeDaPagina} />
+      <Main className="container-fluid">
+        {props.children}
+      </Main>
+      <Footer />
+    </>
+  )
 }
 
 export default Layout

@@ -60,7 +60,7 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: SignIn
-  },  {
+  }, {
     title: 'ViewsProduto',
     icons: '',
     route: '/produto/:nameFilter/:id',

@@ -3,8 +3,7 @@ import {
   getAllCategories,
   getCategoryById,
   updateCategory,
-  removeCategory,
-  getCategoryProduct
+  removeCategory
 } from '~/services/categoria.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'

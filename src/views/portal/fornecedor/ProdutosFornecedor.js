@@ -1,6 +1,6 @@
-const ProdutoFornecedor=()=>{
-  return(
-    <div></div>
+const ProdutoFornecedor = () => {
+  return (
+    <div />
   )
 }
 export default ProdutoFornecedor

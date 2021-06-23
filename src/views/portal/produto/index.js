@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAll, getProducts } from '../../../store/produto/produto.action'
+import { getProducts } from '../../../store/produto/produto.action'
 import CardProduto from '../../../components/portal/card/card_produto'
 
 import Loading from '../../../components/portal/loading'
@@ -18,7 +18,7 @@ function Produtos(props) {
   const nameFilter = props.nameFilter
 
   const getDados = async (id, nameFilter) => {
-      await dispatch(getProducts(id, nameFilter))
+    await dispatch(getProducts(id, nameFilter))
   }
 
   useEffect(() => {

@@ -12,7 +12,6 @@ import {
   Spinner,
   FormFeedback
 } from 'reactstrap'
-import InputMask from 'react-input-mask'
 import { Select } from '@material-ui/core'
 
 const SignUpCliente = () => {
@@ -74,18 +73,18 @@ const SignUpCliente = () => {
         }
         break
 
-      // case 'nascimento':
-      //   const datanasc = valor.replaceAll('-', '/')
+        // case 'nascimento':
+        //   const datanasc = valor.replaceAll('-', '/')
 
-      //   const dataAtual = moment().format('YYYY/MM/DD')
+        //   const dataAtual = moment().format('YYYY/MM/DD')
 
-      //   if (!moment(datanasc).isValid) {
-      //     menssage += 'Data inválida!'
-      //   } else if (moment(datanasc).isAfter(dataAtual)) {
-      //     menssage += 'Data maior que a atual!'
-      //   }
+        //   if (!moment(datanasc).isValid) {
+        //     menssage += 'Data inválida!'
+        //   } else if (moment(datanasc).isAfter(dataAtual)) {
+        //     menssage += 'Data maior que a atual!'
+        //   }
 
-      //   break
+        //   break
 
       case 'email':
         var filtraEmail =
@@ -168,7 +167,7 @@ const SignUpCliente = () => {
               Data de Nascimento:
             </Label>
             <Input
-              invalid={formValidate.nascimento ? true : false}
+              invalid={!!formValidate.nascimento}
               disabled={loading}
               type="date"
               name="nascimento"
@@ -180,7 +179,7 @@ const SignUpCliente = () => {
           </FormGroup>
 
           <FormGroup variant="outlined" fullWidth size="medium" margin="normal">
-          <Label htmlFor="uf" className="label">
+            <Label htmlFor="uf" className="label">
               UF:
             </Label>
             <Select
@@ -198,7 +197,7 @@ const SignUpCliente = () => {
                   {sigla}
                 </option>
               ))}
-            <FormFeedback>{formValidate.uf || ''}</FormFeedback>
+              <FormFeedback>{formValidate.uf || ''}</FormFeedback>
             </Select>
           </FormGroup>
 
@@ -267,7 +266,7 @@ const SignUpCliente = () => {
           </FormGroup>
 
           <Button
-            className="botaoFormulario"
+            id="botaoFormulario"
             className={
               isNotValid() || loading ? 'estilo-botao-desable' : 'estilo-botao'
             }
@@ -276,13 +275,15 @@ const SignUpCliente = () => {
             block
             onClick={SubmitForm}
           >
-            {loading ? (
-              <>
-                <Spinner size="sm" color="light" /> Carregando...
-              </>
-            ) : (
-              'Cadastrar'
-            )}
+            {loading
+              ? (
+                <>
+                  <Spinner size="sm" color="light" /> Carregando...
+                </>
+                )
+              : (
+                  'Cadastrar'
+                )}
           </Button>
           <Alert
             color="success"

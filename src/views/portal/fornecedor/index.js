@@ -7,8 +7,7 @@ import { Col, Row } from 'reactstrap'
 import BuscarFornecedor from '../../../components/portal/busca/buscar_fornecedor'
 import { getAll, obterProdutosPorFornecedor } from '../../../store/fornecedor/fornecedor.action'
 
-function Fornecedor(props) { 
-  
+function Fornecedor(props) {
   const fornecedor = useSelector(state => state.fornecedor.all)
   const loading = useSelector(state => state.auth.loading)
 
@@ -24,7 +23,7 @@ function Fornecedor(props) {
 
   useEffect(() => {
     navigate()
-  }, []) 
+  }, [])
 
   useEffect(() => {
     dispatch(getAll())

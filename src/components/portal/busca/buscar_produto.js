@@ -17,7 +17,7 @@ function BuscarProduto(props) {
         </div>
 
         <div className="texto-home-inicial">
-        <div className="textoPrincipal">Delicias da região</div>
+          <div className="textoPrincipal">Delicias da região</div>
           <div className="textoSub">digite um produto</div>
           <div>
             <input onChange={(props) => setInfo(props.target.value)} value={info} type="search" className="form-control" placeholder="Digite um produto..." aria-label="Search" />
