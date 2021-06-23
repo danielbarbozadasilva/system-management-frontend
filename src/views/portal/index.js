@@ -9,7 +9,6 @@ import { Router } from '@reach/router'
 
 import Layout from '~/components/layout'
 
-import ViewsCategoria from '~/views/portal/inicio/index'
 import ViewsProduto from '~/views/portal/produto/index'
 import ViewsFornecedor from '~/views/portal/fornecedor/index'
 
@@ -61,17 +60,10 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: SignIn
-  }, {
-    title: 'ViewsCategoria',
-    icons: '',
-    route: '/categoria/:id',
-    visibleMenu: true,
-    enabled: true,
-    component: ViewsCategoria
-  }, {
+  },  {
     title: 'ViewsProduto',
     icons: '',
-    route: '/produto/:id',
+    route: '/produto/:nameFilter/:id',
     visibleMenu: true,
     enabled: true,
     component: ViewsProduto

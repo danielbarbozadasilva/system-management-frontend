@@ -131,7 +131,7 @@ export const setStatusFornecedor = (id, ativo) => {
   }
 }
 
-export const obterProduto = (id) => {
+export const obterProdutosPorFornecedor = (id) => {
   return async (dispatch) => {
     try {
       const result = await obterListadeProduto(id)

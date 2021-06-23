@@ -2,7 +2,6 @@ import {
   create as createProduto,
   getAll as getAllProduto,
   remove as removeProduto,
-  getAllProdutoCategoria
 } from '~/services/produto.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -51,17 +50,17 @@ export const getAll = () => {
   }
 }
 
-export const getProdutoPorCategoria = (id) => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
-      const result = await getAllProdutoCategoria(id)
-      dispatch({ type: TYPES.PRODUTO_ALL, data: result.data })
-    } catch (error) {
-      toastr.error('aconteceu um erro', error)
-    }
-  }
-}
+// export const obterProduto = (id) => {
+//   return async (dispatch) => {
+//     try {
+//       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
+//       const result = await getAllProdutoCategoria(id)
+//       dispatch({ type: TYPES.PRODUTO_ALL, data: result.data })
+//     } catch (error) {
+//       toastr.error('aconteceu um erro', error)
+//     }
+//   }
+// }
 
 export const remove = (id) => {
   return async (dispatch) => {
@@ -75,4 +74,19 @@ export const remove = (id) => {
       toastr.error('Categoria', error.toString())
     }
   }
+  
 }
+export const getProducts = (id, nameFilter) => {
+  return async (dispatch) => {
+    try {
+      const params = {[nameFilter]:id}
+      dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
+      console.log(params)
+      const result = await getAllProduto(params)
+      dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
+    }
+  }
+}
+

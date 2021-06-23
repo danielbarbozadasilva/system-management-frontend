@@ -9,7 +9,7 @@ import { More as MoreIcon } from '@material-ui/icons'
 
 import {
   getAll as getFornecedor,
-  obterProduto,
+  obterProdutosPorFornecedor,
   setStatusFornecedor
 } from '~/store/fornecedor/fornecedor.action'
 import ListaProdutos from '~/components/admin/forncedor/produtos'
@@ -34,7 +34,7 @@ function Fornecedor() {
   }
 
   function openProdutos(row) {
-    dispatch(obterProduto(row.id)).then(() => setModalProduto(true))
+    dispatch(obterProdutosPorFornecedor(row.id)).then(() => setModalProduto(true))
   }
   const actionModal = ({ id, row }) => {
     const status = row.status === 'Ativo'

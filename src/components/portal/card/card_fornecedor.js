@@ -26,7 +26,7 @@ const CardFornecedor = (props) => {
           <CardText className="descricaoCard">{status}</CardText>
 
           {/* Passar o array */}
-          <SButton onClick={() => navigate('/produto/' + produtos)}>Acessar</SButton>
+          <SButton onClick={() => navigate(`/produto/fornecedor/${id}`)}>Acessar Produtos</SButton>
         </CardBody>
       </SCard>
     </div>

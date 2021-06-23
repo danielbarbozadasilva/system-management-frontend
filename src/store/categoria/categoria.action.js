@@ -3,7 +3,8 @@ import {
   getAllCategories,
   getCategoryById,
   updateCategory,
-  removeCategory
+  removeCategory,
+  getCategoryProduct
 } from '~/services/categoria.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -55,6 +56,7 @@ export const edit = (id) => {
     }
   }
 }
+
 export const getAll = () => {
   return async (dispatch) => {
     try {

@@ -89,6 +89,7 @@ const SNavbar = styled(Navbar)`
     border-style: none;
     z-index: 99999;
     width: 100%;
+    margin-bottom: 60px;
 
 `
 

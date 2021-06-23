@@ -22,7 +22,7 @@ const CardItem = (props) => {
           <hr className="separarTextos" />
           <CardText className="descricaoCard">{descricao}</CardText>
 
-          <SButton onClick={() => navigate(`/produto/${id}`)}>Acessar</SButton>
+          <SButton onClick={() => navigate(`/produto/categoria/${id}`)}>Acessar Produtos</SButton>
         </CardBody>
       </SCard>
     </div>

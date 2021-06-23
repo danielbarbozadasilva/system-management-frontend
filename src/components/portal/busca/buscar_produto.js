@@ -17,10 +17,10 @@ function BuscarProduto(props) {
         </div>
 
         <div className="texto-home-inicial">
-          <div className="textoPrincipal">Escolha o seu sabor</div>
+        <div className="textoPrincipal">Delicias da região</div>
           <div className="textoSub">digite um produto</div>
           <div>
-            <input onChange={(props)=>setInfo(props.target.value)} value={info} type="search" className="form-control" placeholder="Digite um produto..." aria-label="Search" />
+            <input onChange={(props) => setInfo(props.target.value)} value={info} type="search" className="form-control" placeholder="Digite um produto..." aria-label="Search" />
           </div>
           <div>
             <button onClick={() => props.getProdutosByName(info)} className="btn btn-outline-success botaoPrinc">Buscar</button>

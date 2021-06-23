@@ -1,5 +1,5 @@
 @media (min-width: 100px) {
-  *{
+  * {
     margin: 0;
     padding: 0;
     outline: 0;
@@ -8,7 +8,6 @@
   /* HEADER */
   header .container {
     max-width: 100%;
-
   }
 
   header .logo-img {
@@ -18,7 +17,6 @@
     padding-left: 30px;
     padding-right: 30px;
   }
-  
 
   .botaoLogin {
     background-color: #e0d5d3;
@@ -130,11 +128,14 @@
 
   /* Colunas dos formularios */
   .colunasFormularios {
+    width: 70%;
+    background-color: #edd29a;
     display: flex;
     /* flex container, transforma os filhos em flex itens */
     box-shadow: 0px 2px 15px 6px rgba(0, 0, 0, 0.11);
     padding: 0px 30px;
   }
+
   /* Título introdutório do formulário */
   .tituloFormIntro {
     padding: 20px 30px;
@@ -161,19 +162,19 @@
   .colunadetalhe2 {
     padding-top: 20px;
   }
- 
+
   #botaoFormulario {
     margin-top: 60px;
   }
 
-  .linkSignin{
+  .linkSignin {
     text-decoration: none;
-    color: rgb(112, 47, 47);   
+    color: rgb(112, 47, 47);
     padding: 0px 10px;
   }
-  .linkSignin:hover{
+  .linkSignin:hover {
     text-decoration: none;
-    color: rgb(148, 105, 105);   
+    color: rgb(148, 105, 105);
   }
 
   body {
@@ -186,7 +187,7 @@
     margin-bottom: 15px;
   }
   .bg-gradient-l-primary-gradient {
-    background-image: linear-gradient(to left, #4F2821, #aa4938);
+    background-image: linear-gradient(to left, #4f2821, #aa4938);
   }
   .shadow-redBtn {
     box-shadow: 0 4px 12px 0 rgb(226 60 82 / 20%);
@@ -208,9 +209,10 @@
   .rounded-full {
     border-radius: 9999px;
   }
+
   /* fortm singin */
   .form-control {
-    height: 48px;
+    height: 45px;
     background: rgba(0, 0, 0, 0.05);
     color: #000;
     font-size: 16px;
@@ -220,7 +222,10 @@
     padding-right: 20px;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
+    margin-top: 10px;
+    margin-bottom: 35px;
   }
+
   .form-group .label {
     font-size: 12px;
     text-transform: uppercase;
@@ -228,31 +233,37 @@
     color: #000;
     font-weight: 700;
   }
+
   .text-login {
     line-height: 1.5;
     font-weight: 500;
     color: #000;
     padding-left: 20px;
   }
+
   .text-cadastro {
     line-height: 1.5;
     font-weight: 500;
     color: #000;
     padding-bottom: 20px;
   }
+
   .estilo-botao-details {
-    background-color: #edd29a;
+    background-image: linear-gradient(to left, #ff425b, #c42252);
     border: none;
     font-weight: 700;
   }
+
   .estilo-botao-details:hover {
-    background-color: #edd29a;
+    background-image: linear-gradient(to left, #bd616d, #9e596e);
     border: none;
     font-weight: 700;
   }
+
   .estiloBotaoDetails {
     margin-top: 20px;
   }
+
   .text-muted {
     font-size: 16px;
     line-height: 1.8;
@@ -262,6 +273,18 @@
     letter-spacing: 1px;
   }
 
+  .estilo-botao:hover {
+    background-image: linear-gradient(to left, #935561, #aa4938);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+  }
+  .estilo-botao-desable {
+    background-image: linear-gradient(to left, #4f2821, #aa4938);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+  }
   /* FOOTER */
   footer {
     position: center;
@@ -274,7 +297,7 @@
     background-color: #edd29a;
     color: white;
   }
-  footer.rodape{
+  footer.rodape {
     overflow: hidden;
   }
   /* conteudo redes sociais */
@@ -414,6 +437,7 @@
     text-align: left;
     width: 100%;
   }
+
   .colunadetalhe1 {
     width: 100%;
     margin-left: 15px !important;

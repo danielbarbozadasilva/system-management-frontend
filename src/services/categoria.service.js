@@ -11,3 +11,5 @@ export const removeCategory = (id) => http.delete(`/categoria/${id}`)
 
 export const categoryCreate = (data, config = {}) =>
   http.post('/categoria', data, config)
+
+

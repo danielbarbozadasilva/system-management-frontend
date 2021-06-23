@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProdutoPorCategoria } from '../../../store/produto/produto.action'
+import { getAll, getProducts } from '../../../store/produto/produto.action'
 import CardProduto from '../../../components/portal/card/card_produto'
 
 import Loading from '../../../components/portal/loading'
@@ -15,17 +15,15 @@ function Produtos(props) {
   const dispatch = useDispatch()
 
   const id = props.id
+  const nameFilter = props.nameFilter
 
-  const navigate = async () => {
-    if (id) {
-      await dispatch(getProdutoPorCategoria(id))
-    }
+  const getDados = async (id, nameFilter) => {
+      await dispatch(getProducts(id, nameFilter))
   }
 
   useEffect(() => {
-    navigate()
+    getDados(id, nameFilter)
   }, []) // [] - executa uma única vez
-
 
   // const filtrarProd = () => {
   //   return produtos.map((item) => {

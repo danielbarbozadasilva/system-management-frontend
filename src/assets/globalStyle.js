@@ -12,29 +12,11 @@ const GlobalStyle = createGlobalStyle`
     font-family: "Nunito", Helvetica, Arial, Lucida, sans-serif;
 }
 
+
 #root {
     display: flex;
     flex-direction: column;
     height: 100vh;    
-}
-
-.estilo-botao{
-    background-image: linear-gradient(to left, #4F2821, #aa4938);
-    border: none;
-    color: #fff;
-    font-weight: 700;
-}
-.estilo-botao:hover{
-    background-image: linear-gradient(to left, #935561, #aa4938);
-    border: none;
-    color: #fff;
-    font-weight: 700;   
-}
-.estilo-botao-desable{
-    background-image: linear-gradient(to left, #4F2821, #aa4938);
-    border: none;
-    color: #fff;    
-    font-weight: 700;
 }
 
 `
