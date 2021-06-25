@@ -10,7 +10,10 @@ import {
   Alert,
   Button,
   Spinner,
-  FormFeedback
+  FormFeedback,
+  Col,
+  Container,
+  Row
 } from 'reactstrap'
 import { Select } from '@material-ui/core'
 
@@ -73,18 +76,18 @@ const SignUpCliente = () => {
         }
         break
 
-        // case 'nascimento':
-        //   const datanasc = valor.replaceAll('-', '/')
+      // case 'nascimento':
+      //   const datanasc = valor.replaceAll('-', '/')
 
-        //   const dataAtual = moment().format('YYYY/MM/DD')
+      //   const dataAtual = moment().format('YYYY/MM/DD')
 
-        //   if (!moment(datanasc).isValid) {
-        //     menssage += 'Data inválida!'
-        //   } else if (moment(datanasc).isAfter(dataAtual)) {
-        //     menssage += 'Data maior que a atual!'
-        //   }
+      //   if (!moment(datanasc).isValid) {
+      //     menssage += 'Data inválida!'
+      //   } else if (moment(datanasc).isAfter(dataAtual)) {
+      //     menssage += 'Data maior que a atual!'
+      //   }
 
-        //   break
+      //   break
 
       case 'email':
         var filtraEmail =
@@ -137,172 +140,184 @@ const SignUpCliente = () => {
   }, [error, registered])
 
   return (
-    <>
-      <div className="colunasFormularios">
-        <div className="coluna1">
-          <h2 tag="h4" className="text-cadastro">
-            Cadastre-se
-          </h2>
-          <FormGroup>
-            <Label htmlFor="nome" className="label">
-              Nome:
-            </Label>
-            <Input
-              invalid={!formValidate.nome}
-              disabled={loading}
-              type="text"
-              name="nome"
-              id="nome"
-              onChange={HandleChange}
-              value={form.nome || ''}
-              placeholder="Informe o seu nome:"
-              minLength="10"
-              maxLength="32"
-            />
-            <FormFeedback>{formValidate.nome || ''}</FormFeedback>
-          </FormGroup>
+    <Container>
+  <Row className="justify-content-lg-center">
+      <Col sm={12} md={12} lg={12}>
+        <div className="colunasFormularios">
+          <div className="coluna1">
+            <h2 tag="h4" className="text-cadastro">
+              Cadastre-se
+            </h2>
+            <FormGroup>
+              <Label htmlFor="nome" className="label">
+                Nome:
+              </Label>
+              <Input
+                invalid={!formValidate.nome}
+                disabled={loading}
+                type="text"
+                name="nome"
+                id="nome"
+                onChange={HandleChange}
+                value={form.nome || ''}
+                placeholder="Informe o seu nome:"
+                minLength="10"
+                maxLength="32"
+              />
+              <FormFeedback>{formValidate.nome || ''}</FormFeedback>
+            </FormGroup>
 
-          <FormGroup>
-            <Label htmlFor="nascimento" className="label">
-              Data de Nascimento:
-            </Label>
-            <Input
-              invalid={!!formValidate.nascimento}
-              disabled={loading}
-              type="date"
-              name="nascimento"
-              id="nascimento"
-              onChange={HandleChange}
-              value={form.nascimento || ''}
-            />
-            <FormFeedback>{formValidate.nascimento || ''}</FormFeedback>
-          </FormGroup>
+            <FormGroup>
+              <Label htmlFor="nascimento" className="label">
+                Data de Nascimento:
+              </Label>
+              <FormGroup>
+                <Label htmlFor="nascimento">Data da oficina</Label>
+                <Input
+                  type="date"
+                  id="nascimento"
+                  value={form.nascimento || ''}
+                  onChange={HandleChange}
+                  name="nascimento"
+                  invalid={formValidate.nascimento ? true : false}
+                  disabled={loading}
+                />
+                <FormFeedback>{formValidate.nascimento || ''}</FormFeedback>
+              </FormGroup>
+            </FormGroup>
 
-          <FormGroup variant="outlined" fullWidth size="medium" margin="normal">
-            <Label htmlFor="uf" className="label">
-              UF:
-            </Label>
-            <Select
-              native
-              value={form.uf || ''}
-              onChange={HandleChange}
-              inputProps={{
-                name: 'uf',
-                id: 'outlined-native-simple'
-              }}
-            >
-              <option value="">Uf</option>
-              {uf?.map(({ nome, sigla }, i) => (
-                <option key={i} value={sigla}>
-                  {sigla}
-                </option>
-              ))}
-              <FormFeedback>{formValidate.uf || ''}</FormFeedback>
-            </Select>
-          </FormGroup>
-
-          <FormGroup
-            variant="outlined"
-            size="small"
-            fullWidth
-            margin="normal"
-            disabled={!form.uf}
-          >
-            <Select
+            <FormGroup
+              variant="outlined"
               fullWidth
-              native
-              value={form.cidade || ''}
-              onChange={HandleChange}
-              inputProps={{
-                name: 'cidade',
-                id: 'outlined-native-simple'
-              }}
+              size="medium"
+              margin="normal"
             >
-              <option value="">Cidade</option>
+              <Label htmlFor="uf" className="label">
+                UF:
+              </Label>
+              <Select
+                native
+                value={form.uf || ''}
+                onChange={HandleChange}
+                inputProps={{
+                  name: 'uf',
+                  id: 'outlined-native-simple'
+                }}
+              >
+                <option value="">Uf</option>
+                {uf?.map(({ nome, sigla }, i) => (
+                  <option key={i} value={sigla}>
+                    {sigla}
+                  </option>
+                ))}
+                <FormFeedback>{formValidate.uf || ''}</FormFeedback>
+              </Select>
+            </FormGroup>
 
-              {cidades?.map((cidade, i) => (
-                <option key={i} value={cidade}>
-                  {cidade}
-                </option>
-              ))}
-            </Select>
-          </FormGroup>
-        </div>
-        <div className="coluna2">
-          <FormGroup>
-            <Label htmlFor="email" className="label">
-              E-mail:
-            </Label>
-            <Input
-              invalid={!formValidate.email}
-              disabled={loading}
-              type="email"
-              name="email"
-              id="email"
-              onChange={HandleChange}
-              value={form.email || ''}
-              placeholder="Informe seu E-mail"
-            />
-            <FormFeedback>{formValidate.email || ''}</FormFeedback>
-          </FormGroup>
+            <FormGroup
+              variant="outlined"
+              size="small"
+              fullWidth
+              margin="normal"
+              disabled={!form.uf}
+            >
+              <Select
+                fullWidth
+                native
+                value={form.cidade || ''}
+                onChange={HandleChange}
+                inputProps={{
+                  name: 'cidade',
+                  id: 'outlined-native-simple'
+                }}
+              >
+                <option value="">Cidade</option>
 
-          <FormGroup>
-            <Label htmlFor="senha" className="label">
-              Senha:
-            </Label>
-            <Input
-              invalid={!formValidate.senha}
-              disabled={loading}
-              type="password"
-              name="senha"
-              id="senha"
-              onChange={HandleChange}
-              value={form.senha || ''}
-              placeholder="Informe sua senha"
-              minLength="6"
-              maxLength="10"
-            />
-            <FormFeedback>{formValidate.senha || ''}</FormFeedback>
-          </FormGroup>
+                {cidades?.map((cidade, i) => (
+                  <option key={i} value={cidade}>
+                    {cidade}
+                  </option>
+                ))}
+              </Select>
+            </FormGroup>
+          </div>
+          <div className="coluna2">
+            <FormGroup>
+              <Label htmlFor="email" className="label">
+                E-mail:
+              </Label>
+              <Input
+                invalid={!formValidate.email}
+                disabled={loading}
+                type="email"
+                name="email"
+                id="email"
+                onChange={HandleChange}
+                value={form.email || ''}
+                placeholder="Informe seu E-mail"
+              />
+              <FormFeedback>{formValidate.email || ''}</FormFeedback>
+            </FormGroup>
 
-          <Button
-            id="botaoFormulario"
-            className={
-              isNotValid() || loading ? 'estilo-botao-desable' : 'estilo-botao'
-            }
-            disabled={isNotValid()}
-            size="md"
-            block
-            onClick={SubmitForm}
-          >
-            {loading
-              ? (
+            <FormGroup>
+              <Label htmlFor="senha" className="label">
+                Senha:
+              </Label>
+              <Input
+                invalid={!formValidate.senha}
+                disabled={loading}
+                type="password"
+                name="senha"
+                id="senha"
+                onChange={HandleChange}
+                value={form.senha || ''}
+                placeholder="Informe sua senha"
+                minLength="6"
+                maxLength="10"
+              />
+              <FormFeedback>{formValidate.senha || ''}</FormFeedback>
+            </FormGroup>
+
+            <Button
+              id="botaoFormulario"
+              className={
+                isNotValid() || loading
+                  ? 'estilo-botao-desable'
+                  : 'estilo-botao'
+              }
+              disabled={isNotValid()}
+              size="md"
+              block
+              onClick={SubmitForm}
+            >
+              {loading ? (
                 <>
                   <Spinner size="sm" color="light" /> Carregando...
                 </>
-                )
-              : (
-                  'Cadastrar'
-                )}
-          </Button>
-          <Alert
-            color="success"
-            isOpen={success}
-            toggle={() => setSuccess(!success)}
-          >
-            <div>
-              <strong>Usuario </strong> cadastrado com sucesso.
-            </div>
-          </Alert>
-          <Alert color="danger" isOpen={hasError} toggle={closeError}>
-            <div>
-              <strong>OPS !! </strong> Aconteceu um erro.
-            </div>
-            <small>Verifique seus dados.</small>
-          </Alert>
+              ) : (
+                'Cadastrar'
+              )}
+            </Button>
+            <Alert
+              color="success"
+              isOpen={success}
+              toggle={() => setSuccess(!success)}
+            >
+              <div>
+                <strong>Usuario </strong> cadastrado com sucesso.
+              </div>
+            </Alert>
+            <Alert color="danger" isOpen={hasError} toggle={closeError}>
+              <div>
+                <strong>OPS !! </strong> Aconteceu um erro.
+              </div>
+              <small>Verifique seus dados.</small>
+            </Alert>
+          </div>
         </div>
-      </div>
-    </>
+      </Col>
+      </Row>
+      </Container>
   )
 }
 

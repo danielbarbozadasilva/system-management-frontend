@@ -27,7 +27,7 @@ export const remove = (id) => http.delete(`${baseUrl}/${id}`)
 export const create = (fornecedorId, data, config = {}) =>
   http.post(`fornecedor/${fornecedorId}/produto`, data, config)
 
-// export const getAllProdutoCategoria = (id) =>
-//   http.get(`/categoria/advanced/${id}`)
+export const getAllProdutoCategoria = (id) =>
+  http.get(`/categoria/advanced/${id}`)
 export const getCategoryProduct = (id, nameFilter) =>
   http.get(`/categoria/${id}/produto`)
