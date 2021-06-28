@@ -1,10 +1,10 @@
 import {
   create as createProduto,
-  getAll as getAllProduto,
-  remove as removeProduto,
+  getAll as getAllProduto
 } from '~/services/produto.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
+import { removeProduto } from '~/services/fornecedor.service'
 
 export const create = (data) => {
   return async (dispatch, getState) => {
@@ -34,40 +34,28 @@ export const create = (data) => {
       toastr.success('Produto', 'Produto cadastrado com sucesso')
       dispatch(getAll())
     } catch (error) {
-      toastr.error('Produto', 'deu ruim')
+      toastr.error('Produto', 'Ocorreu um erro ao cadastrar o produto!')
     }
   }
 }
-export const getAll = () => {
+export const getAll = (query = null) => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
-      const result = await getAllProduto()
+      const result = await getAllProduto(query)
+      console.log('result', result)
       dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
   }
 }
-
-// export const obterProduto = (id) => {
-//   return async (dispatch) => {
-//     try {
-//       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
-//       const result = await getAllProdutoCategoria(id)
-//       dispatch({ type: TYPES.PRODUTO_ALL, data: result.data })
-//     } catch (error) {
-//       toastr.error('aconteceu um erro', error)
-//     }
-//   }
-// }
-
-export const remove = (id) => {
+export const remove = ({ id: ProdutoId, fornecedorId }) => {
   return async (dispatch) => {
     try {
-      const result = await removeProduto(id)
+      const result = await removeProduto(fornecedorId, ProdutoId)
       dispatch({ type: TYPES.PRODUTO_EDIT, data: result.data })
-      toastr.success('Categoria', 'Removido com sucesso')
+      toastr.success('Produto', 'Removido com sucesso')
       dispatch(getAll())
     } catch (error) {
       toastr.error('aconteceu um erro', error)
@@ -75,16 +63,17 @@ export const remove = (id) => {
     }
   }
 }
-export const getProducts = (id, nameFilter) => {
-  return async (dispatch) => {
-    try {
-      const params = { [nameFilter]: id }
-      dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
-      console.log(params)
-      const result = await getAllProduto(params)
-      dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
-    } catch (error) {
-      toastr.error('aconteceu um erro', error)
+
+  export const getProducts = (id, nameFilter) => {
+    return async (dispatch) => {
+      try {
+        const params = { [nameFilter]: id }
+        dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
+        console.log(params)
+        const result = await getAllProduto(params)
+        dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
+      } catch (error) {
+        toastr.error('aconteceu um erro', error)
+      }
     }
-  }
 }

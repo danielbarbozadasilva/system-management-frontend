@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback } from 'react'
 import { Grid, CssBaseline } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
-
 import Title from '~/components/title'
 import DataList from '~/components/datagrid'
 
@@ -24,8 +23,33 @@ function Cliente() {
   const columns = [
     { field: 'nome', headerName: 'Nome', flex: 1, disableColumnMenu: true },
     {
-      field: 'nascimento',
-      headerName: 'Nascimento',
+      field: 'data_nascimento',
+      headerName: 'Data de nascimento',
+      flex: 1,
+      disableColumnMenu: true
+    },
+    {
+      field: 'email',
+      headerName: 'E-mail',
+      flex: 1,
+      disableColumnMenu: true
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
+      flex: 1,
+      disableColumnMenu: true
+    }
+    ,
+    {
+      field: 'uf',
+      headerName: 'Uf',
+      flex: 1,
+      disableColumnMenu: true
+    },
+    {
+      field: 'cidade',
+      headerName: 'Cidade',
       flex: 1,
       disableColumnMenu: true
     }

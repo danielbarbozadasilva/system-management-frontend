@@ -51,7 +51,7 @@ export default function Dashboard(props) {
     },
     toolbar: {
       paddingRight: 24,
-      backgroundColor: tipoUsuario ? userDefinition[tipoUsuario].cor : '#666'
+      backgroundColor: tipoUsuario ? userDefinition[tipoUsuario].cor : '#666' 
     },
     toolbarText: {
       display: 'flex',
@@ -95,6 +95,7 @@ export default function Dashboard(props) {
     },
     drawerPaper: {
       position: 'relative',
+      whiteSpace: 'nowrap',
       width: drawerWidth,
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
@@ -180,6 +181,7 @@ export default function Dashboard(props) {
             component="h1"
             variant="h6"
             color="inherit"
+            noWrap
             className={classes.title}
           >
             {tipoUsuario ? userDefinition[tipoUsuario].titulo : ''}
@@ -188,12 +190,13 @@ export default function Dashboard(props) {
             component="h4"
             variant="h6"
             color="inherit"
+            noWrap
             className={classes.user}
           >
             <AccountCircleIcon className={classes.userIcon} />
             {nome}
-            <Button id="icon-text-signout" onClick={handleLogout}>
-              <PowerSettingsNew id="icon-signout" className={classes.userIcon} />
+            <Button onClick={handleLogout}>
+              <PowerSettingsNew className={classes.userIcon} />
               Sair
             </Button>
           </Typography>
@@ -208,7 +211,7 @@ export default function Dashboard(props) {
       >
         <Divider />
         <Toolbar className={classes.toolbar}>
-          <div id="menuTextDash" className={classes.toolbarText}>Menu Principal</div>
+          <div className={classes.toolbarText}>Menu Principal</div>
           <div className={classes.toolbarIcon} />
           <Hidden smUp>
             <div className={classes.toolbarIcon}>

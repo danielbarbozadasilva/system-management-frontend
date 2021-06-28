@@ -4,7 +4,6 @@ import CardFornecedor from '../../../components/portal/card/card_fornecedor'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
-import BuscarFornecedor from '../../../components/portal/busca/buscar_fornecedor'
 import { getAll, obterProdutosPorFornecedor } from '../../../store/fornecedor/fornecedor.action'
 
 function Fornecedor(props) {
@@ -41,8 +40,6 @@ function Fornecedor(props) {
 
   return (
     <>
-      {/* getAll */}
-      <BuscarFornecedor getFornecedorByName={(nome) => console.log(nome)} />
       <BoxFornecedor>
         {!loading && fornecedor.length === 0 ? 'Não há Fornecedor disponivel' : MapearFornecedor(fornecedor)}
       </BoxFornecedor>

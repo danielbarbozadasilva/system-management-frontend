@@ -12,7 +12,6 @@ import FornecedorReducer from './fornecedor/fornecedor.reducer'
 import ProdutoReducer from './produto/produto.reducer'
 import ClienteReducer from './cliente/cliente.reducer'
 
-// Importação dos Reduces
 const reducers = combineReducers({
   auth: SignReducer,
   toastr: toastrReducer,
@@ -22,14 +21,9 @@ const reducers = combineReducers({
   cliente: ClienteReducer
 })
 
-// middlewares de redux
 const middlewares = [thunk, multi]
 
-// compose junta os middlewares e ferramentas de debug
-
 const compose = composeWithDevTools(applyMiddleware(...middlewares))
-
-// criar a store do redux
 
 const store = createStore(reducers, compose)
 

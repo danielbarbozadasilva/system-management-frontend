@@ -42,7 +42,7 @@ const Form = ({ submit, ...props }) => {
     }
     submit(newForm)
   }
-
+  
   const removeImage = () => {
     delete form.imagem
     setForm(form)

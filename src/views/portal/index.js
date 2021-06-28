@@ -60,20 +60,6 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: SignIn
-  }, {
-    title: 'ViewsProduto',
-    icons: '',
-    route: '/produto/:nameFilter/:id',
-    visibleMenu: true,
-    enabled: true,
-    component: ViewsProduto
-  }, {
-    title: 'ViewsFornecedor',
-    icons: '',
-    route: '/fornecedor/:id',
-    visibleMenu: true,
-    enabled: true,
-    component: ViewsFornecedor
   }
 ]
 

@@ -1,9 +1,6 @@
 import {
   create as clienteCreate,
   getAll as getAllcliente,
-  getbyId as getclienteById,
-  update as updatecliente,
-  remove as removecliente
 } from '~/services/cliente.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -13,10 +10,10 @@ export const create = (data) => {
   return async (dispatch) => {
     try {
       const result = await clienteCreate(data)
-      toastr.success('cliente', 'cliente cadastrada com sucesso')
+      toastr.success('Cliente', 'Cliente cadastrado com sucesso')
       navigate('/signin')
     } catch (error) {
-      toastr.error('cliente', 'deu ruim')
+      toastr.error('Cliente', 'Preencha todos os campos!')
     }
     console.log('disparar...', data)
   }
@@ -42,7 +39,7 @@ export const getAll = () => {
     try {
       dispatch({ type: TYPES.CLIENTE_LOADING, status: true })
       const result = await getAllcliente()
-      dispatch({ type: TYPES.CLIENTE_ALL, data: result.data.data })
+      dispatch({ type: TYPES.CLIENTE_ALL, data: result.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }

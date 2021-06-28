@@ -1,27 +1,27 @@
-// imports
 import React from 'react'
 import { Router, Redirect } from '@reach/router'
-// views
-import ViewPortal from '~/views/portal'
-import ViewAdmin from '~/views/admin/'
+import AdminView from '~/views/admin/'
+import PortalView from '~/views/portal'
+import SignIn from './views/auth/signin'
 import { isAuthenticated } from './config/storage'
+import FornecedorNovo from '~/views/auth/singup-fornecedor'
+import ClientNovo from '~/views/auth/singup-cliente'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   if (!isAuthenticated()) {
     return <Redirect to="/signin" noThrow />
   }
-  // Caso NÃO esteja autendicado retorna um redirect
-  /* Ao ADICIONAR noThrow e Redirect ele redirecionará sem usar
-         'componentDidCatch'(registra informações de erro) */
-
   return <Component {...rest} />
-} // Caso LOGADO, INJETO O COMPONENTE
+}
 
 const Routers = () => (
   <>
     <Router>
-      <ViewPortal path="/*" />
-      <PrivateRoute component={ViewAdmin} path="/admin/*" />
+      <SignIn path="signin" />
+      <FornecedorNovo path="singup-fornecedor" />
+      <ClientNovo path="singup-cliente" />
+      <PortalView path="/*" />
+      <PrivateRoute component={AdminView} path="/admin/*" />
     </Router>
   </>
 )

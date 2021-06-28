@@ -8,13 +8,13 @@ import Routers from './routers'
 import { Helmet } from 'react-helmet'
 import ReduxToastr from './components/redux-toastr'
 import './assets/css/style.css'
-import GlobalStyle from './assets/globalStyle'
+import GlobalStyle from './config/globalStyled'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 import { ThemeProvider } from 'styled-components'
 import theme from './plugins/theme'
 
-const googleFont = 'https://fonts.googleapis.com/css2?family=Lato&display=swap'
+const googleFont = 'https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap'
 
 ReactDOM.render(
   <Provider store={store}>

@@ -36,7 +36,6 @@ const Form = ({ submit, ...props }) => {
   const handleSubmit = () => {
     submit(form)
   }
-
   const removeImage = () => {
     delete form.imagem
     setForm(form)

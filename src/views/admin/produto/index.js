@@ -8,22 +8,25 @@ import {
 } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { FiTrash2 } from 'react-icons/fi'
+import { MdStar } from 'react-icons/md'
 
 import Title from '~/components/title'
 import DialogModal from '~/components/dialog'
 import DataList from '~/components/datagrid'
 import {
   getAll as getAllProdutos,
-  create as createProduto
+  create as createProduto,
+  remove as removeProduto
 } from '~/store/produto/produto.action'
 import { getAll as getAllCategories } from '~/store/categoria/categoria.action'
+import { likeProduto } from '~/store/fornecedor/fornecedor.action'
 import FormProduto from '~/components/admin/produto/form'
 
 const Produto = () => {
   const dispatch = useDispatch()
   const [modalForm, setModalForm] = React.useState(false)
   const [modal, setModal] = React.useState({})
-
+  const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
   const produtos = useSelector((state) => state.produto.all)
   const loading = useSelector((state) => state.categoria.loading)
   const selected = useSelector((state) => state.categoria.selected)
@@ -37,16 +40,33 @@ const Produto = () => {
     callStart()
   }, [callStart])
 
-  const actionModal = ({ id }) => {
-    return (
-      <IconButton
-        onClick={() => console.log('remover')}
-        color="primary"
-        size="small"
-      >
-        <FiTrash2 />
-      </IconButton>
-    )
+  function likeFornecedor(row) {
+    dispatch(likeProduto(row))
+  }
+
+  function remove(produto) {
+    dispatch(removeProduto(produto))
+  }
+
+  const actionModal = ({ id, row }) => {
+    console.log(tipoUsuario)
+    if (tipoUsuario < 3) {
+      return (
+        <IconButton onClick={() => remove(row)} color="primary" size="small">
+          <FiTrash2 />
+        </IconButton>
+      )
+    } else {
+      return (
+        <IconButton
+          onClick={() => likeFornecedor(row)}
+          color="primary"
+          size="small"
+        >
+          <MdStar />
+        </IconButton>
+      )
+    }
   }
 
   const viewImageColumn = (props) => {

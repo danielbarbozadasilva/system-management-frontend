@@ -35,9 +35,8 @@ export const create = (data) => {
       toastr.success('Categoria', 'Categoria cadastrada com sucesso')
       dispatch(getAll())
     } catch (error) {
-      toastr.error('Categoria', 'deu ruim')
+      toastr.error('Categoria', 'Preencha todos os campos!')
     }
-    console.log('disparar...', data)
   }
 }
 
