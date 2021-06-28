@@ -6,7 +6,7 @@ const Toastr = () => (
     newestOnTop={false}
     preventDuplicates
     position="top-right"
-    getState={(state) => state.toastr} 
+    getState={(state) => state.toastr}
     transitionIn="bounceIn"
     transitionOut="fadeOut"
     progressBar

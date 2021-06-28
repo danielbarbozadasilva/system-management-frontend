@@ -5,7 +5,6 @@ import TYPES from '~/store/types'
 import { navigate } from '@reach/router'
 import { toastr } from 'react-redux-toastr'
 
-
 export const signInAction = (data) => {
   return (dispatch) => {
     dispatch({ type: TYPES.SIGN_LOADING, status: true })

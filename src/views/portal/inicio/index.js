@@ -6,7 +6,6 @@ import { Col, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from '../../../store/categoria/categoria.action'
 import '../../../assets/css/style.css'
-
 const Inicio = () => {
   const dispatch = useDispatch()
 

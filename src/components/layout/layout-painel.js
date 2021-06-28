@@ -51,7 +51,7 @@ export default function Dashboard(props) {
     },
     toolbar: {
       paddingRight: 24,
-      backgroundColor: tipoUsuario ? userDefinition[tipoUsuario].cor : '#666' 
+      backgroundColor: tipoUsuario ? userDefinition[tipoUsuario].cor : '#666'
     },
     toolbarText: {
       display: 'flex',

@@ -9,9 +9,6 @@ import { Router } from '@reach/router'
 
 import Layout from '~/components/layout'
 
-import ViewsProduto from '~/views/portal/produto/index'
-import ViewsFornecedor from '~/views/portal/fornecedor/index'
-
 const Menu = [
   {
     title: 'Home',

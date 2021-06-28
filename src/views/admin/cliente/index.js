@@ -39,8 +39,7 @@ function Cliente() {
       headerName: 'Status',
       flex: 1,
       disableColumnMenu: true
-    }
-    ,
+    },
     {
       field: 'uf',
       headerName: 'Uf',

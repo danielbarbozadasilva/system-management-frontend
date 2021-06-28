@@ -55,7 +55,7 @@ const SignUpCliente = () => {
   }, [form.uf])
 
   const formValidarCampo = (nome, valor) => {
-    var menssage = ''
+    let menssage = ''
     switch (nome) {
       case 'nome':
         var nomeregex = /\d/g
@@ -176,7 +176,7 @@ const SignUpCliente = () => {
                   Nome
                 </Label>
                 <Input
-                  invalid={formValidate.nome ? true : false}
+                  invalid={formValidate.nome}
                   disabled={loading}
                   type="text"
                   id="nome"
@@ -186,6 +186,8 @@ const SignUpCliente = () => {
                   placeholder="Insira o seu nome"
                   minLength="10"
                   maxLength="32"
+                  autoFocus
+                  required
                 />
                 <FormFeedback>{formValidate.nome || ''}</FormFeedback>
               </FormGroup>
@@ -195,15 +197,15 @@ const SignUpCliente = () => {
                   Data de data_nascimento
                 </Label>
                 <Input
-                  invalid={formValidate.data_nascimento ? true : false}
+                  invalid={formValidate.data_nascimento}
                   disabled={loading}
                   type="date"
                   id="data_nascimento"
                   value={
                     form.data_nascimento
                       ? moment(form.data_nascimento)
-                          .format('YYYY/MM/DD')
-                          .replaceAll('/', '-')
+                        .format('YYYY/MM/DD')
+                        .replaceAll('/', '-')
                       : ''
                   }
                   onChange={handleChange}
@@ -247,7 +249,6 @@ const SignUpCliente = () => {
                 size="small"
                 fullWidth
                 margin="normal"
-                disabled={!form.uf}
               >
                 <Select
                   fullWidth
@@ -276,7 +277,7 @@ const SignUpCliente = () => {
                   E-mail
                 </Label>
                 <Input
-                  invalid={formValidate.email ? true : false}
+                  invalid={formValidate.email}
                   disabled={loading}
                   type="email"
                   id="email"
@@ -293,7 +294,7 @@ const SignUpCliente = () => {
                   Senha:
                 </Label>
                 <Input
-                  invalid={formValidate.senha ? true : false}
+                  invalid={formValidate.senha}
                   disabled={loading}
                   type="password"
                   name="senha"
@@ -308,7 +309,7 @@ const SignUpCliente = () => {
               </FormGroup>
 
               <Button
-                className="botaoFormulario"
+                id="botaoFormulario"
                 className={
                   isNotValid() || loading
                     ? 'estilo-botao-desable'
@@ -319,13 +320,15 @@ const SignUpCliente = () => {
                 block
                 onClick={InserirDados}
               >
-                {loading ? (
-                  <>
-                    <Spinner size="sm" color="light" /> Carregando...
-                  </>
-                ) : (
-                  'Cadastrar'
-                )}
+                {loading
+                  ? (
+                    <>
+                      <Spinner size="sm" color="light" /> Carregando...
+                    </>
+                    )
+                  : (
+                      'Cadastrar'
+                    )}
               </Button>
               <Alert
                 color="success"

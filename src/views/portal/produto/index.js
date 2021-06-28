@@ -22,7 +22,7 @@ function Produtos(props) {
 
   useEffect(() => {
     getDados(id, nameFilter)
-  }, []) 
+  }, [])
 
   const MapearProdutos = (produtos) => produtos.map((item, i) => (
     <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>

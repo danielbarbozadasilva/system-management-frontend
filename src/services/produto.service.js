@@ -29,7 +29,7 @@
 
 // export const getAllProdutoCategoria = (id) =>
 //   http.get(`/categoria/advanced/${id}`)
-  
+
 // export const getCategoryProduct = (id, nameFilter) =>
 //   http.get(`/categoria/${id}/produto`)
 

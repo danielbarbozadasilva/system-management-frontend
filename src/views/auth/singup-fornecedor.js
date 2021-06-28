@@ -1,105 +1,320 @@
 import React, { useEffect, useState } from 'react'
-import Button from '@material-ui/core/Button'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import TextField from '@material-ui/core/TextField'
-import { Link } from '@reach/router'
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
-import UfCidade from '~/util/estados-cidades.json'
-
-import { create as createCliente } from '~/store/cliente/cliente.action'
+import { create as FornecedorCreate } from '~/store/fornecedor/fornecedor.action'
 import { useDispatch, useSelector } from 'react-redux'
-import { SignBox, FormStyle, Submit, LoadingSubmit } from './styles'
-import { FormControl, Select } from '@material-ui/core'
-import InputMask from 'react-input-mask'
+import '../../assets/css/style.css'
+import {
+  FormGroup,
+  Label,
+  Input,
+  Alert,
+  Button,
+  Spinner,
+  FormFeedback,
+  Row,
+  Container,
+  Col
+} from 'reactstrap'
+import { Select } from '@material-ui/core'
+import ufcidade from '~/util/estados-cidades.json'
+import { ValidarCNPJ } from './validarCNPJ'
 
-const ClienteNovo = () => {
+const SignUpFornecedor = () => {
   const dispatch = useDispatch()
-  const [uf, setUf] = useState([])
-  const [cidades, setCidade] = useState([])
-  const [form, setForm] = useState({})
+
+  const [hasError, setHasError] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const error = useSelector((state) => state.auth.error)
+  const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
+  const [uf, setuf] = useState([])
+  const [cidades, setcidade] = useState([])
+  const [formValidate, setFormValidate] = useState({})
+  const [form, setForm] = useState({})
+  const [desableInit, setDesableInit] = useState(true)
 
   const handleChange = (props) => {
+    setDesableInit(false)
     const { value, name } = props.target
+    formValidarCampo(name, value)
     setForm({
       ...form,
       [name]: value
     })
   }
 
-  const submitForm = () => {
-    dispatch(createCliente(form))
-  }
-
   useEffect(() => {
-    const estados = UfCidade.estados.map(({ nome, sigla }) => ({ nome, sigla }))
-    setUf(estados)
+    const estados = ufcidade.estados.map(({ nome, sigla }) => ({ nome, sigla }))
+    setuf(estados)
   }, [])
 
   useEffect(() => {
-    const result = UfCidade.estados.find((item) => item.sigla === form.uf)
+    const result = ufcidade.estados.find((item) => item.sigla === form.uf)
     if (result) {
-      setCidade(result.cidades)
+      setcidade(result.cidades)
     }
   }, [form.uf])
 
+  const formValidarCampo = (nome, valor) => {
+    let menssage = ''
+    switch (nome) {
+      case 'nomeFantasia':
+        var nomeregex = /\d/g
+        if (nomeregex.test(valor)) {
+          menssage += 'Não pode conter números!'
+        } else if (valor.trim() == '') {
+          menssage += 'Não pode ser vazio!'
+        } else if (valor.length <= 10) {
+          menssage += 'Precisa ter mais que 10 caracteres!'
+        }
+        break
+
+      case 'cnpj':
+        const result_cnpj = ValidarCNPJ(valor)
+
+        if (!result_cnpj) {
+          menssage += 'Cnpj inválido!'
+        }
+        break
+
+      case 'responsavel':
+        var nomeregex = /\d/g
+        if (nomeregex.test(valor)) {
+          menssage += 'Não pode conter números!'
+        } else if (valor.trim() == '') {
+          menssage += 'Não pode ser vazio!'
+        } else if (valor.length <= 10) {
+          menssage += 'Precisa ter mais que 10 caracteres!'
+        }
+        break
+
+      case 'telefone':
+        var filtraTelefone =
+          /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
+
+        if (!filtraTelefone.test(valor)) {
+          menssage += 'Número de telefone inválido!'
+        } else if (valor.replace(' ', '') == '') {
+          menssage += 'Campo em branco!'
+        }
+        break
+
+      case 'endereco':
+        if (valor === '') {
+          menssage += 'Campo em branco!'
+        } else if (valor.length < 8) {
+          menssage += 'Endereço precisa ter mais que 8 caracteres!'
+        }
+        break
+
+      case 'uf':
+        const uf = valor
+
+        if (uf == 'uf') {
+          menssage += 'Selecione uma uf!'
+        }
+        break
+
+      case 'cidade':
+        const cidade = valor
+
+        if (cidade == 'cidade') {
+          menssage += 'Selecione uma cidade!'
+        }
+        break
+
+      case 'email':
+        var filtraEmail =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+        if (!filtraEmail.test(valor)) {
+          menssage += 'E-mail inválido!'
+        } else if (valor.replace(' ', '') == '') {
+          menssage += 'Campo em branco!'
+        }
+        break
+
+      case 'senha':
+        if (valor.length < 6) {
+          menssage += 'Não ter menos que 6 caracteres!'
+        }
+        break
+    }
+
+    setFormValidate({ ...formValidate, [nome]: menssage })
+  }
+
+  const closeError = () => setHasError(false)
+
+  const isNotValid = () => {
+    const inputs = [
+      'nomeFantasia',
+      'cnpj',
+      'responsavel',
+      'telefone',
+      'endereco',
+      'uf',
+      'cidade',
+      'email',
+      'senha'
+    ]
+    const invalid = (label) =>
+      !Object.keys(form).includes(label) || form[label].length === 0
+
+    const validacoes =
+      Object.values(formValidate).filter((item) => item !== '').length > 0
+
+    return inputs.some((item) => invalid(item)) || validacoes
+  }
+
+  useEffect(() => {
+    if (error.length > 0) {
+      setHasError(true)
+    } else {
+      setHasError(false)
+    }
+
+    if (registered) {
+      setSuccess(true)
+      setForm({})
+    }
+  }, [error, registered])
+
+  const InserirDados = () => {
+    const nform = {
+      nomeFantasia: form.nomeFantasia,
+      cnpj: form.cnpj,
+      responsavel: form.responsavel,
+      telefone: form.telefone,
+      endereco: form.endereco,
+      uf: form.uf,
+      cidade: form.cidade,
+      email: form.email,
+      senha: form.senha
+    }
+
+    dispatch(FornecedorCreate(nform)).then(() => {
+      setDesableInit(true)
+    })
+  }
+
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <SignBox>
-        <Typography component="h1" variant="h5">
-          Cadastro de Fornecedor
-        </Typography>
-        <FormStyle noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="nome"
-            label="Informe seu nome"
-            name="nome"
-            autoComplete="nome"
-            autoFocus
-            value={form.nome || ''}
-            onChange={handleChange}
-            disabled={loading}
-            size="small"
-          />
-          <InputMask
-            mask="99/99/9999"
-            value={form.nascimento || ''}
-            disabled={false}
-            maskChar=" "
-            onChange={handleChange}
-          >
-            {() => (
-              <TextField
+    <Container>
+      <Row className="justify-content-lg-center">
+        <Col sm={12} md={12} lg={12}>
+          <div className="colunasFormularios">
+            <div className="coluna1">
+              <h2 tag="h4" className="text-cadastro">
+                Cadastre-se
+              </h2>
+              <FormGroup>
+                <Label htmlFor="name" className="label">
+                  Nome Fantasia
+                </Label>
+                <Input
+                  invalid={formValidate.nomeFantasia}
+                  disabled={loading}
+                  type="text"
+                  id="nomeFantasia"
+                  value={form.nomeFantasia || ''}
+                  onChange={handleChange}
+                  name="nomeFantasia"
+                  placeholder="Insira o seu nome fantasia"
+                  minLength="10"
+                  maxLength="32"
+                />
+                <FormFeedback>{formValidate.nomeFantasia || ''}</FormFeedback>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="cnpj" className="label">
+                  cnpj:
+                </Label>
+
+                <Input
+                  invalid={formValidate.cnpj}
+                  disabled={loading}
+                  type="text"
+                  name="cnpj"
+                  id="cnpj"
+                  onChange={handleChange}
+                  value={form.cnpj || ''}
+                  placeholder="Informe o cnpj (apenas números)"
+                  maxLength="18"
+                  required
+                />
+                <FormFeedback>{formValidate.cnpj || ''}</FormFeedback>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="responsavel" className="label">
+                  Responsável
+                </Label>
+                <Input
+                  invalid={formValidate.responsavel}
+                  disabled={loading}
+                  type="text"
+                  id="nome"
+                  value={form.responsavel || ''}
+                  onChange={handleChange}
+                  name="responsavel"
+                  placeholder="Insira o nome do responsável"
+                  minLength="10"
+                  maxLength="32"
+                  required
+                />
+                <FormFeedback>{formValidate.responsavel || ''}</FormFeedback>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="telefone" className="label">
+                  Telefone
+                </Label>
+                <Input
+                  invalid={formValidate.telefone}
+                  disabled={loading}
+                  type="text"
+                  id="telefone"
+                  value={form.telefone || ''}
+                  onChange={handleChange}
+                  name="telefone"
+                  placeholder="Informe o telefone"
+                  minLength="8"
+                  maxLength="25"
+                  required
+                />
+                <FormFeedback>{formValidate.telefone || ''}</FormFeedback>
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor="endereco" className="label">
+                  Endereco
+                </Label>
+                <Input
+                  invalid={formValidate.endereco}
+                  disabled={loading}
+                  type="text"
+                  id="endereco"
+                  value={form.endereco || ''}
+                  onChange={handleChange}
+                  name="endereco"
+                  placeholder="Informe o endereço"
+                  minLength="8"
+                  maxLength="40"
+                  required
+                />
+                <FormFeedback>{formValidate.endereco || ''}</FormFeedback>
+              </FormGroup>
+            </div>
+
+            <div className="coluna2">
+            <FormGroup
                 variant="outlined"
-                margin="normal"
-                required
                 fullWidth
-                id="nascimento"
-                label="Informe sua data de nascimento"
-                name="nascimento"
-                autoComplete="nascimento"
-                autoFocus
-                value={form.nascimento || ''}
-                disabled={loading}
-                size="small"
-              />
-            )}
-          </InputMask>
-          <Grid container spacing={2}>
-            <Grid item sm={4} md={4} xl={4}>
-              <FormControl
-                variant="outlined"
-                fullWidth
-                size="small"
+                size="medium"
                 margin="normal"
               >
+                <Label htmlFor="uf" className="label">
+                  uf:
+                </Label>
                 <Select
                   native
                   value={form.uf || ''}
@@ -109,22 +324,21 @@ const ClienteNovo = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value="">Uf</option>
+                  <option value="">uf</option>
                   {uf?.map(({ nome, sigla }, i) => (
                     <option key={i} value={sigla}>
                       {sigla}
                     </option>
                   ))}
+                  <FormFeedback>{formValidate.uf || ''}</FormFeedback>
                 </Select>
-              </FormControl>
-            </Grid>
-            <Grid item sm={8} md={8} xl={8}>
-              <FormControl
+              </FormGroup>
+
+              <FormGroup
                 variant="outlined"
                 size="small"
                 fullWidth
                 margin="normal"
-                disabled={!form.uf}
               >
                 <Select
                   fullWidth
@@ -136,7 +350,7 @@ const ClienteNovo = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value="">Cidade</option>
+                  <option value="">cidade</option>
 
                   {cidades?.map((cidade, i) => (
                     <option key={i} value={cidade}>
@@ -144,73 +358,89 @@ const ClienteNovo = () => {
                     </option>
                   ))}
                 </Select>
-              </FormControl>
-            </Grid>
-          </Grid>
+                <FormFeedback>{formValidate.cidade || ''}</FormFeedback>
+              </FormGroup>
 
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Informe seu endereço de e-mail"
-            name="email"
-            autoComplete="email"
-            autoFocus
-            value={form.email || ''}
-            onChange={handleChange}
-            disabled={loading}
-            size="small"
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="senha"
-            label="Informe sua senha"
-            type="password"
-            id="senha"
-            autoComplete="current-password"
-            value={form.senha || ''}
-            onChange={handleChange}
-            disabled={loading}
-            size="small"
-          />
-          <Submit>
-            <Button
-              size="large"
-              className="buttonSubmit"
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              onClick={submitForm}
-              disabled={loading}
-            >
-              {loading ? <LoadingSubmit size={24} /> : 'Cadastrar'}
-            </Button>
-          </Submit>
-          <Grid container>
-            <Grid item>
-              Já possui cadastro?
-              <Link to="/signin" variant="body2">
-                &ensp;Faça o Login
-              </Link>
-            </Grid>
-          </Grid>
-        </FormStyle>
-      </SignBox>
+              <FormGroup>
+                <Label htmlFor="email" className="label">
+                  E-mail
+                </Label>
+                <Input
+                  invalid={formValidate.email}
+                  disabled={loading}
+                  type="email"
+                  id="email"
+                  value={form.email || ''}
+                  onChange={handleChange}
+                  name="email"
+                  placeholder="Insira seu email"
+                  required
+                />
+                <FormFeedback>{formValidate.email || ''}</FormFeedback>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor="senha" className="label">
+                  Senha:
+                </Label>
+                <Input
+                  invalid={formValidate.senha}
+                  disabled={loading}
+                  type="password"
+                  name="senha"
+                  id="senha"
+                  onChange={handleChange}
+                  value={form.senha || ''}
+                  placeholder="Informe sua senha"
+                  minLength="6"
+                  maxLength="10"
+                  required
+                />
+                <FormFeedback>{formValidate.senha || ''}</FormFeedback>
+              </FormGroup>
+
+              <Button
+                id="botaoFormulario"
+                className={
+                  isNotValid() || loading
+                    ? 'estilo-botao-desable'
+                    : 'estilo-botao'
+                }
+                disabled={isNotValid()}
+                size="md"
+                block
+                onClick={InserirDados}
+              >
+                {loading ? (
+                  <>
+                    <Spinner size="sm" color="light" /> Carregando...
+                  </>
+                ) : (
+                  'Cadastrar'
+                )}
+              </Button>
+              <Alert
+                color="success"
+                isOpen={success}
+                toggle={() => setSuccess(!success)}
+              >
+                <div>
+                  <strong>Fornecedor </strong> cadastrado com sucesso.
+                </div>
+                <div>Você será redirecionado em 5 segundos.</div>
+              </Alert>
+              <Alert color="danger" isOpen={hasError} toggle={closeError}>
+                <div>
+                  <strong>OPS !!! </strong> Aconteceu um erro.
+                </div>
+                <small>Verifique seus dados.</small>
+              </Alert>
+            </div>
+          </div>
+        </Col>
+      </Row>
     </Container>
   )
 }
 
-export default ClienteNovo
-
-// "nome": "teste",
-// "nascimento": "10/03/2012",
-// "uf": "RJ",
-// "cidade": "tanguá",
-// "email": "cliente@email.com",
-// "senha": "123123"
+export default SignUpFornecedor

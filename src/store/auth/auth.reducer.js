@@ -10,7 +10,6 @@ const INITIAL_STATE = {
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
-
   switch (action.type) {
     case TYPES.SIGN_LOADING:
       state.error = []
@@ -21,16 +20,16 @@ const reducer = (state = INITIAL_STATE, action) => {
       state.usuario = action.data.usuarioDTO
       state.loading = false
       return state
-    case TYPES.SIGN_UP: 
+    case TYPES.SIGN_UP:
       state.registered = true
       state.token = action.data.token
       state.usuario = action.data.usuario
       state.loading = false
       return state
-    case TYPES.SIGN_ERROR: 
+    case TYPES.SIGN_ERROR:
       state.loading = false
       return state
-    case TYPES.SIGN_OUT: 
+    case TYPES.SIGN_OUT:
       state.token = ''
       state.usuario = {}
       state.isAdmin = false

@@ -1,4 +1,4 @@
-import axios from 'axios' 
+import axios from 'axios'
 import { getToken } from './storage'
 import store from '../store'
 import { logoutAction } from '../store/auth/auth.action'
@@ -20,7 +20,6 @@ if (getToken()) {
 http.interceptors.response.use(
   (response) => response,
   (error) => {
-
     switch (error.response.status) {
       case 401:
         if (getToken()) {

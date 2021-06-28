@@ -3,10 +3,11 @@ import {
   getAll as getAllFornecedor,
   getbyId as getFornecedorById,
   update as updateFornecedor,
-  removeFornecedor as removeFornecedor,
+  removeFornecedor,
   obterListadeProduto,
   ativarFornecedor,
-  inativaFornecedor
+  inativaFornecedor,
+  likeProdutoService
 } from '~/services/fornecedor.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -132,37 +133,35 @@ export const setStatusFornecedor = (id, ativo) => {
   }
 }
 
-  export const obterProduto = (id) => {
-    return async (dispatch) => {
-      try {
-        const result = await obterListadeProduto(id)
-        dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data })
-      } catch (error) {
-        toastr.error('Fornecedor', 'Erro ao carregar produtos')
-      }
+export const obterProduto = (id) => {
+  return async (dispatch) => {
+    try {
+      const result = await obterListadeProduto(id)
+      dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data })
+    } catch (error) {
+      toastr.error('Fornecedor', 'Erro ao carregar produtos')
     }
   }
-  
-  export const likeProduto = ({ nome, fornecedorId }) => {
-    return async (dispatch) => {
-      try {
-        const result = await likeProdutoService(fornecedorId)
-        toastr.success('Curtida', `o Produto ${nome} curtido com sucesso.`)
-      } catch (error) {
-        toastr.error('Curtida', 'Erro ao fazer curtida')
-      }
-    }
-  }
+}
 
-    export const obterProdutosPorFornecedor = (id) => {
-      return async (dispatch) => {
-        try {
-          const result = await obterListadeProduto(id)
-          dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data })
-        } catch (error) {
-          toastr.error('Fornecedor', 'Erro ao carregar produtos')
-        }
-      }
+export const likeProduto = ({ nome, fornecedorId }) => {
+  return async (dispatch) => {
+    try {
+      const result = await likeProdutoService(fornecedorId)
+      toastr.success('Curtida', `o Produto ${nome} curtido com sucesso.`)
+    } catch (error) {
+      toastr.error('Curtida', 'Erro ao fazer curtida')
     }
-  
-  
+  }
+}
+
+export const obterProdutosPorFornecedor = (id) => {
+  return async (dispatch) => {
+    try {
+      const result = await obterListadeProduto(id)
+      dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data })
+    } catch (error) {
+      toastr.error('Fornecedor', 'Erro ao carregar produtos')
+    }
+  }
+}
