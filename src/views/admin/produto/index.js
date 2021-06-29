@@ -96,8 +96,8 @@ const Produto = () => {
       disableColumnMenu: true
     },
     {
-      field: 'descricao',
-      headerName: 'Descricao',
+      field: 'categoriaId',
+      headerName: 'Categoria',
       flex: 3,
       disableColumnMenu: true
     },

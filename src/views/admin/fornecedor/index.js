@@ -13,6 +13,7 @@ import {
   setStatusFornecedor
 } from '~/store/fornecedor/fornecedor.action'
 import ListaProdutos from '~/components/admin/forncedor/produtos'
+import ListaCurtidas from '~/components/admin/forncedor/curtidas'
 
 function Fornecedor() {
   const dispatch = useDispatch()
@@ -20,6 +21,7 @@ function Fornecedor() {
 
   const fornecedores = useSelector((state) => state.fornecedor.all)
   const loading = useSelector((state) => state.fornecedor.loading)
+  const [modalCurtidas, setModalCurtidas] = React.useState({})
 
   const callFornecedor = useCallback(() => {
     dispatch(getFornecedor())
@@ -36,15 +38,28 @@ function Fornecedor() {
   function openProdutos(row) {
     dispatch(obterProduto(row.id)).then(() => setModalProduto(true))
   }
+
+  function openCurtidaCliente(row) {
+    setModalCurtidas({open: true, data: row})
+  }
+
   const actionModal = ({ id, row }) => {
+    console.log(row)
     const status = row.status === 'Ativo'
     return (
       <>
+        <Tooltip title="Listar de curtida dos clientes">
+          <IconButton onClick={() => openCurtidaCliente(row.curtidas)} color="primary">
+            <MoreIcon />
+          </IconButton>
+        </Tooltip>
+
         <Tooltip title="Listar de Produtos">
           <IconButton onClick={() => openProdutos(row)} color="primary">
             <MoreIcon />
           </IconButton>
         </Tooltip>
+
         <Tooltip title={status ? 'Desativar' : 'Ativar'}>
           <IconButton onClick={() => toggleActive(id, status)} color="primary">
             <>{!status ? <BsToggleOff /> : <BsToggleOn />}</>
@@ -94,6 +109,8 @@ function Fornecedor() {
         </Grid>
       </Grid>
       <ListaProdutos open={modalProduto} close={() => setModalProduto(false)} />
+      <ListaCurtidas curtidas={modalCurtidas.data} open={modalCurtidas.open} close={() => setModalCurtidas({...modalCurtidas, open:false})} />
+
     </>
   )
 }

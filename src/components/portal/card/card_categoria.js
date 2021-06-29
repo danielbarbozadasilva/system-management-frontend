@@ -36,9 +36,9 @@ border: 1px solid #dcdcdc;
 padding: 7px 7px 45px;
 position: relative;
 background-color: #fff;
-box-shadow: -4px 4px 0 #dcdcdc;
-height: 475px;
-width: 360px;
+box-shadow: -1px 1px 0 #dcdcdc;
+height: 455px;
+width: 330px;
 margin-left: 40px;
 margin-right: 40px;
 
@@ -55,7 +55,7 @@ const SCardImg = styled(CardImg)`
  border-radius: 0;
  -webkit-box-shadow: none;
  box-shadow: none;
- width: 353px;
+ width: 315px;
  height: 231px;
  
  `
@@ -85,14 +85,3 @@ const SButton = styled(Button)`
   opacity: 0.5;
 }
  `
-
-//     .title {
-//       font-size: 26px;
-//     }
-
-//     :hover {
-//         box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253)!important;
-//         transition:1s;
-//         opacity: 0.5;
-//     }
-// `

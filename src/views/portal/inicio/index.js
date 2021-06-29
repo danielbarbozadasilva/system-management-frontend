@@ -40,5 +40,5 @@ const Inicio = () => {
 export default Inicio
 
 const BoxCards = styled(Row)`
-
+  
 `
