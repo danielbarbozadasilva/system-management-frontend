@@ -21,7 +21,7 @@ import {
 import { getAll as getAllCategories } from '~/store/categoria/categoria.action'
 import { likeProduto } from '~/store/fornecedor/fornecedor.action'
 import FormProduto from '~/components/admin/produto/form'
-import { getProducts} from '~/store/produto/produto.action'
+import { getProducts } from '~/store/produto/produto.action'
 
 const Produto = () => {
   const dispatch = useDispatch()
@@ -32,10 +32,14 @@ const Produto = () => {
   const loading = useSelector((state) => state.categoria.loading)
   const selected = useSelector((state) => state.categoria.selected)
   const idUser = useSelector((state) => state.auth.usuario.id)
- 
+
   const nameFilter = 'fornecedor'
   const callStart = React.useCallback(() => {
-    dispatch(getAllProdutos())
+    if (tipoUsuario !== 2) {
+      dispatch(getAllProdutos())
+    }else{
+      dispatch(getProducts(idUser, nameFilter))
+    }
     dispatch(getAllCategories())
   }, [dispatch])
 
@@ -52,7 +56,6 @@ const Produto = () => {
   }
 
   const actionModal = ({ id, row }) => {
-
     if (tipoUsuario < 3) {
       return (
         <IconButton onClick={() => remove(row)} color="primary" size="small">
@@ -148,7 +151,7 @@ const Produto = () => {
       </DialogModal>
 
       <DialogModal title="Categoria" open={false} close={() => {}}>
-        <>oi</>
+        <></>
       </DialogModal>
     </>
   )

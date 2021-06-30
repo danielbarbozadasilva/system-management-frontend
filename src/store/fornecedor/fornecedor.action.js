@@ -7,7 +7,8 @@ import {
   obterListadeProduto,
   ativarFornecedor,
   inativaFornecedor,
-  likeProdutoService
+  likeProdutoService,
+  getFornecedorId
 } from '~/services/fornecedor.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -32,7 +33,7 @@ export const edit = (id) => {
       upload: 0
     })
     try {
-      const result = await getFornecedorById(id)
+      const result = await getFornecedorIdy(id)
       dispatch({ type: TYPES.FORNECEDOR_EDIT, data: result.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
@@ -155,10 +156,10 @@ export const likeProduto = ({ nome, fornecedorId }) => {
   }
 }
 
-export const obterProdutosPorFornecedor = (id) => {
+export const getFornById = (id) => {
   return async (dispatch) => {
     try {
-      const result = await obterListadeProduto(id)
+      const result = await getFornecedorId(id)
       dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data })
     } catch (error) {
       toastr.error('Fornecedor', 'Erro ao carregar produtos')

@@ -9,7 +9,6 @@ const CardFornecedor = (props) => {
   const { id, cnpj, nomeFantasia, endereco, uf, cidade, responsavel, telefone, produtos, curtidas } = props.item
 
   return (
-
     <div>
       <SCard>
         <div className="item-icon-coracao"><FaHeart /></div>

@@ -42,7 +42,7 @@ const Menu = [
   },{
     title: 'Fornecedor',
     icons: '',
-    route: '/fornecedor/:id/produto',
+    route: '/fornecedor/:id',
     visibleMenu: true,
     enabled: true,
     component: FornecedorPortal

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import {
   getAll,
-  obterProdutosPorFornecedor
+  getFornById
 } from '../../../store/fornecedor/fornecedor.action'
 import CardProduto from '../../../components/portal/card/card_produto'
 
@@ -22,7 +22,7 @@ function Fornecedor(props) {
 
   const callFornecedor = useCallback(() => {
     if (id) {
-      dispatch(obterProdutosPorFornecedor(id))
+      dispatch(getFornById(id))
     } else {
       dispatch(getAll())
     }
