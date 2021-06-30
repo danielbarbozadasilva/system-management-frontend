@@ -15,7 +15,7 @@ function Produtos(props) {
 
   const id = props.id
   const nameFilter = props.nameFilter
-  console.log(props)
+
   const getDados = async (id, nameFilter) => {
     await dispatch(getProducts(id, nameFilter))
   }

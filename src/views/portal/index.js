@@ -33,9 +33,16 @@ const Menu = [
     enabled: true,
     component: ProdutoPortal
   },{
-    title: 'Fornecedor',
+    title: 'ViewsFornecedor',
     icons: '',
     route: '/fornecedor',
+    visibleMenu: true,
+    enabled: true,
+    component: FornecedorPortal
+  },{
+    title: 'Fornecedor',
+    icons: '',
+    route: '/fornecedor/:id/produto',
     visibleMenu: true,
     enabled: true,
     component: FornecedorPortal

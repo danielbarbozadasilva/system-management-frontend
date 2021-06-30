@@ -6,7 +6,7 @@ import { FaHeart } from 'react-icons/fa'
 import { navigate } from '@reach/router'
 
 const CardProduto = (props) => {
-  const { id, nome, descricao, preco, categoria, fornecedor, imagem } = props.item
+  const { id, nome, descricao, preco, categoriaId, fornecedorId, imagem } = props.item
 
   return (
 
@@ -19,7 +19,7 @@ const CardProduto = (props) => {
           <hr className="separarTextos" />
           <CardText className="descricaoCard">{descricao}</CardText>
           <CardText className="precoCard">{preco}</CardText>
-          <SButton onClick={() => navigate(`/produto/${fornecedor}/fornecedor`)}>Acessar Fornecedor</SButton>
+          <SButton onClick={() => navigate(`/fornecedor/prod/${fornecedorId}`)}>Acessar Fornecedor</SButton>
         </CardBody>
       </SCard>
     </div>
