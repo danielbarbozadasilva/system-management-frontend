@@ -9,6 +9,7 @@ import {
   getFornById
 } from '../../../store/fornecedor/fornecedor.action'
 import CardProduto from '../../../components/portal/card/card_produto'
+import FiltrarFornecedor from '../../../components/portal/filtros/filtrarfornecedor'
 
 function Fornecedor(props) {
   const fornecedor = useSelector((state) => state.fornecedor.all)
@@ -74,6 +75,7 @@ function Fornecedor(props) {
 
   return (
     <>
+      <FiltrarFornecedor />
       <ProdFornecedor />
     </>
   )

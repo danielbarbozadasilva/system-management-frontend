@@ -6,6 +6,8 @@ import { Col, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAll } from '../../../store/categoria/categoria.action'
 import '../../../assets/css/style.css'
+import FiltroCategoria from '../../../components/portal/filtros/filtrarCategoria'
+
 const Inicio = () => {
   const dispatch = useDispatch()
 
@@ -29,6 +31,7 @@ const Inicio = () => {
 
   return (
     <>
+    <FiltroCategoria/>
       <BoxCards>
         {!loading && categoria.length === 0 ? 'Não há categorias disponiveis' : MapearCategoria(categoria)}
       </BoxCards>

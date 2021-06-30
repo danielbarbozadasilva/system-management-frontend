@@ -37,10 +37,11 @@ function Fornecedor() {
 
   function openProdutos(row) {
     dispatch(obterProduto(row.id)).then(() => setModalProduto(true))
+    console.log('------',row)
   }
 
   function openCurtidaCliente(row) {
-    setModalCurtidas({open: true, data: row})
+    setModalCurtidas({ open: true, data: row })
   }
 
   const actionModal = ({ id, row }) => {
@@ -49,7 +50,10 @@ function Fornecedor() {
     return (
       <>
         <Tooltip title="Listar de curtida dos clientes">
-          <IconButton onClick={() => openCurtidaCliente(row.curtidas)} color="primary">
+          <IconButton
+            onClick={() => openCurtidaCliente(row.curtidas)}
+            color="primary"
+          >
             <MoreIcon />
           </IconButton>
         </Tooltip>
@@ -109,8 +113,11 @@ function Fornecedor() {
         </Grid>
       </Grid>
       <ListaProdutos open={modalProduto} close={() => setModalProduto(false)} />
-      <ListaCurtidas curtidas={modalCurtidas.data} open={modalCurtidas.open} close={() => setModalCurtidas({...modalCurtidas, open:false})} />
-
+      <ListaCurtidas
+        curtidas={modalCurtidas.data}
+        open={modalCurtidas.open}
+        close={() => setModalCurtidas({ ...modalCurtidas, open: false })}
+      />
     </>
   )
 }

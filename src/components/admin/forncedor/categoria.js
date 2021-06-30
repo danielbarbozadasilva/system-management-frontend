@@ -8,25 +8,25 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import DataList from '~/components/datagrid'
 import { useSelector } from 'react-redux'
 
-const ListaProdutos = ({ open, close }) => {
-  const columnsProdutos = [
+const ListaCategoria = ({ open, close }) => {
+  const columnsCategoria = [
     {
-      field: 'nome',
-      headerName: 'Nome',
+      field: 'id',
+      headerName: 'ID',
       flex: 1,
       width: 340,
       disableColumnMenu: true
     },
     {
-      field: 'preco',
-      headerName: 'Preço',
+      field: 'nome',
+      headerName: 'nome',
       flex: 1,
       width: 340,
       disableColumnMenu: true
     }
   ]
-  const produtos = useSelector((state) => state.fornecedor.produtos)
-console.log('log prod----------',produtos)
+  const categoria = useSelector((state) => state.categoria.dadosById)
+  console.log('log categ----------', categoria)
   return (
     <Dialog
       open={open}
@@ -34,9 +34,9 @@ console.log('log prod----------',produtos)
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">Lista de Produtos</DialogTitle>
+      <DialogTitle id="alert-dialog-title">Lista de Categoria</DialogTitle>
       <DialogContent style={{ width: '500px ' }}>
-        <DataList data={produtos} columns={columnsProdutos} loading={false} />
+        <DataList data={[categoria]} columns={columnsCategoria} loading={false} />
       </DialogContent>
       <DialogActions>
         <Button onClick={close} color="primary" autoFocus>
@@ -47,4 +47,4 @@ console.log('log prod----------',produtos)
   )
 }
 
-export default ListaProdutos
+export default ListaCategoria

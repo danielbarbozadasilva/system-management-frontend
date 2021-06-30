@@ -55,6 +55,21 @@ export const edit = (id) => {
   }
 }
 
+export const getCategoriaById = (id) => {
+  return async (dispatch) => {
+    dispatch({
+      type: TYPES.CATEGORY_ID
+    })
+    try {
+      const result = await getCategoryById(id)
+      dispatch({ type: TYPES.CATEGORY_ID, data: result.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
+    }
+  }
+}
+
+
 export const getAll = () => {
   return async (dispatch) => {
     try {

@@ -1,46 +1,49 @@
-import React from 'react'
 import {
   Grid,
   CssBaseline,
   Button,
   IconButton,
-  Avatar
+  Avatar,
+  Tooltip
 } from '@material-ui/core'
-import { useDispatch, useSelector } from 'react-redux'
 import { FiTrash2 } from 'react-icons/fi'
 import { MdStar } from 'react-icons/md'
-
 import Title from '~/components/title'
 import DialogModal from '~/components/dialog'
 import DataList from '~/components/datagrid'
+import React, { useEffect, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
+import { More as MoreIcon } from '@material-ui/icons'
 import {
   getAll as getAllProdutos,
   create as createProduto,
   remove as removeProduto
 } from '~/store/produto/produto.action'
-import { getAll as getAllCategories } from '~/store/categoria/categoria.action'
+import { getCategoriaById } from '~/store/categoria/categoria.action'
 import { likeProduto } from '~/store/fornecedor/fornecedor.action'
 import FormProduto from '~/components/admin/produto/form'
 import { getProducts } from '~/store/produto/produto.action'
-
+import ListaCategoria from '../../../components/admin/forncedor/categoria'
 const Produto = () => {
   const dispatch = useDispatch()
   const [modalForm, setModalForm] = React.useState(false)
   const [modal, setModal] = React.useState({})
+  const [isOpenModalCategoria, setIsOpenModalCategoria] = React.useState(false)
+
   const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
   const produtos = useSelector((state) => state.produto.all)
   const loading = useSelector((state) => state.categoria.loading)
-  const selected = useSelector((state) => state.categoria.selected)
+  // const selected = useSelector((state) => state.categoria.selected)
   const idUser = useSelector((state) => state.auth.usuario.id)
 
   const nameFilter = 'fornecedor'
   const callStart = React.useCallback(() => {
     if (tipoUsuario !== 2) {
       dispatch(getAllProdutos())
-    }else{
+    } else {
       dispatch(getProducts(idUser, nameFilter))
     }
-    dispatch(getAllCategories())
   }, [dispatch])
 
   React.useEffect(() => {
@@ -54,13 +57,34 @@ const Produto = () => {
   function remove(produto) {
     dispatch(removeProduto(produto))
   }
+  function categoriaProduto(row) {
+    dispatch(getCategoriaById(row.categoriaId)).then(()=>{setIsOpenModalCategoria(true)})
+     
+  }
 
   const actionModal = ({ id, row }) => {
     if (tipoUsuario < 3) {
       return (
-        <IconButton onClick={() => remove(row)} color="primary" size="small">
-          <FiTrash2 />
-        </IconButton>
+        <>
+          {/* lista DATALIST - produtos
+          <Tooltip title="Listar de Produtos">
+            <IconButton onClick={() => openProdutos(row)} color="primary">
+              <MoreIcon />
+            </IconButton>
+          </Tooltip> */}
+
+          {/* lista DATALIST - categora */}
+          <Tooltip title="Listar de Produtos">
+            <IconButton onClick={() => categoriaProduto(row)} color="primary">
+              <MoreIcon />
+            </IconButton>
+          </Tooltip>
+
+          {/* excluir - produtos */}
+          <IconButton onClick={() => remove(row)} color="primary" size="small">
+            <FiTrash2 />
+          </IconButton>
+        </>
       )
     } else {
       return (
@@ -98,12 +122,6 @@ const Produto = () => {
     {
       field: 'nome',
       headerName: 'Nome',
-      flex: 3,
-      disableColumnMenu: true
-    },
-    {
-      field: 'categoriaId',
-      headerName: 'Categoria',
       flex: 3,
       disableColumnMenu: true
     },
@@ -149,6 +167,8 @@ const Produto = () => {
       >
         <FormProduto submit={handlesubmit} />
       </DialogModal>
+
+        <ListaCategoria open={isOpenModalCategoria} close={()=>setIsOpenModalCategoria(false)} />
 
       <DialogModal title="Categoria" open={false} close={() => {}}>
         <></>

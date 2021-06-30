@@ -28,6 +28,9 @@ const reducer = (state = INITIAL_STATE, action) => {
     case TYPES.FORNECEDOR_SELECT:
       state.selected = action.data
       return state
+    case TYPES.FORNECEDOR_PRODUTOS:
+      state.produtos = action.data
+      return state
     case TYPES.FORNECEDOR_CREATE:
       state.loading = false
       return state

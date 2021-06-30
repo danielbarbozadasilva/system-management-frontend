@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   loading: false,
   all: [],
   upload: {},
-  selected: {}
+  selected: {},
+  dadosById: []
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -21,6 +22,11 @@ const reducer = (state = INITIAL_STATE, action) => {
      e vai fazer a chamada para popular o editar */
     case Types.CATEGORY_EDIT:
       state.selected = action.data
+      state.loading = false
+      return state
+    
+      case Types.CATEGORY_ID:
+      state.dadosById = action.data
       state.loading = false
       return state
     case Types.CATEGORY_UPLOAD:

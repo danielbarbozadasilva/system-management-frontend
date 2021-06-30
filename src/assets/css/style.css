@@ -3,7 +3,11 @@
   padding: 0;
   outline: 0;
 }
+.row{
+    margin-left:0;    margin-right:0;
+    /* width: 100vw; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1*/
 
+}
 /* HEADER */
 header .container {
   max-width: 100%;
@@ -391,7 +395,6 @@ footer i:hover {
 
 @media (max-width: 500px) {
   .row {
-    margin-right: 15px;
   }
   header .logo-img {
     width: 160px;

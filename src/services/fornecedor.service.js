@@ -30,4 +30,3 @@ export const likeProdutoService = (idFornecedor) =>
 export const removeProduto = (idFornecedor, produtoid) =>
   http.delete(`${baseUrl}/${idFornecedor}/produto/${produtoid}`)
 
-export const getFornecedorId = (id) => http.get(`${baseUrl}/${id}`)
