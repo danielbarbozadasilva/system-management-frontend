@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import { Grid, CssBaseline, IconButton, Tooltip } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
+import { AiFillStar } from "react-icons/ai";
 
 import Title from '~/components/title'
 import DataList from '~/components/datagrid'
@@ -14,6 +15,7 @@ import {
 } from '~/store/fornecedor/fornecedor.action'
 import ListaProdutos from '~/components/admin/forncedor/produtos'
 import ListaCurtidas from '~/components/admin/forncedor/curtidas'
+import '../../../assets/css/style.css'
 
 function Fornecedor() {
   const dispatch = useDispatch()
@@ -37,33 +39,43 @@ function Fornecedor() {
 
   function openProdutos(row) {
     dispatch(obterProduto(row.id)).then(() => setModalProduto(true))
-    console.log('------',row)
   }
 
   function openCurtidaCliente(row) {
     setModalCurtidas({ open: true, data: row })
   }
 
-  const actionModal = ({ id, row }) => {
-    console.log(row)
-    const status = row.status === 'Ativo'
+  const actionModalCurtida = ({ row }) => {
     return (
       <>
         <Tooltip title="Listar de curtida dos clientes">
-          <IconButton
+          <AiFillStar className="iconeStar"
             onClick={() => openCurtidaCliente(row.curtidas)}
             color="primary"
           >
-            <MoreIcon />
-          </IconButton>
+          </AiFillStar>
         </Tooltip>
+      </>
+    )
+  }
 
+  const actionModalProdutos = ({ row }) => {
+    return (
+      <>
         <Tooltip title="Listar de Produtos">
           <IconButton onClick={() => openProdutos(row)} color="primary">
             <MoreIcon />
           </IconButton>
         </Tooltip>
+      </>
+    )
+  }
 
+  const actionModalStatus = ({ id, row }) => {
+    const status = row.status === 'Ativo'
+
+    return (
+      <>
         <Tooltip title={status ? 'Desativar' : 'Ativar'}>
           <IconButton onClick={() => toggleActive(id, status)} color="primary">
             <>{!status ? <BsToggleOff /> : <BsToggleOn />}</>
@@ -74,25 +86,57 @@ function Fornecedor() {
   }
 
   const columns = [
-    { field: 'cnpj', headerName: 'CNPJ', width: 160, disableColumnMenu: true },
+    {
+      field: 'cnpj',
+      headerName: 'CNPJ',
+      width: 240,
+      align: 'center',
+      headerAlign: 'center',
+      disableColumnMenu: true
+    },
     {
       field: 'nomeFantasia',
       headerName: 'Nome Fantasia',
-      flex: 1,
+      width: 270,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'curtidas',
-      headerName: 'Curtidas',
-      flex: 1,
+      headerName: 'Qtd. Curtidas',
+      width: 150,
+      align: 'center',
       renderCell: (row) => row.value.length,
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
-      field: 'actions',
-      headerName: 'Ações',
-      renderCell: actionModal,
+      field: 'actionsCurtida',
+      headerName: 'Curtidas',
+      align: 'center',
+      renderCell: actionModalCurtida,
       width: 140,
+      headerAlign: 'center',
+      disableColumnMenu: true
+    },
+    {
+      field: 'actionsProdutos',
+      headerName: 'Produtos',
+      width: 140, 
+      align: 'center',
+      headerAlign: 'center',
+      renderCell: actionModalProdutos,
+      disableColumnMenu: true
+    },
+    {
+      field: 'actionsStatus',
+      headerName: 'Status',
+      align: 'center',
+      headerAlign: 'center',
+
+      renderCell: actionModalStatus,
+      width: 130, GridColDef: 'center',
       disableColumnMenu: true
     }
   ]

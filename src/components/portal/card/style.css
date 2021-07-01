@@ -3,7 +3,9 @@
   padding: 0;
   outline: 0;
 }
+.descricaoCardfornecedor{
 
+}
 .item-icon-coracao {
   width: 68px;
   height: 38px;
@@ -49,8 +51,8 @@
 .card-text {
   text-align: center;
 }
+
 .precoCard{
   text-align: center;
   font-size: 28px;
-
 }

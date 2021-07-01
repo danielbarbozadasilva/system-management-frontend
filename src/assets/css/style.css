@@ -8,6 +8,13 @@
     /* width: 100vw; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1*/
 
 }
+
+.iconeStar{
+  font-size: 18px;
+  color: rgb(100, 100, 42);
+}
+
+
 /* HEADER */
 header .container {
   max-width: 100%;
@@ -97,7 +104,68 @@ header .logo-img {
   transition: color 0.25s ease-in-out, background-color 0.2s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+.btn--icon {
+  color: rgb(70, 75, 79);
+  border-color: rgba(70, 75, 79, 0.2);
+  margin-right: 5px;
+}
 
+.btn--icon img, .btn--icon svg {
+  width: 20px;
+  height: auto;
+  margin-right: .1875rem;
+  
+}
+.css-1wmxvcs{
+  color: rgb(70, 75, 79);
+  border-color: rgba(70, 75, 79, 0.2);
+  margin-right: 5px;
+}
+.btn, .subscribe__add {
+  margin-right: 35px;
+  background: transparent;
+  font-size: .8125em;
+  font-weight: 700;
+  color: #464b4f;
+  border: 1px solid rgba(70,75,79,.2);
+  border-radius: 2px;
+  padding: .625rem .625rem .4375rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  outline: 0;
+  letter-spacing: .125rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all .4s cubic-bezier(.65,.845,.16,.995);
+  
+}
+#botaoCad{
+  background: transparent;
+  font-size: .8125em;
+  font-weight: 700;
+  color: #464b4f;
+  border-radius: 2px;
+  padding: .625rem .625rem .4375rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  outline: 0;
+  letter-spacing: .125rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all .4s cubic-bezier(.65,.845,.16,.995);
+
+}
+.btn{
+  display: flex;
+  align-items: center;
+}
+
+.navbar-toggler {
+  background-color: rgb(223, 223, 223);
+}
+a {
+  transition: color .3s ease,opacity .3s ease;
+}
 .chamada-contato {
   border-left: solid 1px #141414;
   color: #501417;

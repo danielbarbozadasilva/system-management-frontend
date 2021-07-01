@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardImg, CardText, CardBody, CardTitle, Button } from 'reactstrap'
+import { Card, CardImg, CardText, CardBody, CardTitle, Button, Label } from 'reactstrap'
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
@@ -11,18 +11,18 @@ const CardFornecedor = (props) => {
   return (
     <div>
       <SCard>
-        <div className="item-icon-coracao"><FaHeart /></div>
+        {/* <div className="item-icon-coracao"><FaHeart /></div> */}
 
         <CardBody>
           <CardTitle className="tituloCard">{nomeFantasia}</CardTitle>
           <hr className="separarTextos" />
-          <CardText className="descricaoCard">{cnpj}</CardText>
-          <CardText className="descricaoCard">{endereco}</CardText>
-          <CardText className="descricaoCard">{uf}</CardText>
-          <CardText className="descricaoCard">{cidade}</CardText>
-          <CardText className="descricaoCard">{responsavel}</CardText>
-          <CardText className="descricaoCard">{telefone}</CardText>
-          <CardText className="descricaoCard">{status}</CardText>
+          {/* <CardText className="descricaoCardfornecedor"><strong>Cnpj: </strong>{cnpj}</CardText> */}
+          <CardText className="descricaoCard"><strong>Endereço: </strong>{endereco}</CardText>
+          <CardText className="descricaoCardfornecedor"><strong>Cidade: </strong>{cidade}</CardText>
+          <CardText className="descricaoCardfornecedor"><strong>Uf: </strong>{uf}</CardText>
+          {/* <CardText className="descricaoCard">{responsavel}</CardText> */}
+          <CardText className="descricaoCard"><strong>Telefone: </strong>{telefone}</CardText>
+          {/* <CardText className="descricaoCard">{status}</CardText> */}
 
           {/* Passar o array */}
           <SButton onClick={() => navigate(`/produto/fornecedor/${id}`)}>Acessar Produtos</SButton>
@@ -40,7 +40,7 @@ const SCard = styled(Card)`
   position: relative;
   background-color: #fff;
   box-shadow: -4px 4px 0 #dcdcdc;
-  height: 475px;
+  min-height: 305px;
   width: 360px;
   margin-left: 40px;
   margin-right: 40px;
