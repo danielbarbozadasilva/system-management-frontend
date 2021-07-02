@@ -9,7 +9,7 @@ import {
   getFornById
 } from '../../../store/fornecedor/fornecedor.action'
 import CardProduto from '../../../components/portal/card/card_produto'
-import FiltrarFornecedor from '../../../components/portal/filtros/filtrarfornecedor'
+import Imagem from '../../../assets/img/principal2.jpg'
 
 function Fornecedor(props) {
   const fornecedor = useSelector((state) => state.fornecedor.all)
@@ -66,7 +66,7 @@ function Fornecedor(props) {
       return (
         <BoxFornecedor>
           {!loading && fornecedor.length === 0
-            ? 'Não há Fornecedor disponivel'
+            ? <h1 className="naoPossuiProd">Não há produtos</h1>
             : MapearFornecedor(fornecedor)}
         </BoxFornecedor>
       )
@@ -74,10 +74,23 @@ function Fornecedor(props) {
   }
 
   return (
-    <>
-      <FiltrarFornecedor />
-      <ProdFornecedor />
-    </>
+    <div>
+      <div class="container-fluid">
+        <div className="imagem">
+          <img className="imagemPrincipal" src={Imagem} alt="" srcset="" />
+        </div>
+        <div class="texto">
+          <h2>Encontre novas horizontes...</h2>
+          <h2>os melhores fornecedores!</h2>
+        </div>
+        <div className="textoCategoria">
+          <h1 className="textCat">
+            Escolha um <strong>fornecedor</strong>
+          </h1>
+        </div>
+        <ProdFornecedor />
+      </div>
+    </div>
   )
 }
 

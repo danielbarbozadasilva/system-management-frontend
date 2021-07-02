@@ -312,7 +312,7 @@ const SignUpFornecedor = () => {
                 size="medium"
                 margin="normal"
               >
-                <Label htmlFor="uf" className="label">
+                <Label htmlFor="uf" className="label" id="ffg">
                   uf:
                 </Label>
                 <Select

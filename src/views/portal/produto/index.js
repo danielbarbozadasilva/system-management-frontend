@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../../store/produto/produto.action'
 import CardProduto from '../../../components/portal/card/card_produto'
-import FiltroProduto from '../../../components/portal/filtros/filtrarProduto'
+import PesquisaProduto from '../../../components/portal/filtros/pesquisaProduto'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
-
+import Imagem from '../../../assets/img/principal3.jpg'
 function Produtos(props) {
   const produtos = useSelector((state) => state.produto.all)
   const loading = useSelector((state) => state.auth.loading)
@@ -36,17 +36,29 @@ function Produtos(props) {
   }
 
   return (
-    <>
-      <FiltroProduto />
-      <BoxProdutos>
-        {!loading && produtos.length === 0
-          ? 'Não há produtos disponiveis'
-          : MapearProdutos(produtos)}
-      </BoxProdutos>
-    </>
+    <div>
+      <div class="container-fluid">
+        <div className="imagem">
+          <img className="imagemPrincipal" src={Imagem} alt="" srcset="" />
+        </div>
+        <div class="texto">
+          <h2>Nossos produtos...</h2>
+          <h2>os mais saborosos!</h2>
+        </div>
+        <div className="textoCategoria">
+          <h1 className="textCat">
+            Escolha um <strong>produto</strong>
+          </h1>
+        </div>
+        <BoxProdutos>
+          {!loading && produtos.length === 0
+            ? <h1 className="naoPossuiProd">Não há produtos disponiveis</h1>
+            : MapearProdutos(produtos)}
+        </BoxProdutos>
+      </div>
+    </div>
   )
 }
-
 export default Produtos
 
 const BoxProdutos = styled(Row)``

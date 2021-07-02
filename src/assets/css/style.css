@@ -1,19 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant:wght@300&family=Great+Vibes&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   outline: 0;
 }
-.row{
-    margin-left:0;    margin-right:0;
-    /* width: 100vw; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1*/
+
+.brdKTb {
+  margin-bottom: 0px !important;
+}
+
+.container-fluid {
+  padding: 0px !important;
+}
+
+.imagem {
+ 
 
 }
 
-.iconeStar{
+.imagemPrincipal{
+  background-position: cover;
+  object-fit: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 550px;
+  margin-bottom: 100px;
+}
+.texto{
+    width: 100%;
+    top: 45%;
+    position: absolute;
+    z-index: 100;
+}
+.texto h2{
+  font-weight: 400;
+    font-family: 'Great Vibes',handwriting;
+    word-wrap: break-word;
+  margin-top: 0;
+  font-size: 73px;
+  color: #ebebeb;
+  text-align: center;
+}
+.texto a{
+    color: #fff;
+    background: #be8c60;
+    font-size: 16px;
+    font-family: "Helvetica Neue";
+    padding: 15px 30px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    line-height: 130px;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    text-decoration: none;
+}
+.textoCategoria{
+  margin-left: 45px;
+  margin-bottom: 50px;
+}
+.textCat{
+  padding: 20px;
+  border-left: 1px solid #ccc;
+}
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.iconeStar {
   font-size: 18px;
   color: rgb(100, 100, 42);
 }
-
 
 /* HEADER */
 header .container {
@@ -21,7 +84,6 @@ header .container {
 }
 
 header .logo-img {
-
   width: 230px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -29,7 +91,7 @@ header .logo-img {
   padding-right: 30px;
 }
 
-.botaoLogin {    
+.botaoLogin {
   background-color: #e0d5d3;
   font-weight: 800;
   cursor: pointer;
@@ -43,30 +105,6 @@ header .logo-img {
   font-size: 18px;
   letter-spacing: 0.05em;
   margin: 0px 20px;
-}
-
-#idNav1:hover {
-  text-decoration: underline;
-}
-#idNav2:hover {
-  text-decoration: underline;
-}
-#idNav4:hover {
-  text-decoration: underline;
-}
-#idNav5:hover {
-  text-decoration: underline;
-}
-#idNav6:hover {
-  text-decoration: underline;
-}
-#idNav7:hover {
-  text-decoration: underline;
-}
-
-.active {
-  text-decoration: underline;
-  font-weight: bold;
 }
 
 .btn-outline-primary {
@@ -109,62 +147,66 @@ header .logo-img {
   border-color: rgba(70, 75, 79, 0.2);
   margin-right: 5px;
 }
-
-.btn--icon img, .btn--icon svg {
+.naoPossuiProd{
+  padding-left: 55px;
+  font-size: 18px;
+}
+.btn--icon img,
+.btn--icon svg {
   width: 20px;
   height: auto;
-  margin-right: .1875rem;
-  
+  margin-right: 0.1875rem;
 }
-.css-1wmxvcs{
+.css-1wmxvcs {
   color: rgb(70, 75, 79);
   border-color: rgba(70, 75, 79, 0.2);
   margin-right: 5px;
 }
-.btn, .subscribe__add {
+.btn,
+.subscribe__add {
   margin-right: 35px;
   background: transparent;
-  font-size: .8125em;
+  font-size: 0.8125em;
   font-weight: 700;
   color: #464b4f;
-  border: 1px solid rgba(70,75,79,.2);
+  border: 1px solid rgba(70, 75, 79, 0.2);
   border-radius: 2px;
-  padding: .625rem .625rem .4375rem;
+  padding: 0.625rem 0.625rem 0.4375rem;
   text-decoration: none;
   text-transform: uppercase;
   outline: 0;
-  letter-spacing: .125rem;
+  letter-spacing: 0.125rem;
   text-align: center;
   cursor: pointer;
-  transition: all .4s cubic-bezier(.65,.845,.16,.995);
-  
+  transition: all 0.4s cubic-bezier(0.65, 0.845, 0.16, 0.995);
 }
-#botaoCad{
+#botaoCad {
   background: transparent;
-  font-size: .8125em;
+  font-size: 0.8125em;
   font-weight: 700;
   color: #464b4f;
   border-radius: 2px;
-  padding: .625rem .625rem .4375rem;
+  padding: 0.625rem 0.625rem 0.4375rem;
   text-decoration: none;
   text-transform: uppercase;
   outline: 0;
-  letter-spacing: .125rem;
+  letter-spacing: 0.125rem;
   text-align: center;
   cursor: pointer;
-  transition: all .4s cubic-bezier(.65,.845,.16,.995);
-
+  transition: all 0.4s cubic-bezier(0.65, 0.845, 0.16, 0.995);
 }
-.btn{
+.btn {
   display: flex;
   align-items: center;
 }
-
+.dTYZhm{
+margin-bottom: 0px !important;
+}
 .navbar-toggler {
   background-color: rgb(223, 223, 223);
 }
 a {
-  transition: color .3s ease,opacity .3s ease;
+  transition: color 0.3s ease, opacity 0.3s ease;
 }
 .chamada-contato {
   border-left: solid 1px #141414;
@@ -184,7 +226,9 @@ a {
   margin-bottom: 5%;
   font-weight: 700;
 }
-
+#ffg{
+  padding-bottom: 20px;
+}
 #secao03 #enviar {
   color: #771700 !important;
   border-color: #edd29a;
@@ -195,7 +239,7 @@ a {
 #secao03 label,
 h1 {
   color: #501417;
-  padding-top: 2%;
+  padding-top: 0%;
 }
 
 /* Colunas dos formularios */
@@ -366,7 +410,7 @@ footer {
   display: flex;
   margin-top: 60px;
   flex-wrap: wrap;
-  background-color: #edd29a;
+  background-color: #dbc084;
   color: white;
 }
 footer.rodape {
@@ -383,7 +427,7 @@ footer .redes-sociais {
 /* título redes sociais */
 footer .tituloRedesSociais {
   margin-left: 35px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   /* expaçamento externo */
   text-transform: uppercase;
   /* caixa alta */
@@ -396,6 +440,7 @@ footer .tituloRedesSociais {
   border-left: 5px solid #fff;
   padding-left: 30px;
 }
+
 footer .icons-redes-sociais a {
   font-size: 40px;
   padding-left: 37px;
@@ -403,7 +448,6 @@ footer .icons-redes-sociais a {
 }
 /* meu nome centralizado */
 footer .nome-footer {
-  margin-top: 10px;
   /* expaçamento externo, deixar o nome embaixo */
   font-size: 14px;
   text-transform: uppercase;
@@ -423,7 +467,7 @@ footer .imagemFooter {
   margin-left: 95px;
 }
 footer .infomacoes {
-  padding-top: 30px;
+  padding-top: 50px;
   text-align: center;
 }
 /* Aplica o espaçamento entre os icones e textos */

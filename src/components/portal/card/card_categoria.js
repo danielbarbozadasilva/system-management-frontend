@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap'
 import styled from 'styled-components'
 import './style.css'
@@ -13,16 +14,16 @@ const CardItem = (props) => {
 
     <div>
       <SCard>
-        {imagem.length > 0 ? (<SCardImg top width="70%" src={process.env.REACT_APP_API + imagem} />) : ''}
+        {imagem.length > 0 ? (<SCardImg src={process.env.REACT_APP_API + imagem} />) : ''}
         <div className="item-icon-coracao"><FaHeart /></div>
 
         <CardBody>
           <CardTitle className="tituloCard">{nome}</CardTitle>
-          <CardSubtitle className="subtituloCard">Os mais <strong>Deliciosos</strong></CardSubtitle>
           <hr className="separarTextos" />
+          <CardSubtitle className="subtituloCard">Os mais <strong>Deliciosos</strong></CardSubtitle>
           <CardText className="descricaoCard">{descricao}</CardText>
 
-          <SButton onClick={() => navigate(`/produto/categoria/${id}`)}>Acessar Produtos</SButton>
+          <SButton onClick={() => navigate(`/produto/categoria/${id}`)}>Produtos</SButton>
         </CardBody>
       </SCard>
     </div>
@@ -37,8 +38,8 @@ padding: 7px 7px 45px;
 position: relative;
 background-color: #fff;
 box-shadow: -1px 1px 0 #dcdcdc;
-height: 455px;
-width: 330px;
+height: 435px;
+width: 310px;
 margin-left: 40px;
 margin-right: 40px;
 
@@ -55,9 +56,10 @@ const SCardImg = styled(CardImg)`
  border-radius: 0;
  -webkit-box-shadow: none;
  box-shadow: none;
- width: 315px;
- height: 231px;
- 
+ width: 295px;
+ min-height: 231px;
+ object-fit: cover;
+
  `
 
 const SButton = styled(Button)`
@@ -71,11 +73,10 @@ const SButton = styled(Button)`
  line-height: 38px;
  text-transform: uppercase;
  padding: 0 15px;
- font-size: 12px;
  border-radius: 5px;
  border: none;
- font-weight: 600;
- font-size: 14px;
+ font-weight: 500;
+ font-size: 12px;
  display: inline-flex;
  align-items: center;
 

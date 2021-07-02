@@ -222,7 +222,7 @@ const SignUpCliente = () => {
                 size="medium"
                 margin="normal"
               >
-                <Label htmlFor="uf" className="label">
+                <Label htmlFor="uf" className="label" id="ffg">
                   uf:
                 </Label>
                 <Select
@@ -259,6 +259,7 @@ const SignUpCliente = () => {
                     name: 'cidade',
                     id: 'outlined-native-simple'
                   }}
+                  
                 >
                   <option value="">cidade</option>
 

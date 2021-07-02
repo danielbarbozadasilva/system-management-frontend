@@ -54,7 +54,7 @@ const SignIn = () => {
 
     <Sign>
 
-      <Col sm={12} md={12} lg={5}>
+      <Col sm={12} md={12} lg={4}>
 
         <Alert color="danger" isOpen={hasError} toggle={closeError}>
           <div><strong>OPS !!! </strong> Aconteceu um erro.</div>

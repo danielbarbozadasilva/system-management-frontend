@@ -17,7 +17,10 @@ import styled from 'styled-components'
 import { Link as LinkRoute } from '@reach/router'
 import { Link } from '@material-ui/core'
 import LogoHeader from '../../assets/img/logo.png'
-
+import { useSelector, useDispatch } from 'react-redux'
+import { logoutAction } from '../../store/auth/auth.action'
+import { isAuthenticated } from '../../config/storage'
+import history from '../../config/history'
 import '../../assets/css/style.css'
 
 const Header = (props) => {
@@ -26,6 +29,12 @@ const Header = (props) => {
 
   const toggleTooltip = () => setTooltipOpen(!tooltipOpen)
   const toggle = () => setIsOpen(!isOpen)
+  const usuario = useSelector((state) => state.auth.usuario)
+  const isAdmin = useSelector((state) => state.auth.isAdmin)
+
+  const logout = () => {
+    dispatch(logoutAction())
+  }
 
   return (
     <header>
@@ -68,6 +77,24 @@ const Header = (props) => {
 
             <Nav>
               <NavItem>
+              {/* {isAuthenticated() ? (
+                  <React.Fragment>
+                    <Nav>
+                      <UncontrolledDropdown nav inNavbar>
+                        <SDropdownToggle nav caret>
+                          {usuario.nome}
+                        </SDropdownToggle>
+                        <DropdownMenu>
+                          <DropdownItem divider />
+                          <DropdownItem onClick={logout}>Sair</DropdownItem>
+                        </DropdownMenu>
+                      </UncontrolledDropdown>
+                    </Nav>
+                  </React.Fragment>
+                ) : (
+                  ''
+                )} */}
+                
                 <SLink component={LinkRoute} to="/signin">
                   {' '}
                   <div className="css-1wmxvcs">
@@ -107,10 +134,12 @@ const Header = (props) => {
                   </div>
                 </SLink>
               </NavItem>
-              <div >
+              <div>
+               
                 <SLink className="css-1wmxvcs">
                   <UncontrolledDropdown>
-                    <SDropdownToggle id="botaoCad"
+                    <SDropdownToggle
+                      id="botaoCad"
                       className="btn btn--primary css-10sx58j"
                       caret
                     >
@@ -175,7 +204,6 @@ const SLink = styled(Link)`
 `
 const SDropdownMenu = styled(DropdownMenu)`
   background-color: #f8f9fa !important;
-
 `
 
 const SNavbarBrand = styled(NavbarBrand)`

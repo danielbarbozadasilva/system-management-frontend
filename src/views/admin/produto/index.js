@@ -112,6 +112,11 @@ const Produto = () => {
       flex: 2,
       renderCell: viewImageColumn,
       disableColumnMenu: true
+    }, {
+      field: 'nome',
+      headerName: 'Nome',
+      flex: 3,
+      disableColumnMenu: true
     },
     {
       field: 'preco',
@@ -119,12 +124,7 @@ const Produto = () => {
       flex: 2,
       disableColumnMenu: true
     },
-    {
-      field: 'nome',
-      headerName: 'Nome',
-      flex: 3,
-      disableColumnMenu: true
-    },
+   
     {
       field: 'actions',
       headerName: 'Ações',

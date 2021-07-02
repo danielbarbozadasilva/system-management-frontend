@@ -51,7 +51,8 @@ export default function Dashboard(props) {
     },
     toolbar: {
       paddingRight: 24,
-      backgroundColor: tipoUsuario ? userDefinition[tipoUsuario].cor : '#666'
+      backgroundColor: tipoUsuario ? userDefinition[tipoUsuario].cor : '#666',
+      color: '#fff'
     },
     toolbarText: {
       display: 'flex',
@@ -65,7 +66,7 @@ export default function Dashboard(props) {
       alignItems: 'center',
       justifyContent: 'flex-end',
       padding: '0'
-    },
+        },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(['width', 'margin'], {
@@ -136,15 +137,17 @@ export default function Dashboard(props) {
       height: 240
     },
     depositContext: {
-      flex: 1
+      flex: 1,
     },
     user: {
       padding: theme.spacing(1),
       display: 'flex',
-      alignItems: 'center'
+      alignItems: 'center',
+
     },
     userIcon: {
-      margin: theme.spacing(1)
+      margin: theme.spacing(1),
+      color: '#fff'
     }
   }))
 
