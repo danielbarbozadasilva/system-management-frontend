@@ -65,9 +65,11 @@ function Fornecedor(props) {
     } else {
       return (
         <BoxFornecedor>
-          {!loading && fornecedor.length === 0
-            ? <h1 className="naoPossuiProd">Não há produtos</h1>
-            : MapearFornecedor(fornecedor)}
+          {!loading && fornecedor.length === 0 ? (
+            <h1 className="naoPossuiProd">Não há produtos</h1>
+          ) : (
+            MapearFornecedor(fornecedor)
+          )}
         </BoxFornecedor>
       )
     }

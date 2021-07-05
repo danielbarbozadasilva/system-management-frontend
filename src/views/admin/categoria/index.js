@@ -98,20 +98,15 @@ const Categoria = () => {
       >
         <>
           {modal.tipo === 1 ? <Form submit={submitForm} /> : null}
-          {modal.tipo === 2
-            ? (
-              <Form submit={submitForm} data={selected} />
-              )
-            : null}
-          {modal.tipo === 3
-            ? (
-              <Remove close={closeModal} remove={submitForm} />
-              )
-            : null}
+          {modal.tipo === 2 ? (
+            <Form submit={submitForm} data={selected} />
+          ) : null}
+          {modal.tipo === 3 ? (
+            <Remove close={closeModal} remove={submitForm} />
+          ) : null}
         </>
       </DialogModal>
     </>
-
   )
 }
 

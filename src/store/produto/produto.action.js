@@ -25,7 +25,7 @@ export const create = (data) => {
         })
       }
     }
-    
+
     try {
       const formData = new FormData()
       Object.keys(data).map((k) => formData.append(k, data[k]))
@@ -44,7 +44,6 @@ export const getAll = (query = null) => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
-      console.log('-------------------',query)
       const result = await getAllProduto(query)
       console.log('result', result)
       dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
