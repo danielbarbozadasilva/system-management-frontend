@@ -8,8 +8,8 @@ import {
   ativarFornecedor,
   inativaFornecedor,
   likeProdutoService,
-  getFornecedorId,
-  getbyId
+  getbyId,
+  listaFornProdutos
 } from '~/services/fornecedor.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -161,7 +161,7 @@ export const getFornById = (id) => {
   return async (dispatch) => {
     try {
       const result = await getbyId(id)
-      dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data })
+      dispatch({ type: TYPES.FORNECEDOR_PRODUTOS_ID, data: result.data })
     } catch (error) {
       toastr.error('Fornecedor', 'Erro ao carregar produtos')
     }

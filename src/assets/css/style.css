@@ -14,12 +14,7 @@
   padding: 0px !important;
 }
 
-.imagem {
- 
-
-}
-
-.imagemPrincipal{
+.imagemPrincipal {
   background-position: cover;
   object-fit: cover;
   background-repeat: no-repeat;
@@ -28,51 +23,58 @@
   height: 550px;
   margin-bottom: 100px;
 }
-.texto{
-    width: 100%;
-    top: 45%;
-    position: absolute;
-    z-index: 100;
+.texto {
+  width: 100%;
+  top: 45%;
+  position: absolute;
+  z-index: 100;
 }
-.texto h2{
+
+.texto h2 {
   font-weight: 400;
-    font-family: 'Great Vibes',handwriting;
-    word-wrap: break-word;
+  font-family: 'Great Vibes', handwriting;
+  word-wrap: break-word;
   margin-top: 0;
   font-size: 73px;
   color: #ebebeb;
   text-align: center;
 }
-.texto a{
-    color: #fff;
-    background: #be8c60;
-    font-size: 16px;
-    font-family: "Helvetica Neue";
-    padding: 15px 30px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    letter-spacing: 1px;
-    line-height: 130px;
-    transition: color 0.3s ease, opacity 0.3s ease;
-    text-decoration: none;
+
+.texto a {
+  color: #fff;
+  background: #be8c60;
+  font-size: 16px;
+  font-family: 'Helvetica Neue';
+  padding: 15px 30px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  line-height: 130px;
+  transition: color 0.3s ease, opacity 0.3s ease;
+  text-decoration: none;
 }
-.textoCategoria{
+
+.textoCategoria {
   margin-left: 45px;
   margin-bottom: 50px;
 }
-.textCat{
+
+.textCat {
   padding: 20px;
   border-left: 1px solid #ccc;
 }
+
 .row {
   margin-left: 0;
   margin-right: 0;
 }
+
 .active {
   text-decoration: underline;
   font-weight: bold;
 }
+
 .iconeStar {
   font-size: 18px;
   color: rgb(100, 100, 42);
@@ -147,7 +149,7 @@ header .logo-img {
   border-color: rgba(70, 75, 79, 0.2);
   margin-right: 5px;
 }
-.naoPossuiProd{
+.naoPossuiProd {
   padding-left: 55px;
   font-size: 18px;
 }
@@ -199,8 +201,8 @@ header .logo-img {
   display: flex;
   align-items: center;
 }
-.dTYZhm{
-margin-bottom: 0px !important;
+.dTYZhm {
+  margin-bottom: 0px !important;
 }
 .navbar-toggler {
   background-color: rgb(223, 223, 223);
@@ -209,6 +211,7 @@ a {
   transition: color 0.3s ease, opacity 0.3s ease;
 }
 .chamada-contato {
+  font-family: 'Nunito', Helvetica, Arial, Lucida, sans-serif;
   border-left: solid 1px #141414;
   color: #501417;
   padding-bottom: 20px;
@@ -216,7 +219,6 @@ a {
   font-weight: 500;
   line-height: 1.2;
   font-size: 2.5rem;
-  font-family: 'Nunito', Helvetica, Arial, Lucida, sans-serif;
 }
 
 #secao03 {
@@ -226,7 +228,8 @@ a {
   margin-bottom: 5%;
   font-weight: 700;
 }
-#ffg{
+/* UF */
+#ffg {
   padding-bottom: 20px;
 }
 #secao03 #enviar {
@@ -339,10 +342,12 @@ body {
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
   margin-top: 10px;
-  margin-bottom: 35px;
+  margin-bottom: 10px;
+
 }
 
-.form-group .label {
+.form-group .label {    
+  margin-top: 30px;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -361,7 +366,6 @@ body {
   line-height: 1.5;
   font-weight: 500;
   color: #000;
-  padding-bottom: 20px;
 }
 
 .estilo-botao-details {

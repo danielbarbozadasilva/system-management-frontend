@@ -17,7 +17,7 @@ const CardProduto = (props) => {
           <CardTitle className="tituloCard">{nome}</CardTitle>
           <CardText className="descricaoCard">{descricao}</CardText>
           <CardText className="precoCard">{preco}</CardText>
-          <SButton onClick={() => navigate(`/fornecedor/${fornecedorId}`)}>Fornecedor</SButton>
+          {/* <SButton onClick={() => navigate(`/fornecedor/${fornecedorId}`)}>Fornecedor</SButton> */}
         </CardBody>
       </SCard>
     </div>

@@ -11,10 +11,11 @@ const CardFornecedor = (props) => {
     <div>
       <SCard>
         <CardBody>
-          <CardTitle className="tituloCard">{nomeFantasia}</CardTitle>          <CardText className="descricaoCard"><strong>Endereço: </strong>{endereco}</CardText>
+           <CardTitle className="tituloCard">{nomeFantasia}</CardTitle>       
+           <CardText className="descricaoCard"><strong>Endereço: </strong>{endereco}</CardText>
           <CardText className="descricaoCardfornecedor"><strong>Cidade: </strong>{cidade}</CardText>
           <CardText className="descricaoCardfornecedor"><strong>Uf: </strong>{uf}</CardText>
-          <CardText className="descricaoCard"><strong>Telefone: </strong>{telefone}</CardText>
+          <CardText className="descricaoCard"><strong>Telefone: </strong>{telefone}</CardText> 
 
           <SButton onClick={() => navigate(`/produto/fornecedor/${id}`)}>Acessar Produtos</SButton>
         </CardBody>

@@ -1,7 +1,6 @@
 import InicioPortal from '~/views/portal/inicio/'
 import ProdutoPortal from '~/views/portal/produto'
 import FornecedorPortal from '~/views/portal/fornecedor'
-import fornecedorPortalId from '../../components/portal/card/card_fornecedor_id'
 import Fornecedor from '~/views/auth/singup-fornecedor'
 import Cliente from '~/views/auth/singup-cliente'
 import SignIn from '~/views/auth/signin'
@@ -39,13 +38,6 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: FornecedorPortal
-  },{
-    title: 'Fornecedor',
-    icons: '',
-    route: '/fornecedor/:id',
-    visibleMenu: true,
-    enabled: true,
-    component: fornecedorPortalId
   },
   {
     title: 'FornecedorCadastro',
