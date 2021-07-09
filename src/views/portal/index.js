@@ -1,4 +1,4 @@
-import InicioPortal from '~/views/portal/inicio/'
+import InicioPortal from '~/views/portal/inicio/index'
 import ProdutoPortal from '~/views/portal/produto'
 import FornecedorPortal from '~/views/portal/fornecedor'
 import Fornecedor from '~/views/auth/singup-fornecedor'
@@ -24,14 +24,16 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: ProdutoPortal
-  },{
+  }, 
+  {
     title: 'ViewsProduto',
     icons: '',
     route: '/produto/:nameFilter/:id',
     visibleMenu: true,
     enabled: true,
     component: ProdutoPortal
-  },{
+  }, 
+  {
     title: 'ViewsFornecedor',
     icons: '',
     route: '/fornecedor',

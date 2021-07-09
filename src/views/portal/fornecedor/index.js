@@ -55,21 +55,25 @@ function Fornecedor(props) {
     if (id) {
       return (
         <BoxFornecedor>
-          {!loading ? (
-            'Não há Fornecedor disponivel'
-          ) : (
-            <CardFornecedor item={{ ...item, status: true }} />
-          )}
+          {!loading
+            ? (
+                'Não há Fornecedor disponivel'
+              )
+            : (
+              <CardFornecedor item={{ ...item, status: true }} />
+              )}
         </BoxFornecedor>
       )
     } else {
       return (
         <BoxFornecedor>
-          {!loading && fornecedor.length === 0 ? (
-            <h1 className="naoPossuiProd">Não há produtos</h1>
-          ) : (
-            MapearFornecedor(fornecedor)
-          )}
+          {!loading && fornecedor.length === 0
+            ? (
+              <h1 className="naoPossuiProd">Não há produtos</h1>
+              )
+            : (
+                MapearFornecedor(fornecedor)
+              )}
         </BoxFornecedor>
       )
     }
@@ -77,11 +81,11 @@ function Fornecedor(props) {
 
   return (
     <div>
-      <div class="container-fluid">
+      <div className="container-fluid">
         <div className="imagem">
-          <img className="imagemPrincipal" src={Imagem} alt="" srcset="" />
+          <img className="imagemPrincipal" src={Imagem} alt="" srcSet="" />
         </div>
-        <div class="texto">
+        <div className="texto">
           <h2>Encontre novas horizontes...</h2>
           <h2>os melhores fornecedores!</h2>
         </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import { Grid, CssBaseline, IconButton, Tooltip } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar } from 'react-icons/ai'
 
 import Title from '~/components/title'
 import DataList from '~/components/datagrid'
@@ -49,11 +49,11 @@ function Fornecedor() {
     return (
       <>
         <Tooltip title="Listar de curtida dos clientes">
-          <AiFillStar className="iconeStar"
+          <AiFillStar
+            className="iconeStar"
             onClick={() => openCurtidaCliente(row.curtidas)}
             color="primary"
-          >
-          </AiFillStar>
+          />
         </Tooltip>
       </>
     )
@@ -123,7 +123,7 @@ function Fornecedor() {
     {
       field: 'actionsProdutos',
       headerName: 'Produtos',
-      width: 140, 
+      width: 140,
       align: 'center',
       headerAlign: 'center',
       renderCell: actionModalProdutos,
@@ -136,7 +136,8 @@ function Fornecedor() {
       headerAlign: 'center',
 
       renderCell: actionModalStatus,
-      width: 130, GridColDef: 'center',
+      width: 130,
+      GridColDef: 'center',
       disableColumnMenu: true
     }
   ]

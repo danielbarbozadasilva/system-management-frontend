@@ -8,9 +8,9 @@ const DialogModal = ({ open, close, title, children }) => (
     aria-labelledby="alert-dialog-title"
     aria-describedby="alert-dialog-description"
   >
-<DialogTitle id="alert-dialog-title">{title ? title : ""}</DialogTitle>
+    <DialogTitle id="alert-dialog-title">{title || ''}</DialogTitle>
 
-{children}
+    {children}
     <DialogActions>
       <Button onClick={close} color="primary">
         Fechar

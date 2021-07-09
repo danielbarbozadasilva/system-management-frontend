@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProducts } from '../../../store/produto/produto.action'
 import CardProduto from '../../../components/portal/card/card_produto'
-import PesquisaProduto from '../../../components/portal/filtros/pesquisaProduto'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
@@ -37,11 +36,11 @@ function Produtos(props) {
 
   return (
     <div>
-      <div class="container-fluid">
+      <div className="container-fluid">
         <div className="imagem">
-          <img className="imagemPrincipal" src={Imagem} alt="" srcset="" />
+          <img className="imagemPrincipal" src={Imagem} alt="" srcSet="" />
         </div>
-        <div class="texto">
+        <div className="texto">
           <h2>Nossos produtos...</h2>
           <h2>os mais saborosos!</h2>
         </div>

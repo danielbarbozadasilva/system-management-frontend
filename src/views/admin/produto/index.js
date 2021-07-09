@@ -11,19 +11,19 @@ import { MdStar } from 'react-icons/md'
 import Title from '~/components/title'
 import DialogModal from '~/components/dialog'
 import DataList from '~/components/datagrid'
-import React, { useEffect, useCallback } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import { More as MoreIcon } from '@material-ui/icons'
 import {
   getAll as getAllProdutos,
   create as createProduto,
   remove as removeProduto
+  , getProducts
 } from '~/store/produto/produto.action'
 import { getCategoriaById } from '~/store/categoria/categoria.action'
 import { likeProduto } from '~/store/fornecedor/fornecedor.action'
 import FormProduto from '~/components/admin/produto/form'
-import { getProducts } from '~/store/produto/produto.action'
+
 import ListaCategoria from '../../../components/admin/forncedor/categoria'
 const Produto = () => {
   const dispatch = useDispatch()
@@ -58,8 +58,7 @@ const Produto = () => {
     dispatch(removeProduto(produto))
   }
   function categoriaProduto(row) {
-    dispatch(getCategoriaById(row.categoriaId)).then(()=>{setIsOpenModalCategoria(true)})
-     
+    dispatch(getCategoriaById(row.categoriaId)).then(() => { setIsOpenModalCategoria(true) })
   }
 
   const actionModal = ({ id, row }) => {
@@ -124,7 +123,7 @@ const Produto = () => {
       flex: 2,
       disableColumnMenu: true
     },
-   
+
     {
       field: 'actions',
       headerName: 'Ações',
@@ -168,7 +167,7 @@ const Produto = () => {
         <FormProduto submit={handlesubmit} />
       </DialogModal>
 
-        <ListaCategoria open={isOpenModalCategoria} close={()=>setIsOpenModalCategoria(false)} />
+      <ListaCategoria open={isOpenModalCategoria} close={() => setIsOpenModalCategoria(false)} />
 
       <DialogModal title="Categoria" open={false} close={() => {}}>
         <></>

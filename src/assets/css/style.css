@@ -71,9 +71,8 @@
   margin-right: 0;
 }
 
-.active {
-  text-decoration: underline;
-  font-weight: bold;
+.dropdown{
+  margin-top: 24px;
 }
 
 .iconeStar {
@@ -221,7 +220,9 @@ a {
   line-height: 1.2;
   font-size: 2.5rem;
 }
-
+.cidadeLabel{
+  margin-bottom: 10px;
+}
 #secao03 {
   position: relative;
   line-height: 1.7em;
@@ -230,9 +231,20 @@ a {
   font-weight: 700;
 }
 /* UF */
-#ffg {
-  padding-bottom: 20px;
+#cadastro-uf {
+  padding-right: 10px;
+  margin-top: 20px;
+  margin-bottom: 9px;
+  font-weight: bold;
 }
+
+#cadastro-cidade{
+  margin-top: 50px;
+  margin-bottom: 10px;
+  font-weight: bold;
+
+}
+
 #secao03 #enviar {
   color: #771700 !important;
   border-color: #edd29a;
@@ -284,9 +296,11 @@ h1 {
 }
 
 #botaoFormulario {
+  margin-top: 74px;
+}
+.formPainel{
   margin-top: 60px;
 }
-
 .linkSignin {
   text-decoration: none;
   color: rgb(112, 47, 47);

@@ -109,7 +109,7 @@ const SignUpFornecedor = () => {
       case 'uf':
         const uf = valor
 
-        if (uf == 'uf') {
+        if (uf == 'selecione') {
           menssage += 'Selecione uma uf!'
         }
         break
@@ -117,7 +117,7 @@ const SignUpFornecedor = () => {
       case 'cidade':
         const cidade = valor
 
-        if (cidade == 'cidade') {
+        if (cidade == 'selecione') {
           menssage += 'Selecione uma cidade!'
         }
         break
@@ -198,7 +198,7 @@ const SignUpFornecedor = () => {
   }
 
   return (
-    <Container>
+    <Container className="formPainel">
       <Row className="justify-content-lg-center">
         <Col sm={12} md={12} lg={12}>
           <div className="colunasFormularios">
@@ -306,15 +306,16 @@ const SignUpFornecedor = () => {
             </div>
 
             <div className="coluna2">
-            <FormGroup
+              <FormGroup
                 variant="outlined"
                 fullWidth
                 size="medium"
                 margin="normal"
               >
-                <Label htmlFor="uf" className="label" id="ffg">
-                  uf:
+                <Label htmlFor="uf" id="cadastro-uf">
+                  UF:
                 </Label>
+                <div></div>
                 <Select
                   native
                   value={form.uf || ''}
@@ -324,7 +325,7 @@ const SignUpFornecedor = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value="">uf</option>
+                  <option value="">selecione</option>
                   {uf?.map(({ nome, sigla }, i) => (
                     <option key={i} value={sigla}>
                       {sigla}
@@ -335,11 +336,14 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup
+              id="cadastro-cidade"
                 variant="outlined"
                 size="small"
                 fullWidth
                 margin="normal"
               >
+                <Label htmlFor="uf" className="cidadeLabel">CIDADE:</Label>
+
                 <Select
                   fullWidth
                   native
@@ -350,7 +354,7 @@ const SignUpFornecedor = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value="">cidade</option>
+                  <option value="">selecione</option>
 
                   {cidades?.map((cidade, i) => (
                     <option key={i} value={cidade}>

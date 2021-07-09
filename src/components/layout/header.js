@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import {
   Collapse,
   Navbar,
@@ -14,33 +14,45 @@ import {
   DropdownMenu
 } from 'reactstrap'
 import styled from 'styled-components'
-import { Link as LinkRoute } from '@reach/router'
-import { Link } from '@material-ui/core'
+import { render } from "react-dom";
+import '../../assets/css/style.css'
 import LogoHeader from '../../assets/img/logo.png'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutAction } from '../../store/auth/auth.action'
-import { isAuthenticated } from '../../config/storage'
-import history from '../../config/history'
-import '../../assets/css/style.css'
+import { Router, Link, Match } from "@reach/router";
 
-const Header = (props) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const [tooltipOpen, setTooltipOpen] = useState(false)
+const logout = () => {
+  dispatch(logoutAction())
+}
 
-  const toggleTooltip = () => setTooltipOpen(!tooltipOpen)
-  const toggle = () => setIsOpen(!isOpen)
-  const usuario = useSelector((state) => state.auth.usuario)
-  const isAdmin = useSelector((state) => state.auth.isAdmin)
+const NavLink = props => (
+  <Link
+    {...props}
+    getProps={({ isCurrent }) => {
 
-  const logout = () => {
-    dispatch(logoutAction())
-  }
+      return {
+        style: {
+          textDecoration: isCurrent ? "underline" : "none"
+        }
+      };
+    }}
+  />
+);
 
-  return (
+
+const Header = props => {
+  
+const [isOpen, setIsOpen] = useState(false)
+const [tooltipOpen, setTooltipOpen] = useState(false)
+
+const toggleTooltip = () => setTooltipOpen(!tooltipOpen)
+const toggle = () => setIsOpen(!isOpen)
+
+   return (
     <header>
       <SNavbar className="barraHeader" color="dark" dark expand="lg">
         <Container>
-          <Link component={LinkRoute} to="/" id="logoMain">
+          <Link to="/" id="logoMain">
             <img className="logo-img" src={LogoHeader} alt="logo" />
           </Link>
           <Tooltip
@@ -56,20 +68,20 @@ const Header = (props) => {
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem>
-                  <SLink component={LinkRoute} to="/">
+                  <SNavLink to="/" path="/">
                     Inicio
-                  </SLink>
+                  </SNavLink>
                 </NavItem>
                 <>
                   <NavItem>
-                    <SLink component={LinkRoute} to="/produto">
+                    <SNavLink to="/produto">
                       Produtos
-                    </SLink>
+                    </SNavLink>
                   </NavItem>
                   <NavItem>
-                    <SLink component={LinkRoute} to="/fornecedor">
+                    <SNavLink to="/fornecedor">
                       Fornecedores
-                    </SLink>
+                    </SNavLink>
                   </NavItem>
                 </>
               </Nav>
@@ -77,26 +89,9 @@ const Header = (props) => {
 
             <Nav>
               <NavItem>
-              {/* {isAuthenticated() ? (
-                  <React.Fragment>
-                    <Nav>
-                      <UncontrolledDropdown nav inNavbar>
-                        <SDropdownToggle nav caret>
-                          {usuario.nome}
-                        </SDropdownToggle>
-                        <DropdownMenu>
-                          <DropdownItem divider />
-                          <DropdownItem onClick={logout}>Sair</DropdownItem>
-                        </DropdownMenu>
-                      </UncontrolledDropdown>
-                    </Nav>
-                  </React.Fragment>
-                ) : (
-                  ''
-                )} */}
-                
-                <SLink component={LinkRoute} to="/signin">
-                  {' '}
+             
+                <SNavLink to="/signin">
+                  
                   <div className="css-1wmxvcs">
                     <a className="btn btn--icon" href="/sign-in">
                       <div>
@@ -132,11 +127,10 @@ const Header = (props) => {
                       Sign in
                     </a>
                   </div>
-                </SLink>
+                </SNavLink>
               </NavItem>
               <div>
                
-                <SLink className="css-1wmxvcs">
                   <UncontrolledDropdown>
                     <SDropdownToggle
                       id="botaoCad"
@@ -146,16 +140,15 @@ const Header = (props) => {
                       Sign up
                     </SDropdownToggle>
                     <SDropdownMenu>
-                      <SLink component={LinkRoute} to="/clientecadastro">
+                      <SNavLink to="/clientecadastro">
                         Cliente
-                      </SLink>
+                      </SNavLink>
                       <DropdownItem divider />
-                      <SLink component={LinkRoute} to="/fornecedorcadastro">
+                      <SNavLink to="/fornecedorcadastro">
                         Fornecedor
-                      </SLink>
+                      </SNavLink>
                     </SDropdownMenu>
                   </UncontrolledDropdown>
-                </SLink>
 
                 <div>
                   <div></div>
@@ -167,11 +160,13 @@ const Header = (props) => {
           <NavbarToggler onClick={toggle} />
         </Container>
       </SNavbar>
-    </header>
-  )
-}
 
-export default Header
+    </header>
+   )
+}
+    
+
+export default Header;
 
 const SNavbar = styled(Navbar)`
   background-color: #f8f9fa !important;
@@ -183,20 +178,14 @@ const SNavbar = styled(Navbar)`
   border-style: none;
   z-index: 99999;
   width: 100%;
-  margin-bottom: 60px;
 `
 
-const SLink = styled(Link)`
+const SNavLink = styled(NavLink)`
   color: rgb(74, 34, 26) !important;
   font-weight: 600;
   font-size: 18px;
   letter-spacing: 0.05em;
   margin: 0px 20px;
-
-  &.active {
-    text-decoration: underline;
-    font-weight: bold;
-  }
 
   @media (max-width: 767.98px) {
     margin: 6px 0;

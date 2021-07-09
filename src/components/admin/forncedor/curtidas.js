@@ -7,15 +7,15 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 import DataList from '~/components/datagrid'
 
-const ListaCurtidas= ({ open, close, curtidas }) => {
-  const columnsCurtidas= [
+const ListaCurtidas = ({ open, close, curtidas }) => {
+  const columnsCurtidas = [
     {
       field: 'clienteId',
       headerName: 'id',
       flex: 1,
       width: 340,
       disableColumnMenu: true
-    },{
+    }, {
       field: 'clienteNome',
       headerName: 'Nome',
       flex: 1,

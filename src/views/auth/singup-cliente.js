@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, * as react from 'react'
 import * as moment from 'moment'
 import { create as createCliente } from '~/store/cliente/cliente.action'
 import { useDispatch, useSelector } from 'react-redux'
@@ -21,16 +21,16 @@ import ufcidade from '~/util/estados-cidades.json'
 const SignUpCliente = () => {
   const dispatch = useDispatch()
 
-  const [hasError, setHasError] = useState(false)
-  const [success, setSuccess] = useState(false)
+  const [hasError, setHasError] = react.useState(false)
+  const [success, setSuccess] = react.useState(false)
   const error = useSelector((state) => state.auth.error)
   const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
-  const [uf, setuf] = useState([])
-  const [cidades, setcidade] = useState([])
-  const [formValidate, setFormValidate] = useState({})
-  const [form, setForm] = useState({})
-  const [desableInit, setDesableInit] = useState(true)
+  const [uf, setuf] = react.useState([])
+  const [cidades, setcidade] = react.useState([])
+  const [formValidate, setFormValidate] = react.useState({})
+  const [form, setForm] = react.useState({})
+  const [desableInit, setDesableInit] = react.useState(true)
 
   const handleChange = (props) => {
     setDesableInit(false)
@@ -42,12 +42,12 @@ const SignUpCliente = () => {
     })
   }
 
-  useEffect(() => {
+  react.useEffect(() => {
     const estados = ufcidade.estados.map(({ nome, sigla }) => ({ nome, sigla }))
     setuf(estados)
   }, [])
 
-  useEffect(() => {
+  react.useEffect(() => {
     const result = ufcidade.estados.find((item) => item.sigla === form.uf)
     if (result) {
       setcidade(result.cidades)
@@ -131,7 +131,7 @@ const SignUpCliente = () => {
     return inputs.some((item) => invalid(item)) || validacoes
   }
 
-  useEffect(() => {
+  react.useEffect(() => {
     if (error.length > 0) {
       setHasError(true)
     } else {
@@ -194,7 +194,7 @@ const SignUpCliente = () => {
 
               <FormGroup>
                 <Label htmlFor="data_nascimento" className="label">
-                  Data de data_nascimento
+                  Data de nascimento
                 </Label>
                 <Input
                   invalid={formValidate.data_nascimento}
@@ -222,7 +222,7 @@ const SignUpCliente = () => {
                 size="medium"
                 margin="normal"
               >
-                <Label htmlFor="uf" className="label" id="ffg">
+                <Label htmlFor="uf" className="label" id="cadastro-uf">
                   uf:
                 </Label>
                 <Select
@@ -234,9 +234,9 @@ const SignUpCliente = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value="">uf</option>
+                  <option className = "ufForm" value="">uf</option>
                   {uf?.map(({ nome, sigla }, i) => (
-                    <option key={i} value={sigla}>
+                    <option className = "ufForm" key={i} value={sigla}>
                       {sigla}
                     </option>
                   ))}
@@ -259,7 +259,7 @@ const SignUpCliente = () => {
                     name: 'cidade',
                     id: 'outlined-native-simple'
                   }}
-                  
+
                 >
                   <option value="">cidade</option>
 

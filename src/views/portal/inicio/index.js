@@ -32,11 +32,11 @@ const Inicio = () => {
 
   return (
     <>
-      <div class="container-fluid">
+      <div className="container-fluid">
         <div className="imagem">
-          <img className="imagemPrincipal" src={Imagem} alt="" srcset="" />
+          <img className="imagemPrincipal" src={Imagem} alt="" srcSet="" />
         </div>
-        <div class="texto">
+        <div className="texto">
           <h2>Feito para saborear...</h2>
           <h2>encontre as delícias da sua região</h2>
           <h2>
@@ -49,11 +49,13 @@ const Inicio = () => {
           </h1>
         </div>
         <BoxCards>
-          {!loading && categoria.length === 0 ? (
-            <h1 className="naoPossuiProd">Não há categorias disponiveis</h1>
-          ) : (
-            MapearCategoria(categoria)
-          )}
+          {!loading && categoria.length === 0
+            ? (
+              <h1 className="naoPossuiProd">Não há categorias disponiveis</h1>
+              )
+            : (
+                MapearCategoria(categoria)
+              )}
         </BoxCards>
       </div>
     </>

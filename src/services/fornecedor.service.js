@@ -21,7 +21,6 @@ export const inativaFornecedor = (id) => http.put(`${baseUrl}/${id}/inativa`)
 
 export const obterListadeProduto = (id) => http.get(`${baseUrl}/${id}/produto`)
 
-
 export const listaFornProdutos = (id) => http.get(`${baseUrl}/prod/${id}`)
 
 export const likeProdutoService = (idFornecedor) =>
@@ -29,4 +28,3 @@ export const likeProdutoService = (idFornecedor) =>
 
 export const removeProduto = (idFornecedor, produtoid) =>
   http.delete(`${baseUrl}/${idFornecedor}/produto/${produtoid}`)
-

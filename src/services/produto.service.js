@@ -14,7 +14,6 @@
 //   http.get(`/categoria/${id}/produto`)
 
 import http from '~/config/http'
-import { parsedToQuery } from '~/util/helpers'
 
 const baseUrl = '/produto'
 
@@ -47,6 +46,3 @@ export const remove = (id) => http.delete(`${baseUrl}/${id}`)
 
 export const create = (fornecedorId, data, config = {}) =>
   http.post(`fornecedor/${fornecedorId}/produto`, data, config)
-
-
-

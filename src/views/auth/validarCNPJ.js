@@ -30,7 +30,7 @@ export function ValidarCNPJ(value) {
 
   // Valida a quantidade de dígitos
   if (numbers.length !== 14) return false
-  
+
   // Elimina inválidos com todos os dígitos iguais
   const items = [...new Set(numbers)]
   if (items.length === 1) return false
@@ -54,7 +54,7 @@ export function ValidarCNPJ(value) {
 
   // Separa os 2 últimos dígitos de verificadores
   const digits = numbers.slice(12)
-  
+
   // Valida 1o. dígito verificador
   const digit0 = calc(12)
   if (digit0 !== digits[0]) return false

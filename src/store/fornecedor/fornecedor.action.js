@@ -1,15 +1,13 @@
 import {
   create as FornecedorCreate,
   getAll as getAllFornecedor,
-  getbyId as getFornecedorById,
   update as updateFornecedor,
   removeFornecedor,
   obterListadeProduto,
   ativarFornecedor,
   inativaFornecedor,
   likeProdutoService,
-  getbyId,
-  listaFornProdutos
+  getbyId
 } from '~/services/fornecedor.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'

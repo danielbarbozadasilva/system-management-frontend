@@ -66,7 +66,7 @@ export default function Dashboard(props) {
       alignItems: 'center',
       justifyContent: 'flex-end',
       padding: '0'
-        },
+    },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
       transition: theme.transitions.create(['width', 'margin'], {

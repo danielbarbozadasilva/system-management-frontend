@@ -69,7 +69,6 @@ export const getCategoriaById = (id) => {
   }
 }
 
-
 export const getAll = () => {
   return async (dispatch) => {
     try {
