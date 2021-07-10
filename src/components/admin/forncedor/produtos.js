@@ -26,7 +26,7 @@ const ListaProdutos = ({ open, close }) => {
     }
   ]
   const produtos = useSelector((state) => state.fornecedor.produtos)
-  console.log('log prod----------', produtos)
+
   return (
     <Dialog
       open={open}

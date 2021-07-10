@@ -14,7 +14,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const Routers = () => (
   <>
     <Router>
-   
+
       <PortalView path="/*" />
       <PrivateRoute component={AdminView} path="/admin/*" />
     </Router>

@@ -200,7 +200,6 @@ export default function Dashboard(props) {
             {nome}
             <Button onClick={handleLogout}>
               <PowerSettingsNew className={classes.userIcon} />
-              Sair
             </Button>
           </Typography>
         </Toolbar>

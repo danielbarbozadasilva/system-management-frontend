@@ -15,10 +15,8 @@ export const signInAction = (data) => {
           saveAuth(result.data?.data)
           http.defaults.headers.token = result.data.data.token
         }
-        dispatch({
-          type: TYPES.SIGN_IN,
-          data: result.data?.data
-        })
+        dispatch({ type: TYPES.SIGN_IN, data: result.data?.data })
+
         navigate('/admin')
       })
       .catch((error) => {

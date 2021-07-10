@@ -315,7 +315,7 @@ const SignUpFornecedor = () => {
                 <Label htmlFor="uf" id="cadastro-uf">
                   UF:
                 </Label>
-                <div></div>
+                <div />
                 <Select
                   native
                   value={form.uf || ''}
@@ -336,7 +336,7 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup
-              id="cadastro-cidade"
+                id="cadastro-cidade"
                 variant="outlined"
                 size="small"
                 fullWidth
@@ -415,13 +415,15 @@ const SignUpFornecedor = () => {
                 block
                 onClick={InserirDados}
               >
-                {loading ? (
-                  <>
-                    <Spinner size="sm" color="light" /> Carregando...
-                  </>
-                ) : (
-                  'Cadastrar'
-                )}
+                {loading
+                  ? (
+                    <>
+                      <Spinner size="sm" color="light" /> Carregando...
+                    </>
+                    )
+                  : (
+                      'Cadastrar'
+                    )}
               </Button>
               <Alert
                 color="success"

@@ -234,9 +234,9 @@ const SignUpCliente = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option className = "ufForm" value="">uf</option>
+                  <option className="ufForm" value="">uf</option>
                   {uf?.map(({ nome, sigla }, i) => (
-                    <option className = "ufForm" key={i} value={sigla}>
+                    <option className="ufForm" key={i} value={sigla}>
                       {sigla}
                     </option>
                   ))}

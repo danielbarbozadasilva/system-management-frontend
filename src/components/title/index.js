@@ -27,5 +27,5 @@ const Title = styled(Box)`
 `
 
 Head.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string
 }

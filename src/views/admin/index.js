@@ -15,6 +15,7 @@ import Fornecedor from '~/views/admin/fornecedor'
 import Categoria from './categoria/index'
 import Cliente from './cliente/index'
 import { useSelector } from 'react-redux'
+import Curtida from '~/views/admin/curtida'
 
 /* 1 - Administrador 2 - Fornecedor 3 - Cliente */
 export const Menu = [
@@ -53,6 +54,15 @@ export const Menu = [
     enabled: true,
     component: Fornecedor,
     authorization: [1]
+  },
+  {
+    title: 'Curtidas',
+    icon: <MoreIcon />,
+    route: '/curtida',
+    visibleMenu: true,
+    enabled: true,
+    component: Curtida,
+    authorization: [3]
   },
   {
     title: 'Cliente',

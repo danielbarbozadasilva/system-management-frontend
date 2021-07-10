@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   loading: false,
   all: [],
   upload: {},
-  selected: {}
+  curtidas: []
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -17,16 +17,20 @@ const reducer = (state = INITIAL_STATE, action) => {
       state.all = action.data
       state.loading = false
       return state
-    case TYPES.CLIENTE_EDIT:
-      state.selected = action.data
-      state.loading = false
-      return state
-    case TYPES.CLIENTE_UPLOAD:
-      state.upload = action.upload
-      return state
     case TYPES.CLIENTE_CREATE:
       state.loading = false
       return state
+
+    case TYPES.CLIENTE_CURTIDA_LOADING:
+      state.error = []
+      state.loading = action.status
+      return state
+
+    case TYPES.CLIENTE_CURTIDA_ALL:
+      state.curtidas = action.data.curtidas
+      state.loading = false
+      return state
+
     default:
       return state
   }

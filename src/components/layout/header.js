@@ -14,41 +14,31 @@ import {
   DropdownMenu
 } from 'reactstrap'
 import styled from 'styled-components'
-import { render } from "react-dom";
 import '../../assets/css/style.css'
 import LogoHeader from '../../assets/img/logo.png'
-import { useSelector, useDispatch } from 'react-redux'
-import { logoutAction } from '../../store/auth/auth.action'
-import { Router, Link, Match } from "@reach/router";
+import { Link } from '@reach/router'
 
-const logout = () => {
-  dispatch(logoutAction())
-}
-
-const NavLink = props => (
+const NavLink = (props) => (
   <Link
     {...props}
     getProps={({ isCurrent }) => {
-
       return {
         style: {
-          textDecoration: isCurrent ? "underline" : "none"
+          textDecoration: isCurrent ? 'underline' : 'none'
         }
-      };
+      }
     }}
   />
-);
+)
 
+const Header = (props) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [tooltipOpen, setTooltipOpen] = useState(false)
 
-const Header = props => {
-  
-const [isOpen, setIsOpen] = useState(false)
-const [tooltipOpen, setTooltipOpen] = useState(false)
+  const toggleTooltip = () => setTooltipOpen(!tooltipOpen)
+  const toggle = () => setIsOpen(!isOpen)
 
-const toggleTooltip = () => setTooltipOpen(!tooltipOpen)
-const toggle = () => setIsOpen(!isOpen)
-
-   return (
+  return (
     <header>
       <SNavbar className="barraHeader" color="dark" dark expand="lg">
         <Container>
@@ -74,14 +64,10 @@ const toggle = () => setIsOpen(!isOpen)
                 </NavItem>
                 <>
                   <NavItem>
-                    <SNavLink to="/produto">
-                      Produtos
-                    </SNavLink>
+                    <SNavLink to="/produto">Produtos</SNavLink>
                   </NavItem>
                   <NavItem>
-                    <SNavLink to="/fornecedor">
-                      Fornecedores
-                    </SNavLink>
+                    <SNavLink to="/fornecedor">Fornecedores</SNavLink>
                   </NavItem>
                 </>
               </Nav>
@@ -89,9 +75,7 @@ const toggle = () => setIsOpen(!isOpen)
 
             <Nav>
               <NavItem>
-             
                 <SNavLink to="/signin">
-                  
                   <div className="css-1wmxvcs">
                     <a className="btn btn--icon" href="/sign-in">
                       <div>
@@ -104,22 +88,22 @@ const toggle = () => setIsOpen(!isOpen)
                           >
                             <g
                               fill="none"
-                              fill-rule="evenodd"
+                              fillRule="evenodd"
                               transform="translate(10 10)"
                             >
-                              <path d="M0 0h20v20H0z"></path>
+                              <path d="M0 0h20v20H0z" />
                               <circle
                                 className="icon-white"
                                 cx="10"
                                 cy="6"
                                 r="3"
                                 fill="#464B4F"
-                              ></circle>
+                              />
                               <path
                                 className="icon-white"
                                 fill="#464B4F"
                                 d="M15 17s1-4.2-1-6c-2.3-1.5-5.7-1.5-8 0-2 1.8-1 6-1 6h10z"
-                              ></path>
+                              />
                             </g>
                           </svg>
                         </div>
@@ -130,28 +114,23 @@ const toggle = () => setIsOpen(!isOpen)
                 </SNavLink>
               </NavItem>
               <div>
-               
-                  <UncontrolledDropdown>
-                    <SDropdownToggle
-                      id="botaoCad"
-                      className="btn btn--primary css-10sx58j"
-                      caret
-                    >
-                      Sign up
-                    </SDropdownToggle>
-                    <SDropdownMenu>
-                      <SNavLink to="/clientecadastro">
-                        Cliente
-                      </SNavLink>
-                      <DropdownItem divider />
-                      <SNavLink to="/fornecedorcadastro">
-                        Fornecedor
-                      </SNavLink>
-                    </SDropdownMenu>
-                  </UncontrolledDropdown>
+                <UncontrolledDropdown>
+                  <SDropdownToggle
+                    id="botaoCad"
+                    className="btn btn--primary css-10sx58j"
+                    caret
+                  >
+                    Sign up
+                  </SDropdownToggle>
+                  <SDropdownMenu>
+                    <SNavLink to="/clientecadastro">Cliente</SNavLink>
+                    <DropdownItem divider />
+                    <SNavLink to="/fornecedorcadastro">Fornecedor</SNavLink>
+                  </SDropdownMenu>
+                </UncontrolledDropdown>
 
                 <div>
-                  <div></div>
+                  <div />
                 </div>
               </div>
             </Nav>
@@ -160,13 +139,11 @@ const toggle = () => setIsOpen(!isOpen)
           <NavbarToggler onClick={toggle} />
         </Container>
       </SNavbar>
-
     </header>
-   )
+  )
 }
-    
 
-export default Header;
+export default Header
 
 const SNavbar = styled(Navbar)`
   background-color: #f8f9fa !important;
