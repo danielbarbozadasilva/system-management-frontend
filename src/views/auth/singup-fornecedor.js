@@ -72,7 +72,7 @@ const SignUpFornecedor = () => {
         const result_cnpj = ValidarCNPJ(valor)
 
         if (!result_cnpj) {
-          menssage += 'Cnpj inválido!'
+          menssage += 'CNPJ inválido!'
         }
         break
 
@@ -207,8 +207,8 @@ const SignUpFornecedor = () => {
                 Cadastre-se
               </h2>
               <FormGroup>
-                <Label htmlFor="name" className="label">
-                  Nome Fantasia
+                <Label htmlFor="name" className="labelFornecedor">
+                  Nome Fantasia:
                 </Label>
                 <Input
                   invalid={formValidate.nomeFantasia}
@@ -226,8 +226,8 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="cnpj" className="label">
-                  cnpj:
+                <Label htmlFor="cnpj" className="labelFornecedor">
+                  CNPJ:
                 </Label>
 
                 <Input
@@ -238,7 +238,7 @@ const SignUpFornecedor = () => {
                   id="cnpj"
                   onChange={handleChange}
                   value={form.cnpj || ''}
-                  placeholder="Informe o cnpj (apenas números)"
+                  placeholder="Informe o CNPJ (apenas números)"
                   maxLength="18"
                   required
                 />
@@ -246,8 +246,8 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="responsavel" className="label">
-                  Responsável
+                <Label htmlFor="responsavel" className="labelFornecedor">
+                  RESPONSÁVEL:
                 </Label>
                 <Input
                   invalid={formValidate.responsavel}
@@ -266,8 +266,8 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="telefone" className="label">
-                  Telefone
+                <Label htmlFor="telefone" className="labelFornecedor">
+                  TELEFONE:
                 </Label>
                 <Input
                   invalid={formValidate.telefone}
@@ -285,8 +285,8 @@ const SignUpFornecedor = () => {
                 <FormFeedback>{formValidate.telefone || ''}</FormFeedback>
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="endereco" className="label">
-                  Endereco
+                <Label htmlFor="endereco" className="labelFornecedor">
+                  ENDEREÇO:
                 </Label>
                 <Input
                   invalid={formValidate.endereco}
@@ -305,14 +305,14 @@ const SignUpFornecedor = () => {
               </FormGroup>
             </div>
 
-            <div className="coluna2">
+            <div className="coluna2 cadastro-uf" id="infoColuna">
               <FormGroup
                 variant="outlined"
                 fullWidth
                 size="medium"
                 margin="normal"
               >
-                <Label htmlFor="uf" id="cadastro-uf">
+                <Label htmlFor="uf" id="cadastro-uf-forn">
                   UF:
                 </Label>
                 <div />
@@ -342,7 +342,9 @@ const SignUpFornecedor = () => {
                 fullWidth
                 margin="normal"
               >
-                <Label htmlFor="uf" className="cidadeLabel">CIDADE:</Label>
+                <Label htmlFor="uf" className="cidadeLabel">
+                  CIDADE:
+                </Label>
 
                 <Select
                   fullWidth
@@ -366,8 +368,8 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="email" className="label">
-                  E-mail
+                <Label htmlFor="email" className="labelFornecedor">
+                  E-MAIL:
                 </Label>
                 <Input
                   invalid={formValidate.email}
@@ -384,8 +386,8 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="senha" className="label">
-                  Senha:
+                <Label htmlFor="senha" className="labelFornecedor">
+                  SENHA:
                 </Label>
                 <Input
                   invalid={formValidate.senha}
@@ -404,7 +406,7 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <Button
-                id="botaoFormulario"
+                id="botaoFormularioForn"
                 className={
                   isNotValid() || loading
                     ? 'estilo-botao-desable'

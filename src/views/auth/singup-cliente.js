@@ -163,7 +163,7 @@ const SignUpCliente = () => {
   }
 
   return (
-    <Container>
+    <Container className="formCad">
       <Row className="justify-content-lg-center">
         <Col sm={12} md={12} lg={12}>
           <div className="colunasFormularios">
@@ -172,8 +172,8 @@ const SignUpCliente = () => {
                 Cadastre-se
               </h2>
               <FormGroup>
-                <Label htmlFor="name" className="label">
-                  Nome
+                <Label htmlFor="name" className="labelCli">
+                  NOME:
                 </Label>
                 <Input
                   invalid={formValidate.nome}
@@ -193,8 +193,8 @@ const SignUpCliente = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="data_nascimento" className="label">
-                  Data de nascimento
+                <Label htmlFor="data_nascimento" className="labelCli">
+                  DATA DE NASCIMENTO:
                 </Label>
                 <Input
                   invalid={formValidate.data_nascimento}
@@ -220,10 +220,10 @@ const SignUpCliente = () => {
                 variant="outlined"
                 fullWidth
                 size="medium"
-                margin="normal"
+                margin="larger"
               >
-                <Label htmlFor="uf" className="label" id="cadastro-uf">
-                  uf:
+                <Label htmlFor="uf" className="labelCli" id="cadastro-uf-cli">
+                  UF:
                 </Label>
                 <Select
                   native
@@ -234,7 +234,9 @@ const SignUpCliente = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option className="ufForm" value="">uf</option>
+                  <option className="ufForm" value="">
+                    uf
+                  </option>
                   {uf?.map(({ nome, sigla }, i) => (
                     <option className="ufForm" key={i} value={sigla}>
                       {sigla}
@@ -245,11 +247,16 @@ const SignUpCliente = () => {
               </FormGroup>
 
               <FormGroup
+                id="cadastro-cidade"
                 variant="outlined"
                 size="small"
                 fullWidth
                 margin="normal"
               >
+                <Label htmlFor="uf" className="labelCidade">
+                  CIDADE:
+                </Label>
+
                 <Select
                   fullWidth
                   native
@@ -259,9 +266,8 @@ const SignUpCliente = () => {
                     name: 'cidade',
                     id: 'outlined-native-simple'
                   }}
-
                 >
-                  <option value="">cidade</option>
+                  <option value="">selecione</option>
 
                   {cidades?.map((cidade, i) => (
                     <option key={i} value={cidade}>
@@ -272,10 +278,11 @@ const SignUpCliente = () => {
                 <FormFeedback>{formValidate.cidade || ''}</FormFeedback>
               </FormGroup>
             </div>
-            <div className="coluna2">
+
+            <div className="coluna2" id="infoColuna">
               <FormGroup>
-                <Label htmlFor="email" className="label">
-                  E-mail
+                <Label htmlFor="email" className="labelCli">
+                  E-MAIL:
                 </Label>
                 <Input
                   invalid={formValidate.email}
@@ -291,8 +298,8 @@ const SignUpCliente = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="senha" className="label">
-                  Senha:
+                <Label htmlFor="senha" className="labelCli">
+                  SENHA:
                 </Label>
                 <Input
                   invalid={formValidate.senha}
@@ -310,7 +317,7 @@ const SignUpCliente = () => {
               </FormGroup>
 
               <Button
-                id="botaoFormulario"
+                id="botaoFormularioCli"
                 className={
                   isNotValid() || loading
                     ? 'estilo-botao-desable'

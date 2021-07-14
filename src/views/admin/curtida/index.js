@@ -1,13 +1,10 @@
 import React from 'react'
-import {
-  Grid,
-  CssBaseline,
-} from '@material-ui/core'
+import { Grid, CssBaseline } from '@material-ui/core'
 
-import Title from '~/components/title'
-import DataList from '~/components/datagrid'
+import Title from '~/components/title/index'
+import DataList from '~/components/datagrid/index'
 
-import { getAllCurtidas } from '~/store/cliente/action'
+import { getAllCurtidas } from '~/store/cliente/cliente.action'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Curtida = () => {
@@ -24,13 +21,6 @@ const Curtida = () => {
   }, [callStart])
 
   const columns = [
-    // {
-    //   field: 'imagem',
-    //   headerName: 'Imagem',
-    //   flex: 2,
-    //   renderCell: viewImageColumn,
-    //   disableColumnMenu: true
-    // },
     {
       field: 'nomeFantasia',
       headerName: 'Nome',
@@ -43,13 +33,6 @@ const Curtida = () => {
       flex: 1,
       disableColumnMenu: true
     }
-    // {
-    //   field: 'actions',
-    //   headerName: 'Ações',
-    //   renderCell: actionModal,
-    //   flex: 1,
-    //   disableColumnMenu: true
-    // }
   ]
 
   const actions = () => null

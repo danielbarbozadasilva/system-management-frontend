@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import videoMeu from './videoMeu'
+
 class Video extends Component {
     constructor (props) {
         super(props);

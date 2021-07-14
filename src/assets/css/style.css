@@ -40,7 +40,9 @@
   color: #ebebeb;
   text-align: center;
 }
-
+.formCad {
+  margin-top: 55px;
+}
 .texto a {
   color: #fff;
   background: #be8c60;
@@ -71,13 +73,16 @@
   margin-right: 0;
 }
 
-.dropdown{
+.dropdown {
   margin-top: 24px;
 }
 
 .iconeStar {
   font-size: 18px;
   color: rgb(100, 100, 42);
+}
+.formularioLogar {
+  padding: 20px;
 }
 
 /* HEADER */
@@ -207,9 +212,15 @@ header .logo-img {
 .navbar-toggler {
   background-color: rgb(223, 223, 223);
 }
+
 a {
   transition: color 0.3s ease, opacity 0.3s ease;
 }
+
+a:hover {
+  text-decoration: underline !important;
+}
+
 .chamada-contato {
   font-family: 'Nunito', Helvetica, Arial, Lucida, sans-serif;
   border-left: solid 1px #141414;
@@ -220,9 +231,18 @@ a {
   line-height: 1.2;
   font-size: 2.5rem;
 }
-.cidadeLabel{
-  margin-bottom: 10px;
+
+.label,
+.labelCli {
+  margin-top: 20px;
+  font-weight: bold;
 }
+.cidadeLabel {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 #secao03 {
   position: relative;
   line-height: 1.7em;
@@ -230,19 +250,25 @@ a {
   margin-bottom: 5%;
   font-weight: 700;
 }
+
 /* UF */
-#cadastro-uf {
+#cadastro-uf-forn {
   padding-right: 10px;
-  margin-top: 20px;
-  margin-bottom: 9px;
+  margin-top: 30px;
   font-weight: bold;
 }
 
-#cadastro-cidade{
-  margin-top: 50px;
-  margin-bottom: 10px;
+/* UF */
+#cadastro-uf-cli {
+  padding-right: 10px;
+  margin-top: 30px;
   font-weight: bold;
+}
 
+#cadastro-cidade {
+  margin-top: 25px;
+  margin-bottom: 18px;
+  font-weight: bold;
 }
 
 #secao03 #enviar {
@@ -255,7 +281,7 @@ a {
 #secao03 label,
 h1 {
   color: #501417;
-  padding-top: 0%;
+  padding-top: 1%;
 }
 
 /* Colunas dos formularios */
@@ -286,26 +312,40 @@ h1 {
   margin: 80px 35px;
   line-height: 1.5;
 }
-/* Configuração da segunda coluna do formulário */
-.coluna2 {
-  margin: 160px 35px;
+
+#infoColuna {
+  margin-top: 158px;
 }
-/* Espaçamento interno na coluna 2 do formulário participantes */
+
+/* Espaçamento interno na coluna 2 do formulário */
 .colunadetalhe2 {
   padding-top: 20px;
 }
 
-#botaoFormulario {
-  margin-top: 74px;
+#botaoFormularioCli {
+  margin-top: 35px;
+  width: 100%;
+  padding: 12px;
+  justify-content: center;
 }
-.formPainel{
+
+#botaoFormularioForn {
+  margin-top: 55px;
+  width: 100%;
+  padding: 12px;
+  justify-content: center;
+}
+
+.formPainel {
   margin-top: 60px;
 }
+
 .linkSignin {
   text-decoration: none;
   color: rgb(112, 47, 47);
-  padding: 0px 10px;
+  padding: 0px 7px;
 }
+
 .linkSignin:hover {
   text-decoration: none;
   color: rgb(148, 105, 105);
@@ -315,31 +355,39 @@ body {
   min-height: 100vh;
   background: #fafafa;
 }
+
 /* TABELA INSCRITOS */
 .noparticipants {
   font-size: 25px;
   margin-bottom: 15px;
 }
+
 .bg-gradient-l-primary-gradient {
   background-image: linear-gradient(to left, #4f2821, #aa4938);
 }
+
 .shadow-redBtn {
   box-shadow: 0 4px 12px 0 rgb(226 60 82 / 20%);
 }
+
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
+
 .font-bold {
   font-weight: 700;
 }
+
 .border-none {
   border-style: none;
 }
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -356,13 +404,12 @@ body {
   padding-right: 20px;
   -o-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 10px;
-
 }
 
-.form-group .label {    
-  margin-top: 30px;
+.form-group .labelFornecedor {
+  margin-top: 10px;
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -374,10 +421,12 @@ body {
   line-height: 1.5;
   font-weight: 500;
   color: #000;
-  padding-left: 20px;
+  padding-left: 15px;
+  padding-top: 15px;
 }
 
 .text-cadastro {
+  margin-bottom: 30px;
   line-height: 1.5;
   font-weight: 500;
   color: #000;
@@ -400,7 +449,7 @@ body {
 }
 
 .text-muted {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.8;
   font-weight: 900;
   background: #f8f9fd;
@@ -546,10 +595,7 @@ footer i:hover {
     margin: 0px 0px;
     line-height: 1.5;
   }
-  /* Configuração da segunda coluna do formulário */
-  .coluna2 {
-    margin: 0px 0px;
-  }
+
   .cardsTelaInicial {
     display: flex;
     flex-direction: column;
@@ -700,6 +746,7 @@ footer i:hover {
   header .container {
     max-width: 100%;
   }
+
   .cardsTelaInicial {
     left: 6%;
     margin-bottom: 50px;
