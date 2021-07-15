@@ -96,8 +96,6 @@ export const update = ({ id, ...data }) => {
         const percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
-        console.log('percentCompleted', percentCompleted)
-
         dispatch({
           type: TYPES.CATEGORY_UPLOAD,
           upload: percentCompleted

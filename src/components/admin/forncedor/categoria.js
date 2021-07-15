@@ -26,7 +26,6 @@ const ListaCategoria = ({ open, close }) => {
     }
   ]
   const categoria = useSelector((state) => state.categoria.dadosById)
-  console.log('log categ----------', categoria)
   return (
     <Dialog
       open={open}

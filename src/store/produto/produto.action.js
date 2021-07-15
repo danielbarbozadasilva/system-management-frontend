@@ -45,7 +45,6 @@ export const getAll = (query = null) => {
     try {
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
       const result = await getAllProduto(query)
-      console.log('result', result)
       dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
@@ -72,7 +71,6 @@ export const getProducts = (id, nameFilter) => {
     try {
       const params = { [nameFilter]: id }
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
-      console.log(params)
       const result = await getAllProduto(params)
       dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
     } catch (error) {

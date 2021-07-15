@@ -70,8 +70,6 @@ const DataList = ({ data, modal, loading }) => {
     return <p>carregando...</p>
   }
 
-  console.log(mappedData)
-
   return (
     <BoxTable>
       <DataGrid rows={mappedData} columns={columns} pageSize={10} />

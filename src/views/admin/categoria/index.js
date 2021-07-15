@@ -32,11 +32,8 @@ const Categoria = () => {
     callCategoria()
   }, [callCategoria])
 
-  // verifica se o usuário possui 'id', caso tenha faz o dispatch do editCategory
   const toogleModal = (tipo = 1, id = null) => {
     if (id) {
-      /* dispatch para preencher o modal que foi aberto
-      para que as iformações sejam editadas */
       dispatch(editCategory(id)).then(() =>
         setModal({ tipo, id, status: true })
       )
@@ -53,9 +50,6 @@ const Categoria = () => {
         dispatch(createCategory(form))
         return
       case 2:
-        /* requisição após clicar no botão de atualizar dentro do modal,
-        temho os dois dispatchs na action update e editCategory */
-        console.log(categoria)
         dispatch(updateCategory(form))
         return
       case 3:

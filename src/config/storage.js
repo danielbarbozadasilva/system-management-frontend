@@ -17,7 +17,6 @@ const getUser = () => {
 }
 
 const isAuthenticated = () => {
-  console.log(getToken() !== false)
   return getToken() !== false
 }
 

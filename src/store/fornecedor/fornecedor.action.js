@@ -22,7 +22,6 @@ export const create = (data) => {
     } catch (error) {
       toastr.error('Fornecedor', 'Preencha todos os campos!')
     }
-    console.log('disparar...', data)
   }
 }
 export const edit = (id) => {
@@ -65,8 +64,6 @@ export const update = ({ id, ...data }) => {
         const percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
-        console.log('percentCompleted', percentCompleted)
-
         dispatch({
           type: TYPES.FORNECEDOR_UPLOAD,
           upload: percentCompleted
@@ -105,7 +102,6 @@ export const excluirFornecedor = (id) => {
 }
 
 export const setStatusFornecedor = (id, ativo) => {
-  console.log('fornecedor mudar status', ativo)
   return async (dispatch, getState) => {
     let result
     try {
@@ -128,7 +124,6 @@ export const setStatusFornecedor = (id, ativo) => {
 
       dispatch({ type: TYPES.FORNECEDOR_ALL, data: [...all] })
     } catch (err) {
-      console.log('###', err)
     }
   }
 }
