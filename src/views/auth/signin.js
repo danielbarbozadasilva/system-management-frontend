@@ -159,5 +159,5 @@ const SButton = styled(Card)`
   box-shadow: 0px 2px 15px 6px rgba(0, 0, 0, 0.11);
   padding-top: 15px;
   margin-top: 25px;
-  width: 25%;
+  width: 95px;
 `

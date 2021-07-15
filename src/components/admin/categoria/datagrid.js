@@ -8,10 +8,11 @@ import styled from 'styled-components'
 const DataList = ({ data, modal, loading }) => {
   // eslint-disable-next-line spaced-comment
   //TODO: remover e colocar no mapper do backend
-  const mappedData = data.map(item => {
-    const { imagem, ...resto } = item
+  const mappedData = data.map((item) => {
+    const { imagem, status, ...resto } = item
     return {
       ...resto,
+      status: status ? 'Ativa' : 'Inativa',
       imagem: `${process.env.REACT_APP_API}${imagem}`
     }
   })
@@ -36,7 +37,6 @@ const DataList = ({ data, modal, loading }) => {
       </>
     )
   }
-
   const columns = [
     {
       field: 'imagem',
@@ -46,12 +46,17 @@ const DataList = ({ data, modal, loading }) => {
       disableColumnMenu: true
     },
     {
+      field: 'nome',
+      headerName: 'Nome',
+      flex: 2,
+      disableColumnMenu: true
+    },
+    {
       field: 'status',
       headerName: 'Status',
       width: 120,
       disableColumnMenu: true
     },
-    { field: 'nome', headerName: 'Nome', flex: 2, disableColumnMenu: true },
     {
       field: 'actions',
       headerName: 'Ações',

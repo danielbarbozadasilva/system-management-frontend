@@ -12,16 +12,21 @@ function Cliente() {
   const clientes = useSelector((state) => state.cliente.all)
   const loading = useSelector((state) => state.fornecedor.loading)
 
-  const callFornecedor = useCallback(() => {
+  const callClientes = useCallback(() => {
     dispatch(getClientes())
   }, [dispatch])
 
   useEffect(() => {
-    callFornecedor()
-  }, [callFornecedor])
+    callClientes()
+  }, [callClientes])
 
   const columns = [
-    { field: 'nome', headerName: 'Nome', flex: 1, disableColumnMenu: true },
+    {
+      field: 'nome',
+      headerName: 'Nome',
+      flex: 1,
+      disableColumnMenu: true
+    },
     {
       field: 'data_nascimento',
       headerName: 'Data de nascimento',

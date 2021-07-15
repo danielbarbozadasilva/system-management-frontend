@@ -22,13 +22,13 @@ const Curtida = () => {
 
   const columns = [
     {
-      field: 'nomeFantasia',
+      field: 'Nome fantasia',
       headerName: 'Nome',
       flex: 1,
       disableColumnMenu: true
     },
     {
-      field: 'email',
+      field: 'E-mail',
       headerName: 'Email',
       flex: 1,
       disableColumnMenu: true

@@ -65,14 +65,6 @@ const Produto = () => {
     if (tipoUsuario < 3) {
       return (
         <>
-          {/* lista DATALIST - produtos
-          <Tooltip title="Listar de Produtos">
-            <IconButton onClick={() => openProdutos(row)} color="primary">
-              <MoreIcon />
-            </IconButton>
-          </Tooltip> */}
-
-          {/* lista DATALIST - categora */}
           <Tooltip title="Listar de Produtos">
             <IconButton onClick={() => categoriaProduto(row)} color="primary">
               <MoreIcon />
