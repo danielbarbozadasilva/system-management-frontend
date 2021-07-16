@@ -25,6 +25,7 @@ const ListaCategoria = ({ open, close }) => {
       disableColumnMenu: true
     }
   ]
+  
   const categoria = useSelector((state) => state.categoria.dadosById)
   return (
     <Dialog

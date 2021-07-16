@@ -125,7 +125,7 @@ const Produto = () => {
 
     {
       field: 'actions',
-      headerName: 'Curtir',
+      headerName: 'Ações',
       align: 'center',
       headerAlign: 'center',
       renderCell: actionModal,

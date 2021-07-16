@@ -9,7 +9,9 @@
 .brdKTb {
   margin-bottom: 0px !important;
 }
-
+.naoAparece{
+  display: none !important;
+}
 .container-fluid {
   padding: 0px !important;
 }
