@@ -101,24 +101,33 @@ const Produto = () => {
       field: 'imagem',
       headerName: 'Imagem',
       flex: 2,
+      align: 'center',
+      headerAlign: 'center',
       renderCell: viewImageColumn,
       disableColumnMenu: true
-    }, {
+    },
+    {
       field: 'nome',
       headerName: 'Nome',
       flex: 3,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'preco',
       headerName: 'Preço',
       flex: 2,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
 
     {
       field: 'actions',
-      headerName: 'Ações',
+      headerName: 'Curtir',
+      align: 'center',
+      headerAlign: 'center',
       renderCell: actionModal,
       flex: 1,
       disableColumnMenu: true

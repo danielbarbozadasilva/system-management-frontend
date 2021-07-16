@@ -89,7 +89,7 @@ function Fornecedor() {
     {
       field: 'cnpj',
       headerName: 'CNPJ',
-      width: 240,
+      width: 220,
       align: 'center',
       headerAlign: 'center',
       disableColumnMenu: true
@@ -113,17 +113,17 @@ function Fornecedor() {
     },
     {
       field: 'actionsCurtida',
-      headerName: 'Curtidas',
+      headerName: 'Autor Curtidas',
       align: 'center',
       renderCell: actionModalCurtida,
-      width: 140,
+      width: 150,
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'actionsProdutos',
       headerName: 'Produtos',
-      width: 140,
+      width: 120,
       align: 'center',
       headerAlign: 'center',
       renderCell: actionModalProdutos,
@@ -136,7 +136,7 @@ function Fornecedor() {
       headerAlign: 'center',
 
       renderCell: actionModalStatus,
-      width: 130,
+      width: 110,
       GridColDef: 'center',
       disableColumnMenu: true
     }

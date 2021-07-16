@@ -24,37 +24,49 @@ function Cliente() {
     {
       field: 'nome',
       headerName: 'Nome',
-      flex: 1,
+      width: 230,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'data_nascimento',
-      headerName: 'Data de nascimento',
-      flex: 1,
+      headerName: 'Data nascimento',
+      width: 210,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'email',
       headerName: 'E-mail',
-      flex: 1,
+      width: 260,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'status',
       headerName: 'Status',
-      flex: 1,
+      width: 100,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'uf',
-      headerName: 'Uf',
-      flex: 1,
+      headerName: 'UF',
+      width: 100,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'cidade',
       headerName: 'Cidade',
-      flex: 1,
+      width: 150,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     }
   ]
