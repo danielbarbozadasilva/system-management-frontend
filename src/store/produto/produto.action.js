@@ -1,6 +1,7 @@
 import {
   create as createProduto,
   getAll as getAllProduto
+  , getProductById
 } from '~/services/produto.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -65,6 +66,20 @@ export const remove = ({ id: ProdutoId, fornecedorId }) => {
     }
   }
 }
+export const editarProduto = (id) => {
+  return async (dispatch) => {
+    dispatch({
+      type: TYPES.PRODUTO_UPLOAD,
+      upload: 0
+    })
+    try {
+      const result = await getProductById(id)
+      dispatch({ type: TYPES.PRODUTO_EDIT, data: result.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
+    }
+  }
+}
 
 export const getProducts = (id, nameFilter) => {
   return async (dispatch) => {
@@ -72,9 +87,8 @@ export const getProducts = (id, nameFilter) => {
       const params = { [nameFilter]: id }
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
       const result = await getAllProduto(params)
-      dispatch({ type: TYPES.PRODUTO_ALL, data: result.data.data })
-    } catch (error) {
-      toastr.error('aconteceu um erro', error)
-    }
+      if (result.data.data.length === 0) { toastr.info('Nenhum produto cadastrado!') }
+      dispatch({ type: TYPES.PRODUTO_ALL_FILTER, data: result.data.data })
+    } catch (error) {}
   }
 }

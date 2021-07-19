@@ -22,13 +22,13 @@ const Curtida = () => {
 
   const columns = [
     {
-      field: 'Nome fantasia',
+      field: 'nomeFantasia',
       headerName: 'Nome',
       flex: 1,
       disableColumnMenu: true
     },
     {
-      field: 'E-mail',
+      field: 'email',
       headerName: 'Email',
       flex: 1,
       disableColumnMenu: true
@@ -42,6 +42,7 @@ const Curtida = () => {
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>
+          {console.log('Curtidas' + JSON.stringify(curtidas))}
           <DataList data={curtidas} columns={columns} loading={loading} />
         </Grid>
       </Grid>

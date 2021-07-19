@@ -27,7 +27,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state
 
     case TYPES.CLIENTE_CURTIDA_ALL:
-      state.curtidas = action.data.curtidas
+      state.curtidas = action.data
       state.loading = false
       return state
 

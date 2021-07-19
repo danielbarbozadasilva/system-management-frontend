@@ -3,6 +3,7 @@ import TYPES from '../types'
 const INITIAL_STATE = {
   loading: false,
   all: [],
+  selected: [],
   upload: {}
 }
 
@@ -13,6 +14,14 @@ const reducer = (state = INITIAL_STATE, action) => {
       state.loading = action.status
       return state
     case TYPES.PRODUTO_ALL:
+      state.all = action.data
+      state.loading = false
+      return state
+    case TYPES.PRODUTO_ALL_FILTER:
+      state.all = action.data
+      state.loading = false
+      return state
+    case TYPES.PRODUTO_REMOVE:
       state.all = action.data
       state.loading = false
       return state

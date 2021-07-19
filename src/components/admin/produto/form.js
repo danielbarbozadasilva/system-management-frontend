@@ -136,11 +136,11 @@ const Form = ({ submit, ...props }) => {
           value={form.categoriaid || ''}
           onChange={handleChange}
           inputProps={{
-            name: 'categoriaid',
+            name: 'categoriaId',
             id: 'outlined-native-simple'
           }}
         >
-          <option value="">Categoria</option>
+          <option value="">Selecione</option>
           {categorias?.map(({ id, nome }, i) => (
             <option key={i} value={id}>
               {nome}

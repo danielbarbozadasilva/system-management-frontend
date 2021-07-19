@@ -18,26 +18,31 @@ import {
   getAll as getAllProdutos,
   create as createProduto,
   remove as removeProduto
-  , getProducts
+  , getProducts,
+  editarProduto
 } from '~/store/produto/produto.action'
-import { getCategoriaById } from '~/store/categoria/categoria.action'
 import { likeProduto } from '~/store/fornecedor/fornecedor.action'
 import FormProduto from '~/components/admin/produto/form'
-
 import ListaCategoria from '../../../components/admin/forncedor/categoria'
+import Swal from 'sweetalert2'
+
 const Produto = () => {
   const dispatch = useDispatch()
+
   const [modalForm, setModalForm] = React.useState(false)
-  const [modal, setModal] = React.useState({})
   const [isOpenModalCategoria, setIsOpenModalCategoria] = React.useState(false)
 
   const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
   const produtos = useSelector((state) => state.produto.all)
   const loading = useSelector((state) => state.categoria.loading)
-  // const selected = useSelector((state) => state.categoria.selected)
+  const selected = useSelector((state) => state.categoria.selected)
   const idUser = useSelector((state) => state.auth.usuario.id)
+  const [modal, setModal] = React.useState({})
 
+  const produtoAll = useSelector((state) => state.produto.all)
+  const selectedProd = useSelector((state) => state.produto.selected)
   const nameFilter = 'fornecedor'
+
   const callStart = React.useCallback(() => {
     if (tipoUsuario !== 2) {
       dispatch(getAllProdutos())
@@ -54,11 +59,62 @@ const Produto = () => {
     dispatch(likeProduto(row))
   }
 
-  function remove(produto) {
-    dispatch(removeProduto(produto))
+  function editar(row) {
+    const toogleModal = (id = null) => {
+      if (row.id) {
+        const submitForm = (form) => {
+          dispatch(editarProduto(row.id)).then(() =>
+            setModal({ tipo, id, status: true })
+          )
+        }
+      }
+    }
   }
-  function categoriaProduto(row) {
-    dispatch(getCategoriaById(row.categoriaId)).then(() => { setIsOpenModalCategoria(true) })
+
+  function remove(produto) {
+    Swal.fire({
+      title: 'Tem certeza que deseja excluir o produto?',
+      text: 'Você não poderá voltar atrás!',
+      icon: 'warning',
+      showCancelButton: true,
+      cancelButtonText: 'Não',
+
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sim'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(removeProduto(produto))
+        Swal.fire(
+          'Excluído!',
+          'O produto foi excluído com sucesso.',
+        )
+      }
+    })
+  }
+
+  const actionModalEditarProduto = ({ id, row }) => {
+    if (tipoUsuario == 2) {
+      return (
+        <>
+          <IconButton onClick={() => editar(row)} color="primary" size="small">
+            <MoreIcon />
+          </IconButton>
+        </>
+      )
+    }
+  }
+
+  const actionModalExcluirProduto = ({ id, row }) => {
+    if (tipoUsuario < 3) {
+      return (
+        <>
+          <IconButton onClick={() => remove(row)} color="primary" size="small">
+            <FiTrash2 />
+          </IconButton>
+        </>
+      )
+    }
   }
 
   const actionModal = ({ id, row }) => {
@@ -70,11 +126,6 @@ const Produto = () => {
               <MoreIcon />
             </IconButton>
           </Tooltip>
-
-          {/* excluir - produtos */}
-          <IconButton onClick={() => remove(row)} color="primary" size="small">
-            <FiTrash2 />
-          </IconButton>
         </>
       )
     } else {
@@ -100,7 +151,7 @@ const Produto = () => {
     {
       field: 'imagem',
       headerName: 'Imagem',
-      flex: 2,
+      flex: 1,
       align: 'center',
       headerAlign: 'center',
       renderCell: viewImageColumn,
@@ -122,13 +173,29 @@ const Produto = () => {
       headerAlign: 'center',
       disableColumnMenu: true
     },
-
     {
-      field: 'actions',
-      headerName: 'Ações',
+      field: 'categoriaName',
+      headerName: 'Categoria',
+      flex: 2,
       align: 'center',
       headerAlign: 'center',
-      renderCell: actionModal,
+      disableColumnMenu: true
+    },
+    {
+      field: 'actionEditProd',
+      headerName: 'Editar',
+      align: 'center',
+      headerAlign: 'center',
+      flex: 1,
+      renderCell: actionModalEditarProduto,
+      disableColumnMenu: true
+    },
+    {
+      field: 'actionExcluirProd',
+      headerName: 'Excluir',
+      align: 'center',
+      headerAlign: 'center',
+      renderCell: actionModalExcluirProduto,
       flex: 1,
       disableColumnMenu: true
     }

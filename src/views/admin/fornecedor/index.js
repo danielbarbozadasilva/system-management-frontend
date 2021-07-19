@@ -46,14 +46,14 @@ function Fornecedor() {
   }
 
   const actionModalCurtida = ({ row }) => {
-    const curte = Number(row?.curtidas) != 0 && (row?.kind)!='fornecedor'
-  
+    const curte = Number(row?.curtidas) != 0 && (row?.kind) != 'fornecedor'
+
     return (
       <>
-          
+
         <Tooltip title="Listar de curtida dos clientes">
           <AiFillStar
-            className={curte? 'iconeStar' : 'naoAparece'}
+            className={curte ? 'iconeStar' : 'naoAparece'}
             onClick={() => openCurtidaCliente(row.curtidas)}
             color="primary"
           />

@@ -1,18 +1,3 @@
-// import http from '~/config/http'
-
-// const baseUrl = '/produto'
-
-// export const remove = (id) => http.delete(`${baseUrl}/${id}`)
-
-// export const create = (fornecedorId, data, config = {}) =>
-//   http.post(`fornecedor/${fornecedorId}/produto`, data, config)
-
-// export const getAllProdutoCategoria = (id) =>
-//   http.get(`/categoria/advanced/${id}`)
-
-// export const getCategoryProduct = (id, nameFilter) =>
-//   http.get(`/categoria/${id}/produto`)
-
 import http from '~/config/http'
 
 const baseUrl = '/produto'
@@ -32,15 +17,11 @@ const transformarURL = (objeto) => {
   }
   return urlQuery
 }
+export const getProductById = (id, data) => http.put(`${baseUrl}/${id}`, data)
 
 export const getAll = (objeto) => {
   return http.get(`${baseUrl}${transformarURL(objeto)}`)
 }
-
-// export const getAll = (query) => {
-//   const q = query ? parsedToQuery(query) : ''
-//   return http.get(`${baseUrl}?${q}`)
-// }
 
 export const remove = (id) => http.delete(`${baseUrl}/${id}`)
 

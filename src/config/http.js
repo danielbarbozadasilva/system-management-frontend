@@ -12,7 +12,6 @@ const http = axios.create({
 })
 
 http.defaults.headers['content-type'] = 'application/json'
-
 if (getToken()) {
   http.defaults.headers.token = getToken()
 }
@@ -32,4 +31,5 @@ http.interceptors.response.use(
     }
   }
 )
+
 export default http

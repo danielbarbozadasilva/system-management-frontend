@@ -15,7 +15,7 @@ const CardProduto = (props) => {
         <CardBody>
           <CardTitle className="tituloCard">{nome}</CardTitle>
           <CardText className="descricaoCard">{descricao}</CardText>
-          <CardText className="precoCard">{preco}</CardText>
+          <CardText className="precoCard">{(props.item.preco).toLocaleString('pt-br', { style: 'currency', currency: 'BRL', minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace('.', ',')}</CardText>
           {/* <SButton onClick={() => navigate(`/fornecedor/${fornecedorId}`)}>Fornecedor</SButton> */}
         </CardBody>
       </SCard>
