@@ -136,7 +136,7 @@ const Form = ({ submit, ...props }) => {
           value={form.categoriaid || ''}
           onChange={handleChange}
           inputProps={{
-            name: 'categoriaId',
+            name: 'categoriaid',
             id: 'outlined-native-simple'
           }}
         >

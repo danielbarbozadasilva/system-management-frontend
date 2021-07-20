@@ -1,5 +1,5 @@
 import {
-  categoryCreate,
+categoryCreate,
   getAllCategories,
   getCategoryById,
   updateCategory,
@@ -32,7 +32,7 @@ export const create = (data) => {
       Object.keys(data).map((k) => formData.append(k, data[k]))
       const result = await categoryCreate(formData, config)
       dispatch({ type: TYPES.CATEGORY_CREATE, data: result.data })
-      toastr.success('Categoria', 'Categoria cadastrada com sucesso')
+      toastr.success('Categoria', 'Categoria cadastrada com sucesso!')
       dispatch(getAll())
     } catch (error) {
       toastr.error('Categoria', 'Preencha todos os campos!')
@@ -122,6 +122,7 @@ export const update = ({ id, ...data }) => {
       })
   }
 }
+
 export const remove = (id) => {
   return async (dispatch) => {
     try {

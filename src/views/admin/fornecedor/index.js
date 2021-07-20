@@ -137,7 +137,6 @@ function Fornecedor() {
       headerName: 'Status',
       align: 'center',
       headerAlign: 'center',
-
       renderCell: actionModalStatus,
       width: 110,
       GridColDef: 'center',
