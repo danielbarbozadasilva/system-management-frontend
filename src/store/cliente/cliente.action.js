@@ -25,7 +25,9 @@ export const getAll = () => {
     try {
       dispatch({ type: TYPES.CLIENTE_LOADING, status: true })
       const result = await getAllCliente()
-      dispatch({ type: TYPES.CLIENTE_ALL, data: result.data.data })
+      console.log(result.data)
+      dispatch({ type: TYPES.CLIENTE_ALL, data: result.data })
+
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
