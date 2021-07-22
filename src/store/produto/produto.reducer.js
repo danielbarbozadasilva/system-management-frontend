@@ -22,8 +22,8 @@ const reducer = (state = INITIAL_STATE, action) => {
       state.loading = false
       return state
     case TYPES.PRODUTO_REMOVE:
-      state.all = action.data
-      state.loading = false
+     state.selected = action.data
+     state.loading = false
       return state
     case TYPES.PRODUTO_EDIT:
       state.selected = action.data

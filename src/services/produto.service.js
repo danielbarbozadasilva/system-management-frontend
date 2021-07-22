@@ -17,7 +17,7 @@ const transformarURL = (objeto) => {
   }
   return urlQuery
 }
-export const getProductById = (id, data) => http.put(`${baseUrl}/${id}`, data)
+export const getProductById = (id) => http.get(`${baseUrl}/${id}`)
 
 export const getAll = (objeto) => {
   return http.get(`${baseUrl}${transformarURL(objeto)}`)

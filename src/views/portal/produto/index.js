@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProducts } from '../../../store/produto/produto.action'
+import { getAll } from '../../../store/produto/produto.action'
 import CardProduto from '../../../components/portal/card/card_produto'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import Imagem from '../../../assets/img/principal3.jpg'
+
 function Produtos(props) {
+  
   const produtos = useSelector((state) => state.produto.all)
   const loading = useSelector((state) => state.auth.loading)
 
@@ -16,7 +18,7 @@ function Produtos(props) {
   const nameFilter = props.nameFilter
 
   const getDados = async (id, nameFilter) => {
-    await dispatch(getProducts(id, nameFilter))
+    await dispatch(getAll(id, nameFilter))
   }
 
   useEffect(() => {

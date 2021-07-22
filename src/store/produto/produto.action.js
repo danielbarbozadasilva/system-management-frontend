@@ -1,11 +1,12 @@
 import {
   create as createProduto,
-  getAll as getAllProduto
-  , getProductById
+  getAll as getAllProduto,
+  getProductById
 } from '~/services/produto.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { removeProduto } from '~/services/fornecedor.service'
+import { getUser } from '~/config/storage'
 
 export const create = (data) => {
   return async (dispatch, getState) => {
@@ -26,7 +27,6 @@ export const create = (data) => {
         })
       }
     }
-
     try {
       const formData = new FormData()
       Object.keys(data).map((k) => formData.append(k, data[k]))
@@ -36,10 +36,11 @@ export const create = (data) => {
       toastr.success('Produto', 'Produto cadastrado com sucesso')
       dispatch(getAll())
     } catch (error) {
-      toastr.error('Produto', 'Ocorreu um erro ao cadastrar o produto!')
+      toastr.error('Produto', 'deu ruim')
     }
   }
 }
+
 
 export const getAll = (query = null) => {
   return async (dispatch) => {
@@ -53,20 +54,23 @@ export const getAll = (query = null) => {
   }
 }
 
-export const remove = ({ id: ProdutoId, fornecedorId }) => {
+export const remove = (idProd) => {
+
   return async (dispatch) => {
     try {
-      const result = await removeProduto(fornecedorId, ProdutoId)
-      dispatch({ type: TYPES.PRODUTO_EDIT, data: result.data })
+      const id = getUser().id
+      const result = await removeProduto(id, idProd)
+      dispatch({ type: TYPES.PRODUTO_REMOVE, data: result.data })
       toastr.success('Produto', 'Removido com sucesso')
       dispatch(getAll())
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
-      toastr.error('Categoria', error.toString())
+      toastr.error('Produto', error.toString())
     }
   }
 }
-export const editarProduto = (id) => {
+
+
+export const editProd = (id) => {
   return async (dispatch) => {
     dispatch({
       type: TYPES.PRODUTO_UPLOAD,
@@ -74,7 +78,8 @@ export const editarProduto = (id) => {
     })
     try {
       const result = await getProductById(id)
-      dispatch({ type: TYPES.PRODUTO_EDIT, data: result.data })
+      console.log(result)
+      dispatch({ type: TYPES.PRODUTO_EDIT, data: result.data.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
@@ -87,7 +92,9 @@ export const getProducts = (id, nameFilter) => {
       const params = { [nameFilter]: id }
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
       const result = await getAllProduto(params)
-      if (result.data.data.length === 0) { toastr.info('Nenhum produto cadastrado!') }
+      if (result.data.data.length === 0) {
+        toastr.info('Nenhum produto cadastrado!')
+      }
       dispatch({ type: TYPES.PRODUTO_ALL_FILTER, data: result.data.data })
     } catch (error) {}
   }

@@ -28,3 +28,4 @@ export const likeProdutoService = (idFornecedor) =>
 
 export const removeProduto = (idFornecedor, produtoid) =>
   http.delete(`${baseUrl}/${idFornecedor}/produto/${produtoid}`)
+

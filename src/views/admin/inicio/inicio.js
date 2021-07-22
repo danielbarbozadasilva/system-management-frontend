@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Grid } from '@material-ui/core'
 import Title from '~/components/title/index'
 
-import { getAll as getProdutos } from '~/store/produto/produto.action'
+import { getAll } from '~/store/produto/produto.action'
 import { getAll as getCategorias } from '~/store/categoria/categoria.action'
 import { getAll as getFornecedores } from '~/store/fornecedor/fornecedor.action'
 
 function Inicio() {
   const dispatch = useDispatch()
+
   const fornecedores = useSelector((state) => state.fornecedor.all)
   const categorias = useSelector((state) => state.produto.all)
   const produtos = useSelector((state) => state.categoria.all)
@@ -17,7 +18,7 @@ function Inicio() {
   React.useEffect(() => {
     dispatch(getFornecedores())
     dispatch(getCategorias())
-    dispatch(getProdutos())
+    dispatch(getAll())
   }, [dispatch])
 
   const actions = () => null

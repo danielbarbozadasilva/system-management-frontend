@@ -4,6 +4,8 @@ import {
   Button,
   Grid,
   Paper,
+  FormControlLabel,
+  Switch,
   LinearProgress,
   Select
 } from '@material-ui/core'
@@ -12,18 +14,20 @@ import { useSelector } from 'react-redux'
 
 const Form = ({ submit, ...props }) => {
   const [preview, setPreview] = useState('')
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({
+    status: false
+  })
   const [isEdit, setEdit] = useState(false)
-  const percent = useSelector((state) => state.categoria.upload?.percent || 0)
-  const loading = useSelector((state) => state.categoria.loading)
+  const percent = useSelector((state) => state.produto.upload?.percent || 0)
+  const loading = useSelector((state) => state.produto.loading)
   const categorias = useSelector((state) => state.categoria.all)
 
-  if (Object.keys(props).length > 0 && !isEdit) {
-    setPreview(process.env.REACT_APP_API + props?.data?.imagem)
-    setForm(props.data)
-    setEdit(true)
-  }
-
+ if (Object.keys(props).length > 0 && !isEdit) {
+   setPreview(process.env.REACT_APP_API + props?.data?.imagem)
+   setForm(props.data)
+   setEdit(true)
+ }
+  
   const handleChange = (props) => {
     const { value, name } = props.target
     setForm({
@@ -34,8 +38,13 @@ const Form = ({ submit, ...props }) => {
   const handleSwitch = () => setForm({ ...form, status: !form.status })
 
   const handleSubmit = () => {
-    submit(form)
+    const newForm = {
+      ...form,
+      status: form.status
+    }
+    submit(newForm)
   }
+
   const removeImage = () => {
     delete form.imagem
     setForm(form)
@@ -54,34 +63,32 @@ const Form = ({ submit, ...props }) => {
   return (
     <Box>
       <Content noValidate>
-        {preview.length > 0
-          ? (
-            <Grid container direction="column">
-              <Grid item sm={1} md={1} xl={1}>
-                <Image src={preview} />
-                <Button onClick={removeImage} component="label">
-                  Remove
-                </Button>
-              </Grid>
+        {preview.length > 0 ? (
+          <Grid container direction="column">
+            <Grid item sm={1} md={1} xl={1}>
+              <Image src={preview} />
+              <Button onClick={removeImage} component="label">
+                Remove
+              </Button>
             </Grid>
-            )
-          : (
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              component="label"
-            >
-              Upload Foto
-              <input
-                accept="image/*"
-                type="file"
-                name="imagem"
-                hidden
-                onChange={previewImg}
-              />
-            </Button>
-            )}
+          </Grid>
+        ) : (
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            component="label"
+          >
+            Upload Foto
+            <input
+              accept="image/*"
+              type="file"
+              name="imagem"
+              hidden
+              onChange={previewImg}
+            />
+          </Button>
+        )}
         <TextField
           size="small"
           margin="normal"
@@ -122,11 +129,11 @@ const Form = ({ submit, ...props }) => {
           fullWidth
           name="preco"
           label="Preço"
-          type="number"
+          type="price"
           id="preco"
           disabled={loading}
           onChange={handleChange}
-          value={form.preco || ''}
+          value={String(form.preco) || ''}
         />
         <Select
           size="small"
@@ -183,8 +190,9 @@ const Image = styled.img`
   max-height: 170px;
   margin: 10px;
   border: thin solid #eee;
-  border-radius: 3px;
+  border-radius: 20%;
   overflow: hidden;
+  object-fit: cover;
 `
 
 const Submit = styled.div`

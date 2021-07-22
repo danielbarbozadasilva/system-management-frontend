@@ -20,7 +20,7 @@ const Form = ({ submit, ...props }) => {
   const percent = useSelector((state) => state.categoria.upload?.percent || 0)
   const loading = useSelector((state) => state.categoria.loading)
 
-  if (Object.keys(props).length > 0 && !isEdit) {
+  if (Object.keys(props).length > 0 && isEdit) {
     setPreview(process.env.REACT_APP_API + props?.data?.imagem)
     setForm(props.data)
     setEdit(true)

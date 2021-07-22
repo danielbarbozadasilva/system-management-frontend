@@ -47,6 +47,12 @@ const DataList = ({ data, modal, loading }) => {
       disableColumnMenu: true
     },
     {
+      field: 'preco',
+      headerName: 'Preco',
+      width: 120,
+      disableColumnMenu: true
+    },
+    {
       field: 'actions',
       headerName: 'Ações',
       renderCell: actions,
