@@ -5,6 +5,7 @@ import {
   getAll,
   create,
   editProd,
+  updateProduto,
   remove
 } from '../../../store/produto/produto.action'
 
@@ -32,7 +33,6 @@ const Produto = () => {
   }, [callProduto])
 
   const toogleModal = (tipo = 1, id = null) => {
-    console.log(id)
     if (id) {
       dispatch(editProd(id)).then(() => setModal({ tipo, id, status: true }))
     } else {
@@ -48,7 +48,7 @@ const Produto = () => {
         dispatch(create(form))
         return
       case 2:
-        dispatch(editProd(form))
+        dispatch(updateProduto(form))
         return
       case 3:
         dispatch(remove(modal.id)).then(() => setModal(false))

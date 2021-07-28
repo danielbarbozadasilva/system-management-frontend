@@ -22,12 +22,12 @@ const Form = ({ submit, ...props }) => {
   const loading = useSelector((state) => state.produto.loading)
   const categorias = useSelector((state) => state.categoria.all)
 
- if (Object.keys(props).length > 0 && !isEdit) {
-   setPreview(process.env.REACT_APP_API + props?.data?.imagem)
-   setForm(props.data)
-   setEdit(true)
- }
-  
+  if (Object.keys(props).length > 0 && !isEdit) {
+    setPreview(process.env.REACT_APP_API + props?.data?.imagem)
+    setForm(props.data)
+    setEdit(true)
+  }
+
   const handleChange = (props) => {
     const { value, name } = props.target
     setForm({
@@ -135,25 +135,31 @@ const Form = ({ submit, ...props }) => {
           onChange={handleChange}
           value={String(form.preco) || ''}
         />
-        <Select
-          size="small"
-          variant="outlined"
-          fullWidth
-          native
-          value={form.categoriaid || ''}
-          onChange={handleChange}
-          inputProps={{
-            name: 'categoriaid',
-            id: 'outlined-native-simple'
-          }}
-        >
-          <option value="">Selecione</option>
-          {categorias?.map(({ id, nome }, i) => (
-            <option key={i} value={id}>
-              {nome}
-            </option>
-          ))}
-        </Select>
+
+        {!isEdit ? (
+          <Select
+            size="small"
+            variant="outlined"
+            fullWidth
+            native
+            value={form.categoriaid || form.categoria || ''}
+            onChange={handleChange}
+            inputProps={{
+              name: 'categoriaid' ? 'categoriaid' : 'categoria',
+              id: 'outlined-native-simple'
+            }}
+          >
+            <option value="">Selecione</option>
+            {categorias?.map(({ id, nome }, i) => (
+              <option key={i} value={id}>
+                {nome}
+              </option>
+            ))}
+          </Select>
+        ) : (
+          ''
+        )}
+
         <Submit>
           <Button
             size="small"
