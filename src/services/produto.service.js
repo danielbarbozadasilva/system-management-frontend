@@ -5,14 +5,13 @@ const baseUrl = '/produto'
 const transformarURL = (objeto) => {
   let urlQuery = ''
   if (objeto) {
+    console.log(objeto)
     if (objeto.nomeLike) {
       urlQuery += '?nomeLike=' + objeto.nomeLike
-    }
-    if (objeto.categoria) {
-      urlQuery += '?categoria=' + objeto.categoria
-    }
-    if (objeto.fornecedor) {
+    } else if (objeto.fornecedor) {
       urlQuery += '?fornecedor=' + objeto.fornecedor
+    } else {
+      urlQuery += '?categoria=' + objeto
     }
   }
   return urlQuery
@@ -31,4 +30,3 @@ export const create = (fornecedorId, data, config = {}) =>
 
 export const updateProd = (id, data, config = {}) =>
   http.put(`produto/${id}`, data, config)
-

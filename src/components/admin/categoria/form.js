@@ -143,7 +143,7 @@ const Form = ({ submit, ...props }) => {
             onClick={handleSubmit}
             disabled={loading}
           >
-            {isEdit ? 'Atualizar' : 'Enviar'}
+            {isEdit ? 'Atualizar' : 'Cadastrar'}
           </Button>
           <Grid container direction="column">
             <LinearProgress variant="determinate" value={percent} />

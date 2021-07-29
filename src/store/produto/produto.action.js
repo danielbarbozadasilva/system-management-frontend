@@ -86,6 +86,7 @@ export const updateProduto = (data) => {
 export const getAll = (query = null) => {
   return async (dispatch) => {
     try {
+    
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
       const result = await getAllProduto(query)
       
