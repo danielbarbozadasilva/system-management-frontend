@@ -8,8 +8,8 @@ const transformarURL = (objeto) => {
     console.log(objeto)
     if (objeto.nomeLike) {
       urlQuery += '?nomeLike=' + objeto.nomeLike
-    } else if (objeto.fornecedor) {
-      urlQuery += '?fornecedor=' + objeto.fornecedor
+    } else if (objeto) {
+      urlQuery += '?fornecedor=' + objeto
     } else {
       urlQuery += '?categoria=' + objeto
     }

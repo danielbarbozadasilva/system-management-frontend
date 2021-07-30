@@ -10,14 +10,16 @@
   margin-bottom: 0px !important;
 }
 
-.naoAparece{
+.naoAparece {
   display: none !important;
 }
 
 .container-fluid {
   padding: 0px !important;
 }
-
+.imagemTabela{
+  object-fit: cover;
+}
 .imagemPrincipal {
   background-position: cover;
   object-fit: cover;

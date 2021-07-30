@@ -20,7 +20,7 @@ const Form = ({ submit, ...props }) => {
   const percent = useSelector((state) => state.categoria.upload?.percent || 0)
   const loading = useSelector((state) => state.categoria.loading)
 
-  if (Object.keys(props).length > 0 && isEdit) {
+  if (Object.keys(props).length > 0 && !isEdit) {
     setPreview(process.env.REACT_APP_API + props?.data?.imagem)
     setForm(props.data)
     setEdit(true)
@@ -61,34 +61,32 @@ const Form = ({ submit, ...props }) => {
   return (
     <Box>
       <Content noValidate>
-        {preview.length > 0
-          ? (
-            <Grid container direction="column">
-              <Grid item sm={1} md={1} xl={1}>
-                <Image src={preview} />
-                <Button onClick={removeImage} component="label">
-                  Remove
-                </Button>
-              </Grid>
+        {preview.length > 0 ? (
+          <Grid container direction="column">
+            <Grid item sm={1} md={1} xl={1}>
+              <Image src={preview} />
+              <Button onClick={removeImage} component="label">
+                Remove
+              </Button>
             </Grid>
-            )
-          : (
-            <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              component="label"
-            >
-              Upload Foto
-              <input
-                accept="image/*"
-                type="file"
-                name="imagem"
-                hidden
-                onChange={previewImg}
-              />
-            </Button>
-            )}
+          </Grid>
+        ) : (
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            component="label"
+          >
+            Upload Foto
+            <input
+              accept="image/*"
+              type="file"
+              name="imagem"
+              hidden
+              onChange={previewImg}
+            />
+          </Button>
+        )}
         <TextField
           size="small"
           margin="normal"
@@ -171,6 +169,7 @@ const Image = styled.img`
   border: thin solid #eee;
   border-radius: 3px;
   overflow: hidden;
+  object-fit: cover;
 `
 
 const Submit = styled.div`

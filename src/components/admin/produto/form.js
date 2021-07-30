@@ -22,12 +22,12 @@ const Form = ({ submit, ...props }) => {
   const loading = useSelector((state) => state.produto.loading)
   const categorias = useSelector((state) => state.categoria.all)
 
- if (Object.keys(props).length > 0 && !isEdit) {
-   setPreview(process.env.REACT_APP_API + props?.data?.imagem)
-   setForm(props.data)
-   setEdit(true)
- }
-  
+  if (Object.keys(props).length > 0 && !isEdit) {
+    setPreview(process.env.REACT_APP_API + props?.data?.imagem)
+    setForm(props.data)
+    setEdit(true)
+  }
+
   const handleChange = (props) => {
     const { value, name } = props.target
     setForm({
@@ -39,8 +39,7 @@ const Form = ({ submit, ...props }) => {
 
   const handleSubmit = () => {
     const newForm = {
-      ...form,
-      status: form.status
+      ...form
     }
     submit(newForm)
   }
@@ -133,23 +132,24 @@ const Form = ({ submit, ...props }) => {
           id="preco"
           disabled={loading}
           onChange={handleChange}
-          value={String(form.preco) || ''}
+          value={form.preco || ''}
         />
         <Select
           size="small"
           variant="outlined"
           fullWidth
           native
-          value={form.categoriaId || ''}
+          value={form.categoriaid || ''}
           onChange={handleChange}
           inputProps={{
-            name: 'categoriaId',
+            name: 'categoriaid',
             id: 'outlined-native-simple'
           }}
-        >
+          >
           <option value="">Selecione</option>
           {categorias?.map(({ id, nome }, i) => (
-            <option key={i} value={id}>
+            <option key={i} value={id} hidden={isEdit ? true : false}>
+             
               {nome}
             </option>
           ))}
