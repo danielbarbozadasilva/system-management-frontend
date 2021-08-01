@@ -23,7 +23,6 @@ const Categoria = () => {
   const loading = useSelector((state) => state.categoria.loading)
   const selected = useSelector((state) => state.categoria.selected)
 
-  // 1 = novo 2 = editar  3 = excluir
   const callCategoria = useCallback(() => {
     dispatch(getCategories())
   }, [dispatch])
@@ -46,12 +45,19 @@ const Categoria = () => {
 
   const submitForm = (form) => {
     switch (modal.tipo) {
+      // Criar uma nova categoria
       case 1:
         dispatch(createCategory(form))
+        setModal(false)
         return
+
+      // Atualizar uma categoria
       case 2:
         dispatch(updateCategory(form))
+        setModal(false)
         return
+
+      // Remover uma categoria
       case 3:
         dispatch(removeCategory(modal.id)).then(() => setModal(false))
         return

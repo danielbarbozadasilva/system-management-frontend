@@ -5,13 +5,14 @@ const baseUrl = '/produto'
 const transformarURL = (objeto) => {
   let urlQuery = ''
   if (objeto) {
-    console.log(objeto)
     if (objeto.nomeLike) {
       urlQuery += '?nomeLike=' + objeto.nomeLike
-    } else if (objeto) {
-      urlQuery += '?fornecedor=' + objeto
-    } else {
-      urlQuery += '?categoria=' + objeto
+    }
+    if (objeto.categoria) {
+      urlQuery += '?categoria=' + objeto.categoria
+    }
+    if (objeto.fornecedor) {
+      urlQuery += '?fornecedor=' + objeto.fornecedor
     }
   }
   return urlQuery

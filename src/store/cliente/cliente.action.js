@@ -12,10 +12,10 @@ export const create = (data) => {
   return async (dispatch) => {
     try {
       const result = await ClienteCreate(data)
-      toastr.success('Cliente', 'Cliente cadastrada com sucesso')
+      toastr.success('Cliente', 'Cliente cadastrado com sucesso')
       navigate('/signin')
     } catch (error) {
-      toastr.error('Cliente', 'deu ruim')
+      toastr.error('Cliente', 'ocorreu um erro!')
     }
   }
 }
@@ -27,7 +27,6 @@ export const getAll = () => {
       const result = await getAllCliente()
       console.log(result.data)
       dispatch({ type: TYPES.CLIENTE_ALL, data: result.data })
-
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }

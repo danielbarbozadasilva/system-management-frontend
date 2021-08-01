@@ -48,7 +48,7 @@ const CardFornecedor = (props) => {
           </CardText>
 
           <SButton onClick={() => navigate(`/produto/fornecedor/${id}`)}>
-            Acessar Produtos
+            Produtos
           </SButton>
         </CardBody>
       </SCard>

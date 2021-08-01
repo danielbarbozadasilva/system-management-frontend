@@ -11,19 +11,28 @@ const CardItem = (props) => {
   const { id, nome, descricao, status, imagem } = props.item
 
   return (
-
     <div>
       <SCard>
-        {imagem.length > 0 ? (<SCardImg src={process.env.REACT_APP_API + imagem} />) : ''}
-        <div className="item-icon-coracao"><FaHeart /></div>
+        {imagem.length > 0 ? (
+          <SCardImg src={process.env.REACT_APP_API + imagem} />
+        ) : (
+          ''
+        )}
+        <div className="item-icon-coracao">
+          <FaHeart />
+        </div>
 
         <CardBody>
           <CardTitle className="tituloCard">{nome}</CardTitle>
           <hr className="separarTextos" />
-          <CardSubtitle className="subtituloCard">Os mais <strong>Deliciosos</strong></CardSubtitle>
+          <CardSubtitle className="subtituloCard">
+            Os mais <strong>Deliciosos</strong>
+          </CardSubtitle>
           <CardText className="descricaoCard">{descricao}</CardText>
 
-          <SButton onClick={() => navigate(`/produto/categoria/${id}`)}>Produtos</SButton>
+          <SButton onClick={() => navigate(`/produto/categoria/${id}`)}>
+            Produtos
+          </SButton>
         </CardBody>
       </SCard>
     </div>

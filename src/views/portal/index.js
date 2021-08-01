@@ -28,7 +28,15 @@ const Menu = [
   {
     title: 'ViewsProduto',
     icons: '',
-    route: '/produto/:nameFilter/:id',
+    route: '/produto/categoria/:id',
+    visibleMenu: true,
+    enabled: true,
+    component: ProdutoPortal
+  },
+  {
+    title: 'ViewsProdutoFornec',
+    icons: '',
+    route: '/produto/fornecedor/:id',
     visibleMenu: true,
     enabled: true,
     component: ProdutoPortal

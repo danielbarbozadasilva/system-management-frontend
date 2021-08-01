@@ -8,7 +8,6 @@ import { Col, Row } from 'reactstrap'
 import Imagem from '../../../assets/img/principal3.jpg'
 
 function Produtos(props) {
-  
   const produtos = useSelector((state) => state.produto.all)
   const loading = useSelector((state) => state.auth.loading)
 
@@ -18,8 +17,7 @@ function Produtos(props) {
   const nameFilter = props.nameFilter
 
   const getDados = async (id, nameFilter) => {
-
-    await dispatch(getAll(id, nameFilter))
+    await dispatch(getAll(props.id))
   }
 
   useEffect(() => {

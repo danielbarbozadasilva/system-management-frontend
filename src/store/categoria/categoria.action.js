@@ -1,5 +1,5 @@
 import {
-categoryCreate,
+  categoryCreate,
   getAllCategories,
   getCategoryById,
   updateCategory,

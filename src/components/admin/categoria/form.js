@@ -61,32 +61,34 @@ const Form = ({ submit, ...props }) => {
   return (
     <Box>
       <Content noValidate>
-        {preview.length > 0 ? (
-          <Grid container direction="column">
-            <Grid item sm={1} md={1} xl={1}>
-              <Image src={preview} />
-              <Button onClick={removeImage} component="label">
-                Remove
-              </Button>
+        {preview.length > 0
+          ? (
+            <Grid container direction="column">
+              <Grid item sm={1} md={1} xl={1}>
+                <Image src={preview} />
+                <Button onClick={removeImage} component="label">
+                  Remove
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
-        ) : (
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            component="label"
-          >
-            Upload Foto
-            <input
-              accept="image/*"
-              type="file"
-              name="imagem"
-              hidden
-              onChange={previewImg}
-            />
-          </Button>
-        )}
+            )
+          : (
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              component="label"
+            >
+              Upload Foto
+              <input
+                accept="image/*"
+                type="file"
+                name="imagem"
+                hidden
+                onChange={previewImg}
+              />
+            </Button>
+            )}
         <TextField
           size="small"
           margin="normal"

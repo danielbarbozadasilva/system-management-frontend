@@ -4,19 +4,20 @@ import {
   Button,
   Grid,
   Paper,
-  FormControlLabel,
-  Switch,
   LinearProgress,
   Select
 } from '@material-ui/core'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import { getUser } from '../../../config/storage'
+
 
 const Form = ({ submit, ...props }) => {
   const [preview, setPreview] = useState('')
   const [form, setForm] = useState({
     status: false
   })
+
   const [isEdit, setEdit] = useState(false)
   const percent = useSelector((state) => state.produto.upload?.percent || 0)
   const loading = useSelector((state) => state.produto.loading)
@@ -39,7 +40,9 @@ const Form = ({ submit, ...props }) => {
 
   const handleSubmit = () => {
     const newForm = {
-      ...form
+      ...form,
+      categoria: form.categoriaId,
+      fornecedor: (getUser().id)
     }
     submit(newForm)
   }
@@ -139,17 +142,16 @@ const Form = ({ submit, ...props }) => {
           variant="outlined"
           fullWidth
           native
-          value={form.categoriaid || ''}
+          value={form.categoriaId || ''}
           onChange={handleChange}
           inputProps={{
-            name: 'categoriaid',
+            name: 'categoriaId',
             id: 'outlined-native-simple'
           }}
-          >
+        >
           <option value="">Selecione</option>
           {categorias?.map(({ id, nome }, i) => (
-            <option key={i} value={id} hidden={isEdit ? true : false}>
-             
+            <option key={i} value={id}>
               {nome}
             </option>
           ))}
