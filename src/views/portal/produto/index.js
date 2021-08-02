@@ -13,15 +13,21 @@ function Produtos(props) {
 
   const dispatch = useDispatch()
 
-  const id = props.id
-  const nameFilter = props.nameFilter
-
-  const getDados = async (id, nameFilter) => {
-    await dispatch(getAll(props.id))
+  const getDados = async () => {
+    switch (props.tipo) {
+      case 'categoria':
+        await dispatch(getAll({ categoria: props.id }))
+        break
+      case 'fornecedor':
+        await dispatch(getAll({ fornecedor: props.id }))
+        break
+      default:
+        await dispatch(getAll())
+    }
   }
 
   useEffect(() => {
-    getDados(id, nameFilter)
+    getDados()
   }, [])
 
   const MapearProdutos = (produtos) =>
@@ -51,9 +57,11 @@ function Produtos(props) {
           </h1>
         </div>
         <BoxProdutos>
-          {!loading && produtos.length === 0
-            ? <h1 className="naoPossuiProd">Não há produtos disponiveis</h1>
-            : MapearProdutos(produtos)}
+          {!loading && produtos.length === 0 ? (
+            <h1 className="naoPossuiProd">Não há produtos disponiveis</h1>
+          ) : (
+            MapearProdutos(produtos)
+          )}
         </BoxProdutos>
       </div>
     </div>

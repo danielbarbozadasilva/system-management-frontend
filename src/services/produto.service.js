@@ -15,6 +15,7 @@ const transformarURL = (objeto) => {
       urlQuery += '?fornecedor=' + objeto.fornecedor
     }
   }
+  console.log('-------'+urlQuery)
   return urlQuery
 }
 

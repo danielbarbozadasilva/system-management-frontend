@@ -19,11 +19,22 @@ function Fornecedor(props) {
 
   const dispatch = useDispatch()
 
+
   const id = props.id
+  const nameFilter = props.nameFilter
+
+  const getDados = async (id, nameFilter) => {
+    await dispatch(getAll({ fornecedor: props.id }))
+  }
+
+ 
+
 
   const callFornecedor = useCallback(() => {
     if (id) {
-      dispatch(getFornById(id))
+       useEffect(() => {
+         getDados(id, nameFilter)
+       }, [])
     } else {
       dispatch(getAll())
     }

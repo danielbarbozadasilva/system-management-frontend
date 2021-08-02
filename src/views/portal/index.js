@@ -29,6 +29,7 @@ const Menu = [
     title: 'ViewsProduto',
     icons: '',
     route: '/produto/categoria/:id',
+    tipo:'categoria',
     visibleMenu: true,
     enabled: true,
     component: ProdutoPortal
@@ -37,6 +38,7 @@ const Menu = [
     title: 'ViewsProdutoFornec',
     icons: '',
     route: '/produto/fornecedor/:id',
+    tipo: 'fornecedor',
     visibleMenu: true,
     enabled: true,
     component: ProdutoPortal
@@ -80,8 +82,8 @@ const Portal = (props) => {
     <>
       <Router>
         <Layout path="/">
-          {Menu.map(({ component: Component, route }, i) => (
-            <Component key={i} path={route} />
+          {Menu.map(({ component: Component, route, tipo="" }, i) => (
+            <Component key={i} path={route} tipo={tipo} />
           ))}
 
         </Layout>

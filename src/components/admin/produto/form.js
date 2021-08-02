@@ -42,8 +42,10 @@ const Form = ({ submit, ...props }) => {
     const newForm = {
       ...form,
       categoria: form.categoriaId,
-      fornecedor: (getUser().id)
+      fornecedor: (getUser().id),
+      preco: (form.preco).replace('R$','').replace(',','.'),
     }
+    console.log(JSON.stringify(newForm))
     submit(newForm)
   }
 
@@ -61,6 +63,7 @@ const Form = ({ submit, ...props }) => {
       imagem
     })
   }
+
 
   return (
     <Box>
@@ -123,6 +126,8 @@ const Form = ({ submit, ...props }) => {
           onChange={handleChange}
           value={form.descricao || ''}
         />
+
+      
         <TextField
           size="small"
           margin="normal"

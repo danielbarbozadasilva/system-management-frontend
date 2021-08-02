@@ -5,19 +5,20 @@ import { IconButton } from '@material-ui/core'
 import styled from 'styled-components'
 
 const DataList = ({ data, modal, loading }) => {
+ 
+
   const mappedData = data.map((item) => {
-    const { imagem, status, ...resto } = item
+    const { imagem, status, preco, ...resto } = item
     return {
       ...resto,
       status: status ? 'Ativa' : 'Inativa',
-      imagem: `${process.env.REACT_APP_API}${imagem}`
+      imagem: `${process.env.REACT_APP_API}${imagem}`,
+      preco: (preco)
     }
   })
 
   const thumb = ({ formattedValue }) => {
-    return (
-      <img src={formattedValue} />
-    )
+    return <img src={formattedValue} />
   }
 
   const actions = ({ id }) => {
