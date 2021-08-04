@@ -49,13 +49,11 @@ const Inicio = () => {
           </h1>
         </div>
         <BoxCards>
-          {!loading && categoria.length === 0
-            ? (
-              <h1 className="naoPossuiProd">Não há categorias disponiveis</h1>
-              )
-            : (
-                MapearCategoria(categoria)
-              )}
+          {!loading && categoria.length === 0 ? (
+            <h1 className="naoPossuiProd">Não há categorias disponiveis</h1>
+          ) : (
+            MapearCategoria(categoria)
+          )}
         </BoxCards>
       </div>
     </>

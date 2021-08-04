@@ -1,5 +1,4 @@
 import http from '~/config/http'
-
 const baseUrl = '/fornecedor'
 
 export const getAll = () => http.get(baseUrl)
@@ -16,6 +15,9 @@ export const create = (data) => http.post(baseUrl, data)
 export const ativarFornecedor = (id) => http.put(`${baseUrl}/${id}/ativa`)
 
 export const inativaFornecedor = (id) => http.put(`${baseUrl}/${id}/inativa`)
+
+export const getPesquisarFornecedorLocalidade = (data, tipo) =>
+  http.get(baseUrl, data, tipo)
 
 export const obterListadeProduto = (id) => http.get(`${baseUrl}/${id}/produto`)
 

@@ -123,8 +123,7 @@ export const setStatusFornecedor = (id, ativo) => {
       all[index].status = result.data.data.status
 
       dispatch({ type: TYPES.FORNECEDOR_ALL, data: [...all] })
-    } catch (err) {
-    }
+    } catch (err) {}
   }
 }
 
@@ -157,6 +156,18 @@ export const getFornById = (id) => {
       dispatch({ type: TYPES.FORNECEDOR_PRODUTOS_ID, data: result.data })
     } catch (error) {
       toastr.error('Fornecedor', 'Erro ao carregar produtos')
+    }
+  }
+}
+
+export const getFornPesquisarUfCidade = (dados) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
+      const result = await getPesquisarFornecedorLocalidade(dados)
+      dispatch({ type: TYPES.FORNECEDOR_ALL_PESQUISA, data: result.data.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
     }
   }
 }

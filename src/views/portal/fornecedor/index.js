@@ -10,6 +10,7 @@ import {
 } from '../../../store/fornecedor/fornecedor.action'
 import CardProduto from '../../../components/portal/card/card_produto'
 import Imagem from '../../../assets/img/principal2.jpg'
+import MapearCidadeEstado from '../../../components/portal/filtros/index'
 
 function Fornecedor(props) {
   const fornecedor = useSelector((state) => state.fornecedor.all)
@@ -19,7 +20,6 @@ function Fornecedor(props) {
 
   const dispatch = useDispatch()
 
-
   const id = props.id
   const nameFilter = props.nameFilter
 
@@ -27,14 +27,11 @@ function Fornecedor(props) {
     await dispatch(getAll({ fornecedor: props.id }))
   }
 
- 
-
-
   const callFornecedor = useCallback(() => {
     if (id) {
-       useEffect(() => {
-         getDados(id, nameFilter)
-       }, [])
+      useEffect(() => {
+        getDados(id, nameFilter)
+      }, [])
     } else {
       dispatch(getAll())
     }
@@ -66,25 +63,23 @@ function Fornecedor(props) {
     if (id) {
       return (
         <BoxFornecedor>
-          {!loading
-            ? (
-                'Não há Fornecedor disponivel'
-              )
-            : (
-              <CardFornecedor item={{ ...item, status: true }} />
-              )}
+          <BuscadorCidadeEstado />
+          {!loading ? (
+            'Não há Fornecedor disponivel'
+          ) : (
+            <CardFornecedor item={{ ...item, status: true }} />
+          )}
         </BoxFornecedor>
       )
     } else {
       return (
         <BoxFornecedor>
-          {!loading && fornecedor.length === 0
-            ? (
-              <h1 className="naoPossuiProd">Não há produtos</h1>
-              )
-            : (
-                MapearFornecedor(fornecedor)
-              )}
+          <MapearCidadeEstado />
+          {!loading && fornecedor.length === 0 ? (
+            <h1 className="naoPossuiProd">Não há produtos</h1>
+          ) : (
+            MapearFornecedor(fornecedor)
+          )}
         </BoxFornecedor>
       )
     }
@@ -93,19 +88,25 @@ function Fornecedor(props) {
   return (
     <div>
       <div className="container-fluid">
-        <div className="imagem">
-          <img className="imagemPrincipal" src={Imagem} alt="" srcSet="" />
+        <div className="row">
+          <div className="imagem">
+            <img className="imagemPrincipal" src={Imagem} alt="" srcSet="" />
+          </div>
+          <div className="texto">
+            <h2>Encontre novas horizontes...</h2>
+            <h2>os melhores fornecedores!</h2>
+          </div>
+          <div className="textoCategoria">
+            <h1 className="textCat">
+              Escolha um <strong>fornecedor</strong>
+            </h1>
+          </div>
         </div>
-        <div className="texto">
-          <h2>Encontre novas horizontes...</h2>
-          <h2>os melhores fornecedores!</h2>
+      </div>
+      <div className="container-fluid">
+        <div className="row">
+            <ProdFornecedor />
         </div>
-        <div className="textoCategoria">
-          <h1 className="textCat">
-            Escolha um <strong>fornecedor</strong>
-          </h1>
-        </div>
-        <ProdFornecedor />
       </div>
     </div>
   )

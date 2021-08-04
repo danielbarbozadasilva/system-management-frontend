@@ -6,7 +6,8 @@ const INITIAL_STATE = {
   upload: {},
   selected: {},
   produtos: [],
-  fornecedorById: []
+  fornecedorById: [],
+  pesquisa: []
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -17,6 +18,10 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state
     case TYPES.FORNECEDOR_ALL:
       state.all = action.data
+      state.loading = false
+      return state
+    case TYPES.FORNECEDOR_ALL_PESQUISA:
+      state.pesquisa = action.data
       state.loading = false
       return state
     case TYPES.FORNECEDOR_EDIT:

@@ -29,7 +29,15 @@
   height: 550px;
   margin-bottom: 100px;
 }
-
+.dadosPesquisaFornec{
+  padding-left: 70px;
+  color: #501417;
+}
+.dadosFornecedor{
+    margin-top: 15px;
+  margin-bottom: 40px;
+  padding: 0px 20px
+}
 .texto {
   width: 100%;
   top: 45%;

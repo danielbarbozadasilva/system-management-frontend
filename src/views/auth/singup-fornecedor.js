@@ -417,15 +417,13 @@ const SignUpFornecedor = () => {
                 block
                 onClick={InserirDados}
               >
-                {loading
-                  ? (
-                    <>
-                      <Spinner size="sm" color="light" /> Carregando...
-                    </>
-                    )
-                  : (
-                      'Cadastrar'
-                    )}
+                {loading ? (
+                  <>
+                    <Spinner size="sm" color="light" /> Carregando...
+                  </>
+                ) : (
+                  'Cadastrar'
+                )}
               </Button>
               <Alert
                 color="success"
