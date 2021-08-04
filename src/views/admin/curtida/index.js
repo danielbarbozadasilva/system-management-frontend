@@ -11,9 +11,10 @@ const Curtida = () => {
   const dispatch = useDispatch()
   const curtidas = useSelector((state) => state.cliente.curtidas)
   const loading = useSelector((state) => state.cliente.loading)
-
+  
   const callStart = React.useCallback(() => {
-    dispatch(getAllCurtidas())
+    const result = dispatch(getAllCurtidas())
+    console.log('-------------------',result)
   }, [dispatch])
 
   React.useEffect(() => {
@@ -36,18 +37,31 @@ const Curtida = () => {
   ]
 
   const actions = () => null
-  return (
+  if (curtidas !== undefined) {
+    return (
     <>
       <Title title="Curtidas" actions={actions} />
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>
-          {console.log('Curtidas' + JSON.stringify(curtidas))}
           <DataList data={curtidas} columns={columns} loading={loading} />
         </Grid>
       </Grid>
     </>
   )
+  } else {
+    return (
+      <>
+        <Title title="Curtidas" actions={actions} />
+        <Grid container spacing={2}>
+          <CssBaseline />
+          <Grid item md={12} xl={12}>
+          </Grid>
+        </Grid>
+      </>
+    )
+  }
+  
 }
 
 export default Curtida

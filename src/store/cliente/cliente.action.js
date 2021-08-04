@@ -44,7 +44,8 @@ export const getAllCurtidas = () => {
     try {
       dispatch({ type: TYPES.CLIENTE_CURTIDA_LOADING, status: true })
       const result = await getById(clienteId)
-      dispatch({ type: TYPES.CLIENTE_CURTIDA_ALL, data: result.data.data })
+      console.log('22', result)
+      dispatch({ type: TYPES.CLIENTE_CURTIDA_ALL, data: result.data.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
