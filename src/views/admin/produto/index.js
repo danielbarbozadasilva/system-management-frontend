@@ -19,7 +19,7 @@ const Produto = () => {
   const dispatch = useDispatch()
   const [modal, setModal] = React.useState({})
 
-  const produto = useSelector((state) => state.produto.all)
+  const produtos = useSelector((state) => state.produto.all)
   const loading = useSelector((state) => state.produto.loading)
   const selected = useSelector((state) => state.produto.selected)
 
@@ -81,7 +81,7 @@ const Produto = () => {
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={8}>
-          <DataList data={produto} loading={loading} modal={toogleModal} />
+          <DataList data={produtos} loading={loading} modal={toogleModal} />
         </Grid>
       </Grid>
       <DialogModal

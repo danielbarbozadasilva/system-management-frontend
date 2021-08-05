@@ -16,6 +16,9 @@ export const ativarFornecedor = (id) => http.put(`${baseUrl}/${id}/ativa`)
 
 export const inativaFornecedor = (id) => http.put(`${baseUrl}/${id}/inativa`)
 
+export const consultaCurtidasFornecedor = (id) =>
+  http.get(`${baseUrl}/${id}/curtidas`)
+
 export const getPesquisarFornecedorLocalidade = (data, tipo) =>
   http.get(baseUrl, data, tipo)
 

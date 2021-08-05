@@ -204,8 +204,8 @@ const SignUpCliente = () => {
                   value={
                     form.data_nascimento
                       ? moment(form.data_nascimento)
-                        .format('YYYY/MM/DD')
-                        .replaceAll('/', '-')
+                          .format('YYYY/MM/DD')
+                          .replaceAll('/', '-')
                       : ''
                   }
                   onChange={handleChange}
@@ -328,15 +328,13 @@ const SignUpCliente = () => {
                 block
                 onClick={InserirDados}
               >
-                {loading
-                  ? (
-                    <>
-                      <Spinner size="sm" color="light" /> Carregando...
-                    </>
-                    )
-                  : (
-                      'Cadastrar'
-                    )}
+                {loading ? (
+                  <>
+                    <Spinner size="sm" color="light" /> Carregando...
+                  </>
+                ) : (
+                  'Cadastrar'
+                )}
               </Button>
               <Alert
                 color="success"

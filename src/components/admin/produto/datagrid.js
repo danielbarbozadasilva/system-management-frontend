@@ -8,12 +8,18 @@ const DataList = ({ data, modal, loading }) => {
  
 
   const mappedData = data.map((item) => {
-    const { imagem, status, preco, ...resto } = item
+    const { imagem, status, preco, categoriaId, ...resto } = item
+
+
     return {
       ...resto,
       status: status ? 'Ativa' : 'Inativa',
       imagem: `${process.env.REACT_APP_API}${imagem}`,
-      preco: (preco)
+      preco: parseFloat(preco).toLocaleString('pt-br', {
+        style: 'currency',
+        currency: 'BRL'
+      }),
+      categoriaNome: categoriaId.nome
     }
   })
 
@@ -44,6 +50,12 @@ const DataList = ({ data, modal, loading }) => {
     {
       field: 'nome',
       headerName: 'Nome',
+      flex: 2,
+      disableColumnMenu: true
+    },
+    {
+      field: 'categoriaNome',
+      headerName: 'Categoria',
       flex: 2,
       disableColumnMenu: true
     },

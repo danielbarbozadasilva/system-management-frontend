@@ -54,6 +54,7 @@ const Form = ({ submit, ...props }) => {
     setForm(form)
     setPreview('')
   }
+
   const previewImg = (props) => {
     const imagem = props.target.files[0]
     const url = URL.createObjectURL(imagem)
@@ -63,7 +64,6 @@ const Form = ({ submit, ...props }) => {
       imagem
     })
   }
-
 
   return (
     <Box>

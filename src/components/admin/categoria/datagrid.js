@@ -47,6 +47,12 @@ const DataList = ({ data, modal, loading }) => {
       disableColumnMenu: true
     },
     {
+      field: 'descricao',
+      headerName: 'Descrição',
+      flex: 2,
+      disableColumnMenu: true
+    },
+    {
       field: 'actions',
       headerName: 'Ações',
       renderCell: actions,

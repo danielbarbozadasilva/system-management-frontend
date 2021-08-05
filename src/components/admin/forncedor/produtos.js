@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import DataList from '~/components/datagrid'
 import { useSelector } from 'react-redux'
 
-const ListaProdutos = ({ open, close }) => {
+const ListaProdutos = ({ data, open, close }) => {
   const columnsProdutos = [
     {
       field: 'nome',
@@ -29,10 +29,10 @@ const ListaProdutos = ({ open, close }) => {
 
   return (
     <Dialog
-      open={open}
-      onClose={close}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
+    open={open}
+    onClose={close}
+    aria-labelledby="alert-dialog-title"
+    aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">Lista de Produtos</DialogTitle>
       <DialogContent style={{ width: '500px ' }}>

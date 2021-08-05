@@ -46,7 +46,7 @@ function Fornecedor() {
   }
 
   const actionModalCurtida = ({ row }) => {
-    const curte = Number(row?.curtidas) != 0 && (row?.kind) != 'fornecedor'
+    const curte = Number(row?.curtidas) !== 0 && (row?.kind) !== 'fornecedor'
 
     return (
       <>
@@ -116,7 +116,7 @@ function Fornecedor() {
     },
     {
       field: 'actionsCurtida',
-      headerName: 'Autor Curtidas',
+      headerName: 'Clientes',
       align: 'center',
       renderCell: actionModalCurtida,
       width: 150,
@@ -150,7 +150,7 @@ function Fornecedor() {
     <>
       <Title
         title="Fornecedor"
-        subTitle="Pagina de Categorias"
+        subTitle="Página de Categorias"
         actions={actions}
       />
       <Grid container spacing={2}>

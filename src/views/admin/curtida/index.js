@@ -13,8 +13,7 @@ const Curtida = () => {
   const loading = useSelector((state) => state.cliente.loading)
   
   const callStart = React.useCallback(() => {
-    const result = dispatch(getAllCurtidas())
-    console.log('-------------------',result)
+    dispatch(getAllCurtidas())
   }, [dispatch])
 
   React.useEffect(() => {

@@ -62,7 +62,7 @@ export const Menu = [
     visibleMenu: true,
     enabled: true,
     component: Curtida,
-    authorization: [3]
+    authorization: [2, 3]
   },
   {
     title: 'Cliente',

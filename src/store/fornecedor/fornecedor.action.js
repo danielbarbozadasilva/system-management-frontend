@@ -17,7 +17,7 @@ export const create = (data) => {
   return async (dispatch) => {
     try {
       const result = await FornecedorCreate(data)
-      toastr.success('Fornecedor', 'Fornecedor cadastrada com sucesso')
+      toastr.success('Fornecedor', 'Fornecedor cadastrado com sucesso!')
       navigate('/signin')
     } catch (error) {
       toastr.error('Fornecedor', 'Preencha todos os campos!')
@@ -131,10 +131,31 @@ export const obterProduto = (id) => {
   return async (dispatch) => {
     try {
       const result = await obterListadeProduto(id)
-      dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data })
+      const r = dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data.data })
+      console.log('--------',produtos)
     } catch (error) {
       toastr.error('Fornecedor', 'Erro ao carregar produtos')
     }
+  }
+}
+
+export const getAllCurtidasFornecedor = () => {
+  return async (dispatch, getState) => {
+    const {
+      auth: {
+        usuario: { id: clienteId }
+      }
+    } = getState()
+
+    try {
+      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
+      const result = await consultaCurtidasFornecedor(clienteId)
+      dispatch({
+        type: TYPES.FORNECEDOR_CURTIDA_ALL,
+        data: result.data.data.data
+      })
+    } catch (error) {}
+    return false
   }
 }
 

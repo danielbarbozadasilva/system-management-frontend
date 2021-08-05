@@ -7,17 +7,20 @@ import Title from '~/components/title/index'
 import { getAll } from '~/store/produto/produto.action'
 import { getAll as getCategorias } from '~/store/categoria/categoria.action'
 import { getAll as getFornecedores } from '~/store/fornecedor/fornecedor.action'
+import { getAll as getClientes } from '~/store/cliente/cliente.action'
 
 function Inicio() {
   const dispatch = useDispatch()
 
   const fornecedores = useSelector((state) => state.fornecedor.all)
-  const categorias = useSelector((state) => state.produto.all)
-  const produtos = useSelector((state) => state.categoria.all)
+  const produtos = useSelector((state) => state.produto.all)
+  const categorias = useSelector((state) => state.categoria.all)
+  const clientes = useSelector((state) => state.cliente.all)
 
   React.useEffect(() => {
     dispatch(getFornecedores())
     dispatch(getCategorias())
+    dispatch(getClientes())
     dispatch(getAll())
   }, [dispatch])
 
