@@ -129,19 +129,15 @@ export const setStatusFornecedor = (id, ativo) => {
 }
 
 export const obterProduto = (id) => {
-   return async (dispatch, getState) => {
-     const {
-       auth: {
-         usuario: { id: clienteId }
-       }
-     } = getState()
-     try {
-       const result = await obterListadeProduto(id)
-       dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data })
-     } catch (error) {
-       toastr.error('Fornecedor', 'Erro ao carregar produtos')
-     }
-   }
+  return async (dispatch) => {
+    try {
+      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
+      const result = await obterListadeProduto()
+      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
+    } catch (error) {
+      toastr.error('Fornecedor', 'Erro ao carregar produtos')
+    }
+  }
 }
 
 export const getAllCurtidasFornecedor = () => {
@@ -191,9 +187,9 @@ export const getFornPesquisarUfCidade = (dados) => {
     try {
       dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
       const result = await getPesquisarFornecedorLocalidade(dados)
-          console.log('dfdfs' + JSON.stringify(dados))
+      console.log('dfdfs' + JSON.stringify(dados))
 
-      dispatch({ type: TYPES.FORNECEDOR_ALL_PESQUISA, data: result.data.data })
+      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data })
     } catch (error) {
       toastr.error('Aconteceu um erro', error)
     }

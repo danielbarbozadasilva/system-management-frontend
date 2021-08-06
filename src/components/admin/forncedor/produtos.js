@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 import DataList from '~/components/datagrid'
 import { useSelector } from 'react-redux'
 
-const ListaProdutos = ({ open, close }) => {
+const ListaProdutos = ({ produtos, open, close }) => {
   const columnsProdutos = [
     {
       field: 'nome',
@@ -25,7 +25,7 @@ const ListaProdutos = ({ open, close }) => {
       disableColumnMenu: true
     }
   ]
-  const produtos = useSelector((state) => state.fornecedor.produtos)
+  // const produtos = useSelector((state) => state.fornecedor.produtos)
 
   return (
     <Dialog

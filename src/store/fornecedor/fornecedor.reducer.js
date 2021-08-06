@@ -31,18 +31,14 @@ const reducer = (state = INITIAL_STATE, action) => {
     case TYPES.FORNECEDOR_UPLOAD:
       state.upload = action.upload
       state.loading = false
-
       return state
-
     case TYPES.FORNECEDOR_SELECT:
       state.selected = action.data
       state.loading = false
-
       return state
     case TYPES.FORNECEDOR_PRODUTOS:
       state.produtos = action.data
       state.loading = false
-
       return state
     case TYPES.FORNECEDOR_PRODUTOS_ID:
       state.fornecedorById = action.data

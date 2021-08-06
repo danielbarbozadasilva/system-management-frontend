@@ -19,11 +19,11 @@ import '../../../assets/css/style.css'
 
 function Fornecedor() {
   const dispatch = useDispatch()
-  const [modalProduto, setModalProduto] = React.useState(false)
-  
+  const [modalProduto, setModalProduto] = React.useState({})
+  const produto = useSelector((state) => state.produto.all)
   const fornecedores = useSelector((state) => state.fornecedor.all)
   const loading = useSelector((state) => state.fornecedor.loading)
-  const [modalCurtidas, setModalCurtidas] = React.useState({})
+  const [modalCurtidas, setModalCurtidas] = React.useState(false, {})
   const idUser = useSelector((state) => state.auth.usuario)
 
   const callFornecedor = useCallback(() => {
@@ -39,7 +39,7 @@ function Fornecedor() {
   }
 
   function openProdutos(row) {
-    dispatch(obterProduto(row.id)).then(() => setModalProduto(true))
+    setModalProduto({ open: true, data: row })
   }
 
   function openCurtidaCliente(row) {
@@ -47,11 +47,10 @@ function Fornecedor() {
   }
 
   const actionModalCurtida = ({ row }) => {
-    const curte = Number(row?.curtidas) !== 0 && (row?.kind) !== 'fornecedor'
+    const curte = Number(row?.curtidas) !== 0 && row?.kind !== 'fornecedor'
 
     return (
       <>
-
         <Tooltip title="Listar de curtida dos clientes">
           <AiFillStar
             className={curte ? 'iconeStar' : 'naoAparece'}
@@ -64,14 +63,14 @@ function Fornecedor() {
   }
 
   const actionModalProdutos = ({ row }) => {
-    const produtos = Number(row?.produtos) !== 0 && row?.kind !== 'fornecedor'
+    const produto = Number(row?.produtos) !== 0 && row?.kind !== 'fornecedor'
 
     return (
       <>
         <Tooltip title="Listar de Produtos">
           <IconButton
-            className={produtos? 'iconeStar' : 'naoAparece'}
-            onClick={() => openProdutos(row.id)}
+            className={produto ? 'iconeStar' : 'naoAparece'}
+            onClick={() => openProdutos(row.produtos)}
             color="primary"
           >
             <MoreIcon />
@@ -166,7 +165,11 @@ function Fornecedor() {
           <DataList data={fornecedores} columns={columns} loading={loading} />
         </Grid>
       </Grid>
-      <ListaProdutos open={modalProduto} close={() => setModalProduto(false)} />
+      <ListaProdutos
+        open={modalProduto.open}
+        produtos={modalProduto.data}
+        close={() => setModalProduto({ ...modalProduto, open: false })}
+      />
       <ListaCurtidas
         curtidas={modalCurtidas.data}
         open={modalCurtidas.open}
