@@ -13,31 +13,28 @@ const Buscar = () => {
   const error = useSelector((state) => state.auth.error)
   const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
-  const [uf, setuf] = useState([])
-  const [cidades, setcidade] = useState([])
-  const [formValidate, setFormValidate] = useState({})
-  const [form, setForm] = useState({})
-  const [desableInit, setDesableInit] = useState(true)
-
-  const handleChange = (props) => {
-    setDesableInit(false)
-
-    const { value, name } = props.target
-
-    setForm({
-      ...form,
-      [name]: value
-    })
-    dispatch(getFornPesquisarUfCidade(form))
-  }
-
-  useEffect(() => {
-    const estados = UFCidade.estados.map(({ nome, sigla }) => ({
+  const [uf, setuf] = useState(
+    UFCidade.estados.map(({ nome, sigla }) => ({
       nome,
       sigla
     }))
-    setuf(estados)
-  }, [])
+  )
+  const [cidades, setcidade] = useState([])
+  const [formValidate, setFormValidate] = useState({})
+  const [form, setForm] = useState({})
+
+  const handleChange = (props) => {
+    const { value, name } = props.target
+    if (value == 'x') {
+      return
+    }
+
+    form[name] = value
+    setForm({ ...form }, form)
+
+    console.log(JSON.stringify(form))
+    dispatch(getFornPesquisarUfCidade(form))
+  }
 
   useEffect(() => {
     const result = UFCidade.estados.find((item) => item.sigla === form.uf)
@@ -48,7 +45,9 @@ const Buscar = () => {
 
   return (
     <div className="dadosPesquisaFornec">
-      <h4><strong>Filtrar</strong></h4>
+      <h4>
+        <strong>Filtrar</strong>
+      </h4>
       <Label htmlFor="uf" className="dadosFornecedor">
         UF:
       </Label>
@@ -62,7 +61,7 @@ const Buscar = () => {
           id: 'outlined-native-simple'
         }}
       >
-        <option value="">selecione</option>
+        <option value="x">selecione</option>
         {uf?.map(({ nome, sigla }, i) => (
           <option key={i} value={sigla}>
             {sigla}
@@ -77,7 +76,7 @@ const Buscar = () => {
       <Select
         className="dadosFornecedor"
         native
-        value={form.cidade || ''}
+        value={form.cidade || 'x'}
         onChange={handleChange}
         style={{ marginLeft: '8px' }}
         inputProps={{
@@ -85,7 +84,7 @@ const Buscar = () => {
           id: 'outlined-native-simple'
         }}
       >
-        <option value="">selecione</option>
+        <option value="x">selecione</option>
 
         {cidades?.map((cidade, i) => (
           <option key={i} value={cidade}>

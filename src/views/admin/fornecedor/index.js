@@ -20,10 +20,11 @@ import '../../../assets/css/style.css'
 function Fornecedor() {
   const dispatch = useDispatch()
   const [modalProduto, setModalProduto] = React.useState(false)
-
+  
   const fornecedores = useSelector((state) => state.fornecedor.all)
   const loading = useSelector((state) => state.fornecedor.loading)
   const [modalCurtidas, setModalCurtidas] = React.useState({})
+  const idUser = useSelector((state) => state.auth.usuario)
 
   const callFornecedor = useCallback(() => {
     dispatch(getFornecedor())
@@ -63,10 +64,16 @@ function Fornecedor() {
   }
 
   const actionModalProdutos = ({ row }) => {
+    const produtos = Number(row?.produtos) !== 0 && row?.kind !== 'fornecedor'
+
     return (
       <>
         <Tooltip title="Listar de Produtos">
-          <IconButton onClick={() => openProdutos(row)} color="primary">
+          <IconButton
+            className={produtos? 'iconeStar' : 'naoAparece'}
+            onClick={() => openProdutos(row.id)}
+            color="primary"
+          >
             <MoreIcon />
           </IconButton>
         </Tooltip>
@@ -110,7 +117,7 @@ function Fornecedor() {
       headerName: 'Qtd. Curtidas',
       width: 150,
       align: 'center',
-      renderCell: (row) => row.value.length,
+      renderCell: (row) => row?.value?.length,
       headerAlign: 'center',
       disableColumnMenu: true
     },

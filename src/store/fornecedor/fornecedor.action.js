@@ -7,7 +7,8 @@ import {
   ativarFornecedor,
   inativaFornecedor,
   likeProdutoService,
-  getbyId
+  getbyId,
+  getPesquisarFornecedorLocalidade
 } from '~/services/fornecedor.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -128,15 +129,19 @@ export const setStatusFornecedor = (id, ativo) => {
 }
 
 export const obterProduto = (id) => {
-  return async (dispatch) => {
-    try {
-      const result = await obterListadeProduto(id)
-      const r = dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data.data.data })
-      console.log('--------',produtos)
-    } catch (error) {
-      toastr.error('Fornecedor', 'Erro ao carregar produtos')
-    }
-  }
+   return async (dispatch, getState) => {
+     const {
+       auth: {
+         usuario: { id: clienteId }
+       }
+     } = getState()
+     try {
+       const result = await obterListadeProduto(id)
+       dispatch({ type: TYPES.FORNECEDOR_PRODUTOS, data: result.data })
+     } catch (error) {
+       toastr.error('Fornecedor', 'Erro ao carregar produtos')
+     }
+   }
 }
 
 export const getAllCurtidasFornecedor = () => {
@@ -186,9 +191,11 @@ export const getFornPesquisarUfCidade = (dados) => {
     try {
       dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
       const result = await getPesquisarFornecedorLocalidade(dados)
+          console.log('dfdfs' + JSON.stringify(dados))
+
       dispatch({ type: TYPES.FORNECEDOR_ALL_PESQUISA, data: result.data.data })
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
+      toastr.error('Aconteceu um erro', error)
     }
   }
 }

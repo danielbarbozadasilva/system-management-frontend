@@ -19,8 +19,8 @@ export const inativaFornecedor = (id) => http.put(`${baseUrl}/${id}/inativa`)
 export const consultaCurtidasFornecedor = (id) =>
   http.get(`${baseUrl}/${id}/curtidas`)
 
-export const getPesquisarFornecedorLocalidade = (data, tipo) =>
-  http.get(baseUrl, data, tipo)
+export const getPesquisarFornecedorLocalidade = (data) =>
+  http.get(`${baseUrl}/filtro?uf=${data.uf}&cidade=${data.cidade? data.cidade : 'x'}`)
 
 export const obterListadeProduto = (id) => http.get(`${baseUrl}/${id}/produto`)
 

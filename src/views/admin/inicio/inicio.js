@@ -13,10 +13,10 @@ function Inicio() {
   const dispatch = useDispatch()
 
   const fornecedores = useSelector((state) => state.fornecedor.all)
-  const produtos = useSelector((state) => state.produto.all)
   const categorias = useSelector((state) => state.categoria.all)
   const clientes = useSelector((state) => state.cliente.all)
-
+  const produtos = useSelector((state) => state.produto.all)
+  
   React.useEffect(() => {
     dispatch(getFornecedores())
     dispatch(getCategorias())
@@ -31,7 +31,7 @@ function Inicio() {
     datasets: [
       {
         label: '# of Votes',
-        data: [fornecedores.length, categorias.length, produtos.length],
+        data: [fornecedores?.length, categorias?.length, produtos?.length],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',

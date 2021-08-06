@@ -48,13 +48,6 @@ function Fornecedor(props) {
       </Col>
     ))
 
-  const MapearFornecedorProdutos = (produtos) =>
-    produtos.map((item, i) => (
-      <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
-        <CardProduto item={{ ...item, status: true }} />
-      </Col>
-    ))
-
   if (loading) {
     return <Loading />
   }
@@ -63,7 +56,7 @@ function Fornecedor(props) {
     if (id) {
       return (
         <BoxFornecedor>
-          <BuscadorCidadeEstado />
+          <MapearCidadeEstado />
           {!loading ? (
             'Não há Fornecedor disponivel'
           ) : (
