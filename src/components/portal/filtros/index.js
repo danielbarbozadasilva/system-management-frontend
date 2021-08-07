@@ -28,11 +28,8 @@ const Buscar = () => {
     if (value == 'x') {
       return
     }
-
     form[name] = value
     setForm({ ...form }, form)
-
-    console.log(JSON.stringify(form))
     dispatch(getFornPesquisarUfCidade(form))
   }
 

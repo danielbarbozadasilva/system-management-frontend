@@ -42,7 +42,7 @@ const Curtida = () => {
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>
-          <DataList data={curtidas} columns={columns} loading={loading} />
+          <DataList data={curtidas} columns={columns}  />
         </Grid>
       </Grid>
     </>

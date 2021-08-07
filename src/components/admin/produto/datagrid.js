@@ -1,4 +1,5 @@
 import React from 'react'
+import {useSelector} from 'react-redux'
 import { DataGrid } from '@material-ui/data-grid'
 import { FiTrash2, FiEdit } from 'react-icons/fi'
 import { IconButton } from '@material-ui/core'
@@ -26,10 +27,13 @@ const DataList = ({ data, modal, loading }) => {
   const thumb = ({ formattedValue }) => {
     return <img src={formattedValue} />
   }
+  const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
 
   const actions = ({ id }) => {
+    
     return (
       <>
+        {tipoUsuario !== 3}
         <IconButton onClick={() => modal(2, id)} color="primary" size="small">
           <FiEdit />
         </IconButton>
@@ -37,6 +41,7 @@ const DataList = ({ data, modal, loading }) => {
           <FiTrash2 />
         </IconButton>
       </>
+          
     )
   }
   const columns = [
@@ -61,14 +66,15 @@ const DataList = ({ data, modal, loading }) => {
     },
     {
       field: 'preco',
-      headerName: 'Preco',
+      headerName: 'Preço',
       width: 120,
       disableColumnMenu: true
     },
     {
       field: 'actions',
       headerName: 'Ações',
-      renderCell: actions,
+      renderCell: tipoUsuario!== 3 ? actions : ''
+    ,
       width: 140,
       disableColumnMenu: true
     }
