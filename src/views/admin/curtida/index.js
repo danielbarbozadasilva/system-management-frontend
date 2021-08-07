@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, CssBaseline } from '@material-ui/core'
 
-import Title from '~/components/title/index'
+import Title from '../../../components/title/index'
 import DataList from '~/components/datagrid/index'
 
 import { getAllCurtidas } from '~/store/cliente/cliente.action'
@@ -36,7 +36,6 @@ const Curtida = () => {
   ]
 
   const actions = () => null
-  if (curtidas !== undefined) {
     return (
     <>
       <Title title="Curtidas" actions={actions} />
@@ -48,18 +47,6 @@ const Curtida = () => {
       </Grid>
     </>
   )
-  } else {
-    return (
-      <>
-        <Title title="Curtidas" actions={actions} />
-        <Grid container spacing={2}>
-          <CssBaseline />
-          <Grid item md={12} xl={12}>
-          </Grid>
-        </Grid>
-      </>
-    )
-  }
   
 }
 

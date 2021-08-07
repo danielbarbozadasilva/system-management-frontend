@@ -11,12 +11,12 @@ const ListaCurtidas = ({ open, close, curtidas }) => {
   const columnsCurtidas = [
     {
       field: 'clienteId',
-      headerName: 'id',
+      headerName: 'Id',
       flex: 1,
       width: 340,
       disableColumnMenu: true
     }, {
-      field: 'clienteNome',
+      field: 'nome',
       headerName: 'Nome',
       flex: 1,
       width: 340,

@@ -4,18 +4,11 @@ import CardFornecedor from '../../../components/portal/card/card_fornecedor'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
-import {
-  getAll,
-  getFornById
-} from '../../../store/fornecedor/fornecedor.action'
-import CardProduto from '../../../components/portal/card/card_produto'
+import { getAll } from '../../../store/fornecedor/fornecedor.action'
 import Imagem from '../../../assets/img/principal2.jpg'
 import MapearCidadeEstado from '../../../components/portal/filtros/index'
 
 function Fornecedor(props) {
-  const fornecedorPesquisa = useSelector((state) => state.fornecedor.pesquisa)
-
-  const selected = useSelector((state) => state.fornecedor.selected)
 
   const loading = useSelector((state) => state.auth.loading)
 
