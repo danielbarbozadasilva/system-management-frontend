@@ -1,4 +1,6 @@
 {
+  "author": "Daniel Barboza da Silva",
+  "license": "MIT",
   "name": "gestao_confeitarias",
   "version": "0.1.0",
   "private": true,
