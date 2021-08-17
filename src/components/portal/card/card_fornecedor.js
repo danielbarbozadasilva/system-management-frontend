@@ -28,6 +28,7 @@ const CardFornecedor = (props) => {
   return (
     <div>
       <SCard>
+        {console.log('console: ' + JSON.stringify(props))}
         <CardBody>
           <CardTitle className="tituloCard">{nomeFantasia}</CardTitle>
           <CardText className="descricaoCard">
@@ -46,10 +47,19 @@ const CardFornecedor = (props) => {
             <strong>Telefone: </strong>
             {telefone}
           </CardText>
-
-          <SButton onClick={() => navigate(`/produto/fornecedor/${id}`)}>
-            Produtos
-          </SButton>
+          {id===undefined ? (
+            <SButton
+              onClick={() => navigate(`/produto/fornecedor/${props.item._id}`)}
+            >
+              Produtos
+            </SButton>
+          ) : (
+            <SButton
+              onClick={() => navigate(`/produto/fornecedor/${id}`)}
+            >
+              Produtos
+            </SButton>
+          )}
         </CardBody>
       </SCard>
     </div>
