@@ -1,23 +1,46 @@
 import {
-  create as FornecedorCreate,
-  getAll as getAllFornecedor,
-  update as updateFornecedor,
-  removeFornecedor,
-  obterListadeProduto,
-  ativarFornecedor,
-  inativaFornecedor,
-  likeProdutoService,
-  getbyId,
-  getPesquisarFornecedorLocalidade
-} from '~/services/fornecedor.service'
+  ServiceListAllProvider,
+  ServiceListProviderById,
+  ServiceCreateProvider,
+  ServiceUpdateProvider,
+  ServiceRemoveProvider,
+  ServiceListProvidersByLocation,
+  ServiceChangeStatus,
+  ServiceSearchLikeProviderProduct,
+  ServiceCreateLikeProviderProduct,
+  ServiceRemoveLikeProviderProduct
+} from '~/services/provider.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 
-export const create = (data) => {
-  return async (dispatch) => {
+export const getAll = () => {
+  return async dispatch => {
     try {
-      const result = await FornecedorCreate(data)
+      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
+      const result = await ServiceListAllProvider()
+      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
+    }
+  }
+}
+
+export const getFornById = id => {
+  return async dispatch => {
+    try {
+      const result = await ServiceListProviderById(id)
+      dispatch({ type: TYPES.FORNECEDOR_PRODUTOS_ID, data: result.data })
+    } catch (error) {
+      toastr.error('Fornecedor', 'Erro ao carregar produtos')
+    }
+  }
+}
+
+export const create = data => {
+  return async dispatch => {
+    try {
+      const result = await ServiceCreateProvider(data)
       toastr.success('Fornecedor', 'Fornecedor cadastrado com sucesso!')
       navigate('/signin')
     } catch (error) {
@@ -25,33 +48,23 @@ export const create = (data) => {
     }
   }
 }
-export const edit = (id) => {
-  return async (dispatch) => {
+export const edit = id => {
+  return async dispatch => {
     dispatch({
       type: TYPES.FORNECEDOR_UPLOAD,
       upload: 0
     })
     try {
-      const result = await getFornecedorIdy(id)
+      const result = await ServiceUpdateProvider(id)
       dispatch({ type: TYPES.FORNECEDOR_EDIT, data: result.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
   }
 }
-export const getAll = () => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await getAllFornecedor()
-      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
-    } catch (error) {
-      toastr.error('aconteceu um erro', error)
-    }
-  }
-}
+
 export const update = ({ id, ...data }) => {
-  return (dispatch) => {
+  return dispatch => {
     dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
     dispatch({
       type: TYPES.FORNECEDOR_UPLOAD,
@@ -61,7 +74,7 @@ export const update = ({ id, ...data }) => {
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      onUploadProgress: function (progressEvent) {
+      onUploadProgress: function(progressEvent) {
         const percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
@@ -73,25 +86,25 @@ export const update = ({ id, ...data }) => {
     }
 
     const formData = new FormData()
-    Object.keys(data).map((k) => formData.append(k, data[k]))
+    Object.keys(data).map(k => formData.append(k, data[k]))
     updateFornecedor(id, formData, config)
-      .then((result) => {
+      .then(result => {
         dispatch(edit(id))
         dispatch(getAll())
         toastr.success('Fornecedor', 'Fornecedor atualizada com sucesso')
         dispatch({ type: TYPES.FORNECEDOR_UPDATE })
       })
-      .catch((error) => {
+      .catch(error => {
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
         toastr.error('Fornecedor', error.toString())
       })
   }
 }
 
-export const excluirFornecedor = (id) => {
-  return async (dispatch) => {
+export const excluirFornecedor = id => {
+  return async dispatch => {
     try {
-      const result = await removeFornecedor(id)
+      const result = await ServiceRemoveProvider(id)
       dispatch({ type: TYPES.FORNECEDOR_EDIT, data: result.data })
       toastr.success('Fornecedor', 'Removido com sucesso')
       dispatch(getAll())
@@ -107,20 +120,20 @@ export const setStatusFornecedor = (id, ativo) => {
     let result
     try {
       if (ativo) {
-        result = await inativaFornecedor(id)
+        result = await ServiceChangeStatus(id, 'ENABLE')
         toastr.success(
           `Fornecedor ${result.data.data.nomeFantasia}`,
           'Desativado com sucesso'
         )
       } else {
-        result = await ativarFornecedor(id)
+        result = await ServiceChangeStatus(id, 'DISABLE')
         toastr.success(
           `Fornecedor ${result.data.data.nomeFantasia}`,
           'Ativado com sucesso'
         )
       }
       const all = getState().fornecedor.all
-      const index = all.findIndex((item) => item.id === id)
+      const index = all.findIndex(item => item.id === id)
       all[index].status = result.data.data.status
 
       dispatch({ type: TYPES.FORNECEDOR_ALL, data: [...all] })
@@ -128,11 +141,11 @@ export const setStatusFornecedor = (id, ativo) => {
   }
 }
 
-export const obterProduto = (id) => {
-  return async (dispatch) => {
+export const obterProduto = id => {
+  return async dispatch => {
     try {
       dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await obterListadeProduto()
+      const result = await ServiceListProviderById(id)
       dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('Fornecedor', 'Erro ao carregar produtos')
@@ -150,7 +163,7 @@ export const getAllCurtidasFornecedor = () => {
 
     try {
       dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await consultaCurtidasFornecedor(clienteId)
+      const result = await ServiceSearchLikeProviderProduct(clienteId)
       dispatch({
         type: TYPES.FORNECEDOR_CURTIDA_ALL,
         data: result.data.data.data
@@ -161,9 +174,9 @@ export const getAllCurtidasFornecedor = () => {
 }
 
 export const likeProduto = ({ nome, fornecedorId }) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
-      const result = await likeProdutoService(fornecedorId)
+      const result = await ServiceCreateLikeProviderProduct(fornecedorId)
       toastr.success('Curtida', `o Produto ${nome} curtido com sucesso.`)
     } catch (error) {
       toastr.error('Curtida', 'Erro ao fazer curtida')
@@ -171,23 +184,11 @@ export const likeProduto = ({ nome, fornecedorId }) => {
   }
 }
 
-export const getFornById = (id) => {
-  return async (dispatch) => {
-    try {
-      const result = await getbyId(id)
-      dispatch({ type: TYPES.FORNECEDOR_PRODUTOS_ID, data: result.data })
-    } catch (error) {
-      toastr.error('Fornecedor', 'Erro ao carregar produtos')
-    }
-  }
-}
-
-export const getFornPesquisarUfCidade = (dados) => {
-  return async (dispatch) => {
+export const getFornPesquisarUfCidade = dados => {
+  return async dispatch => {
     try {
       dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await getPesquisarFornecedorLocalidade(dados)
-      console.log('dfdfs' + JSON.stringify(dados))
+      const result = await ServiceListProvidersByLocation(dados)
 
       dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data })
     } catch (error) {
