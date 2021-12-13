@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react'
 import { Grid, CssBaseline, Button } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  getAll,
+  getAllProducts,
   create,
   editProd,
   updateProduto,

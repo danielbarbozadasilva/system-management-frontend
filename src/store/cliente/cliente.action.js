@@ -8,8 +8,8 @@ import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 
-export const getAll = () => {
-  return async dispatch => {
+export const getAllClients = () => {
+  return async (dispatch) => {
     try {
       dispatch({ type: TYPES.CLIENTE_LOADING, status: true })
       const result = await ServiceListAllClient()
@@ -20,8 +20,8 @@ export const getAll = () => {
   }
 }
 
-export const create = data => {
-  return async dispatch => {
+export const create = (data) => {
+  return async (dispatch) => {
     try {
       const result = await ServiceCreateClient(data)
       toastr.success('Cliente', 'Cliente cadastrado com sucesso!')

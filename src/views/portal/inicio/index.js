@@ -4,7 +4,7 @@ import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAll } from '../../../store/categoria/categoria.action'
+import { getAllCategories } from '../../../store/categoria/categoria.action'
 import '../../../assets/css/style.css'
 import Imagem from '../../../assets/img/principal.jpg'
 
@@ -16,7 +16,7 @@ const Inicio = () => {
   const loading = useSelector((state) => state.auth.loading)
 
   useEffect(() => {
-    dispatch(getAll())
+    dispatch(getAllCategories())
   }, [dispatch])
 
   const MapearCategoria = (categoria) =>

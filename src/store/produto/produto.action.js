@@ -9,8 +9,8 @@ import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { getUser } from '~/config/storage'
 
-export const getAll = filter => {
-  return async dispatch => {
+export const getAllProducts = (filter) => {
+  return async (dispatch) => {
     try {
       dispatch({ type: TYPES.PRODUTO_LOADING, status: true })
       const result = await ServiceSearchProduct(filter)
@@ -22,13 +22,13 @@ export const getAll = filter => {
   }
 }
 
-export const create = data => {
+export const create = (data) => {
   return async (dispatch, getState) => {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      onUploadProgress: function(progressEvent) {
+      onUploadProgress: function (progressEvent) {
         const percent = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
@@ -43,7 +43,7 @@ export const create = data => {
     }
     try {
       const formData = new FormData()
-      Object.keys(data).map(k => formData.append(k, data[k]))
+      Object.keys(data).map((k) => formData.append(k, data[k]))
       const provider_id = getState().auth.usuario.id
       const result = await ServiceCreateProduct(provider_id, formData, config)
       dispatch({ type: TYPES.PRODUTO_UPLOAD, data: result.data })
@@ -55,13 +55,13 @@ export const create = data => {
   }
 }
 
-export const updateProduto = data => {
+export const updateProduto = (data) => {
   return async (dispatch, getState) => {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data'
       },
-      onUploadProgress: function(progressEvent) {
+      onUploadProgress: function (progressEvent) {
         const percent = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
@@ -76,7 +76,7 @@ export const updateProduto = data => {
     }
     try {
       const formData = new FormData()
-      Object.keys(data).map(k => formData.append(k, data[k]))
+      Object.keys(data).map((k) => formData.append(k, data[k]))
 
       const product_id = data.id
       const result = await ServiceUpdateProduct(product_id, formData, config)
@@ -91,8 +91,8 @@ export const updateProduto = data => {
   }
 }
 
-export const remove = idProd => {
-  return async dispatch => {
+export const remove = (idProd) => {
+  return async (dispatch) => {
     try {
       const id = getUser().id
       const result = await ServiceDeleteProduct(id, idProd)
@@ -105,8 +105,8 @@ export const remove = idProd => {
   }
 }
 
-export const editProd = id => {
-  return async dispatch => {
+export const editProd = (id) => {
+  return async (dispatch) => {
     dispatch({
       type: TYPES.PRODUTO_UPLOAD,
       upload: 0

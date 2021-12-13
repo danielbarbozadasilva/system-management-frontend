@@ -14,8 +14,8 @@ import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 
-export const getAll = () => {
-  return async dispatch => {
+export const getAllProviders = () => {
+  return async (dispatch) => {
     try {
       dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
       const result = await ServiceListAllProvider()
