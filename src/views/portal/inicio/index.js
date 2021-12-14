@@ -19,12 +19,15 @@ const Inicio = () => {
     dispatch(getAllCategories())
   }, [dispatch])
 
-  const MapearCategoria = (categoria) =>
-    categoria.map((item, i) => (
-      <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
-        <CardCategoria item={{ ...item, status: true }} />
-      </Col>
-    ))
+  const MapearCategoria = (categoria) => {
+    return categoria.map((item, i) => {
+     return (
+       <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
+         <CardCategoria item={{ ...item }} />
+       </Col>
+     )
+    })
+  }
 
   if (loading) {
     return <Loading />

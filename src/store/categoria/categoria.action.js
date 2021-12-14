@@ -13,7 +13,6 @@ export const getAllCategories = () => {
     try {
       dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
       const result = await ServiceSearchAllCategory()
-      console.log(JSON.stringify(result))
       dispatch({ type: TYPES.CATEGORY_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)

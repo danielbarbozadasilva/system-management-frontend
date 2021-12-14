@@ -17,11 +17,10 @@ import { navigate } from '@reach/router'
 
 const CardItem = (props) => {
   const { id, name, description, image } = props.item
-
   return (
     <div>
       <SCard>
-        {image.length > 0 ? (
+        {image?.length > 0 ? (
           <SCardImg src={process.env.REACT_APP_API + image} />
         ) : (
           ''

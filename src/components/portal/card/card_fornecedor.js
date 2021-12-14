@@ -17,7 +17,6 @@ const CardFornecedor = (props) => {
   return (
     <div>
       <SCard>
-        {console.log('console: ' + JSON.stringify(props))}
         <CardBody>
           <CardTitle className="tituloCard">{fantasy_name}</CardTitle>
           <CardText className="descricaoCard">
