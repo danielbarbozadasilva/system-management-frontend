@@ -4,12 +4,11 @@ import CardFornecedor from '../../../components/portal/card/card_fornecedor'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
-import { getAll } from '../../../store/fornecedor/fornecedor.action'
+import { getAllProviders } from '../../../store/fornecedor/fornecedor.action'
 import Imagem from '../../../assets/img/principal2.jpg'
 import MapearCidadeEstado from '../../../components/portal/filtros/index'
 
 function Fornecedor(props) {
-
   const loading = useSelector((state) => state.auth.loading)
 
   const dispatch = useDispatch()
@@ -18,7 +17,7 @@ function Fornecedor(props) {
   const nameFilter = props.nameFilter
 
   const getDados = async (id, nameFilter) => {
-    await dispatch(getAll({ fornecedor: props.id }))
+    await dispatch(getAllProviders({ fornecedor: props.id }))
   }
 
   const callFornecedor = useCallback(() => {
@@ -27,7 +26,7 @@ function Fornecedor(props) {
         getDados(id, nameFilter)
       }, [])
     } else {
-      dispatch(getAll())
+      dispatch(getAllProviders())
     }
   }, [dispatch])
 
@@ -48,7 +47,7 @@ function Fornecedor(props) {
 
   const ProdFornecedor = () => {
     const fornecedor = useSelector((state) => state.fornecedor.all)
-    
+
     if (id) {
       return (
         <BoxFornecedor>
@@ -102,7 +101,6 @@ function Fornecedor(props) {
   }
   return <Visual />
 }
-
 
 export default Fornecedor
 

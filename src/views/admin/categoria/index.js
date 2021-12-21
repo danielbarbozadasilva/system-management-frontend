@@ -5,7 +5,7 @@ import {
   edit as editCategory,
   update as updateCategory,
   remove as removeCategory,
-  getAll as getCategories,
+  getAllCategories,
   create as createCategory
 } from '~/store/categoria/categoria.action'
 
@@ -24,7 +24,7 @@ const Categoria = () => {
   const selected = useSelector((state) => state.categoria.selected)
 
   const callCategoria = useCallback(() => {
-    dispatch(getCategories())
+    dispatch(getAllCategories())
   }, [dispatch])
 
   useEffect(() => {

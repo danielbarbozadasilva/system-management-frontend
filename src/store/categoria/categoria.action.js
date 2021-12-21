@@ -1,12 +1,38 @@
 import {
-  categoryCreate,
-  getAllCategories,
-  getCategoryById,
-  updateCategory,
-  removeCategory
-} from '~/services/categoria.service'
+  ServiceSearchAllCategory,
+  ServiceSearchCategoryById,
+  ServiceInsertCategory,
+  ServiceUpdateCategory,
+  ServiceRemoveCategoryProducts
+} from '~/services/category.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
+
+export const getAllCategories = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
+      const result = await ServiceSearchAllCategory()
+      dispatch({ type: TYPES.CATEGORY_ALL, data: result.data.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
+    }
+  }
+}
+
+export const getCategoriaById = (id) => {
+  return async (dispatch) => {
+    dispatch({
+      type: TYPES.CATEGORY_ID
+    })
+    try {
+      const result = await ServiceSearchCategoryById(id)
+      dispatch({ type: TYPES.CATEGORY_ID, data: result.data })
+    } catch (error) {
+      toastr.error('aconteceu um erro', error)
+    }
+  }
+}
 
 export const create = (data) => {
   return async (dispatch) => {
@@ -30,7 +56,7 @@ export const create = (data) => {
     try {
       const formData = new FormData()
       Object.keys(data).map((k) => formData.append(k, data[k]))
-      const result = await categoryCreate(formData, config)
+      const result = await ServiceInsertCategory(formData, config)
       dispatch({ type: TYPES.CATEGORY_CREATE, data: result.data })
       toastr.success('Categoria', 'Categoria cadastrada com sucesso!')
       dispatch(getAll())
@@ -40,41 +66,15 @@ export const create = (data) => {
   }
 }
 
-export const edit = (id) => {
+export const edit = (id, formData) => {
   return async (dispatch) => {
     dispatch({
       type: TYPES.CATEGORY_UPLOAD,
       upload: 0
     })
     try {
-      const result = await getCategoryById(id)
+      const result = await ServiceUpdateCategory(id, formData)
       dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
-    } catch (error) {
-      toastr.error('aconteceu um erro', error)
-    }
-  }
-}
-
-export const getCategoriaById = (id) => {
-  return async (dispatch) => {
-    dispatch({
-      type: TYPES.CATEGORY_ID
-    })
-    try {
-      const result = await getCategoryById(id)
-      dispatch({ type: TYPES.CATEGORY_ID, data: result.data })
-    } catch (error) {
-      toastr.error('aconteceu um erro', error)
-    }
-  }
-}
-
-export const getAll = () => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
-      const result = await getAllCategories()
-      dispatch({ type: TYPES.CATEGORY_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
@@ -107,7 +107,7 @@ export const update = ({ id, ...data }) => {
     Object.keys(data).map((k) => formData.append(k, data[k]))
     updateCategory(id, formData, config)
       .then((result) => {
-        dispatch(edit(id))
+        dispatch(edit(id, formData))
         dispatch(getAll())
         toastr.success('Categoria', 'Categoria atualizada com sucesso')
         return true
@@ -126,7 +126,7 @@ export const update = ({ id, ...data }) => {
 export const remove = (id) => {
   return async (dispatch) => {
     try {
-      const result = await removeCategory(id)
+      const result = await ServiceRemoveCategoryProducts(id)
       dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
       toastr.success('Categoria', 'Removido com sucesso')
       dispatch(getAll())

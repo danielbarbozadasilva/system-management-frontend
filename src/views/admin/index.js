@@ -31,7 +31,7 @@ export const Menu = [
   {
     title: 'Categoria',
     icon: <MdAppsIcon />,
-    route: '/categoria',
+    route: '/category',
     visibleMenu: true,
     enabled: true,
     component: Categoria,
@@ -40,7 +40,7 @@ export const Menu = [
   {
     title: 'Produtos',
     icon: <MoreIcon />,
-    route: '/produto',
+    route: '/product',
     visibleMenu: true,
     enabled: true,
     component: Produto,
@@ -49,7 +49,7 @@ export const Menu = [
   {
     title: 'Fornecedor',
     icon: <ShoppingCartIcon />,
-    route: '/fornecedor',
+    route: '/provider',
     visibleMenu: true,
     enabled: true,
     component: Fornecedor,
@@ -58,7 +58,7 @@ export const Menu = [
   {
     title: 'Curtidas',
     icon: <MoreIcon />,
-    route: '/curtida',
+    route: '/like',
     visibleMenu: true,
     enabled: true,
     component: Curtida,
@@ -67,7 +67,7 @@ export const Menu = [
   {
     title: 'Cliente',
     icon: <PeopleIcon />,
-    route: '/cliente',
+    route: '/client',
     visibleMenu: true,
     enabled: true,
     component: Cliente,

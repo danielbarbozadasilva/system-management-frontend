@@ -12,32 +12,20 @@ import './style.css'
 import { navigate } from '@reach/router'
 
 const CardFornecedor = (props) => {
-  const {
-    id,
-    cnpj,
-    nomeFantasia,
-    endereco,
-    uf,
-    cidade,
-    responsavel,
-    telefone,
-    produtos,
-    curtidas
-  } = props.item
+  const { id, fantasy_name, address, uf, city, phone } = props.item
 
   return (
     <div>
       <SCard>
-        {console.log('console: ' + JSON.stringify(props))}
         <CardBody>
-          <CardTitle className="tituloCard">{nomeFantasia}</CardTitle>
+          <CardTitle className="tituloCard">{fantasy_name}</CardTitle>
           <CardText className="descricaoCard">
             <strong>Endereço: </strong>
-            {endereco}
+            {address}
           </CardText>
           <CardText className="descricaoCardfornecedor">
             <strong>Cidade: </strong>
-            {cidade}
+            {city}
           </CardText>
           <CardText className="descricaoCardfornecedor">
             <strong>Uf: </strong>
@@ -45,18 +33,16 @@ const CardFornecedor = (props) => {
           </CardText>
           <CardText className="descricaoCard">
             <strong>Telefone: </strong>
-            {telefone}
+            {phone}
           </CardText>
-          {id===undefined ? (
+          {id === undefined ? (
             <SButton
-              onClick={() => navigate(`/produto/fornecedor/${props.item._id}`)}
+              onClick={() => navigate(`/product/provider/${props.item._id}`)}
             >
               Produtos
             </SButton>
           ) : (
-            <SButton
-              onClick={() => navigate(`/produto/fornecedor/${id}`)}
-            >
+            <SButton onClick={() => navigate(`/product/provider/${id}`)}>
               Produtos
             </SButton>
           )}

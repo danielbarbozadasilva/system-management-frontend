@@ -1,17 +1,29 @@
 import {
-  create as ClienteCreate,
-  getAll as getAllCliente,
-  getById
-} from '~/services/cliente.service'
+  ServiceListAllClient,
+  ServiceSearchByIdClient,
+  ServiceCreateClient
+} from '~/services/client.service'
 
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 
+export const getAllClients = () => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: TYPES.CLIENTE_LOADING, status: true })
+      const result = await ServiceListAllClient()
+      dispatch({ type: TYPES.CLIENTE_ALL, data: result.data })
+    } catch (error) {
+      toastr.error('Aconteceu um erro', error)
+    }
+  }
+}
+
 export const create = (data) => {
   return async (dispatch) => {
     try {
-      const result = await ClienteCreate(data)
+      const result = await ServiceCreateClient(data)
       toastr.success('Cliente', 'Cliente cadastrado com sucesso!')
       navigate('/signin')
     } catch (error) {
@@ -30,25 +42,12 @@ export const getAllCurtidas = () => {
 
     try {
       dispatch({ type: TYPES.CLIENTE_CURTIDA_LOADING, status: true })
-      const result = await getById(clienteId)
-      console.log('---ddddddd---',result)
-      dispatch({ type: TYPES.CLIENTE_CURTIDA_ALL, data: result.data.data})
+      const result = await ServiceSearchByIdClient(clienteId)
+
+      dispatch({ type: TYPES.CLIENTE_CURTIDA_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
     return false
   }
 }
-
-export const getAll = () => {
-  return async (dispatch) => {
-    try {
-      dispatch({ type: TYPES.CLIENTE_LOADING, status: true })
-      const result = await getAllCliente()
-      dispatch({ type: TYPES.CLIENTE_ALL, data: result.data })
-    } catch (error) {
-      toastr.error('Aconteceu um erro', error)
-    }
-  }
-}
-

@@ -9,7 +9,7 @@ import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import { More as MoreIcon } from '@material-ui/icons'
 
 import {
-  getAll as getFornecedor,
+  getAllProviders,
   obterProduto,
   setStatusFornecedor
 } from '~/store/fornecedor/fornecedor.action'
@@ -27,7 +27,7 @@ function Fornecedor() {
   const idUser = useSelector((state) => state.auth.usuario)
 
   const callFornecedor = useCallback(() => {
-    dispatch(getFornecedor())
+    dispatch(getAllProviders())
   }, [dispatch])
 
   useEffect(() => {
