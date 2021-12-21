@@ -12,12 +12,12 @@ export const ServiceCreateProvider = data => http.post(baseUrl, data)
 export const ServiceUpdateProvider = (providerid, data) =>
   http.put(`${baseUrl}/${providerid}`, data)
 
-export const ServiceRemoveProvider = providerid =>
+export const ServiceRemoveProvider = (providerid) =>
   http.delete(`${baseUrl}/${providerid}`)
 
-export const ServiceListProvidersByLocation = data =>
+export const ServiceListProvidersByLocation = (data) =>
   http.get(
-    `${baseUrl}/filter?uf=${data.uf}&city=${data.city ? data.city : 'x'}`
+    `${baseUrl}/filter/${data.uf}/${data.city ? data.city : 'x'}`
   )
 
 export const ServiceChangeStatus = (providerid, data) =>

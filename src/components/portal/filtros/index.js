@@ -23,14 +23,14 @@ const Buscar = () => {
   const [formValidate, setFormValidate] = useState({})
   const [form, setForm] = useState({})
 
-  const handleChange = (props) => {
+  const handleChange = async (props) => {
     const { value, name } = props.target
     if (value == 'x') {
       return
     }
     form[name] = value
     setForm({ ...form }, form)
-    dispatch(getFornPesquisarUfCidade(form))
+    dispatch(await getFornPesquisarUfCidade(form))
   }
 
   useEffect(() => {

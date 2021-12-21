@@ -184,13 +184,13 @@ export const likeProduto = ({ nome, fornecedorId }) => {
   }
 }
 
-export const getFornPesquisarUfCidade = dados => {
+export const getFornPesquisarUfCidade = (data) => {
   return async dispatch => {
     try {
       dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await ServiceListProvidersByLocation(dados)
+      const result = await ServiceListProvidersByLocation(data)
 
-      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data })
+      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('Aconteceu um erro', error)
     }
