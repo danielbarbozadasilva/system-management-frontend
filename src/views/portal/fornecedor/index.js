@@ -16,17 +16,17 @@ function Fornecedor(props) {
   const id = props.id
   const nameFilter = props.nameFilter
 
-  const getDados = async (id, nameFilter) => {
-    await dispatch(getAllProviders({ fornecedor: props.id }))
+  const getDados = (id, nameFilter) => {
+     dispatch(getAllProviders(nameFilter))
   }
 
-  const callFornecedor = useCallback(() => {
+  const callFornecedor = useCallback(async (id, nameFilter) => {
     if (id) {
       useEffect(() => {
         getDados(id, nameFilter)
       }, [])
     } else {
-      dispatch(getAllProviders())
+      dispatch(await getAllProviders())
     }
   }, [dispatch])
 
@@ -34,12 +34,17 @@ function Fornecedor(props) {
     callFornecedor()
   }, [callFornecedor])
 
-  const MapearFornecedor = (fornecedor) =>
-    fornecedor?.map((item, i) => (
+  const MapearFornecedor = ((fornecedor) => {
+    console.log(fornecedor);
+    return fornecedor?.map((item, i) => {
+       return (
       <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
         <CardFornecedor item={{ ...item, status: true }} />
-      </Col>
-    ))
+         </Col>
+       )
+    })
+  })
+
 
   if (loading) {
     return <Loading />
