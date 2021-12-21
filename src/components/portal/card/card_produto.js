@@ -12,26 +12,24 @@ import './style.css'
 import { FaHeart } from 'react-icons/fa'
 
 const CardProduto = (props) => {
-  const { id, nome, descricao, preco, fornecedorId, imagem } = props.item
+  const { id, name, description, price, image } = props.item
   return (
     <div>
       <SCard>
-        {imagem.length > 0
-          ? (
-            <SCardImg top width="70%" src={process.env.REACT_APP_API + imagem} />
-            )
-          : (
-              ''
-            )}
+        {image.length > 0 ? (
+          <SCardImg top width="70%" src={process.env.REACT_APP_API + image} />
+        ) : (
+          ''
+        )}
         <div className="item-icon-coracao">
           <FaHeart />
         </div>
         <CardBody>
-          <CardTitle className="tituloCard">{nome}</CardTitle>
-          <CardText className="descricaoCard">{descricao}</CardText>
+          <CardTitle className="tituloCard">{name}</CardTitle>
+          <CardText className="descricaoCard">{description}</CardText>
           <CardText className="precoCard">
-            R${' '}
-            {props.item.preco
+            R$
+            {price
               .toLocaleString('pt-br', {
                 style: 'currency',
                 currency: 'BRL',

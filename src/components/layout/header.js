@@ -64,10 +64,10 @@ const Header = (props) => {
                 </NavItem>
                 <>
                   <NavItem>
-                    <SNavLink to="/produto">Produtos</SNavLink>
+                    <SNavLink to="/product">Produtos</SNavLink>
                   </NavItem>
                   <NavItem>
-                    <SNavLink to="/fornecedor">Fornecedores</SNavLink>
+                    <SNavLink to="/provider">Fornecedores</SNavLink>
                   </NavItem>
                 </>
               </Nav>

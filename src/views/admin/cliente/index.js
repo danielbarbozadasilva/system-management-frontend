@@ -3,8 +3,7 @@ import { Grid, CssBaseline } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import Title from '~/components/title'
 import DataList from '~/components/datagrid'
-
-import { getAll as getClientes } from '~/store/cliente/cliente.action'
+import { getAllClients } from '~/store/cliente/cliente.action'
 
 function Cliente() {
   const dispatch = useDispatch()
@@ -13,7 +12,7 @@ function Cliente() {
   const loading = useSelector((state) => state.fornecedor.loading)
 
   const callClientes = useCallback(() => {
-    dispatch(getClientes())
+    dispatch(getAllClients())
   }, [dispatch])
 
   useEffect(() => {

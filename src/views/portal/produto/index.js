@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getAll } from '../../../store/produto/produto.action'
 import CardProduto from '../../../components/portal/card/card_produto'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import Imagem from '../../../assets/img/principal3.jpg'
+import { getAllProducts } from '../../../store/produto/produto.action'
+import { getAllCategories } from '~/store/categoria/categoria.action'
+import { getAllProviders } from '~/store/fornecedor/fornecedor.action'
 
 function Produtos(props) {
   const produtos = useSelector((state) => state.produto.all)
@@ -16,13 +18,13 @@ function Produtos(props) {
   const getDados = async () => {
     switch (props.tipo) {
       case 'categoria':
-        await dispatch(getAll({ categoria: props.id }))
+        await dispatch(getAllCategories({ categoria: props.id }))
         break
       case 'fornecedor':
-        await dispatch(getAll({ fornecedor: props.id }))
+        await dispatch(getAllProviders({ fornecedor: props.id }))
         break
       default:
-        await dispatch(getAll())
+        await dispatch(getAllProducts())
     }
   }
 

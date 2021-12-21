@@ -20,7 +20,7 @@ const Menu = [
   {
     title: 'Produtos',
     icons: '',
-    route: '/produto',
+    route: '/product',
     visibleMenu: true,
     enabled: true,
     component: ProdutoPortal
@@ -28,8 +28,8 @@ const Menu = [
   {
     title: 'ViewsProduto',
     icons: '',
-    route: '/produto/categoria/:id',
-    tipo:'categoria',
+    route: '/product/category/:id',
+    tipo: 'categoria',
     visibleMenu: true,
     enabled: true,
     component: ProdutoPortal
@@ -37,7 +37,7 @@ const Menu = [
   {
     title: 'ViewsProdutoFornec',
     icons: '',
-    route: '/produto/fornecedor/:id',
+    route: '/product/provider/:id',
     tipo: 'fornecedor',
     visibleMenu: true,
     enabled: true,
@@ -46,7 +46,7 @@ const Menu = [
   {
     title: 'ViewsFornecedor',
     icons: '',
-    route: '/fornecedor',
+    route: '/provider',
     visibleMenu: true,
     enabled: true,
     component: FornecedorPortal
@@ -54,7 +54,7 @@ const Menu = [
   {
     title: 'FornecedorCadastro',
     icons: '',
-    route: '/fornecedorcadastro',
+    route: '/registrationprovider',
     visibleMenu: true,
     enabled: true,
     component: Fornecedor
@@ -62,7 +62,7 @@ const Menu = [
   {
     title: 'ClienteCadastro',
     icons: '',
-    route: '/clientecadastro',
+    route: '/registrationclient',
     visibleMenu: true,
     enabled: true,
     component: Cliente
