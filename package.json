@@ -3,17 +3,6 @@
   "license": "GPLv3 License",
   "name": "gestao_confeitarias",
   "version": "1.0.0",
-  "husky": {
-    "hooks": {
-      "pre-commit":["commitlint -E HUSKY_GIT_PARAMS", "lint-staged"]
-    }
-  },
-  "lint-staged": {
-    "src/*.js": [
-      "eslint --fix",
-      "git add"
-    ]
-  },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/data-grid": "4.0.0-alpha.29",
@@ -77,8 +66,6 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.0.1",
-    "@commitlint/config-conventional": "^16.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-root-import": "^6.6.0",
     "babel-plugin-styled-components": "^1.12.0",
