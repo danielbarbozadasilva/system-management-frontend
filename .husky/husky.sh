@@ -1,4 +1,5 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 
 npx --no-install jira-prepare-commit-msg $1
+
+npx lint-staged
