@@ -10,7 +10,7 @@
   },
   "lint-staged": {
     "src/*.js": [
-      "eslint --fix, git add"
+      "eslint --fix", "git add"
     ]
   },
   "dependencies": {

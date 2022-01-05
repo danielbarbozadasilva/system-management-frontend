@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const TitlePage = styled.div`
     color: black;
@@ -8,7 +8,7 @@ const TitlePage = styled.div`
     border-bottom: 1px dotted #4b8EC7;
     display:flex;
     justify-content: space-between
-`
+`;
 
 const Sign = styled.div`
     display:flex;
@@ -16,9 +16,9 @@ const Sign = styled.div`
     align-items: center;
     min-width:100%;
     min-height:100%;
-`
+`;
 
 export {
   Sign,
-  TitlePage
-}
+  TitlePage,
+};
