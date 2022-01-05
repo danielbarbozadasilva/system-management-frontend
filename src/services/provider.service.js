@@ -1,8 +1,8 @@
 import http from '~/config/http'
 const baseUrl = '/provider'
 
-export const ServiceListAllProvider = (like, alphabetical) =>
-  http.get(`${baseUrl}/filterorder/${like}/${alphabetical}`)
+export const ServiceListAllProvider = (data) =>
+  http.get(`${baseUrl}/filter/${data.like}/${data.alphabetical}`)
 
 export const ServiceListProviderById = providerid =>
   http.get(`${baseUrl}/${providerid}`)
@@ -17,7 +17,7 @@ export const ServiceRemoveProvider = (providerid) =>
 
 export const ServiceListProvidersByLocation = (data) =>
   http.get(
-    `${baseUrl}/filter/${data.uf}/${data.city ? data.city : 'x'}`
+    `${baseUrl}/filter/${data.uf}/${data.city}`
   )
 
 export const ServiceChangeStatus = (providerid, data) =>

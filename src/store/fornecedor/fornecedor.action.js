@@ -14,20 +14,21 @@ import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 
-export const getAllProviders = () => {
+export const getAllProviders = (data) => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await ServiceListAllProvider()
+      const result = await ServiceListAllProvider(data)
       dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
+      console.log(result.data.data);
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
   }
 }
 
-export const getFornById = id => {
-  return async dispatch => {
+export const getFornById = (id) => {
+  return async (dispatch) => {
     try {
       const result = await ServiceListProviderById(id)
       dispatch({ type: TYPES.FORNECEDOR_PRODUTOS_ID, data: result.data })
@@ -38,7 +39,7 @@ export const getFornById = id => {
 }
 
 export const create = data => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const result = await ServiceCreateProvider(data)
       toastr.success('Fornecedor', 'Fornecedor cadastrado com sucesso!')
@@ -48,7 +49,7 @@ export const create = data => {
     }
   }
 }
-export const edit = id => {
+export const edit = (id) => {
   return async dispatch => {
     dispatch({
       type: TYPES.FORNECEDOR_UPLOAD,
