@@ -5,15 +5,14 @@
   "version": "1.0.0",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg":"commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg":"commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "src/*.js": [
       "eslint --fix",
-      "git add"
-    ]
+      "git add"]
   },
   "dependencies": {
     "@material-ui/core": "^4.11.4",
