@@ -5,12 +5,14 @@
   "version": "1.0.0",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg":"commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
     "src/*.js": [
-      "eslint --fix", "git add"
+      "eslint --fix",
+      "git add"
     ]
   },
   "dependencies": {
@@ -76,6 +78,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.0.1",
+    "@commitlint/config-conventional": "^16.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-root-import": "^6.6.0",
     "babel-plugin-styled-components": "^1.12.0",
