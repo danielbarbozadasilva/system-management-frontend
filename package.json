@@ -3,7 +3,6 @@
   "license": "GPLv3 License",
   "name": "gestao_confeitarias",
   "version": "1.0.0",
-  "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/data-grid": "4.0.0-alpha.29",
@@ -82,6 +81,7 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unused-imports": "^1.1.1",
+    "git-commit-msg-linter": "^3.2.8",
     "husky": "^6.0.0",
     "react-app-rewired": "^2.1.8",
     "redux-devtools-extension": "^2.13.9"

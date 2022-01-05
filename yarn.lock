@@ -4489,6 +4489,14 @@
     "address" "^1.0.1"
     "debug" "^2.6.0"
 
+"did-you-mean@^0.0.1":
+  "integrity" "sha1-iFHOgkB5A8tiwSy2rU9naSHM3sM="
+  "resolved" "https://registry.npmjs.org/did-you-mean/-/did-you-mean-0.0.1.tgz"
+  "version" "0.0.1"
+  dependencies:
+    "levenshtein" "*"
+    "underscore" "*"
+
 "diff-sequences@^26.6.2":
   "integrity" "sha512-Mv/TDa3nZ9sbc5soK+OoA74BsS3mL37yixCvUAQkiuA4Wz6YtwP/K47n2rv2ovzHZvoiQeA5FTQOschKkEwB0Q=="
   "resolved" "https://registry.npmjs.org/diff-sequences/-/diff-sequences-26.6.2.tgz"
@@ -5773,6 +5781,15 @@
   "integrity" "sha1-3BXKHGcjh8p2vTesCjlbogQqLCg="
   "resolved" "https://registry.npmjs.org/get-value/-/get-value-2.0.6.tgz"
   "version" "2.0.6"
+
+"git-commit-msg-linter@^3.2.8":
+  "integrity" "sha512-W0fsSHXe+LjPcoueM9Nhg6S2kVKR+5cPslqyW0gl+bazu0v9GUxetE9x5HZOLOf0UQuoTbpoQk9eDjo49R3AMA=="
+  "resolved" "https://registry.npmjs.org/git-commit-msg-linter/-/git-commit-msg-linter-3.2.8.tgz"
+  "version" "3.2.8"
+  dependencies:
+    "chalk" "^2.4.2"
+    "did-you-mean" "^0.0.1"
+    "supports-color" "^8.1.1"
 
 "glob-parent@^3.1.0":
   "integrity" "sha1-nmr2KZ2NO9K9QEMIMr0RPfkGxa4="
@@ -7509,6 +7526,11 @@
   "integrity" "sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A=="
   "resolved" "https://registry.npmjs.org/leven/-/leven-3.1.0.tgz"
   "version" "3.1.0"
+
+"levenshtein@*":
+  "integrity" "sha1-ORFzepy1baNF0Aj1V4LG8TiXm6M="
+  "resolved" "https://registry.npmjs.org/levenshtein/-/levenshtein-1.0.5.tgz"
+  "version" "1.0.5"
 
 "levn@^0.4.1":
   "integrity" "sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ=="
@@ -9502,7 +9524,7 @@
   dependencies:
     "fast-diff" "^1.1.2"
 
-"prettier@^2.3.0", "prettier@>=1.13.0":
+"prettier@>=1.13.0":
   "integrity" "sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ=="
   "resolved" "https://registry.npmjs.org/prettier/-/prettier-2.3.2.tgz"
   "version" "2.3.2"
@@ -11436,6 +11458,13 @@
   dependencies:
     "has-flag" "^4.0.0"
 
+"supports-color@^8.1.1":
+  "integrity" "sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q=="
+  "resolved" "https://registry.npmjs.org/supports-color/-/supports-color-8.1.1.tgz"
+  "version" "8.1.1"
+  dependencies:
+    "has-flag" "^4.0.0"
+
 "supports-hyperlinks@^2.0.0":
   "integrity" "sha512-6sXEzV5+I5j8Bmq9/vUphGRM/RJNT9SCURJLjwfOg51heRtguGWDzcaBlgAzKhQa0EVNpPEKzQuBwZ8S8WaCeQ=="
   "resolved" "https://registry.npmjs.org/supports-hyperlinks/-/supports-hyperlinks-2.2.0.tgz"
@@ -11854,6 +11883,11 @@
     "@types/react" ">=16.9.11"
     "invariant" "^2.2.4"
     "react-lifecycles-compat" "^3.0.4"
+
+"underscore@*":
+  "integrity" "sha512-ekY1NhRzq0B08g4bGuX4wd2jZx5GnKz6mKSqFL4nqBlfyMGiG10gDFhDTMEfYmDL6Jy0FUIZp7wiRB+0BP7J2g=="
+  "resolved" "https://registry.npmjs.org/underscore/-/underscore-1.13.2.tgz"
+  "version" "1.13.2"
 
 "unicode-canonical-property-names-ecmascript@^1.0.4":
   "integrity" "sha512-jDrNnXWHd4oHiTZnx/ZG7gtUTVp+gCcTTKr8L0HjlwphROEW3+Him+IpvC+xcJEFegapiMZyZe02CyuOnRmbnQ=="

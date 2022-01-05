@@ -3,7 +3,7 @@
     {
       "sigla": "AC",
       "nome": "Acre",
-      "cidades": [
+      "city": [
         "Acrelândia",
         "Assis Brasil",
         "Brasiléia",
@@ -31,7 +31,7 @@
     {
       "sigla": "AL",
       "nome": "Alagoas",
-      "cidades": [
+      "city": [
         "Água Branca",
         "Anadia",
         "Arapiraca",
@@ -139,7 +139,7 @@
     {
       "sigla": "AM",
       "nome": "Amazonas",
-      "cidades": [
+      "city": [
         "Alvarães",
         "Amaturá",
         "Anamã",
@@ -207,7 +207,7 @@
     {
       "sigla": "AP",
       "nome": "Amapá",
-      "cidades": [
+      "city": [
         "Amapá",
         "Calçoene",
         "Cutias",
@@ -229,7 +229,7 @@
     {
       "sigla": "BA",
       "nome": "Bahia",
-      "cidades": [
+      "city": [
         "Abaíra",
         "Abaré",
         "Acajutiba",
@@ -652,7 +652,7 @@
     {
       "sigla": "CE",
       "nome": "Ceará",
-      "cidades": [
+      "city": [
         "Abaiara",
         "Acarapé",
         "Acaraú",
@@ -842,7 +842,7 @@
     {
       "sigla": "DF",
       "nome": "Distrito Federal",
-      "cidades": [
+      "city": [
         "Águas Claras",
         "Brasília",
         "Ceilândia",
@@ -859,7 +859,7 @@
     {
       "sigla": "ES",
       "nome": "Espírito Santo",
-      "cidades": [
+      "city": [
         "Afonso Cláudio",
         "Água Doce do Norte",
         "Águia Branca",
@@ -943,7 +943,7 @@
     {
       "sigla": "GO",
       "nome": "Goiás",
-      "cidades": [
+      "city": [
         "Abadia de Goiás",
         "Abadiânia",
         "Acreúna",
@@ -1195,7 +1195,7 @@
     {
       "sigla": "MA",
       "nome": "Maranhão",
-      "cidades": [
+      "city": [
         "Açailândia",
         "Afonso Cunha",
         "Água Doce do Maranhão",
@@ -1418,7 +1418,7 @@
     {
       "sigla": "MG",
       "nome": "Minas Gerais",
-      "cidades": [
+      "city": [
         "Abadia dos Dourados",
         "Abaeté",
         "Abre Campo",
@@ -2277,7 +2277,7 @@
     {
       "sigla": "MS",
       "nome": "Mato Grosso do Sul",
-      "cidades": [
+      "city": [
         "Água Clara",
         "Alcinópolis",
         "Amambaí",
@@ -2360,7 +2360,7 @@
     {
       "sigla": "MT",
       "nome": "Mato Grosso",
-      "cidades": [
+      "city": [
         "Acorizal",
         "Água Boa",
         "Alta Floresta",
@@ -2505,7 +2505,7 @@
     {
       "sigla": "PA",
       "nome": "Pará",
-      "cidades": [
+      "city": [
         "Abaetetuba",
         "Abel Figueiredo",
         "Acará",
@@ -2654,7 +2654,7 @@
     {
       "sigla": "PB",
       "nome": "Paraíba",
-      "cidades": [
+      "city": [
         "Água Branca",
         "Aguiar",
         "Alagoa Grande",
@@ -2883,7 +2883,7 @@
     {
       "sigla": "PE",
       "nome": "Pernambuco",
-      "cidades": [
+      "city": [
         "Abreu e Lima",
         "Afogados da Ingazeira",
         "Afrânio",
@@ -3074,7 +3074,7 @@
     {
       "sigla": "PI",
       "nome": "Piauí",
-      "cidades": [
+      "city": [
         "Acauã",
         "Agricolândia",
         "Água Branca",
@@ -3302,7 +3302,7 @@
     {
       "sigla": "PR",
       "nome": "Paraná",
-      "cidades": [
+      "city": [
         "Abatiá",
         "Adrianópolis",
         "Agudos do Sul",
@@ -3707,7 +3707,7 @@
     {
       "sigla": "RJ",
       "nome": "Rio de Janeiro",
-      "cidades": [
+      "city": [
         "Angra dos Reis",
         "Aperibé",
         "Araruama",
@@ -3805,7 +3805,7 @@
     {
       "sigla": "RN",
       "nome": "Rio Grande do Norte",
-      "cidades": [
+      "city": [
         "Acari",
         "Açu",
         "Afonso Bezerra",
@@ -3978,7 +3978,7 @@
     {
       "sigla": "RO",
       "nome": "Rondônia",
-      "cidades": [
+      "city": [
         "Alta Floresta d'Oeste",
         "Alto Alegre do Parecis",
         "Alto Paraíso",
@@ -4036,7 +4036,7 @@
     {
       "sigla": "RR",
       "nome": "Roraima",
-      "cidades": [
+      "city": [
         "Alto Alegre",
         "Amajari",
         "Boa Vista",
@@ -4057,7 +4057,7 @@
     {
       "sigla": "RS",
       "nome": "Rio Grande do Sul",
-      "cidades": [
+      "city": [
         "Aceguá",
         "Água Santa",
         "Agudo",
@@ -4559,7 +4559,7 @@
     {
       "sigla": "SC",
       "nome": "Santa Catarina",
-      "cidades": [
+      "city": [
         "Abdon Batista",
         "Abelardo Luz",
         "Agrolândia",
@@ -4858,7 +4858,7 @@
     {
       "sigla": "SE",
       "nome": "Sergipe",
-      "cidades": [
+      "city": [
         "Amparo de São Francisco",
         "Aquidabã",
         "Aracaju",
@@ -4939,7 +4939,7 @@
     {
       "sigla": "SP",
       "nome": "São Paulo",
-      "cidades": [
+      "city": [
         "Adamantina",
         "Adolfo",
         "Aguaí",
@@ -5590,7 +5590,7 @@
     {
       "sigla": "TO",
       "nome": "Tocantins",
-      "cidades": [
+      "city": [
         "Abreulândia",
         "Aguiarnópolis",
         "Aliança do Tocantins",
