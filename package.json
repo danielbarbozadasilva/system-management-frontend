@@ -1,8 +1,8 @@
 {
   "author": "Daniel Barboza da Silva",
-  "license": "MIT",
+  "license": "GPLv3 License",
   "name": "gestao_confeitarias",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
@@ -83,7 +83,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unused-imports": "^1.1.1",
     "husky": "^6.0.0",
-    "prettier": "^2.3.0",
     "react-app-rewired": "^2.1.8",
     "redux-devtools-extension": "^2.13.9"
   }
