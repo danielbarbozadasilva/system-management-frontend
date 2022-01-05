@@ -1,5 +1,6 @@
 #!/bin/bash
 . "$(dirname "$0")/_/husky.sh"
+
 echo "Hello, World!"
 
 npx lint-staged
