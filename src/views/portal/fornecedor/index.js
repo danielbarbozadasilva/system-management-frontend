@@ -17,7 +17,7 @@ function Fornecedor(props) {
   const nameFilter = props.nameFilter
 
   const getDados = (id, nameFilter) => {
-     dispatch(getAllProviders(nameFilter))
+    dispatch(getAllProviders(nameFilter))
   }
 
   const callFornecedor = useCallback(async (id, nameFilter) => {
@@ -34,17 +34,16 @@ function Fornecedor(props) {
     callFornecedor()
   }, [callFornecedor])
 
-  const MapearFornecedor = ((fornecedor) => {
-    console.log(fornecedor);
+  const MapearFornecedor = (fornecedor) => {
+    console.log(fornecedor)
     return fornecedor?.map((item, i) => {
-       return (
-      <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
-        <CardFornecedor item={{ ...item, status: true }} />
-         </Col>
-       )
+      return (
+        <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
+          <CardFornecedor item={{ ...item, status: true }} />
+        </Col>
+      )
     })
-  })
-
+  }
 
   if (loading) {
     return <Loading />
@@ -56,21 +55,25 @@ function Fornecedor(props) {
     if (id) {
       return (
         <BoxFornecedor>
-          {!loading ? (
-            'Não há Fornecedor disponivel'
-          ) : (
-            <CardFornecedor item={{ ...item, status: true }} />
-          )}
+          {!loading
+            ? (
+                'Não há Fornecedor disponivel'
+              )
+            : (
+              <CardFornecedor item={{ ...item, status: true }} />
+              )}
         </BoxFornecedor>
       )
     } else {
       return (
         <BoxFornecedor>
-          {!loading && fornecedor.length === 0 ? (
-            <h1 className="naoPossuiProd">Não há produtos</h1>
-          ) : (
-            MapearFornecedor(fornecedor)
-          )}
+          {!loading && fornecedor.length === 0
+            ? (
+              <h1 className="naoPossuiProd">Não há produtos</h1>
+              )
+            : (
+                MapearFornecedor(fornecedor)
+              )}
         </BoxFornecedor>
       )
     }

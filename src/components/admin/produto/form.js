@@ -11,7 +11,6 @@ import styled from 'styled-components'
 import { useSelector } from 'react-redux'
 import { getUser } from '../../../config/storage'
 
-
 const Form = ({ submit, ...props }) => {
   const [preview, setPreview] = useState('')
   const [form, setForm] = useState({
@@ -43,7 +42,7 @@ const Form = ({ submit, ...props }) => {
       ...form,
       categoria: form.categoriaId,
       fornecedor: (getUser().id),
-      preco: (form.preco).replace('R$','').replace(',','.'),
+      preco: (form.preco).replace('R$', '').replace(',', '.'),
     }
     console.log(JSON.stringify(newForm))
     submit(newForm)
@@ -68,32 +67,34 @@ const Form = ({ submit, ...props }) => {
   return (
     <Box>
       <Content noValidate>
-        {preview.length > 0 ? (
-          <Grid container direction="column">
-            <Grid item sm={1} md={1} xl={1}>
-              <Image src={preview} />
-              <Button onClick={removeImage} component="label">
-                Remove
-              </Button>
+        {preview.length > 0
+          ? (
+            <Grid container direction="column">
+              <Grid item sm={1} md={1} xl={1}>
+                <Image src={preview} />
+                <Button onClick={removeImage} component="label">
+                  Remove
+                </Button>
+              </Grid>
             </Grid>
-          </Grid>
-        ) : (
-          <Button
-            variant="contained"
-            color="primary"
-            size="small"
-            component="label"
-          >
-            Upload Foto
-            <input
-              accept="image/*"
-              type="file"
-              name="imagem"
-              hidden
-              onChange={previewImg}
-            />
-          </Button>
-        )}
+            )
+          : (
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              component="label"
+            >
+              Upload Foto
+              <input
+                accept="image/*"
+                type="file"
+                name="imagem"
+                hidden
+                onChange={previewImg}
+              />
+            </Button>
+            )}
         <TextField
           size="small"
           margin="normal"
@@ -127,7 +128,6 @@ const Form = ({ submit, ...props }) => {
           value={form.descricao || ''}
         />
 
-      
         <TextField
           size="small"
           margin="normal"

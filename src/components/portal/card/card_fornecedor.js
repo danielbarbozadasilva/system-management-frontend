@@ -12,13 +12,13 @@ import './style.css'
 import { navigate } from '@reach/router'
 
 const CardFornecedor = (props) => {
-  const { id, fantasy_name, address, uf, city, phone } = props.item
+  const { id, fantasyName, address, uf, city, phone } = props.item
 
   return (
     <div>
       <SCard>
         <CardBody>
-          <CardTitle className="tituloCard">{fantasy_name}</CardTitle>
+          <CardTitle className="tituloCard">{fantasyName}</CardTitle>
           <CardText className="descricaoCard">
             <strong>Endereço: </strong>
             {address}
@@ -35,17 +35,19 @@ const CardFornecedor = (props) => {
             <strong>Telefone: </strong>
             {phone}
           </CardText>
-          {id === undefined ? (
-            <SButton
-              onClick={() => navigate(`/product/provider/${props.item._id}`)}
-            >
-              Produtos
-            </SButton>
-          ) : (
-            <SButton onClick={() => navigate(`/product/provider/${id}`)}>
-              Produtos
-            </SButton>
-          )}
+          {id === undefined
+            ? (
+              <SButton
+                onClick={() => navigate(`/product/provider/${props.item._id}`)}
+              >
+                Produtos
+              </SButton>
+              )
+            : (
+              <SButton onClick={() => navigate(`/product/provider/${id}`)}>
+                Produtos
+              </SButton>
+              )}
         </CardBody>
       </SCard>
     </div>

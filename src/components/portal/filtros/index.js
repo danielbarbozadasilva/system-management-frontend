@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { FormGroup, Label } from 'reactstrap'
+import { Label } from 'reactstrap'
 import { Select } from '@material-ui/core'
 import UFCity from '../../../util/estados-cidades.json'
-import { getFornPesquisarUfCidade } from '../../../store/fornecedor/fornecedor.action'
+import { getListProviderUfCity } from '../../../store/fornecedor/fornecedor.action'
 
 const Buscar = () => {
   const dispatch = useDispatch()
@@ -21,12 +21,12 @@ const Buscar = () => {
 
   const handleChange = async (props) => {
     const { value, name } = props.target
-    if (value == 'x' && name=='uf') {
-      dispatch(await getFornPesquisarUfCidade(form)) 
+    if (value === 'x' && name === 'uf') {
+      dispatch(await getListProviderUfCity(form))
     }
     form[name] = value
     setForm({ ...form }, form)
-    dispatch(await getFornPesquisarUfCidade(form))
+    dispatch(await getListProviderUfCity(form))
   }
 
   useEffect(() => {

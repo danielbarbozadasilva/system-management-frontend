@@ -1,6 +1,6 @@
 {
   "author": "Daniel Barboza da Silva",
-  "license": "GPLv3 License",
+  "license": "GPL-3.0-or-later",
   "name": "gestao_confeitarias",
   "version": "1.0.0",
   "dependencies": {
@@ -16,9 +16,9 @@
     "bootstrap": "^5.0.2",
     "chart.js": "^3.4.0",
     "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "lint-staged": "^12.1.5",
     "logger": "^0.0.1",
     "moment": "^2.29.1",
     "prop-types": "^15.7.2",
@@ -34,7 +34,7 @@
     "react-redux": "^7.2.4",
     "react-redux-toastr": "^7.6.5",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.0",
     "react-toast": "^1.0.3",
     "reactstrap": "^8.9.0",
     "redux": "^4.1.0",
@@ -72,7 +72,6 @@
     "babel-plugin-root-import": "^6.6.0",
     "babel-plugin-styled-components": "^1.12.0",
     "customize-cra": "^1.0.0",
-    "eslint": "^8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-config-standard-jsx": "^10.0.0",
@@ -88,8 +87,7 @@
     "eslint-plugin-unused-imports": "^1.1.1",
     "git-commit-msg-linter": "^2.3.11",
     "husky": "^7.0.4",
-    "jest": "^24.9.0",
-    "lint-staged": "^9.5.0",
+    "lint-staged": "^12.1.5",
     "react-app-rewired": "^2.1.8",
     "redux-devtools-extension": "^2.13.9"
   }

@@ -82,7 +82,7 @@ const Portal = (props) => {
     <>
       <Router>
         <Layout path="/">
-          {Menu.map(({ component: Component, route, tipo="" }, i) => (
+          {Menu.map(({ component: Component, route, tipo = '' }, i) => (
             <Component key={i} path={route} tipo={tipo} />
           ))}
 

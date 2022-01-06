@@ -1,33 +1,33 @@
 import http from '~/config/http'
 const baseUrl = '/provider'
 
-export const ServiceListAllProvider = (data) =>
+export const listAllProviderService = (data) =>
   http.get(`${baseUrl}/filter/${data.like}/${data.alphabetical}`)
 
-export const ServiceListProviderById = providerid =>
+export const listProviderByIdService = providerid =>
   http.get(`${baseUrl}/${providerid}`)
 
-export const ServiceCreateProvider = data => http.post(baseUrl, data)
+export const createProviderService = data => http.post(baseUrl, data)
 
-export const ServiceUpdateProvider = (providerid, data) =>
+export const updateProviderService = (providerid, data) =>
   http.put(`${baseUrl}/${providerid}`, data)
 
-export const ServiceRemoveProvider = (providerid) =>
+export const removeProviderService = (providerid) =>
   http.delete(`${baseUrl}/${providerid}`)
 
-export const ServiceListProvidersByLocation = (data) =>
+export const listProvidersByLocationService = (data) =>
   http.get(
-    `${baseUrl}/filter/${data.uf}/${data.city}`
+    `${baseUrl}/filter/uf/${data.uf}/city/${data.city}`
   )
 
-export const ServiceChangeStatus = (providerid, data) =>
+export const changeStatusService = (providerid, data) =>
   http.put(`${baseUrl}/${providerid}`, data)
 
-export const ServiceSearchLikeProviderProduct = providerid =>
+export const searchLikeProviderProductService = providerid =>
   http.get(`${baseUrl}/${providerid}/product`)
 
-export const ServiceCreateLikeProviderProduct = (providerid, productid) =>
+export const createLikeProductService = (providerid, productid) =>
   http.post(`${baseUrl}/${providerid}/product/${productid}/like`)
 
-export const ServiceRemoveLikeProviderProduct = (providerid, productid) =>
+export const removeLikeProviderProductService = (providerid, productid) =>
   http.delete(`${baseUrl}/${providerid}/product/${productid}/like`)
