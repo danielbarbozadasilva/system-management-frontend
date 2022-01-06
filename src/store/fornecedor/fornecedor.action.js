@@ -1,46 +1,47 @@
 import {
-  ServiceListAllProvider,
-  ServiceListProviderById,
-  ServiceCreateProvider,
-  ServiceUpdateProvider,
-  ServiceRemoveProvider,
-  ServiceListProvidersByLocation,
-  ServiceChangeStatus,
-  ServiceSearchLikeProviderProduct,
-  ServiceCreateLikeProviderProduct,
-  ServiceRemoveLikeProviderProduct
+  listAllProviderService,
+  listProviderByIdService,
+  createProviderService,
+  updateProviderService,
+  removeProviderService,
+  listProvidersByLocationService,
+  changeStatusService,
+  searchLikeProviderProductService,
+  createLikeProductService
 } from '~/services/provider.service'
+
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 
-export const getAllProviders = () => {
+export const getAllProviders = (data) => {
   return async (dispatch) => {
     try {
-      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await ServiceListAllProvider()
-      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
+      dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
+      const result = await listAllProviderService(data)
+      dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
+      console.log(result.data.data)
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
   }
 }
 
-export const getFornById = id => {
-  return async dispatch => {
+export const getProviderById = (providerId) => {
+  return async (dispatch) => {
     try {
-      const result = await ServiceListProviderById(id)
-      dispatch({ type: TYPES.FORNECEDOR_PRODUTOS_ID, data: result.data })
+      const result = await listProviderByIdService(providerId)
+      dispatch({ type: TYPES.PROVIDER_PRODUCT_ID, data: result.data })
     } catch (error) {
       toastr.error('Fornecedor', 'Erro ao carregar produtos')
     }
   }
 }
 
-export const create = data => {
-  return async dispatch => {
+export const createProvider = (data) => {
+  return async (dispatch) => {
     try {
-      const result = await ServiceCreateProvider(data)
+      const result = await createProviderService(data)
       toastr.success('Fornecedor', 'Fornecedor cadastrado com sucesso!')
       navigate('/signin')
     } catch (error) {
@@ -48,38 +49,34 @@ export const create = data => {
     }
   }
 }
-export const edit = id => {
+export const editProvider = (providerId) => {
   return async dispatch => {
     dispatch({
-      type: TYPES.FORNECEDOR_UPLOAD,
+      type: TYPES.PROVIDER_UPLOAD,
       upload: 0
     })
     try {
-      const result = await ServiceUpdateProvider(id)
-      dispatch({ type: TYPES.FORNECEDOR_EDIT, data: result.data })
+      const result = await updateProviderService(providerId)
+      dispatch({ type: TYPES.PROVIDER_EDIT, data: result.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
   }
 }
 
-export const update = ({ id, ...data }) => {
+export const updateProvider = ({ providerId, ...data }) => {
   return dispatch => {
-    dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
+    dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
     dispatch({
-      type: TYPES.FORNECEDOR_UPLOAD,
+      type: TYPES.PROVIDER_UPLOAD,
       upload: 0
     })
-    const config = {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      },
-      onUploadProgress: function(progressEvent) {
+      onUploadProgress: function (progressEvent) {
         const percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
         dispatch({
-          type: TYPES.FORNECEDOR_UPLOAD,
+          type: TYPES.PROVIDER_UPLOAD,
           upload: percentCompleted
         })
       }
@@ -87,12 +84,12 @@ export const update = ({ id, ...data }) => {
 
     const formData = new FormData()
     Object.keys(data).map(k => formData.append(k, data[k]))
-    updateFornecedor(id, formData, config)
+    updateProviderService(providerId, formData)
       .then(result => {
-        dispatch(edit(id))
-        dispatch(getAll())
+        dispatch(editProvider(providerId))
+        dispatch(listAllProviderService())
         toastr.success('Fornecedor', 'Fornecedor atualizada com sucesso')
-        dispatch({ type: TYPES.FORNECEDOR_UPDATE })
+        dispatch({ type: TYPES.PROVIDER_UPLOAD })
       })
       .catch(error => {
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
@@ -101,13 +98,13 @@ export const update = ({ id, ...data }) => {
   }
 }
 
-export const excluirFornecedor = id => {
+export const removeProvider = (providerId) => {
   return async dispatch => {
     try {
-      const result = await ServiceRemoveProvider(id)
-      dispatch({ type: TYPES.FORNECEDOR_EDIT, data: result.data })
+      const result = await removeProviderService(providerId)
+      dispatch({ type: TYPES.PROVIDER_EDIT, data: result.data })
       toastr.success('Fornecedor', 'Removido com sucesso')
-      dispatch(getAll())
+      dispatch(listAllProviderService())
     } catch (error) {
       toastr.error('aconteceu um erro', error)
       toastr.error('Fornecedor', error.toString())
@@ -115,18 +112,18 @@ export const excluirFornecedor = id => {
   }
 }
 
-export const setStatusFornecedor = (id, ativo) => {
+export const setStatusProvider = (id, ativo) => {
   return async (dispatch, getState) => {
     let result
     try {
       if (ativo) {
-        result = await ServiceChangeStatus(id, 'ENABLE')
+        result = await changeStatusService(id, 'ENABLE')
         toastr.success(
           `Fornecedor ${result.data.data.nomeFantasia}`,
           'Desativado com sucesso'
         )
       } else {
-        result = await ServiceChangeStatus(id, 'DISABLE')
+        result = await changeStatusService(id, 'DISABLE')
         toastr.success(
           `Fornecedor ${result.data.data.nomeFantasia}`,
           'Ativado com sucesso'
@@ -136,24 +133,24 @@ export const setStatusFornecedor = (id, ativo) => {
       const index = all.findIndex(item => item.id === id)
       all[index].status = result.data.data.status
 
-      dispatch({ type: TYPES.FORNECEDOR_ALL, data: [...all] })
+      dispatch({ type: TYPES.PROVIDER_ALL, data: [...all] })
     } catch (err) {}
   }
 }
 
-export const obterProduto = id => {
+export const getProduct = (id) => {
   return async dispatch => {
     try {
-      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await ServiceListProviderById(id)
-      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
+      dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
+      const result = await listProviderByIdService(id)
+      dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('Fornecedor', 'Erro ao carregar produtos')
     }
   }
 }
 
-export const getAllCurtidasFornecedor = () => {
+export const getAllLikesProduct = () => {
   return async (dispatch, getState) => {
     const {
       auth: {
@@ -162,10 +159,10 @@ export const getAllCurtidasFornecedor = () => {
     } = getState()
 
     try {
-      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await ServiceSearchLikeProviderProduct(clienteId)
+      dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
+      const result = await searchLikeProviderProductService(clienteId)
       dispatch({
-        type: TYPES.FORNECEDOR_CURTIDA_ALL,
+        type: TYPES.PROVIDER_LIKE_LIST,
         data: result.data.data.data
       })
     } catch (error) {}
@@ -173,24 +170,24 @@ export const getAllCurtidasFornecedor = () => {
   }
 }
 
-export const likeProduto = ({ nome, fornecedorId }) => {
+export const likeProduct = ({ nome, providerId }) => {
   return async dispatch => {
     try {
-      const result = await ServiceCreateLikeProviderProduct(fornecedorId)
-      toastr.success('Curtida', `o Produto ${nome} curtido com sucesso.`)
+      const result = await createLikeProductService(providerId)
+      toastr.success('Curtida', `O produto ${nome} foi curtido com sucesso.`)
     } catch (error) {
-      toastr.error('Curtida', 'Erro ao fazer curtida')
+      toastr.error('Curtida', 'Erro ao fazer a curtida')
     }
   }
 }
 
-export const getFornPesquisarUfCidade = (data) => {
+export const getListProviderUfCity = (data) => {
   return async dispatch => {
     try {
-      dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
-      const result = await ServiceListProvidersByLocation(data)
+      dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
+      const result = await listProvidersByLocationService(data)
 
-      dispatch({ type: TYPES.FORNECEDOR_ALL, data: result.data.data })
+      dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('Aconteceu um erro', error)
     }

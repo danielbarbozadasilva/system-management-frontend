@@ -1,9 +1,9 @@
 import {
-  ServiceSearchAllCategory,
-  ServiceSearchCategoryById,
-  ServiceInsertCategory,
-  ServiceUpdateCategory,
-  ServiceRemoveCategoryProducts
+  listAllCategoryService,
+  listCategoryByIdService,
+  insertCategoryService,
+  updateCategoryService,
+  removeCategoryProductsService
 } from '~/services/category.service'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
@@ -12,7 +12,7 @@ export const getAllCategories = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
-      const result = await ServiceSearchAllCategory()
+      const result = await listAllCategoryService()
       dispatch({ type: TYPES.CATEGORY_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
@@ -26,7 +26,7 @@ export const getCategoriaById = (id) => {
       type: TYPES.CATEGORY_ID
     })
     try {
-      const result = await ServiceSearchCategoryById(id)
+      const result = await listCategoryByIdService(id)
       dispatch({ type: TYPES.CATEGORY_ID, data: result.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
@@ -56,10 +56,10 @@ export const create = (data) => {
     try {
       const formData = new FormData()
       Object.keys(data).map((k) => formData.append(k, data[k]))
-      const result = await ServiceInsertCategory(formData, config)
+      const result = await insertCategoryService(formData, config)
       dispatch({ type: TYPES.CATEGORY_CREATE, data: result.data })
       toastr.success('Categoria', 'Categoria cadastrada com sucesso!')
-      dispatch(getAll())
+      dispatch(getAllCategories())
     } catch (error) {
       toastr.error('Categoria', 'Preencha todos os campos!')
     }
@@ -73,7 +73,7 @@ export const edit = (id, formData) => {
       upload: 0
     })
     try {
-      const result = await ServiceUpdateCategory(id, formData)
+      const result = await updateCategoryService(id, formData)
       dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
@@ -105,10 +105,10 @@ export const update = ({ id, ...data }) => {
 
     const formData = new FormData()
     Object.keys(data).map((k) => formData.append(k, data[k]))
-    updateCategory(id, formData, config)
+    updateCategoryService(id, formData, config)
       .then((result) => {
         dispatch(edit(id, formData))
-        dispatch(getAll())
+        dispatch(getAllCategories())
         toastr.success('Categoria', 'Categoria atualizada com sucesso')
         return true
       })
@@ -126,10 +126,10 @@ export const update = ({ id, ...data }) => {
 export const remove = (id) => {
   return async (dispatch) => {
     try {
-      const result = await ServiceRemoveCategoryProducts(id)
+      const result = await removeCategoryProductsService(id)
       dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
       toastr.success('Categoria', 'Removido com sucesso')
-      dispatch(getAll())
+      dispatch(getAllCategories())
     } catch (error) {
       toastr.error('aconteceu um erro', error)
       toastr.error('Categoria', error.toString())

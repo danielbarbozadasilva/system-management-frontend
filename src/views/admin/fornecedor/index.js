@@ -10,7 +10,6 @@ import { More as MoreIcon } from '@material-ui/icons'
 
 import {
   getAllProviders,
-  obterProduto,
   setStatusFornecedor
 } from '~/store/fornecedor/fornecedor.action'
 import ListaProdutos from '~/components/admin/forncedor/produtos'

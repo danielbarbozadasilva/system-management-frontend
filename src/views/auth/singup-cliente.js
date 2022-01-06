@@ -58,10 +58,10 @@ const SignUpCliente = () => {
     let menssage = ''
     switch (nome) {
       case 'nome':
-        var nomeregex = /\d/g
-        if (nomeregex.test(valor)) {
+        var validRegex = /\d/g
+        if (validRegex.test(valor)) {
           menssage += 'Não pode conter números!'
-        } else if (valor.trim() == '') {
+        } else if (valor.trim() === '') {
           menssage += 'Não pode ser vazio!'
         } else if (valor.length <= 10) {
           menssage += 'Precisa ter mais que 10 caracteres!'
@@ -84,7 +84,7 @@ const SignUpCliente = () => {
       case 'uf':
         const uf = valor
 
-        if (uf == 'uf') {
+        if (uf === 'uf') {
           menssage += 'Selecione uma uf!'
         }
         break
@@ -92,7 +92,7 @@ const SignUpCliente = () => {
       case 'cidade':
         const cidade = valor
 
-        if (cidade == 'cidade') {
+        if (cidade === 'cidade') {
           menssage += 'Selecione uma cidade!'
         }
         break
@@ -103,7 +103,7 @@ const SignUpCliente = () => {
 
         if (!filtraEmail.test(valor)) {
           menssage += 'E-mail inválido!'
-        } else if (valor.replace(' ', '') == '') {
+        } else if (valor.replace(' ', '') === '') {
           menssage += 'Campo em branco!'
         }
         break
@@ -204,8 +204,8 @@ const SignUpCliente = () => {
                   value={
                     form.data_nascimento
                       ? moment(form.data_nascimento)
-                          .format('YYYY/MM/DD')
-                          .replaceAll('/', '-')
+                        .format('YYYY/MM/DD')
+                        .replaceAll('/', '-')
                       : ''
                   }
                   onChange={handleChange}
@@ -328,13 +328,15 @@ const SignUpCliente = () => {
                 block
                 onClick={InserirDados}
               >
-                {loading ? (
-                  <>
-                    <Spinner size="sm" color="light" /> Carregando...
-                  </>
-                ) : (
-                  'Cadastrar'
-                )}
+                {loading
+                  ? (
+                    <>
+                      <Spinner size="sm" color="light" /> Carregando...
+                    </>
+                    )
+                  : (
+                      'Cadastrar'
+                    )}
               </Button>
               <Alert
                 color="success"

@@ -16,11 +16,13 @@ const CardProduto = (props) => {
   return (
     <div>
       <SCard>
-        {image.length > 0 ? (
-          <SCardImg top width="70%" src={process.env.REACT_APP_API + image} />
-        ) : (
-          ''
-        )}
+        {image.length > 0
+          ? (
+            <SCardImg top width="70%" src={process.env.REACT_APP_API + image} />
+            )
+          : (
+              ''
+            )}
         <div className="item-icon-coracao">
           <FaHeart />
         </div>
