@@ -21,7 +21,7 @@ const ListaCurtidas = ({ open, close, curtidas }) => {
       flex: 1,
       width: 340,
       disableColumnMenu: true
-    },
+    }
   ]
 
   return (

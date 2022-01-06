@@ -11,7 +11,7 @@ const Curtida = () => {
   const dispatch = useDispatch()
   const curtidas = useSelector((state) => state.cliente.curtidas)
   const loading = useSelector((state) => state.cliente.loading)
-  
+
   const callStart = React.useCallback(() => {
     dispatch(getAllCurtidas())
   }, [dispatch])
@@ -36,18 +36,17 @@ const Curtida = () => {
   ]
 
   const actions = () => null
-    return (
+  return (
     <>
       <Title title="Curtidas" actions={actions} />
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>
-          <DataList data={curtidas} columns={columns}  />
+          <DataList data={curtidas} columns={columns} />
         </Grid>
       </Grid>
     </>
   )
-  
 }
 
 export default Curtida

@@ -59,11 +59,13 @@ function Produtos(props) {
           </h1>
         </div>
         <BoxProdutos>
-          {!loading && produtos.length === 0 ? (
-            <h1 className="naoPossuiProd">Não há produtos disponiveis</h1>
-          ) : (
-            MapearProdutos(produtos)
-          )}
+          {!loading && produtos.length === 0
+            ? (
+              <h1 className="naoPossuiProd">Não há produtos disponiveis</h1>
+              )
+            : (
+                MapearProdutos(produtos)
+              )}
         </BoxProdutos>
       </div>
     </div>

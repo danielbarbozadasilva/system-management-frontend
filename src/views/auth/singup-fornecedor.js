@@ -58,10 +58,10 @@ const SignUpFornecedor = () => {
     let menssage = ''
     switch (nome) {
       case 'nomeFantasia':
-        var nomeregex = /\d/g
-        if (nomeregex.test(valor)) {
+        var fantasyRegex = /\d/g
+        if (fantasyRegex.test(valor)) {
           menssage += 'Não pode conter números!'
-        } else if (valor.trim() == '') {
+        } else if (valor.trim() === '') {
           menssage += 'Não pode ser vazio!'
         } else if (valor.length <= 10) {
           menssage += 'Precisa ter mais que 10 caracteres!'
@@ -69,9 +69,9 @@ const SignUpFornecedor = () => {
         break
 
       case 'cnpj':
-        const result_cnpj = ValidarCNPJ(valor)
+        const resultCnpj = ValidarCNPJ(valor)
 
-        if (!result_cnpj) {
+        if (!resultCnpj) {
           menssage += 'CNPJ inválido!'
         }
         break
@@ -80,7 +80,7 @@ const SignUpFornecedor = () => {
         var nomeregex = /\d/g
         if (nomeregex.test(valor)) {
           menssage += 'Não pode conter números!'
-        } else if (valor.trim() == '') {
+        } else if (valor.trim() === '') {
           menssage += 'Não pode ser vazio!'
         } else if (valor.length <= 10) {
           menssage += 'Precisa ter mais que 10 caracteres!'
@@ -93,7 +93,7 @@ const SignUpFornecedor = () => {
 
         if (!filtraTelefone.test(valor)) {
           menssage += 'Número de telefone inválido!'
-        } else if (valor.replace(' ', '') == '') {
+        } else if (valor.replace(' ', '') === '') {
           menssage += 'Campo em branco!'
         }
         break
@@ -109,7 +109,7 @@ const SignUpFornecedor = () => {
       case 'uf':
         const uf = valor
 
-        if (uf == 'selecione') {
+        if (uf === 'selecione') {
           menssage += 'Selecione uma uf!'
         }
         break
@@ -117,7 +117,7 @@ const SignUpFornecedor = () => {
       case 'cidade':
         const cidade = valor
 
-        if (cidade == 'selecione') {
+        if (cidade === 'selecione') {
           menssage += 'Selecione uma cidade!'
         }
         break
@@ -128,7 +128,7 @@ const SignUpFornecedor = () => {
 
         if (!filtraEmail.test(valor)) {
           menssage += 'E-mail inválido!'
-        } else if (valor.replace(' ', '') == '') {
+        } else if (valor.replace(' ', '') === '') {
           menssage += 'Campo em branco!'
         }
         break
@@ -417,13 +417,15 @@ const SignUpFornecedor = () => {
                 block
                 onClick={InserirDados}
               >
-                {loading ? (
-                  <>
-                    <Spinner size="sm" color="light" /> Carregando...
-                  </>
-                ) : (
-                  'Cadastrar'
-                )}
+                {loading
+                  ? (
+                    <>
+                      <Spinner size="sm" color="light" /> Carregando...
+                    </>
+                    )
+                  : (
+                      'Cadastrar'
+                    )}
               </Button>
               <Alert
                 color="success"

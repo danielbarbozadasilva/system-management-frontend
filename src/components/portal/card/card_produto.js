@@ -16,11 +16,13 @@ const CardProduto = (props) => {
   return (
     <div>
       <SCard>
-        {image.length > 0 ? (
-          <SCardImg top width="70%" src={process.env.REACT_APP_API + image} />
-        ) : (
-          ''
-        )}
+        {image.length > 0
+          ? (
+            <SCardImg top width="70%" src={process.env.REACT_APP_API + image} />
+            )
+          : (
+              ''
+            )}
         <div className="item-icon-coracao">
           <FaHeart />
         </div>
@@ -28,7 +30,6 @@ const CardProduto = (props) => {
           <CardTitle className="tituloCard">{name}</CardTitle>
           <CardText className="descricaoCard">{description}</CardText>
           <CardText className="precoCard">
-            R$
             {price
               .toLocaleString('pt-br', {
                 style: 'currency',

@@ -6,7 +6,6 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogTitle from '@material-ui/core/DialogTitle'
 
 import DataList from '~/components/datagrid'
-import { useSelector } from 'react-redux'
 
 const ListaProdutos = ({ produtos, open, close }) => {
   const columnsProdutos = [
