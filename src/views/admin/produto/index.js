@@ -2,10 +2,11 @@ import React, { useEffect, useCallback } from 'react'
 import { Grid, CssBaseline, Button } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-  create,
-  editProd,
-  updateProduto,
-  remove
+  getAllProducts,
+  createProduct,
+  editProduct,
+  updateProduct,
+  removeProduct
 } from '../../../store/produto/produto.action'
 
 import Form from '~/components/admin/produto/form'
@@ -23,7 +24,7 @@ const Produto = () => {
   const selected = useSelector((state) => state.produto.selected)
 
   const callProduto = useCallback(() => {
-    dispatch(getAll())
+    dispatch(getAllProducts())
   }, [dispatch])
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const Produto = () => {
 
   const toogleModal = (tipo = 1, id = null) => {
     if (id) {
-      dispatch(editProd(id)).then(() => setModal({ tipo, id, status: true }))
+      dispatch(editProduct(id)).then(() => setModal({ tipo, id, status: true }))
     } else {
       setModal({ tipo, id, status: true })
     }
@@ -42,22 +43,20 @@ const Produto = () => {
 
   const submitForm = (form) => {
     switch (modal.tipo) {
-      // Criar um novo Produto
       case 1:
-        dispatch(create(form))
+        dispatch(createProduct(form))
         setModal(false)
         return
 
-      // Atualizar um Produto
       case 2:
-        dispatch(updateProduto(form))
+        dispatch(updateProduct(form))
         setModal(false)
         return
 
-      // Remover um Produto
       case 3:
-        dispatch(remove(modal.id)).then(() => setModal(false))
+        dispatch(removeProduct(modal.id)).then(() => setModal(false))
         return
+
       default:
         return false
     }

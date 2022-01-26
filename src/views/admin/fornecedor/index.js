@@ -7,10 +7,9 @@ import Title from '~/components/title'
 import DataList from '~/components/datagrid'
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
 import { More as MoreIcon } from '@material-ui/icons'
-
 import {
   getAllProviders,
-  setStatusFornecedor
+  setStatusProvider
 } from '~/store/fornecedor/fornecedor.action'
 import ListaProdutos from '~/components/admin/forncedor/produtos'
 import ListaCurtidas from '~/components/admin/forncedor/curtidas'
@@ -34,7 +33,7 @@ function Fornecedor() {
   }, [callFornecedor])
 
   const toggleActive = (id, status) => {
-    dispatch(setStatusFornecedor(id, status))
+    dispatch(setStatusProvider(id, status))
   }
 
   function openProdutos(row) {

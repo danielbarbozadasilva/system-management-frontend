@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { create as FornecedorCreate } from '~/store/fornecedor/fornecedor.action'
+import { createProvider } from '~/store/fornecedor/fornecedor.action'
 import { useDispatch, useSelector } from 'react-redux'
 import '../../assets/css/style.css'
 import {
@@ -69,9 +69,7 @@ const SignUpFornecedor = () => {
         break
 
       case 'cnpj':
-        const resultCnpj = ValidarCNPJ(valor)
-
-        if (!resultCnpj) {
+        if (!ValidarCNPJ(valor)) {
           menssage += 'CNPJ inválido!'
         }
         break
@@ -88,14 +86,13 @@ const SignUpFornecedor = () => {
         break
 
       case 'telefone':
-        var filtraTelefone =
-          /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
+        // var filtraTelefone = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
 
-        if (!filtraTelefone.test(valor)) {
-          menssage += 'Número de telefone inválido!'
-        } else if (valor.replace(' ', '') === '') {
-          menssage += 'Campo em branco!'
-        }
+        // if (!filtraTelefone.test(valor)) {
+        //   menssage += 'Número de telefone inválido!'
+        // } else if (valor.replace(' ', '') === '') {
+        //   menssage += 'Campo em branco!'
+        // }
         break
 
       case 'endereco':
@@ -107,17 +104,13 @@ const SignUpFornecedor = () => {
         break
 
       case 'uf':
-        const uf = valor
-
-        if (uf === 'selecione') {
+        if (valor === 'selecione') {
           menssage += 'Selecione uma uf!'
         }
         break
 
       case 'cidade':
-        const cidade = valor
-
-        if (cidade === 'selecione') {
+        if (valor === 'selecione') {
           menssage += 'Selecione uma cidade!'
         }
         break
@@ -192,7 +185,7 @@ const SignUpFornecedor = () => {
       senha: form.senha
     }
 
-    dispatch(FornecedorCreate(nform)).then(() => {
+    dispatch(createProvider(nform)).then(() => {
       setDesableInit(true)
     })
   }

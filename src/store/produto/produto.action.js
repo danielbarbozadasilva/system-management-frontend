@@ -25,18 +25,23 @@ export const getAllProducts = (filter) => {
 
 export const createProduct = (data) => {
   return async (dispatch, getState) => {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
       onUploadProgress: function (progressEvent) {
         const percent = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
         dispatch({
-          type: TYPES.PRODUCT_UPLOAD,
+          type: TYPES.PRODUTO_UPLOAD,
           upload: {
             finish: percent === 100,
             percent: percent
           }
         })
       }
+    }
     try {
       const formData = new FormData()
       Object.keys(data).map((k) => formData.append(k, data[k]))
@@ -52,12 +57,16 @@ export const createProduct = (data) => {
 
 export const updateProduct = (data) => {
   return async (dispatch, getState) => {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
       onUploadProgress: function (progressEvent) {
         const percent = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
         dispatch({
-          type: TYPES.PRODUCT_UPLOAD,
+          type: TYPES.PRODUTO_UPLOAD,
           upload: {
             finish: percent === 100,
             percent: percent
@@ -80,6 +89,7 @@ export const updateProduct = (data) => {
       toastr.error('Produto', 'ocorreu um erro!')
     }
   }
+}
 
 export const removeProduct = (productId) => {
   return async (dispatch) => {

@@ -10,12 +10,12 @@ import Imagem from '../../../assets/img/principal.jpg'
 
 const Inicio = () => {
   const dispatch = useDispatch()
-  
-  const categoria = useSelector((state) => state.categoria.all)
-  const loading = useSelector((state) => state.auth.loading)
+  const categoria = useSelector(state => state.categoria.all)
+  const loading = useSelector(state => state.auth.loading)
 
-  useEffect(() => {
-    dispatch(getAllCategories())
+  useEffect((categoria) => {
+    var x = dispatch(getAllCategories())
+    console.log(x)
   }, [dispatch])
 
   const MapearCategoria = (categoria) => {
@@ -56,7 +56,7 @@ const Inicio = () => {
               <h1 className="naoPossuiProd">Não há categorias disponiveis</h1>
               )
             : (
-                MapearCategoria(categoria)
+               MapearCategoria(categoria)
               )}
         </BoxCards>
       </div>

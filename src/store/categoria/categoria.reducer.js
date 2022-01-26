@@ -16,10 +16,9 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state
     case Types.CATEGORY_ALL:
       state.all = action.data
+      console.log(state.all)
       state.loading = false
       return state
-    /* Ao clicar no icone editar ele vai incluir o item de editar
-     e vai fazer a chamada para popular o editar */
     case Types.CATEGORY_EDIT:
       state.selected = action.data
       state.loading = false
