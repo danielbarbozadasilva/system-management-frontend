@@ -1,7 +1,7 @@
 import {
   listAllClientService,
   createClientService,
-  searchByIdClientService
+  listByIdClientService
 } from '~/services/client.service'
 
 import TYPES from '~/store/types'
@@ -23,7 +23,7 @@ export const getAllClients = () => {
 export const create = (data) => {
   return async (dispatch) => {
     try {
-      const result = await createClientService(data)
+      await createClientService(data)
       toastr.success('Cliente', 'Cliente cadastrado com sucesso!')
       navigate('/signin')
     } catch (error) {
@@ -42,7 +42,7 @@ export const getAllCurtidas = () => {
 
     try {
       dispatch({ type: TYPES.CLIENT_LIKE_LOADING, status: true })
-      const result = await searchByIdClientService(clienteId)
+      const result = await listByIdClientService(clienteId)
 
       dispatch({ type: TYPES.CLIENT_LIKE_ALL, data: result.data.data })
     } catch (error) {
