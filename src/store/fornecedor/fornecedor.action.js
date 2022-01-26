@@ -49,6 +49,7 @@ export const createProvider = (data) => {
     }
   }
 }
+
 export const editProvider = (providerId) => {
   return async dispatch => {
     dispatch({
@@ -65,23 +66,26 @@ export const editProvider = (providerId) => {
 }
 
 export const updateProvider = ({ providerId, ...data }) => {
-  return dispatch => {
-    dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
+  return (dispatch) => {
+    dispatch({ type: TYPES.FORNECEDOR_LOADING, status: true })
     dispatch({
-      type: TYPES.PROVIDER_UPLOAD,
+      type: TYPES.FORNECEDOR_UPLOAD,
       upload: 0
     })
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
       onUploadProgress: function (progressEvent) {
         const percentCompleted = Math.round(
           (progressEvent.loaded * 100) / progressEvent.total
         )
         dispatch({
-          type: TYPES.PROVIDER_UPLOAD,
+          type: TYPES.FORNECEDOR_UPLOAD,
           upload: percentCompleted
         })
       }
     }
-
     const formData = new FormData()
     Object.keys(data).map(k => formData.append(k, data[k]))
     updateProviderService(providerId, formData)
