@@ -191,121 +191,121 @@ const SignUpFornecedor = () => {
   }
 
   return (
-    <Container className="formPainel">
-      <Row className="justify-content-lg-center">
+    <Container className='formPainel'>
+      <Row className='justify-content-lg-center'>
         <Col sm={12} md={12} lg={12}>
-          <div className="colunasFormularios">
-            <div className="coluna1">
-              <h2 tag="h4" className="text-cadastro">
+          <div className='colunasFormularios'>
+            <div className='coluna1'>
+              <h2 tag='h4' className='text-cadastro'>
                 Cadastre-se
               </h2>
               <FormGroup>
-                <Label htmlFor="name" className="labelFornecedor">
+                <Label htmlFor='name' className='labelFornecedor'>
                   Nome Fantasia:
                 </Label>
                 <Input
                   invalid={formValidate.nomeFantasia}
                   disabled={loading}
-                  type="text"
-                  id="nomeFantasia"
+                  type='text'
+                  id='nomeFantasia'
                   value={form.nomeFantasia || ''}
                   onChange={handleChange}
-                  name="nomeFantasia"
-                  placeholder="Insira o seu nome fantasia"
-                  minLength="10"
-                  maxLength="32"
+                  name='nomeFantasia'
+                  placeholder='Insira o seu nome fantasia'
+                  minLength='10'
+                  maxLength='32'
                 />
                 <FormFeedback>{formValidate.nomeFantasia || ''}</FormFeedback>
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="cnpj" className="labelFornecedor">
+                <Label htmlFor='cnpj' className='labelFornecedor'>
                   CNPJ:
                 </Label>
 
                 <Input
                   invalid={formValidate.cnpj}
                   disabled={loading}
-                  type="text"
-                  name="cnpj"
-                  id="cnpj"
+                  type='text'
+                  name='cnpj'
+                  id='cnpj'
                   onChange={handleChange}
                   value={form.cnpj || ''}
-                  placeholder="Informe o CNPJ (apenas números)"
-                  maxLength="18"
+                  placeholder='Informe o CNPJ (apenas números)'
+                  maxLength='18'
                   required
                 />
                 <FormFeedback>{formValidate.cnpj || ''}</FormFeedback>
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="responsavel" className="labelFornecedor">
+                <Label htmlFor='responsavel' className='labelFornecedor'>
                   RESPONSÁVEL:
                 </Label>
                 <Input
                   invalid={formValidate.responsavel}
                   disabled={loading}
-                  type="text"
-                  id="nome"
+                  type='text'
+                  id='nome'
                   value={form.responsavel || ''}
                   onChange={handleChange}
-                  name="responsavel"
-                  placeholder="Insira o nome do responsável"
-                  minLength="10"
-                  maxLength="32"
+                  name='responsavel'
+                  placeholder='Insira o nome do responsável'
+                  minLength='10'
+                  maxLength='32'
                   required
                 />
                 <FormFeedback>{formValidate.responsavel || ''}</FormFeedback>
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="telefone" className="labelFornecedor">
+                <Label htmlFor='telefone' className='labelFornecedor'>
                   TELEFONE:
                 </Label>
                 <Input
                   invalid={formValidate.telefone}
                   disabled={loading}
-                  type="text"
-                  id="telefone"
+                  type='text'
+                  id='telefone'
                   value={form.telefone || ''}
                   onChange={handleChange}
-                  name="telefone"
-                  placeholder="Informe o telefone"
-                  minLength="8"
-                  maxLength="25"
+                  name='telefone'
+                  placeholder='Informe o telefone'
+                  minLength='8'
+                  maxLength='25'
                   required
                 />
                 <FormFeedback>{formValidate.telefone || ''}</FormFeedback>
               </FormGroup>
               <FormGroup>
-                <Label htmlFor="endereco" className="labelFornecedor">
+                <Label htmlFor='endereco' className='labelFornecedor'>
                   ENDEREÇO:
                 </Label>
                 <Input
                   invalid={formValidate.endereco}
                   disabled={loading}
-                  type="text"
-                  id="endereco"
+                  type='text'
+                  id='endereco'
                   value={form.endereco || ''}
                   onChange={handleChange}
-                  name="endereco"
-                  placeholder="Informe o endereço"
-                  minLength="8"
-                  maxLength="40"
+                  name='endereco'
+                  placeholder='Informe o endereço'
+                  minLength='8'
+                  maxLength='40'
                   required
                 />
                 <FormFeedback>{formValidate.endereco || ''}</FormFeedback>
               </FormGroup>
             </div>
 
-            <div className="coluna2 cadastro-uf" id="infoColuna">
+            <div className='coluna2 cadastro-uf' id='infoColuna'>
               <FormGroup
-                variant="outlined"
+                variant='outlined'
                 fullWidth
-                size="medium"
-                margin="normal"
+                size='medium'
+                margin='normal'
               >
-                <Label htmlFor="uf" id="cadastro-uf-forn">
+                <Label htmlFor='uf' id='cadastro-uf-forn'>
                   UF:
                 </Label>
                 <div />
@@ -318,7 +318,7 @@ const SignUpFornecedor = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value="">selecione</option>
+                  <option value=''>selecione</option>
                   {uf?.map(({ nome, sigla }, i) => (
                     <option key={i} value={sigla}>
                       {sigla}
@@ -329,13 +329,13 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup
-                id="cadastro-cidade"
-                variant="outlined"
-                size="small"
+                id='cadastro-cidade'
+                variant='outlined'
+                size='small'
                 fullWidth
-                margin="normal"
+                margin='normal'
               >
-                <Label htmlFor="uf" className="cidadeLabel">
+                <Label htmlFor='uf' className='cidadeLabel'>
                   CIDADE:
                 </Label>
 
@@ -349,7 +349,7 @@ const SignUpFornecedor = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value="">selecione</option>
+                  <option value=''>selecione</option>
 
                   {cidades?.map((cidade, i) => (
                     <option key={i} value={cidade}>
@@ -361,59 +361,59 @@ const SignUpFornecedor = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="email" className="labelFornecedor">
+                <Label htmlFor='email' className='labelFornecedor'>
                   E-MAIL:
                 </Label>
                 <Input
                   invalid={formValidate.email}
                   disabled={loading}
-                  type="email"
-                  id="email"
+                  type='email'
+                  id='email'
                   value={form.email || ''}
                   onChange={handleChange}
-                  name="email"
-                  placeholder="Insira seu email"
+                  name='email'
+                  placeholder='Insira seu email'
                   required
                 />
                 <FormFeedback>{formValidate.email || ''}</FormFeedback>
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="senha" className="labelFornecedor">
+                <Label htmlFor='senha' className='labelFornecedor'>
                   SENHA:
                 </Label>
                 <Input
                   invalid={formValidate.senha}
                   disabled={loading}
-                  type="password"
-                  name="senha"
-                  id="senha"
+                  type='password'
+                  name='senha'
+                  id='senha'
                   onChange={handleChange}
                   value={form.senha || ''}
-                  placeholder="Informe sua senha"
-                  minLength="6"
-                  maxLength="10"
+                  placeholder='Informe sua senha'
+                  minLength='6'
+                  maxLength='10'
                   required
                 />
                 <FormFeedback>{formValidate.senha || ''}</FormFeedback>
               </FormGroup>
 
               <Button
-                id="botaoFormularioForn"
+                id='botaoFormularioForn'
                 className={
                   isNotValid() || loading
                     ? 'estilo-botao-desable'
                     : 'estilo-botao'
                 }
                 disabled={isNotValid()}
-                size="md"
+                size='md'
                 block
                 onClick={InserirDados}
               >
                 {loading
                   ? (
                     <>
-                      <Spinner size="sm" color="light" /> Carregando...
+                      <Spinner size='sm' color='light' /> Carregando...
                     </>
                     )
                   : (
@@ -421,7 +421,7 @@ const SignUpFornecedor = () => {
                     )}
               </Button>
               <Alert
-                color="success"
+                color='success'
                 isOpen={success}
                 toggle={() => setSuccess(!success)}
               >
@@ -430,7 +430,7 @@ const SignUpFornecedor = () => {
                 </div>
                 <div>Você será redirecionado em 5 segundos.</div>
               </Alert>
-              <Alert color="danger" isOpen={hasError} toggle={closeError}>
+              <Alert color='danger' isOpen={hasError} toggle={closeError}>
                 <div>
                   <strong>OPS !!! </strong> Aconteceu um erro.
                 </div>

@@ -16,14 +16,12 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state
     case Types.CATEGORY_ALL:
       state.all = action.data
-      console.log(state.all)
       state.loading = false
       return state
     case Types.CATEGORY_EDIT:
       state.selected = action.data
       state.loading = false
       return state
-
     case Types.CATEGORY_ID:
       state.dadosById = action.data
       state.loading = false

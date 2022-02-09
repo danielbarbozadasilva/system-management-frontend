@@ -9,34 +9,34 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case TYPES.PRODUTO_LOADING:
+    case TYPES.PRODUCT_LOADING:
       state.error = []
       state.loading = action.status
       return state
-    case TYPES.PRODUTO_ALL:
+    case TYPES.PRODUCT_ALL:
       state.all = action.data
       state.loading = false
       return state
-    case TYPES.PRODUTO_ALL_FILTER:
+    case TYPES.PRODUCT_ALL_FILTER:
       state.all = action.data
       state.loading = false
       return state
-    case TYPES.PRODUTO_REMOVE:
+    case TYPES.PRODUCT_REMOVE:
       state.selected = action.data
       state.loading = false
       return state
-    case TYPES.PRODUTO_EDIT:
+    case TYPES.PRODUCT_EDIT:
       state.selected = action.data
       state.loading = false
       return state
-    case TYPES.PRODUTO_UPDATE:
+    case TYPES.PRODUCT_UPDATE:
       state.selected = action.data
       state.loading = false
       return state
-    case TYPES.PRODUTO_UPLOAD:
+    case TYPES.PRODUCT_UPLOAD:
       state.upload = action.upload
       return state
-    case TYPES.PRODUTO_CREATE:
+    case TYPES.PRODUCT_CREATE:
       state.loading = false
       return state
     default:

@@ -15,7 +15,7 @@ export const getAllProducts = (filter) => {
     try {
       dispatch({ type: TYPES.PRODUCT_LOADING, status: true })
       const result = await listProductService(filter)
-
+      console.log(result.data.data)
       dispatch({ type: TYPES.PRODUCT_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)

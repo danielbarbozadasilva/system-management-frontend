@@ -163,29 +163,29 @@ const SignUpCliente = () => {
   }
 
   return (
-    <Container className="formCad">
-      <Row className="justify-content-lg-center">
+    <Container className='formCad'>
+      <Row className='justify-content-lg-center'>
         <Col sm={12} md={12} lg={12}>
-          <div className="colunasFormularios">
-            <div className="coluna1">
-              <h2 tag="h4" className="text-cadastro">
+          <div className='colunasFormularios'>
+            <div className='coluna1'>
+              <h2 tag='h4' className='text-cadastro'>
                 Cadastre-se
               </h2>
               <FormGroup>
-                <Label htmlFor="name" className="labelCli">
+                <Label htmlFor='name' className='labelCli'>
                   NOME:
                 </Label>
                 <Input
                   invalid={formValidate.nome}
                   disabled={loading}
-                  type="text"
-                  id="nome"
+                  type='text'
+                  id='nome'
                   value={form.nome || ''}
                   onChange={handleChange}
-                  name="nome"
-                  placeholder="Insira o seu nome"
-                  minLength="10"
-                  maxLength="32"
+                  name='nome'
+                  placeholder='Insira o seu nome'
+                  minLength='10'
+                  maxLength='32'
                   autoFocus
                   required
                 />
@@ -193,23 +193,23 @@ const SignUpCliente = () => {
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="data_nascimento" className="labelCli">
+                <Label htmlFor='data_nascimento' className='labelCli'>
                   DATA DE NASCIMENTO:
                 </Label>
                 <Input
                   invalid={formValidate.data_nascimento}
                   disabled={loading}
-                  type="date"
-                  id="data_nascimento"
+                  type='date'
+                  id='data_nascimento'
                   value={
                     form.data_nascimento
                       ? moment(form.data_nascimento)
-                        .format('YYYY/MM/DD')
-                        .replaceAll('/', '-')
+                          .format('YYYY/MM/DD')
+                          .replaceAll('/', '-')
                       : ''
                   }
                   onChange={handleChange}
-                  name="data_nascimento"
+                  name='data_nascimento'
                 />
                 <FormFeedback>
                   {formValidate.data_nascimento || ''}
@@ -217,12 +217,12 @@ const SignUpCliente = () => {
               </FormGroup>
 
               <FormGroup
-                variant="outlined"
+                variant='outlined'
                 fullWidth
-                size="medium"
-                margin="larger"
+                size='medium'
+                margin='larger'
               >
-                <Label htmlFor="uf" className="labelCli" id="cadastro-uf-cli">
+                <Label htmlFor='uf' className='labelCli' id='cadastro-uf-cli'>
                   UF:
                 </Label>
                 <Select
@@ -234,11 +234,11 @@ const SignUpCliente = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option className="ufForm" value="">
+                  <option className='ufForm' value=''>
                     uf
                   </option>
                   {uf?.map(({ nome, sigla }, i) => (
-                    <option className="ufForm" key={i} value={sigla}>
+                    <option className='ufForm' key={i} value={sigla}>
                       {sigla}
                     </option>
                   ))}
@@ -247,13 +247,13 @@ const SignUpCliente = () => {
               </FormGroup>
 
               <FormGroup
-                id="cadastro-cidade"
-                variant="outlined"
-                size="small"
+                id='cadastro-cidade'
+                variant='outlined'
+                size='small'
                 fullWidth
-                margin="normal"
+                margin='normal'
               >
-                <Label htmlFor="uf" className="labelCidade">
+                <Label htmlFor='uf' className='labelCidade'>
                   CIDADE:
                 </Label>
 
@@ -267,7 +267,7 @@ const SignUpCliente = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value="">selecione</option>
+                  <option value=''>selecione</option>
 
                   {cidades?.map((cidade, i) => (
                     <option key={i} value={cidade}>
@@ -279,59 +279,59 @@ const SignUpCliente = () => {
               </FormGroup>
             </div>
 
-            <div className="coluna2" id="infoColuna">
+            <div className='coluna2' id='infoColuna'>
               <FormGroup>
-                <Label htmlFor="email" className="labelCli">
+                <Label htmlFor='email' className='labelCli'>
                   E-MAIL:
                 </Label>
                 <Input
                   invalid={formValidate.email}
                   disabled={loading}
-                  type="email"
-                  id="email"
+                  type='email'
+                  id='email'
                   value={form.email || ''}
                   onChange={handleChange}
-                  name="email"
-                  placeholder="Insira seu email"
+                  name='email'
+                  placeholder='Insira seu email'
                 />
                 <FormFeedback>{formValidate.email || ''}</FormFeedback>
               </FormGroup>
 
               <FormGroup>
-                <Label htmlFor="senha" className="labelCli">
+                <Label htmlFor='senha' className='labelCli'>
                   SENHA:
                 </Label>
                 <Input
                   invalid={formValidate.senha}
                   disabled={loading}
-                  type="password"
-                  name="senha"
-                  id="senha"
+                  type='password'
+                  name='senha'
+                  id='senha'
                   onChange={handleChange}
                   value={form.senha || ''}
-                  placeholder="Informe sua senha"
-                  minLength="6"
-                  maxLength="10"
+                  placeholder='Informe sua senha'
+                  minLength='6'
+                  maxLength='10'
                 />
                 <FormFeedback>{formValidate.senha || ''}</FormFeedback>
               </FormGroup>
 
               <Button
-                id="botaoFormularioCli"
+                id='botaoFormularioCli'
                 className={
                   isNotValid() || loading
                     ? 'estilo-botao-desable'
                     : 'estilo-botao'
                 }
                 disabled={isNotValid()}
-                size="md"
+                size='md'
                 block
                 onClick={InserirDados}
               >
                 {loading
                   ? (
                     <>
-                      <Spinner size="sm" color="light" /> Carregando...
+                      <Spinner size='sm' color='light' /> Carregando...
                     </>
                     )
                   : (
@@ -339,7 +339,7 @@ const SignUpCliente = () => {
                     )}
               </Button>
               <Alert
-                color="success"
+                color='success'
                 isOpen={success}
                 toggle={() => setSuccess(!success)}
               >
@@ -348,7 +348,7 @@ const SignUpCliente = () => {
                 </div>
                 <div>Você será redirecionado em 5 segundos.</div>
               </Alert>
-              <Alert color="danger" isOpen={hasError} toggle={closeError}>
+              <Alert color='danger' isOpen={hasError} toggle={closeError}>
                 <div>
                   <strong>OPS !!! </strong> Aconteceu um erro.
                 </div>

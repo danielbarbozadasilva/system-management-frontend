@@ -13,23 +13,24 @@ import { FaHeart } from 'react-icons/fa'
 
 const CardProduto = (props) => {
   const { id, name, description, price, image } = props.item
+  console.log('---' + name)
   return (
     <div>
       <SCard>
         {image.length > 0
           ? (
-            <SCardImg top width="70%" src={process.env.REACT_APP_API + image} />
+            <SCardImg top width='70%' src={process.env.REACT_APP_API + image} />
             )
           : (
               ''
             )}
-        <div className="item-icon-coracao">
+        <div className='item-icon-coracao'>
           <FaHeart />
         </div>
         <CardBody>
-          <CardTitle className="tituloCard">{name}</CardTitle>
-          <CardText className="descricaoCard">{description}</CardText>
-          <CardText className="precoCard">
+          <CardTitle className='tituloCard'>{name}</CardTitle>
+          <CardText className='descricaoCard'>{description}</CardText>
+          <CardText className='precoCard'>
             {price
               .toLocaleString('pt-br', {
                 style: 'currency',

@@ -37,15 +37,15 @@ const Buscar = () => {
   }, [form.uf])
 
   return (
-    <div className="dadosPesquisaFornec">
+    <div className='dadosPesquisaFornec'>
       <h4>
         <strong>Filtrar</strong>
       </h4>
-      <Label htmlFor="uf" className="dadosFornecedor">
+      <Label htmlFor='uf' className='dadosFornecedor'>
         UF:
       </Label>
       <Select
-        className="dadosFornecedor"
+        className='dadosFornecedor'
         native
         value={form.uf || ''}
         onChange={handleChange}
@@ -54,7 +54,7 @@ const Buscar = () => {
           id: 'outlined-native-simple'
         }}
       >
-        <option value="x">selecione</option>
+        <option value='x'>selecione</option>
         {uf?.map(({ nome, sigla }, i) => (
           <option key={i} value={sigla}>
             {sigla}
@@ -62,12 +62,12 @@ const Buscar = () => {
         ))}
       </Select>
 
-      <Label htmlFor="uf" className="dadosFornecedor">
+      <Label htmlFor='uf' className='dadosFornecedor'>
         cidade:
       </Label>
 
       <Select
-        className="dadosFornecedor"
+        className='dadosFornecedor'
         native
         value={form.city || 'x'}
         onChange={handleChange}
@@ -77,7 +77,7 @@ const Buscar = () => {
           id: 'outlined-native-simple'
         }}
       >
-        <option value="x">selecione</option>
+        <option value='x'>selecione</option>
 
         {city?.map((city, i) => (
           <option key={i} value={city}>

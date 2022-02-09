@@ -14,14 +14,13 @@ const Inicio = () => {
   const loading = useSelector(state => state.auth.loading)
 
   useEffect((categoria) => {
-    var x = dispatch(getAllCategories())
-    console.log(x)
+    dispatch(getAllCategories())
   }, [dispatch])
 
   const MapearCategoria = (categoria) => {
     return categoria.map((item, i) => {
       return (
-        <Col className="cardsTelaInicial" md="6" xl="4" sm="12" xs="12" key={i}>
+        <Col className='cardsTelaInicial' md='6' xl='4' sm='12' xs='12' key={i}>
           <CardCategoria item={{ ...item }} />
         </Col>
       )
@@ -34,29 +33,29 @@ const Inicio = () => {
 
   return (
     <>
-      <div className="container-fluid">
-        <div className="imagem">
-          <img className="imagemPrincipal" src={Imagem} alt="" srcSet="" />
+      <div className='container-fluid'>
+        <div className='imagem'>
+          <img className='imagemPrincipal' src={Imagem} alt='' srcSet='' />
         </div>
-        <div className="texto">
+        <div className='texto'>
           <h2>Feito para saborear...</h2>
           <h2>encontre as delícias da sua região</h2>
           <h2>
-            <a href="#">Encontrar</a>
+            <a href='#'>Encontrar</a>
           </h2>
         </div>
-        <div className="textoCategoria">
-          <h1 className="textCat">
+        <div className='textoCategoria'>
+          <h1 className='textCat'>
             Escolha uma <strong>categoria</strong>
           </h1>
         </div>
         <BoxCards>
           {!loading && categoria.length === 0
             ? (
-              <h1 className="naoPossuiProd">Não há categorias disponiveis</h1>
+              <h1 className='naoPossuiProd'>Não há categorias disponiveis</h1>
               )
             : (
-               MapearCategoria(categoria)
+                MapearCategoria(categoria)
               )}
         </BoxCards>
       </div>

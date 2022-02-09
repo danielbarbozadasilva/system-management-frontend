@@ -191,6 +191,7 @@ export const getListProviderUfCity = (data) => {
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
       const result = await listProvidersByLocationService(data)
 
+      console.log(JSON.stringify(result.data.data))
       dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('Aconteceu um erro', error)

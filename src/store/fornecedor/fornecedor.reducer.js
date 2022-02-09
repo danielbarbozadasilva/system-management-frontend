@@ -6,45 +6,45 @@ const INITIAL_STATE = {
   upload: {},
   selected: {},
   produtos: [],
-  fornecedorById: [],
+  providerById: [],
   pesquisa: []
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case TYPES.FORNECEDOR_LOADING:
+    case TYPES.PROVIDER_LOADING:
       state.error = []
       state.loading = action.status
       return state
-    case TYPES.FORNECEDOR_ALL:
+    case TYPES.PROVIDER_ALL:
       state.all = action.data
       state.loading = false
       return state
-    case TYPES.FORNECEDOR_ALL_PESQUISA:
+    case TYPES.PROVIDER_ALL_PESQUISA:
       state.pesquisa = action.data
       state.loading = false
       return state
-    case TYPES.FORNECEDOR_EDIT:
+    case TYPES.PROVIDER_EDIT:
       state.selected = action.data
       state.loading = false
       return state
-    case TYPES.FORNECEDOR_UPLOAD:
+    case TYPES.PROVIDER_UPLOAD:
       state.upload = action.upload
       state.loading = false
       return state
-    case TYPES.FORNECEDOR_SELECT:
+    case TYPES.PROVIDER_SELECT:
       state.selected = action.data
       state.loading = false
       return state
-    case TYPES.FORNECEDOR_PRODUTOS:
+    case TYPES.PROVIDER_PRODUTOS:
       state.produtos = action.data
       state.loading = false
       return state
-    case TYPES.FORNECEDOR_PRODUTOS_ID:
-      state.fornecedorById = action.data
+    case TYPES.PROVIDER_PRODUTOS_ID:
+      state.providerById = action.data
       state.loading = false
       return state
-    case TYPES.FORNECEDOR_CREATE:
+    case TYPES.PROVIDER_CREATE:
       state.loading = false
       return state
     default:
