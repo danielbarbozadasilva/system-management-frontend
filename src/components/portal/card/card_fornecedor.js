@@ -13,25 +13,24 @@ import { navigate } from '@reach/router'
 
 const CardFornecedor = (props) => {
   const { id, fantasyName, address, uf, city, phone } = props.item
-
   return (
     <div>
       <SCard>
         <CardBody>
-          <CardTitle className="tituloCard">{fantasyName}</CardTitle>
-          <CardText className="descricaoCard">
+          <CardTitle className='tituloCard'>{fantasyName}</CardTitle>
+          <CardText className='descricaoCard'>
             <strong>Endereço: </strong>
             {address}
           </CardText>
-          <CardText className="descricaoCardfornecedor">
+          <CardText className='descricaoCardfornecedor'>
             <strong>Cidade: </strong>
             {city}
           </CardText>
-          <CardText className="descricaoCardfornecedor">
+          <CardText className='descricaoCardfornecedor'>
             <strong>Uf: </strong>
             {uf}
           </CardText>
-          <CardText className="descricaoCard">
+          <CardText className='descricaoCard'>
             <strong>Telefone: </strong>
             {phone}
           </CardText>
