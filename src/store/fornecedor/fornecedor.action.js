@@ -14,13 +14,14 @@ import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 
-export const getAllProviders = (data) => {
+export const getAllProviders = (namefilter) => {
   return async (dispatch) => {
     try {
+      const namefilter = ''
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
-      const result = await listAllProviderService(data)
-      dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
+      const result = await listAllProviderService(namefilter)
       console.log(result.data.data)
+      dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
@@ -191,7 +192,7 @@ export const getListProviderUfCity = (data) => {
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
       const result = await listProvidersByLocationService(data)
 
-      console.log(JSON.stringify(result.data.data))
+      console.log(JSON.stringify(result.data))
       dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('Aconteceu um erro', error)
