@@ -1,8 +1,8 @@
 import http from '~/config/http'
 const baseUrl = '/provider'
 
-export const listAllProviderService = (data) =>
-  http.get(`${baseUrl}/filter/${data.like}/${data.alphabetical}`)
+export const listAllProviderService = (namefilter) =>
+  http.get(`${baseUrl}/filter/${namefilter}`)
 
 export const listProviderByIdService = providerid =>
   http.get(`${baseUrl}/${providerid}`)
