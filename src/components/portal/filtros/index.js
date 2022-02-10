@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Label } from 'reactstrap'
 import { Select } from '@material-ui/core'
-import UFCity from '../../../util/estados-cidades.json'
+import UFCity from '../../../util/state-city.json'
 import { getListProviderUfCity } from '../../../store/fornecedor/fornecedor.action'
 
 const Buscar = () => {
@@ -11,9 +11,9 @@ const Buscar = () => {
   const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
   const [uf, setUf] = useState(
-    UFCity.estados.map(({ nome, sigla }) => ({
-      nome,
-      sigla
+    UFCity.states.map(({ name, uf }) => ({
+      name,
+      uf
     }))
   )
   const [city, setCity] = useState([])
@@ -21,7 +21,7 @@ const Buscar = () => {
 
   const handleChange = async (props) => {
     const { value, name } = props.target
-    if (value === 'x' && name === 'uf') {
+    if (value == 'x' && name == 'uf') {
       dispatch(await getListProviderUfCity(form))
     }
     form[name] = value
@@ -30,7 +30,7 @@ const Buscar = () => {
   }
 
   useEffect(() => {
-    const result = UFCity.estados.find((item) => item.sigla === form.uf)
+    const result = UFCity.states.find((item) => item.uf == form.uf)
     if (result) {
       setCity(result.city)
     }
@@ -55,9 +55,9 @@ const Buscar = () => {
         }}
       >
         <option value='x'>selecione</option>
-        {uf?.map(({ nome, sigla }, i) => (
-          <option key={i} value={sigla}>
-            {sigla}
+        {uf?.map(({ name, uf }, i) => (
+          <option key={i} value={uf}>
+            {uf}
           </option>
         ))}
       </Select>
