@@ -4,7 +4,7 @@ import CardFornecedor from '../../../components/portal/card/card_fornecedor'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
-import { getListProviderUfCity } from '../../../store/fornecedor/fornecedor.action'
+import { getAllProviders } from '../../../store/fornecedor/fornecedor.action'
 import Imagem from '../../../assets/img/principal2.jpg'
 import MapearCidadeEstado from '../../../components/portal/filtros/index'
 
@@ -16,7 +16,7 @@ function Fornecedor (props) {
   const nameFilter = props.nameFilter
 
   const getDados = (id, nameFilter) => {
-    dispatch(getListProviderUfCity(nameFilter))
+    dispatch(getAllProviders(nameFilter))
   }
 
   const callFornecedor = useCallback(async (id, nameFilter) => {
@@ -25,7 +25,7 @@ function Fornecedor (props) {
         getDados(id, nameFilter)
       }, [])
     } else {
-      dispatch(await getListProviderUfCity())
+      dispatch(await getAllProviders())
     }
   }, [dispatch])
 
@@ -34,11 +34,10 @@ function Fornecedor (props) {
   }, [callFornecedor])
 
   const MapearFornecedor = (fornecedor) => {
-    console.log('forn----', fornecedor)
     return fornecedor.map((item, i) => {
       return (
         <Col className='cardsTelaInicial' md='6' xl='4' sm='12' xs='12' key={i}>
-          <CardFornecedor item={{ ...item, status: true }} />
+          <CardFornecedor item={{ ...item }} />
         </Col>
       )
     })
