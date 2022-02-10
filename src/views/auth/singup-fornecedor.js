@@ -15,7 +15,7 @@ import {
   Col
 } from 'reactstrap'
 import { Select } from '@material-ui/core'
-import ufcidade from '~/util/estados-cidades.json'
+import ufcity from '~/util/state-city.json'
 import { ValidarCNPJ } from './validarCNPJ'
 
 const SignUpFornecedor = () => {
@@ -43,12 +43,12 @@ const SignUpFornecedor = () => {
   }
 
   useEffect(() => {
-    const estados = ufcidade.estados.map(({ nome, sigla }) => ({ nome, sigla }))
+    const estados = ufcity.estados.map(({ nome, sigla }) => ({ nome, sigla }))
     setuf(estados)
   }, [])
 
   useEffect(() => {
-    const result = ufcidade.estados.find((item) => item.sigla === form.uf)
+    const result = ufcity.estados.find((item) => item.sigla === form.uf)
     if (result) {
       setcidade(result.cidades)
     }
