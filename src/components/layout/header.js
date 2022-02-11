@@ -123,9 +123,9 @@ const Header = (props) => {
                     Sign up
                   </SDropdownToggle>
                   <SDropdownMenu>
-                    <SNavLink to="/clientsubscription">Cliente</SNavLink>
+                    <SNavLink to="/registrationclient">Cliente</SNavLink>
                     <DropdownItem divider />
-                    <SNavLink to="/providersubscription">Fornecedor</SNavLink>
+                    <SNavLink to="/registrationprovider">Fornecedor</SNavLink>
                   </SDropdownMenu>
                 </UncontrolledDropdown>
 

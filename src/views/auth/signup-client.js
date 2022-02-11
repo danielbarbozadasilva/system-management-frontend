@@ -173,7 +173,7 @@ const SignUpClient = () => {
               </h2>
               <FormGroup>
                 <Label htmlFor='name' className='labelCli'>
-                  Nome:
+                  NOME:
                 </Label>
                 <Input
                   invalid={formValidate.name}
@@ -194,7 +194,7 @@ const SignUpClient = () => {
 
               <FormGroup>
                 <Label htmlFor='birthDate' className='labelCli'>
-                  Data de nascimento:
+                  DATA DE NASCIMENTO:
                 </Label>
                 <Input
                   invalid={formValidate.birthDate}
@@ -235,7 +235,7 @@ const SignUpClient = () => {
                   }}
                 >
                   <option className='ufForm' value=''>
-                    uf
+                    UF
                   </option>
                   {uf?.map(({ name, sigla }, i) => (
                     <option className='ufForm' key={i} value={sigla}>
@@ -254,7 +254,7 @@ const SignUpClient = () => {
                 margin='normal'
               >
                 <Label htmlFor='uf' className='labelcity'>
-                  Cidade:
+                  CIDADE:
                 </Label>
 
                 <Select
@@ -282,7 +282,7 @@ const SignUpClient = () => {
             <div className='column2' id='infoColumn'>
               <FormGroup>
                 <Label htmlFor='email' className='labelCli'>
-                  E-mail:
+                  E-MAIL:
                 </Label>
                 <Input
                   invalid={formValidate.email}
@@ -299,7 +299,7 @@ const SignUpClient = () => {
 
               <FormGroup>
                 <Label htmlFor='password' className='labelCli'>
-                  Senha:
+                  SENHA:
                 </Label>
                 <Input
                   invalid={formValidate.password}

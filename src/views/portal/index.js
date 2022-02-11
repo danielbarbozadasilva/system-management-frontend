@@ -3,8 +3,8 @@ import { Router } from '@reach/router'
 import Home from '~/views/portal/home/index'
 import PortalProduct from '~/views/portal/product'
 import PortalProvider from '~/views/portal/provider'
-import Provider from '~/views/auth/signup-provider'
-import Client from '~/views/auth/signup-client'
+import SignUpProvider from '~/views/auth/signup-provider'
+import SignUpClient from '~/views/auth/signup-client'
 import SignIn from '~/views/auth/signin'
 
 import Layout from '~/components/layout'
@@ -53,20 +53,20 @@ const Menu = [
     component: PortalProvider
   },
   {
-    title: 'providersubscription',
+    title: 'registrationprovider',
     icons: '',
     route: '/registrationprovider',
     visibleMenu: true,
     enabled: true,
-    component: Provider
+    component: SignUpProvider
   },
   {
-    title: 'clientsubscription',
+    title: 'registrationclient',
     icons: '',
     route: '/registrationclient',
     visibleMenu: true,
     enabled: true,
-    component: Client
+    component: SignUpClient
   },
   {
     title: 'SignIn',

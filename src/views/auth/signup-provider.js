@@ -224,7 +224,7 @@ const SignUpProvider = () => {
                   value={form.socialName || ''}
                   onChange={handleChange}
                   name='socialName'
-                  placeholder='Insira o seu nome social'
+                  placeholder='Insira o nome social'
                   minLength='10'
                   maxLength='32'
                 />
@@ -243,7 +243,7 @@ const SignUpProvider = () => {
                   value={form.fantasyName || ''}
                   onChange={handleChange}
                   name='fantasyName'
-                  placeholder='Insira o seu name fantasia'
+                  placeholder='Insira o nome fantasia'
                   minLength='10'
                   maxLength='32'
                 />
@@ -338,7 +338,7 @@ const SignUpProvider = () => {
                 margin='normal'
               >
                 <Label htmlFor='uf' id='subscription-uf-forn'>
-                  Uf:
+                  UF:
                 </Label>
                 <div />
                 <Select
@@ -368,7 +368,7 @@ const SignUpProvider = () => {
                 margin='normal'
               >
                 <Label htmlFor='uf' className='labelCity'>
-                  Cidade:
+                  CIDADE:
                 </Label>
 
                 <Select
