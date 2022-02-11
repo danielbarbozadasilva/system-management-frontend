@@ -19,7 +19,7 @@ const Produto = () => {
   const dispatch = useDispatch()
   const [modal, setModal] = React.useState({})
 
-  const products = useSelector((state) => state.produto.all)
+  const products = useSelector((state) => state.product.all)
   const loading = useSelector((state) => state.produto.loading)
   const selected = useSelector((state) => state.produto.selected)
 

@@ -10,7 +10,7 @@ import { getAllProviders } from '~/store/provider/provider.action'
 
 function Products (props) {
   const dispatch = useDispatch()
-  const products = useSelector((state) => state.produto.all)
+  const products = useSelector((state) => state.product.all)  
   const loading = useSelector((state) => state.auth.loading)
 
   const getData = async () => {

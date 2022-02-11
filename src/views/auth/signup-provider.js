@@ -15,10 +15,10 @@ import {
   Col
 } from 'reactstrap'
 import { Select } from '@material-ui/core'
-import ufcity from '~/util/state-city.json'
-import { ValidarCNPJ } from './validateCnpj'
+import ufCity from '~/util/state-city.json'
+import { ValidateCnpj } from './cnpj-validate'
 
-const SignUpprovider = () => {
+const SignUpProvider = () => {
   const dispatch = useDispatch()
 
   const [hasError, setHasError] = useState(false)
@@ -27,7 +27,7 @@ const SignUpprovider = () => {
   const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
   const [uf, setuf] = useState([])
-  const [citys, setcity] = useState([])
+  const [city, setCity] = useState([])
   const [formValidate, setFormValidate] = useState({})
   const [form, setForm] = useState({})
   const [disableInit, setDisableInit] = useState(true)
@@ -35,7 +35,7 @@ const SignUpprovider = () => {
   const handleChange = (props) => {
     setDisableInit(false)
     const { value, name } = props.target
-    formValidate(name, value)
+    fieldValidate(name, value)
     setForm({
       ...form,
       [name]: value
@@ -43,45 +43,56 @@ const SignUpprovider = () => {
   }
 
   useEffect(() => {
-    const estados = ufcity.estados.map(({ nome, sigla }) => ({ nome, sigla }))
-    setuf(estados)
+    const states = ufCity.states.map(({ name, sigla }) => ({ name, sigla }))
+    setuf(states)
   }, [])
 
   useEffect(() => {
-    const result = ufcity.estados.find((item) => item.sigla === form.uf)
+    const result = ufCity.states.find((item) => item.sigla === form.uf)
     if (result) {
-      setcity(result.citys)
+      setCity(result.city)
     }
   }, [form.uf])
 
-  const formValidate = (nome, valor) => {
-    let menssage = ''
-    switch (nome) {
+  const fieldValidate = (name, valor) => {
+    let message = ''
+    switch (name) {
+      case 'socialName':
+        var socialNameRegex = /\d/g
+        if (socialNameRegex.test(valor)) {
+          message += 'Não pode conter números!'
+        } else if (valor.trim() === '') {
+          message += 'Não pode ser vazio!'
+        } else if (valor.length <= 10) {
+          message += 'Precisa ter mais que 10 caracteres!'
+        }
+        break
+
       case 'fantasyName':
         var fantasyRegex = /\d/g
         if (fantasyRegex.test(valor)) {
-          menssage += 'Não pode conter números!'
+          message += 'Não pode conter números!'
         } else if (valor.trim() === '') {
-          menssage += 'Não pode ser vazio!'
+          message += 'Não pode ser vazio!'
         } else if (valor.length <= 10) {
-          menssage += 'Precisa ter mais que 10 caracteres!'
+          message += 'Precisa ter mais que 10 caracteres!'
         }
         break
 
       case 'cnpj':
-        if (!ValidarCNPJ(valor)) {
-          menssage += 'CNPJ inválido!'
+        if (!ValidateCnpj(valor)) {
+          message += 'CNPJ inválido!'
         }
         break
 
       case 'responsible':
-        var nomeregex = /\d/g
-        if (nomeregex.test(valor)) {
-          menssage += 'Não pode conter números!'
+        var nameregex = /\d/g
+        if (nameregex.test(valor)) {
+          message += 'Não pode conter números!'
         } else if (valor.trim() === '') {
-          menssage += 'Não pode ser vazio!'
+          message += 'Não pode ser vazio!'
         } else if (valor.length <= 10) {
-          menssage += 'Precisa ter mais que 10 caracteres!'
+          message += 'Precisa ter mais que 10 caracteres!'
         }
         break
 
@@ -89,57 +100,58 @@ const SignUpprovider = () => {
         // var filtraphone = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
 
         // if (!filtraphone.test(valor)) {
-        //   menssage += 'Número de phone inválido!'
+        //   message += 'Número de phone inválido!'
         // } else if (valor.replace(' ', '') === '') {
-        //   menssage += 'Campo em branco!'
+        //   message += 'Campo em branco!'
         // }
         break
 
       case 'address':
         if (valor === '') {
-          menssage += 'Campo em branco!'
+          message += 'Campo em branco!'
         } else if (valor.length < 8) {
-          menssage += 'Endereço precisa ter mais que 8 caracteres!'
+          message += 'Endereço precisa ter mais que 8 caracteres!'
         }
         break
 
       case 'uf':
         if (valor === 'selecione') {
-          menssage += 'Selecione uma uf!'
+          message += 'Selecione uma uf!'
         }
         break
 
       case 'city':
         if (valor === 'selecione') {
-          menssage += 'Selecione uma city!'
+          message += 'Selecione uma city!'
         }
         break
 
       case 'email':
-        var filtraEmail =
+        var filterEmail =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-        if (!filtraEmail.test(valor)) {
-          menssage += 'E-mail inválido!'
+        if (!filterEmail.test(valor)) {
+          message += 'E-mail inválido!'
         } else if (valor.replace(' ', '') === '') {
-          menssage += 'Campo em branco!'
+          message += 'Campo em branco!'
         }
         break
 
       case 'password':
         if (valor.length < 6) {
-          menssage += 'Não ter menos que 6 caracteres!'
+          message += 'Não ter menos que 6 caracteres!'
         }
         break
     }
 
-    setFormValidate({ ...formValidate, [nome]: menssage })
+    setFormValidate({ ...formValidate, [name]: message })
   }
 
   const closeError = () => setHasError(false)
 
   const isNotValid = () => {
     const inputs = [
+      'socialName',
       'fantasyName',
       'cnpj',
       'responsible',
@@ -174,6 +186,7 @@ const SignUpprovider = () => {
 
   const insertData = () => {
     const nform = {
+      socialName: form.socialName,
       fantasyName: form.fantasyName,
       cnpj: form.cnpj,
       responsible: form.responsible,
@@ -200,8 +213,27 @@ const SignUpprovider = () => {
                 Cadastre-se
               </h2>
               <FormGroup>
-                <Label htmlFor='name' className='labelprovider'>
-                  Nome Fantasia:
+                <Label htmlFor='socialName' className='labelprovider'>
+                  Nome social:
+                </Label>
+                <Input
+                  invalid={formValidate.socialName}
+                  disabled={loading}
+                  type='text'
+                  id='socialName'
+                  value={form.socialName || ''}
+                  onChange={handleChange}
+                  name='socialName'
+                  placeholder='Insira o seu nome social'
+                  minLength='10'
+                  maxLength='32'
+                />
+                <FormFeedback>{formValidate.socialName || ''}</FormFeedback>
+              </FormGroup>
+
+              <FormGroup>
+                <Label htmlFor='fantasyName' className='labelprovider'>
+                  Nome fantasia:
                 </Label>
                 <Input
                   invalid={formValidate.fantasyName}
@@ -211,7 +243,7 @@ const SignUpprovider = () => {
                   value={form.fantasyName || ''}
                   onChange={handleChange}
                   name='fantasyName'
-                  placeholder='Insira o seu nome fantasia'
+                  placeholder='Insira o seu name fantasia'
                   minLength='10'
                   maxLength='32'
                 />
@@ -220,7 +252,7 @@ const SignUpprovider = () => {
 
               <FormGroup>
                 <Label htmlFor='cnpj' className='labelprovider'>
-                  CNPJ:
+                  Cnpj:
                 </Label>
 
                 <Input
@@ -246,11 +278,11 @@ const SignUpprovider = () => {
                   invalid={formValidate.responsible}
                   disabled={loading}
                   type='text'
-                  id='nome'
+                  id='name'
                   value={form.responsible || ''}
                   onChange={handleChange}
                   name='responsible'
-                  placeholder='Insira o nome do responsável'
+                  placeholder='Insira o name do responsável'
                   minLength='10'
                   maxLength='32'
                   required
@@ -260,7 +292,7 @@ const SignUpprovider = () => {
 
               <FormGroup>
                 <Label htmlFor='phone' className='labelprovider'>
-                  phone:
+                  Telefone:
                 </Label>
                 <Input
                   invalid={formValidate.phone}
@@ -279,7 +311,7 @@ const SignUpprovider = () => {
               </FormGroup>
               <FormGroup>
                 <Label htmlFor='address' className='labelprovider'>
-                  ENDEREÇO:
+                  Endereço:
                 </Label>
                 <Input
                   invalid={formValidate.address}
@@ -306,7 +338,7 @@ const SignUpprovider = () => {
                 margin='normal'
               >
                 <Label htmlFor='uf' id='subscription-uf-forn'>
-                  UF:
+                  Uf:
                 </Label>
                 <div />
                 <Select
@@ -319,7 +351,7 @@ const SignUpprovider = () => {
                   }}
                 >
                   <option value=''>selecione</option>
-                  {uf?.map(({ nome, sigla }, i) => (
+                  {uf?.map(({ name, sigla }, i) => (
                     <option key={i} value={sigla}>
                       {sigla}
                     </option>
@@ -336,7 +368,7 @@ const SignUpprovider = () => {
                 margin='normal'
               >
                 <Label htmlFor='uf' className='labelCity'>
-                  city:
+                  Cidade:
                 </Label>
 
                 <Select
@@ -351,7 +383,7 @@ const SignUpprovider = () => {
                 >
                   <option value=''>selecione</option>
 
-                  {citys?.map((city, i) => (
+                  {city?.map((city, i) => (
                     <option key={i} value={city}>
                       {city}
                     </option>
@@ -362,7 +394,7 @@ const SignUpprovider = () => {
 
               <FormGroup>
                 <Label htmlFor='email' className='labelprovider'>
-                  E-MAIL:
+                  E-mail:
                 </Label>
                 <Input
                   invalid={formValidate.email}
@@ -380,7 +412,7 @@ const SignUpprovider = () => {
 
               <FormGroup>
                 <Label htmlFor='password' className='labelprovider'>
-                  password:
+                  Senha:
                 </Label>
                 <Input
                   invalid={formValidate.password}
@@ -444,4 +476,4 @@ const SignUpprovider = () => {
   )
 }
 
-export default SignUpprovider
+export default SignUpProvider

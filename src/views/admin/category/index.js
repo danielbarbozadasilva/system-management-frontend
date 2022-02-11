@@ -9,11 +9,11 @@ import {
   createCategory
 } from '~/store/category/category.action'
 
-import Form from '~/components/admin/category/form'
 import Title from '~/components/title'
 import DialogModal from '~/components/dialog'
-import DataList from '~/components/admin/category/datagrid'
-import Remove from '~/components/admin/category/remove'
+import Form from '~/components/admin/categories/form'
+import DataList from '~/components/admin/categories/datagrid'
+import Remove from '~/components/admin/categories/remove'
 
 const category = () => {
   const dispatch = useDispatch()

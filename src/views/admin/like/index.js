@@ -4,7 +4,7 @@ import { Grid, CssBaseline } from '@material-ui/core'
 import Title from '../../../components/title/index'
 import DataList from '~/components/datagrid/index'
 
-import { getAllCurtidas } from '~/store/client/client.action'
+import { getAllLikesClient } from '~/store/client/client.action'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Curtida = () => {
@@ -13,7 +13,7 @@ const Curtida = () => {
   const loading = useSelector((state) => state.client.loading)
 
   const callStart = React.useCallback(() => {
-    dispatch(getAllCurtidas())
+    dispatch(getAllLikesClient())
   }, [dispatch])
 
   React.useEffect(() => {
@@ -29,7 +29,7 @@ const Curtida = () => {
     },
     {
       field: 'email',
-      headerName: 'Email',
+      headerName: 'E-mail',
       flex: 1,
       disableColumnMenu: true
     }

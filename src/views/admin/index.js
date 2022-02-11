@@ -1,5 +1,4 @@
 import { Router } from '@reach/router'
-
 import {
   Dashboard as DashboardIcon,
   ShoppingCart as ShoppingCartIcon,
@@ -7,17 +6,15 @@ import {
   More as MoreIcon,
   Apps as MdAppsIcon
 } from '@material-ui/icons'
-
 import PanelLayout from '~/components/layout/layout-panel'
-import home from '~/views/admin/home/home'
-import Produto from '~/views/admin/product/index'
-import provider from '~/views/admin/provider'
-import category from './category/index'
-import client from './client/index'
+import Home from '~/views/admin/home/index'
+import Product from '~/views/admin/product/index'
+import Provider from '~/views/admin/provider'
+import Category from './category/index'
+import Client from './client/index'
 import { useSelector } from 'react-redux'
-import Curtida from '~/views/admin/like'
+import Like from '~/views/admin/like'
 
-/* 1 - Administrador 2 - provider 3 - client */
 export const Menu = [
   {
     title: 'home',
@@ -25,7 +22,7 @@ export const Menu = [
     route: '/',
     visibleMenu: true,
     enabled: true,
-    component: home,
+    component: Home,
     authorization: [1, 2, 3]
   },
   {
@@ -34,7 +31,7 @@ export const Menu = [
     route: '/category',
     visibleMenu: true,
     enabled: true,
-    component: category,
+    component: Category,
     authorization: [1]
   },
   {
@@ -43,7 +40,7 @@ export const Menu = [
     route: '/product',
     visibleMenu: true,
     enabled: true,
-    component: Produto,
+    component: Product,
     authorization: [2, 3]
   },
   {
@@ -52,7 +49,7 @@ export const Menu = [
     route: '/provider',
     visibleMenu: true,
     enabled: true,
-    component: provider,
+    component: Provider,
     authorization: [1]
   },
   {
@@ -61,7 +58,7 @@ export const Menu = [
     route: '/like',
     visibleMenu: true,
     enabled: true,
-    component: Curtida,
+    component: Like,
     authorization: [2, 3]
   },
   {
@@ -70,15 +67,15 @@ export const Menu = [
     route: '/client',
     visibleMenu: true,
     enabled: true,
-    component: client,
+    component: Client,
     authorization: [1]
   }
 ]
 
 const Admin = (props) => {
-  const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
+  const typeUser = useSelector((state) => state.auth.user.typeUser)
   const rotasAutorizadas = Menu.filter((route) =>
-    route.authorization.includes(tipoUsuario)
+    route.authorization.includes(typeUser)
   )
 
   const NotFound = () => <h2>Não autorizado</h2>

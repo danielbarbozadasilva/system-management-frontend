@@ -8,7 +8,7 @@ import { getAllProviders } from '../../../store/provider/provider.action'
 import Imagem from '../../../assets/img/image-portal-providers.jpg'
 import MapearcityEstado from '../../../components/portal/filters/index'
 
-function provider (props) {
+function Provider (props) {
   const dispatch = useDispatch()
   const loading = useSelector((state) => state.auth.loading)
 
@@ -33,7 +33,7 @@ function provider (props) {
     callprovider()
   }, [callprovider])
 
-  const Mapearprovider = (provider) => {
+  const listProvider = (provider) => {
     return provider.map((item, i) => {
       return (
         <Col className='portalCard' md='6' xl='4' sm='12' xs='12' key={i}>
@@ -70,7 +70,7 @@ function provider (props) {
               <h1 className='noShowProduct'>Não há provider</h1>
               )
             : (
-                Mapearprovider(provider)
+                listProvider(provider)
               )}
         </Boxprovider>
       )
@@ -108,6 +108,6 @@ function provider (props) {
   return <Visual />
 }
 
-export default provider
+export default Provider
 
 const Boxprovider = styled(Row)``

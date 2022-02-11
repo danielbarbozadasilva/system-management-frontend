@@ -101,12 +101,12 @@ const Form = ({ submit, ...props }) => {
           variant="outlined"
           required
           fullWidth
-          id="nome"
-          label="Nome"
-          name="nome"
-          autoComplete="nome"
+          id="name"
+          label="name"
+          name="name"
+          autoComplete="name"
           autoFocus
-          value={form.nome || ''}
+          value={form.name || ''}
           onChange={handleChange}
           disabled={loading}
         />
@@ -155,9 +155,9 @@ const Form = ({ submit, ...props }) => {
           }}
         >
           <option value="">Selecione</option>
-          {categorias?.map(({ id, nome }, i) => (
+          {categorias?.map(({ id, name }, i) => (
             <option key={i} value={id}>
-              {nome}
+              {name}
             </option>
           ))}
         </Select>

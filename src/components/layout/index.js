@@ -7,7 +7,7 @@ const Layout = (props) => {
   document.title = 'Regale'
   return (
     <>
-      <Header titulo={props.nomeDaPagina} />
+      <Header titulo={props.nameDaPagina} />
       <Main>{props.children}</Main>
       <Footer />
     </>

@@ -7,7 +7,7 @@ import {
   listByIdClientService
 } from '~/services/client.service'
 
-export const getAllClient = () => {
+export const getAllClients = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.CLIENT_LOADING, status: true })
@@ -35,7 +35,7 @@ export const getAllLikesClient = () => {
   return async (dispatch, getState) => {
     const {
       auth: {
-        usuario: { id: clientId }
+        user: { id: clientId }
       }
     } = getState()
 

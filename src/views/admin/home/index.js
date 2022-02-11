@@ -9,14 +9,13 @@ import { getAllCategories } from '~/store/category/category.action'
 import { getAllProviders } from '~/store/provider/provider.action'
 import { getAllClients } from '~/store/client/client.action'
 
-function home() {
+function Home () {
   const dispatch = useDispatch()
 
   const provider = useSelector((state) => state.provider.all)
   const categories = useSelector((state) => state.category.all)
   const client = useSelector((state) => state.client.all)
-  const products = useSelector((state) => state.produto.all)
-
+  const products = useSelector((state) => state.product.all)
   React.useEffect(() => {
     dispatch(getAllProducts())
     dispatch(getAllCategories())
@@ -63,4 +62,4 @@ function home() {
   )
 }
 
-export default home
+export default Home

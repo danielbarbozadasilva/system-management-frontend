@@ -41,8 +41,8 @@ const DataList = ({ data, modal, loading }) => {
       disableColumnMenu: true
     },
     {
-      field: 'nome',
-      headerName: 'Nome',
+      field: 'name',
+      headerName: 'name',
       flex: 2,
       disableColumnMenu: true
     },

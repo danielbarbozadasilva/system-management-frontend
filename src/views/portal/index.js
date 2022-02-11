@@ -1,8 +1,8 @@
 import Home from '~/views/portal/home/index'
 import PortalProduct from '~/views/portal/product'
 import PortalProvider from '~/views/portal/provider'
-import Provider from '~/views/auth/singup-provider'
-import Client from '~/views/auth/singup-client'
+import Provider from '~/views/auth/signup-provider'
+import Client from '~/views/auth/signup-client'
 import SignIn from '~/views/auth/signin'
 import { Router } from '@reach/router'
 

@@ -155,11 +155,11 @@ export const getProduct = (id) => {
   }
 }
 
-export const getAllLikesProduct = () => {
+export const getAllLikesClientProduct = () => {
   return async (dispatch, getState) => {
     const {
       auth: {
-        usuario: { id: clientId }
+        user: { id: clientId }
       }
     } = getState()
 
@@ -175,11 +175,11 @@ export const getAllLikesProduct = () => {
   }
 }
 
-export const likeProduct = ({ nome, providerId }) => {
+export const likeProduct = ({ name, providerId }) => {
   return async dispatch => {
     try {
       await createLikeProductService(providerId)
-      toastr.success('Curtida', `O produto ${nome} foi curtido com sucesso.`)
+      toastr.success('Curtida', `O produto ${name} foi curtido com sucesso.`)
     } catch (error) {
       toastr.error('Curtida', 'Erro ao fazer a curtida')
     }

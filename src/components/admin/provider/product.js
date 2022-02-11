@@ -10,8 +10,8 @@ import DataList from '~/components/datagrid'
 const Listaproducts = ({ products, open, close }) => {
   const columnsproducts = [
     {
-      field: 'nome',
-      headerName: 'Nome',
+      field: 'name',
+      headerName: 'name',
       flex: 1,
       width: 340,
       disableColumnMenu: true

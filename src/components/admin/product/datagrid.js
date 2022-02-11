@@ -17,19 +17,19 @@ const DataList = ({ data, modal, loading }) => {
         style: 'currency',
         currency: 'BRL'
       }),
-      categoriaNome: categoriaId.nome
+      categorianame: categoriaId.name
     }
   })
 
   const thumb = ({ formattedValue }) => {
     return <img src={formattedValue} />
   }
-  const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
+  const typeUser = useSelector((state) => state.auth.user.typeUser)
 
   const actions = ({ id }) => {
     return (
       <>
-        {tipoUsuario !== 3}
+        {typeUser !== 3}
         <IconButton onClick={() => modal(2, id)} color="primary" size="small">
           <FiEdit />
         </IconButton>
@@ -49,13 +49,13 @@ const DataList = ({ data, modal, loading }) => {
       disableColumnMenu: true
     },
     {
-      field: 'nome',
-      headerName: 'Nome',
+      field: 'name',
+      headerName: 'name',
       flex: 2,
       disableColumnMenu: true
     },
     {
-      field: 'categoriaNome',
+      field: 'categorianame',
       headerName: 'Categoria',
       flex: 2,
       disableColumnMenu: true
@@ -69,7 +69,7 @@ const DataList = ({ data, modal, loading }) => {
     {
       field: 'actions',
       headerName: 'Ações',
-      renderCell: tipoUsuario !== 3 ? actions : '',
+      renderCell: typeUser !== 3 ? actions : '',
       width: 140,
       disableColumnMenu: true
     }

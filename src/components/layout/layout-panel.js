@@ -27,7 +27,7 @@ import { Button } from '@material-ui/core'
 const drawerWidth = 240
 
 export default function Dashboard(props) {
-  const { nome, tipoUsuario } = useSelector((state) => state.auth.usuario)
+  const { name, typeUser } = useSelector((state) => state.auth.user)
   const dispatch = useDispatch()
 
   const userDefinition = {
@@ -51,7 +51,7 @@ export default function Dashboard(props) {
     },
     toolbar: {
       paddingRight: 24,
-      backgroundColor: tipoUsuario ? userDefinition[tipoUsuario].cor : '#666',
+      backgroundColor: typeUser ? userDefinition[typeUser].cor : '#666',
       color: '#fff'
     },
     toolbarText: {
@@ -187,7 +187,7 @@ export default function Dashboard(props) {
             noWrap
             className={classes.title}
           >
-            {tipoUsuario ? userDefinition[tipoUsuario].titulo : ''}
+            {typeUser ? userDefinition[typeUser].titulo : ''}
           </Typography>
           <Typography
             component="h4"
@@ -197,7 +197,7 @@ export default function Dashboard(props) {
             className={classes.user}
           >
             <AccountCircleIcon className={classes.userIcon} />
-            {nome}
+            {name}
             <Button onClick={handleLogout}>
               <PowerSettingsNew className={classes.userIcon} />
             </Button>

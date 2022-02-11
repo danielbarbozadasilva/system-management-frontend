@@ -8,10 +8,10 @@ import { useSelector } from 'react-redux'
 import { Menu } from '~/views/admin/index'
 
 const ListMenu = () => {
-  const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
+  const typeUser = useSelector((state) => state.auth.user.typeUser)
 
   const rotasAutorizadas = Menu.filter((route) =>
-    route.authorization.includes(tipoUsuario)
+    route.authorization.includes(typeUser)
   )
   return (
     <div>

@@ -43,13 +43,13 @@ const Footer = (props) => {
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 nomeFooter">
-            <h3 className="nome-footer">Developed by Daniel Barboza</h3>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 nameFooter">
+            <h3 className="name-footer">Developed by Daniel Barboza</h3>
           </div>
         </div>
         <div className="row">
-          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 nomeFooter">
-            <h3 className="nome-footer">Copyright © 2021 - Todos os direitos reservados</h3>
+          <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 nameFooter">
+            <h3 className="name-footer">Copyright © 2021 - Todos os direitos reservados</h3>
           </div>
         </div>
 

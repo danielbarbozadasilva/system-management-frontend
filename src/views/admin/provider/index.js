@@ -11,40 +11,40 @@ import {
   getAllProviders,
   setStatusProvider
 } from '~/store/provider/provider.action'
-import ListProduct from '~/components/admin/forncedor/products'
+import ListProduct from '~/components/admin/provider/product'
 import ListLike from '~/components/admin/provider/likes'
 import '../../../assets/css/style.css'
 
-function provider() {
+function Provider () {
   const dispatch = useDispatch()
-  const [modalProduto, setModalProduto] = React.useState({})
-  const produto = useSelector((state) => state.produto.all)
+  const [modalProduct, setModalProduct] = React.useState({})
+  const product = useSelector((state) => state.product.all)
   const provider = useSelector((state) => state.provider.all)
   const loading = useSelector((state) => state.provider.loading)
-  const [modalCurtidas, setModalCurtidas] = React.useState(false, {})
-  const idUser = useSelector((state) => state.auth.usuario)
+  const [modalLike, setModalLike] = React.useState(false, {})
+  const idUser = useSelector((state) => state.auth.user)
 
-  const callprovider = useCallback(() => {
+  const callProvider = useCallback(() => {
     dispatch(getAllProviders())
   }, [dispatch])
 
   useEffect(() => {
-    callprovider()
-  }, [callprovider])
+    callProvider()
+  }, [callProvider])
 
   const toggleActive = (id, status) => {
     dispatch(setStatusProvider(id, status))
   }
 
-  function openproducts(row) {
-    setModalProduto({ open: true, data: row })
+  function openProduct (row) {
+    setModalProduct({ open: true, data: row })
   }
 
-  function openCurtidaclient(row) {
-    setModalCurtidas({ open: true, data: row })
+  function openLikeClient (row) {
+    setModalLike({ open: true, data: row })
   }
 
-  const actionModalCurtida = ({ row }) => {
+  const actionModalLike = ({ row }) => {
     const curte = Number(row?.likes) !== 0 && row?.kind !== 'provider'
 
     return (
@@ -52,7 +52,7 @@ function provider() {
         <Tooltip title="Listar de curtida dos client">
           <AiFillStar
             className={curte ? 'iconeStar' : 'doNotShow'}
-            onClick={() => openCurtidaclient(row.likes)}
+            onClick={() => openLikeClient(row.likes)}
             color="primary"
           />
         </Tooltip>
@@ -60,15 +60,15 @@ function provider() {
     )
   }
 
-  const actionModalproducts = ({ row }) => {
-    const produto = Number(row?.products) !== 0 && row?.kind !== 'provider'
+  const actionModalproduct = ({ row }) => {
+    const product = Number(row?.products) !== 0 && row?.kind !== 'provider'
 
     return (
       <>
-        <Tooltip title="Listar de products">
+        <Tooltip title="Listar produtos">
           <IconButton
-            className={produto ? 'iconeStar' : 'doNotShow'}
-            onClick={() => openproducts(row.products)}
+            className={product ? 'iconeStar' : 'doNotShow'}
+            onClick={() => openProduct(row.products)}
             color="primary"
           >
             <MoreIcon />
@@ -79,7 +79,7 @@ function provider() {
   }
 
   const actionModalStatus = ({ id, row }) => {
-    const status = row.status === 'Ativo'
+    const status = row.status === 'ENABLE'
 
     return (
       <>
@@ -95,7 +95,7 @@ function provider() {
   const columns = [
     {
       field: 'cnpj',
-      headerName: 'CNPJ',
+      headerName: 'Cnpj',
       width: 220,
       align: 'center',
       headerAlign: 'center',
@@ -103,14 +103,14 @@ function provider() {
     },
     {
       field: 'fantasyName',
-      headerName: 'Nome Fantasia',
+      headerName: 'Nome fantasia',
       width: 270,
       align: 'center',
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
-      field: 'curtidas',
+      field: 'likes',
       headerName: 'Qtd. Curtidas',
       width: 150,
       align: 'center',
@@ -119,26 +119,26 @@ function provider() {
       disableColumnMenu: true
     },
     {
-      field: 'actionsCurtida',
-      headerName: 'client',
+      field: 'actionsLikes',
+      headerName: 'Clientes',
       align: 'center',
-      renderCell: actionModalCurtida,
+      renderCell: actionModalLike,
       width: 150,
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'actionsproducts',
-      headerName: 'products',
+      headerName: 'Produtos',
       width: 120,
       align: 'center',
       headerAlign: 'center',
-      renderCell: actionModalproducts,
+      renderCell: actionModalproduct,
       disableColumnMenu: true
     },
     {
       field: 'actionsStatus',
-      headerName: 'Status',
+      headerName: 'status',
       align: 'center',
       headerAlign: 'center',
       renderCell: actionModalStatus,
@@ -154,7 +154,7 @@ function provider() {
     <>
       <Title
         title="provider"
-        subTitle="Página de categories"
+        subTitle="Página de categorias"
         actions={actions}
       />
       <Grid container spacing={2}>
@@ -164,17 +164,17 @@ function provider() {
         </Grid>
       </Grid>
       <ListProduct
-        open={modalProduto.open}
-        products={modalProduto.data}
-        close={() => setModalProduto({ ...modalProduto, open: false })}
+        open={modalProduct.open}
+        products={modalProduct.data}
+        close={() => setModalProduct({ ...modalProduct, open: false })}
       />
       <ListLike
-        curtidas={modalCurtidas.data}
-        open={modalCurtidas.open}
-        close={() => setModalCurtidas({ ...modalCurtidas, open: false })}
+        curtidas={modalLike.data}
+        open={modalLike.open}
+        close={() => setModalLike({ ...modalLike, open: false })}
       />
     </>
   )
 }
 
-export default provider
+export default Provider

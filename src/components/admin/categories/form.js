@@ -95,12 +95,12 @@ const Form = ({ submit, ...props }) => {
           variant="outlined"
           required
           fullWidth
-          id="nome"
-          label="Nome"
-          name="nome"
-          autoComplete="nome"
+          id="name"
+          label="name"
+          name="name"
+          autoComplete="name"
           autoFocus
-          value={form.nome || ''}
+          value={form.name || ''}
           onChange={handleChange}
           disabled={loading}
         />

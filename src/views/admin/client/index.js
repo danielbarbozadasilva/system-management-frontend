@@ -21,15 +21,15 @@ function client() {
 
   const columns = [
     {
-      field: 'nome',
-      headerName: 'Nome',
+      field: 'name',
+      headerName: 'name',
       width: 230,
       align: 'center',
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
-      field: 'data_nascimento',
+      field: 'birthDate',
       headerName: 'Data nascimento',
       width: 210,
       align: 'center',

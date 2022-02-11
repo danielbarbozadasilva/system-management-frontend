@@ -16,8 +16,8 @@ const ListaCurtidas = ({ open, close, curtidas }) => {
       width: 340,
       disableColumnMenu: true
     }, {
-      field: 'nome',
-      headerName: 'Nome',
+      field: 'name',
+      headerName: 'name',
       flex: 1,
       width: 340,
       disableColumnMenu: true
