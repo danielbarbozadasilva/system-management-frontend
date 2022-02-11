@@ -80,7 +80,7 @@ const SignIn = () => {
               </FormGroup>
               <FormGroup>
                 <label className="label" htmlFor="password">
-                  password:
+                  Senha:
                 </label>
                 <input
                   className="form-control"
@@ -90,7 +90,7 @@ const SignIn = () => {
                   id="password"
                   onChange={handleChange}
                   value={form.password || ''}
-                  placeholder="Informe sua password"
+                  placeholder="Informe sua senha"
                 />
               </FormGroup>
               <SButton
@@ -123,12 +123,12 @@ const SignIn = () => {
             </Form>
           </CardBody>
           <CardFooter className="text-muted">
-            Não possui subscription?
-            <a className="linkSignin" href="/clientsubscription">
-              client
+            Não possui cadastro?
+            <a className="linkSignin" href="/registrationclient">
+              Cliente
             </a>
-            <a className="linkSignin" href="/providersubscription">
-              provider
+            <a className="linkSignin" href="/registrationprovider">
+              Fornecedor
             </a>
           </CardFooter>
         </SCard>

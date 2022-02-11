@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { getAllProviders } from '../../../store/provider/provider.action'
 import Imagem from '../../../assets/img/image-portal-providers.jpg'
-import listLocation from '../../../components/portal/filters/index'
+import Buscar from '../../../components/portal/filters/index'
 
 function Provider (props) {
   const dispatch = useDispatch()
@@ -77,7 +77,7 @@ function Provider (props) {
     }
   }
 
-  const PortalListLocation = () => {
+  const PortalBuscar = () => {
     return (
       <div>
         <div className='container-fluid'>
@@ -98,14 +98,14 @@ function Provider (props) {
         </div>
         <div className='container-fluid'>
           <div className='row'>
-            <listLocation />
+            <Buscar />
             <ProdProvider />
           </div>
         </div>
       </div>
     )
   }
-  return <PortalListLocation />
+  return <PortalBuscar />
 }
 
 export default Provider

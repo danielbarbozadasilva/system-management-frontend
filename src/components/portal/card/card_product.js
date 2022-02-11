@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
 
-const CardProduto = (props) => {
+const CardProduct = (props) => {
   const { id, name, description, price, image } = props.item
   return (
     <div>
@@ -44,7 +44,7 @@ const CardProduto = (props) => {
   )
 }
 
-export default CardProduto
+export default CardProduct
 
 const SCard = styled(Card)`
   border: 1px solid #dcdcdc;

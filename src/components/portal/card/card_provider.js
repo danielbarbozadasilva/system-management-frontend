@@ -22,7 +22,7 @@ const Cardprovider = (props) => {
             {address}
           </CardText>
           <CardText className='cardDescriptionprovider'>
-            <strong>city: </strong>
+            <strong>Cidade: </strong>
             {city}
           </CardText>
           <CardText className='cardDescriptionprovider'>
@@ -30,7 +30,7 @@ const Cardprovider = (props) => {
             {uf}
           </CardText>
           <CardText className='cardDescription'>
-            <strong>phone: </strong>
+            <strong>Telefone: </strong>
             {phone}
           </CardText>
           {id === undefined
@@ -38,12 +38,12 @@ const Cardprovider = (props) => {
               <SButton
                 onClick={() => navigate(`/product/provider/${props.item._id}`)}
               >
-                products
+                Produtos
               </SButton>
               )
             : (
               <SButton onClick={() => navigate(`/product/provider/${id}`)}>
-                products
+                Produtos
               </SButton>
               )}
         </CardBody>

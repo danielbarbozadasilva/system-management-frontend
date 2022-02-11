@@ -7,24 +7,23 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 import DataList from '~/components/datagrid'
 
-const Listaproducts = ({ products, open, close }) => {
-  const columnsproducts = [
+const ListProduct = ({ products, open, close }) => {
+  const columnProduct = [
     {
-      field: 'name',
-      headerName: 'name',
+      field: 'fantasyName',
+      headerName: 'Nome',
       flex: 1,
       width: 340,
       disableColumnMenu: true
     },
     {
-      field: 'preco',
+      field: 'price',
       headerName: 'Preço',
       flex: 1,
       width: 340,
       disableColumnMenu: true
     }
   ]
-  // const products = useSelector((state) => state.provider.products)
 
   return (
     <Dialog
@@ -33,9 +32,9 @@ const Listaproducts = ({ products, open, close }) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">Lista de products</DialogTitle>
+      <DialogTitle id="alert-dialog-title">Lista de produtos</DialogTitle>
       <DialogContent style={{ width: '500px ' }}>
-        <DataList data={products} columns={columnsproducts} loading={false} />
+        <DataList data={products} columns={columnProduct} loading={false} />
       </DialogContent>
       <DialogActions>
         <Button onClick={close} color="primary" autoFocus>
@@ -46,4 +45,4 @@ const Listaproducts = ({ products, open, close }) => {
   )
 }
 
-export default Listaproducts
+export default ListProduct

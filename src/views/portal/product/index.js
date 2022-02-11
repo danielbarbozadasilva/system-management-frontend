@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import CardProduto from '../../../components/portal/card/card_product'
+import CardProduct from '../../../components/portal/card/card_product'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
@@ -31,11 +31,11 @@ function Products (props) {
     getData()
   }, [])
 
-  const listProduct = (products) => {
+  const ListProduct = (products) => {
     return products.map((item, i) => {
       return (
         <Col className='portalCard' md='6' xl='4' sm='12' xs='12' key={i}>
-          <CardProduto item={{ ...item }} />
+          <CardProduct item={{ ...item }} />
         </Col>
       )
     })
@@ -67,7 +67,7 @@ function Products (props) {
               <h1 className='noShowProduct'>Não há produtos disponiveis</h1>
               )
             : (
-                listProduct(products))}
+                ListProduct(products))}
         </Boxproducts>
       </div>
     </div>

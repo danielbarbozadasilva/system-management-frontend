@@ -63,7 +63,7 @@ const Buscar = () => {
       </Select>
 
       <Label htmlFor='uf' className='dataProvider'>
-        city:
+        Cidade:
       </Label>
 
       <Select
