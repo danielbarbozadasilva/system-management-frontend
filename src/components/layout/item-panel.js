@@ -10,12 +10,12 @@ import { Menu } from '~/views/admin/index'
 const ListMenu = () => {
   const typeUser = useSelector((state) => state.auth.user.typeUser)
 
-  const rotasAutorizadas = Menu.filter((route) =>
+  const authorizedRoutes = Menu.filter((route) =>
     route.authorization.includes(typeUser)
   )
   return (
     <div>
-      {rotasAutorizadas.map(({ title, route, icon }, i) => (
+      {authorizedRoutes.map(({ title, route, icon }, i) => (
         <ListItem button component={Link} to={'/admin' + route} key={i}>
           <ListItemIcon>{icon}</ListItemIcon>
           <ListItemText primary={title} />

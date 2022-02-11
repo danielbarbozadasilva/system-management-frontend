@@ -10,7 +10,7 @@ import { getAllProviders } from '~/store/provider/provider.action'
 
 function Products (props) {
   const dispatch = useDispatch()
-  const products = useSelector((state) => state.product.all)  
+  const products = useSelector((state) => state.product.all)
   const loading = useSelector((state) => state.auth.loading)
 
   const getData = async () => {
@@ -52,7 +52,7 @@ function Products (props) {
           <img className='portalImage' src={Imagem} alt='' srcSet='' />
         </div>
         <div className='text'>
-          <h2>Nossos products...</h2>
+          <h2>Nossos produtos...</h2>
           <h2>os mais saborosos!</h2>
         </div>
         <div className='textCategory'>
@@ -64,7 +64,7 @@ function Products (props) {
           {console.log(products)}
           {!loading && products.length === 0
             ? (
-              <h1 className='noShowProduct'>Não há products disponiveis</h1>
+              <h1 className='noShowProduct'>Não há produtos disponiveis</h1>
               )
             : (
                 listProduct(products))}

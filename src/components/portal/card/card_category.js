@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {
   Card,
   CardImg,
@@ -12,7 +11,6 @@ import {
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
-
 import { navigate } from '@reach/router'
 
 const CardItem = (props) => {
@@ -33,14 +31,14 @@ const CardItem = (props) => {
 
         <CardBody>
           <CardTitle className="titleCard">{name}</CardTitle>
-          <hr className="separartexts" />
+          <hr />
           <CardSubtitle className="subtitleCard">
             Os mais <strong>Deliciosos</strong>
           </CardSubtitle>
           <CardText className="cardDescription">{description}</CardText>
 
           <SButton onClick={() => navigate(`/product/category/${id}`)}>
-            products
+            Produtos
           </SButton>
         </CardBody>
       </SCard>

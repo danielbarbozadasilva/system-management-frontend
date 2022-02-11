@@ -25,19 +25,19 @@ const Footer = (props) => {
           <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 info">
 
             <div className="address">
-              <h6><MdLocationOn className="iconeInfofooter" />
+              <h6><MdLocationOn className="iconInfo" />
                 Endereço: Rua Gomes Yunes, 225
               </h6>
             </div>
             <div className="email">
-              <h6><MdMailOutline className="iconeInfofooter" />
-                Email: contato@regale.com
+              <h6><MdMailOutline className="iconInfo" />
+                E-mail: contato@regale.com
               </h6>
             </div>
 
             <div className="phone">
-              <h6><MdPhone className="iconeInfofooter" />
-                phone: +55 21 22450548
+              <h6><MdPhone className="iconInfo" />
+                Telefone: +55 (21) 2245-0548
               </h6>
             </div>
           </div>

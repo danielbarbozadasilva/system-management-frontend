@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Card,
-  CardImg,
   CardText,
   CardBody,
   CardTitle,
@@ -72,17 +71,6 @@ const SCard = styled(Card)`
     opacity: 0.5;
   }
 `
-
-const SCardImg = styled(CardImg)`
-  border: none;
-  -webkit-border-radius: 0;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  width: 353px;
-  height: 231px;
-`
-
 const SButton = styled(Button)`
   position: absolute;
   bottom: -18px;

@@ -4,8 +4,7 @@ import {
   CardImg,
   CardText,
   CardBody,
-  CardTitle,
-  Button
+  CardTitle
 } from 'reactstrap'
 import styled from 'styled-components'
 import './style.css'
@@ -75,39 +74,3 @@ const SCardImg = styled(CardImg)`
   min-height: 231px;
   object-fit: cover;
 `
-
-const SButton = styled(Button)`
-  position: absolute;
-  bottom: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  color: #fff;
-  background-color: #c79c60;
-  line-height: 38px;
-  text-transform: uppercase;
-  padding: 0 15px;
-  border-radius: 5px;
-  border: none;
-  font-weight: 500;
-  font-size: 12px;
-  display: inline-flex;
-  align-items: center;
-
-  :hover {
-    box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
-    transition: 1s;
-    opacity: 0.5;
-  }
-`
-
-//     .title {
-//       font-size: 26px;
-//     }
-
-//     :hover {
-//         box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253)!important;
-//         transition:1s;
-//         opacity: 0.5;
-//     }
-// `

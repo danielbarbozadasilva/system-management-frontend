@@ -46,13 +46,13 @@ const Home = () => {
         </div>
         <div className='textCategory'>
           <h1 className='textCat'>
-            Escolha uma <strong>category</strong>
+            Escolha uma <strong>categoria</strong>
           </h1>
         </div>
         <BoxCards>
           {!loading && category.length === 0
             ? (
-              <h1 className='noShowProduct'>Não há categories disponiveis</h1>
+              <h1 className='noShowProduct'>Não há categorias disponiveis</h1>
               )
             : (
                 listCategory(category)

@@ -40,7 +40,7 @@ const Header = (props) => {
 
   return (
     <header>
-      <SNavbar className="barraHeader" color="dark" dark expand="lg">
+      <SNavbar color="dark" dark expand="lg">
         <Container>
           <Link to="/" id="logoMain">
             <img className="logo-img" src={LogoHeader} alt="logo" />
@@ -52,22 +52,22 @@ const Header = (props) => {
             target="logoMain"
             toggle={toggleTooltip}
           >
-            Pagina Inicial
+            Página Inicial
           </Tooltip>
           <>
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
                 <NavItem>
                   <SNavLink to="/" path="/">
-                    home
+                    Home
                   </SNavLink>
                 </NavItem>
                 <>
                   <NavItem>
-                    <SNavLink to="/product">products</SNavLink>
+                    <SNavLink to="/product">Produtos</SNavLink>
                   </NavItem>
                   <NavItem>
-                    <SNavLink to="/provider">provider</SNavLink>
+                    <SNavLink to="/provider">Fornecedores</SNavLink>
                   </NavItem>
                 </>
               </Nav>

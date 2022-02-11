@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { getAllProviders } from '../../../store/provider/provider.action'
 import Imagem from '../../../assets/img/image-portal-providers.jpg'
-import MapearcityEstado from '../../../components/portal/filters/index'
+import listLocation from '../../../components/portal/filters/index'
 
 function Provider (props) {
   const dispatch = useDispatch()
@@ -47,7 +47,7 @@ function Provider (props) {
     return <Loading />
   }
 
-  const Prodprovider = () => {
+  const ProdProvider = () => {
     const provider = useSelector((state) => state.provider.all)
 
     if (id) {
@@ -67,7 +67,7 @@ function Provider (props) {
         <Boxprovider>
           {!loading && provider.length === 0
             ? (
-              <h1 className='noShowProduct'>Não há provider</h1>
+              <h1 className='noShowProduct'>Não há fornecedores</h1>
               )
             : (
                 listProvider(provider)
@@ -77,7 +77,7 @@ function Provider (props) {
     }
   }
 
-  const Visual = () => {
+  const PortalListLocation = () => {
     return (
       <div>
         <div className='container-fluid'>
@@ -87,25 +87,25 @@ function Provider (props) {
             </div>
             <div className='text'>
               <h2>Encontre novas horizontes...</h2>
-              <h2>os melhores provider!</h2>
+              <h2>os melhores fornecedores!</h2>
             </div>
             <div className='textCategory'>
               <h1 className='textCat'>
-                Escolha um <strong>provider</strong>
+                Escolha um <strong>fornecedor</strong>
               </h1>
             </div>
           </div>
         </div>
         <div className='container-fluid'>
           <div className='row'>
-            <MapearcityEstado />
-            <Prodprovider />
+            <listLocation />
+            <ProdProvider />
           </div>
         </div>
       </div>
     )
   }
-  return <Visual />
+  return <PortalListLocation />
 }
 
 export default Provider
