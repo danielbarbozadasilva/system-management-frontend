@@ -10,17 +10,19 @@
   margin-bottom: 0px !important;
 }
 
-.naoAparece {
+.doNotShow {
   display: none !important;
 }
 
 .container-fluid {
   padding: 0px !important;
 }
-.imagemTabela{
+
+.tableImage{
   object-fit: cover;
 }
-.imagemPrincipal {
+
+.portalImage {
   background-position: cover;
   object-fit: cover;
   background-repeat: no-repeat;
@@ -29,23 +31,26 @@
   height: 550px;
   margin-bottom: 100px;
 }
-.dadosPesquisaFornec{
+
+.dataSearchProvider{
   padding-left: 70px;
   color: #501417;
 }
-.dadosFornecedor{
+
+.dataProvider{
     margin-top: 15px;
   margin-bottom: 40px;
   padding: 0px 20px
 }
-.texto {
+
+.text {
   width: 100%;
   top: 45%;
   position: absolute;
   z-index: 100;
 }
 
-.texto h2 {
+.text h2 {
   font-weight: 400;
   font-family: 'Great Vibes', handwriting;
   word-wrap: break-word;
@@ -59,7 +64,7 @@
   margin-top: 55px;
 }
 
-.texto a {
+.text a {
   color: #fff;
   background: #be8c60;
   font-size: 16px;
@@ -74,7 +79,7 @@
   text-decoration: none;
 }
 
-.textoCategoria {
+.textCategory {
   margin-left: 45px;
   margin-bottom: 50px;
 }
@@ -101,7 +106,6 @@
   padding: 20px;
 }
 
-/* HEADER */
 header .container {
   max-width: 100%;
 }
@@ -112,14 +116,6 @@ header .logo-img {
   padding-bottom: 10px;
   padding-left: 30px;
   padding-right: 30px;
-}
-
-.botaoLogin {
-  background-color: #e0d5d3;
-  font-weight: 800;
-  cursor: pointer;
-  transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out,
-    border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .nav-link {
@@ -165,26 +161,31 @@ header .logo-img {
   transition: color 0.25s ease-in-out, background-color 0.2s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 .btn--icon {
   color: rgb(70, 75, 79);
   border-color: rgba(70, 75, 79, 0.2);
   margin-right: 5px;
 }
-.naoPossuiProd {
+
+.noShowProduct {
   padding-left: 55px;
   font-size: 18px;
 }
+
 .btn--icon img,
 .btn--icon svg {
   width: 20px;
   height: auto;
   margin-right: 0.1875rem;
 }
+
 .css-1wmxvcs {
   color: rgb(70, 75, 79);
   border-color: rgba(70, 75, 79, 0.2);
   margin-right: 5px;
 }
+
 .btn,
 .subscribe__add {
   margin-right: 35px;
@@ -203,7 +204,8 @@ header .logo-img {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.65, 0.845, 0.16, 0.995);
 }
-#botaoCad {
+
+#cardButton {
   background: transparent;
   font-size: 0.8125em;
   font-weight: 700;
@@ -218,13 +220,16 @@ header .logo-img {
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.65, 0.845, 0.16, 0.995);
 }
+
 .btn {
   display: flex;
   align-items: center;
 }
+
 .dTYZhm {
   margin-bottom: 0px !important;
 }
+
 .navbar-toggler {
   background-color: rgb(223, 223, 223);
 }
@@ -237,29 +242,19 @@ a:hover {
   text-decoration: underline !important;
 }
 
-.chamada-contato {
-  font-family: 'Nunito', Helvetica, Arial, Lucida, sans-serif;
-  border-left: solid 1px #141414;
-  color: #501417;
-  padding-bottom: 20px;
-  padding-left: 10px;
-  font-weight: 500;
-  line-height: 1.2;
-  font-size: 2.5rem;
-}
-
 .label,
 .labelCli {
   margin-top: 20px;
   font-weight: bold;
 }
-.cidadeLabel {
+
+.labelCity {
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bold;
 }
 
-#secao03 {
+#section03 {
   position: relative;
   line-height: 1.7em;
   margin-top: 10%;
@@ -267,91 +262,69 @@ a:hover {
   font-weight: 700;
 }
 
-/* UF */
-#cadastro-uf-forn {
+#subscription-uf-forn {
   padding-right: 10px;
   margin-top: 30px;
   font-weight: bold;
 }
 
-/* UF */
-#cadastro-uf-cli {
+#subscription-uf-cli {
   padding-right: 10px;
   margin-top: 30px;
   font-weight: bold;
 }
 
-#cadastro-cidade {
+#subscription-city {
   margin-top: 25px;
   margin-bottom: 18px;
   font-weight: bold;
 }
 
-#secao03 #enviar {
-  color: #771700 !important;
-  border-color: #edd29a;
-  background-color: #edd29a;
-  margin-top: 2%;
-}
-
-#secao03 label,
+#section03 label,
 h1 {
   color: #501417;
 }
 
-/* Colunas dos formularios */
-.colunasFormularios {
+.formCol {
   width: 100%;
   background-color: #fafafa;
   display: flex;
-  /* flex container, transforma os filhos em flex itens */
   box-shadow: 0px 2px 15px 6px rgba(0, 0, 0, 0.11);
   padding: 0px 30px;
 }
 
-/* Título introdutório do formulário */
-.tituloFormIntro {
-  padding: 20px 30px;
-  display: flex;
-  box-shadow: 0px 1px 5px 1.5px rgba(0, 0, 0, 0.11);
-  font-size: 14px;
-}
-
-/* Configuração das colunas dos formulários */
-.coluna1,
-.coluna2,
-.colunadetalhe1,
-.colunadetalhe2 {
-  /* a primeira fatia ocupará a primeira metade */
+.column1,
+.column2,
+.columnDetails1,
+.columnDetails2 {
   width: 50%;
   margin: 80px 35px;
   line-height: 1.5;
 }
 
-#infoColuna {
+#infoColumn {
   margin-top: 158px;
 }
 
-/* Espaçamento interno na coluna 2 do formulário */
-.colunadetalhe2 {
+.columnDetails2 {
   padding-top: 20px;
 }
 
-#botaoFormularioCli {
+#buttonFormClient {
   margin-top: 35px;
   width: 100%;
   padding: 12px;
   justify-content: center;
 }
 
-#botaoFormularioForn {
+#buttonFormProvider {
   margin-top: 55px;
   width: 100%;
   padding: 12px;
   justify-content: center;
 }
 
-.formPainel {
+.formPanel {
   margin-top: 60px;
 }
 
@@ -369,12 +342,6 @@ h1 {
 body {
   min-height: 100vh;
   background: #fafafa;
-}
-
-/* TABELA INSCRITOS */
-.noparticipants {
-  font-size: 25px;
-  margin-bottom: 15px;
 }
 
 .bg-gradient-l-primary-gradient {
@@ -407,7 +374,6 @@ body {
   border-radius: 9999px;
 }
 
-/* fortm singin */
 .form-control {
   height: 45px;
   background: rgba(0, 0, 0, 0.05);
@@ -423,7 +389,7 @@ body {
   margin-bottom: 10px;
 }
 
-.form-group .labelFornecedor {
+.form-group .labelprovider {
   margin-top: 10px;
   font-size: 12px;
   text-transform: uppercase;
@@ -440,26 +406,26 @@ body {
   padding-top: 15px;
 }
 
-.text-cadastro {
+.text-subscription {
   margin-bottom: 30px;
   line-height: 1.5;
   font-weight: 500;
   color: #000;
 }
 
-.estilo-botao-details {
+.style-button-details {
   background-image: linear-gradient(to left, #ff425b, #c42252);
   border: none;
   font-weight: 700;
 }
 
-.estilo-botao-details:hover {
+.style-button-details:hover {
   background-image: linear-gradient(to left, #bd616d, #9e596e);
   border: none;
   font-weight: 700;
 }
 
-.estiloBotaoDetails {
+.styleButtonDetails {
   margin-top: 20px;
 }
 
@@ -472,76 +438,67 @@ body {
   letter-spacing: 1px;
 }
 
-.estilo-botao:hover {
+.style-button:hover {
   background-image: linear-gradient(to left, #935561, #aa4938);
   border: none;
   color: #fff;
   font-weight: 700;
 }
-.estilo-botao-desable {
+.style-button-disable {
   background-image: linear-gradient(to left, #4f2821, #aa4938);
   border: none;
   color: #fff;
   font-weight: 700;
 }
-/* FOOTER */
+
 footer {
   position: center;
   text-align: center;
   font-size: 24px;
-  /* altera o tamanho da fonte para 24px */
   display: flex;
   margin-top: 60px;
   flex-wrap: wrap;
   background-color: #dbc084;
   color: white;
 }
-footer.rodape {
+
+footer.footer {
   overflow: hidden;
 }
-/* conteudo redes sociais */
-footer .redes-sociais {
-  /* expaçamento interno */
+
+footer .socialNetworks {
   margin-top: 63px;
-  /* expaçamento externo, ajusta em relação ao título */
   position: left;
   text-align: left;
 }
-/* título redes sociais */
-footer .tituloRedesSociais {
+
+footer .titleSocialNetworks {
   margin-left: 35px;
   margin-bottom: 10px;
-  /* expaçamento externo */
   text-transform: uppercase;
-  /* caixa alta */
   font-size: 18px;
   font-weight: 600;
-  /* altera o peso da fonte, deixando mais pesada */
   letter-spacing: 3px;
-  /* espaçamento entre as letras */
   color: white;
   border-left: 5px solid #fff;
   padding-left: 30px;
 }
 
-footer .icons-redes-sociais a {
+footer .icons-socialNetworks a {
   font-size: 40px;
   padding-left: 37px;
   color: #fff;
 }
-/* meu nome centralizado */
+
 footer .nome-footer {
-  /* expaçamento externo, deixar o nome embaixo */
   font-size: 14px;
   text-transform: uppercase;
-  /* texto em caixa alta */
   font-weight: 900;
-  /* fonte mais pesada */
   letter-spacing: 3px;
-  /* espaçamento entre as letras */
   text-align: center;
 }
-footer .imagemFooter {
+
+footer .imageFooter {
   margin-top: 30px;
   width: 140px;
   height: 120px;
@@ -549,30 +506,29 @@ footer .imagemFooter {
   text-align: center;
   margin-left: 95px;
 }
-footer .infomacoes {
+
+footer .info {
   padding-top: 50px;
   text-align: center;
 }
-/* Aplica o espaçamento entre os icones e textos */
+
 footer .address {
   padding-top: 10px;
-  /* espaçamento interno acima do endereço */
 }
+
 footer .email {
   padding-top: 15px;
-  /* espaçamento interno acima do e-mail */
 }
+
 footer .phone {
   padding-top: 15px;
-  /* espaçamento interno acima do telefone */
 }
-/* icones do react no footer */
-footer .iconeInfoRodape {
+
+footer .iconeInfofooter {
   margin-right: 5px;
 }
-/* caso o usuário passe o cursor nos icones */
+
 footer i:hover {
-  /* altera a cor */
   color: #c7b7ba;
 }
 
@@ -583,7 +539,8 @@ footer i:hover {
     margin: 0px;
     padding: 0px;
   }
-  footer .icons-redes-sociais a {
+
+  footer .icons-socialNetworks a {
     padding: 0px 20px;
   }
 }
@@ -598,31 +555,31 @@ footer i:hover {
 }
 
 @media (max-width: 800px) {
-  /* Configuração das colunas dos formulários */
-  .coluna1,
-  .coluna2,
-  .colunadetalhe1,
-  .colunadetalhe2 {
-    /* a primeira fatia ocupará a primeira metade */
+  .column1,
+  .column2,
+  .columnDetails1,
+  .columnDetails2 {
     width: 100%;
     margin: 0px 0px;
     line-height: 1.5;
   }
 
-  .cardsTelaInicial {
+  .portalCard {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px 0px;
   }
-  /* título redes sociais */
-  footer .tituloRedesSociais {
+
+  footer .titleSocialNetworks {
     padding-right: 13px;
   }
-  footer .icons-redes-sociais a {
+
+  footer .icons-socialNetworks a {
     padding-right: 13px;
   }
-  .colunasFormularios {
+
+  .formCol {
     display: flex;
     flex-direction: column;
     padding: 20px !important;
@@ -630,12 +587,13 @@ footer i:hover {
     width: 100%;
   }
 
-  .colunadetalhe1 {
+  .columnDetails1 {
     width: 100%;
     margin-left: 15px !important;
     margin-bottom: 0px !important;
   }
-  .colunadetalhe2 {
+
+  .columnDetails2 {
     width: 100%;
     margin-left: 15px !important;
     margin-top: 0px !important;
@@ -647,28 +605,29 @@ footer i:hover {
   .container-fluid {
     margin-left: 30px;
   }
-  .tabela thead {
+
+  .table thead {
     display: none;
   }
-  .tabelaParticipante {
-    padding: 20px 0px;
-    box-shadow: 0px 1px 5px 1.5px rgb(0 0 0 / 11%);
-  }
-  .tabela,
-  .tabela tbody,
-  .tabela tr,
-  .tabela td {
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
     display: block;
     width: 100%;
   }
-  .tabela tr {
+
+  .table tr {
     margin-bottom: 15px;
   }
-  .tabela td {
+
+  .table td {
     text-align: right;
     position: relative;
   }
-  .tabela td::before {
+
+  .table td::before {
     content: attr(data-label);
     position: absolute;
     left: 0;
@@ -678,37 +637,39 @@ footer i:hover {
     font-weight: bold;
     text-align: left;
   }
-  .botaoTabela td {
+
+  .buttontable td {
     padding: 10px;
   }
-  /* conteudo redes sociais */
-  footer .redes-sociais {
+
+  footer .socialNetworks {
     margin-top: 63px;
     text-align: center;
   }
-  /* título redes sociais */
-  footer .tituloRedesSociais {
+
+  footer .titleSocialNetworks {
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 3px;
-    /* espaçamento entre as letras */
     color: white;
     border: none;
     margin: 0px;
     padding-bottom: 15px;
   }
-  footer .infomacoes {
+
+  footer .info {
     padding-bottom: 45px;
     text-align: center;
   }
-  footer .imagemFooter {
+
+  footer .imageFooter {
     margin-top: 60px !important;
   }
 }
 
 @media (max-width: 995px) {
-  footer .imagemFooter {
+  footer .imageFooter {
     display: none;
   }
 }
@@ -718,13 +679,16 @@ footer i:hover {
     .formularioLogar {
       margin-left: 75px;
     }
-    .tabela td {
+
+    .table td {
       border: none;
     }
+
     .container-fluid {
       margin-left: 70px;
     }
-    footer .icons-redes-sociais a {
+
+    footer .icons-socialNetworks a {
       font-size: 40px;
       padding-left: 20px;
       color: #fff;
@@ -733,49 +697,48 @@ footer i:hover {
 }
 
 @media (max-width: 1200px) {
-  .espacoTabela {
+  .tableSpace {
     display: flex;
     height: 70px;
   }
-  .cardsTelaInicial {
+
+  .portalCard {
     left: 4%;
   }
 }
 
-/*  HD - 1366: 768P */
-
 @media (max-width: 1366px) {
-  .cardsTelaInicial {
+  .portalCard {
     left: 0px !important;
   }
-  footer .imagemFooter {
+
+  footer .imageFooter {
     margin-left: 115px !important;
   }
 }
-
-/* FULL HD - 1920: 1080P */
 
 @media (max-width: 1920px) {
   header .container {
     max-width: 100%;
   }
 
-  .cardsTelaInicial {
+  .portalCard {
     left: 6%;
     margin-bottom: 50px;
   }
-  footer .imagemFooter {
+
+  footer .imageFooter {
     margin-left: 175px;
   }
 }
 
-/* 2K - 2048: 1080P */
 @media (max-width: 2048px) {
-  .cardsTelaInicial {
+  .portalCard {
     left: 7%;
     margin-bottom: 50px;
   }
-  footer .imagemFooter {
+
+  footer .imageFooter {
     margin-left: 175px;
   }
 }

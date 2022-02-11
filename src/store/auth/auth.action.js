@@ -23,7 +23,7 @@ export const signInAction = (data) => {
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
         toastr.error(
           'Login',
-          error.response?.data?.mensagem || 'Erro ao tentar fazer login'
+          error.response?.data?.message || 'Erro ao tentar fazer login'
         )
       })
   }

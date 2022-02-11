@@ -1,5 +1,4 @@
 import http from '~/config/http'
-
 const baseUrl = '/client'
 
 export const listAllClientService = () => http.get(baseUrl)

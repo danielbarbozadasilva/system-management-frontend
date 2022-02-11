@@ -8,37 +8,37 @@ import {
   Apps as MdAppsIcon
 } from '@material-ui/icons'
 
-import PainelLayout from '~/components/layout/layout-painel'
-import Inicio from '~/views/admin/inicio/inicio'
-import Produto from '~/views/admin/produto/index'
-import Fornecedor from '~/views/admin/fornecedor'
-import Categoria from './categoria/index'
-import Cliente from './cliente/index'
+import PanelLayout from '~/components/layout/layout-panel'
+import home from '~/views/admin/home/home'
+import Produto from '~/views/admin/product/index'
+import provider from '~/views/admin/provider'
+import category from './category/index'
+import client from './client/index'
 import { useSelector } from 'react-redux'
-import Curtida from '~/views/admin/curtida'
+import Curtida from '~/views/admin/like'
 
-/* 1 - Administrador 2 - Fornecedor 3 - Cliente */
+/* 1 - Administrador 2 - provider 3 - client */
 export const Menu = [
   {
-    title: 'Home',
+    title: 'home',
     icon: <DashboardIcon />,
     route: '/',
     visibleMenu: true,
     enabled: true,
-    component: Inicio,
+    component: home,
     authorization: [1, 2, 3]
   },
   {
-    title: 'Categoria',
+    title: 'category',
     icon: <MdAppsIcon />,
     route: '/category',
     visibleMenu: true,
     enabled: true,
-    component: Categoria,
+    component: category,
     authorization: [1]
   },
   {
-    title: 'Produtos',
+    title: 'products',
     icon: <MoreIcon />,
     route: '/product',
     visibleMenu: true,
@@ -47,12 +47,12 @@ export const Menu = [
     authorization: [2, 3]
   },
   {
-    title: 'Fornecedor',
+    title: 'provider',
     icon: <ShoppingCartIcon />,
     route: '/provider',
     visibleMenu: true,
     enabled: true,
-    component: Fornecedor,
+    component: provider,
     authorization: [1]
   },
   {
@@ -65,12 +65,12 @@ export const Menu = [
     authorization: [2, 3]
   },
   {
-    title: 'Cliente',
+    title: 'client',
     icon: <PeopleIcon />,
     route: '/client',
     visibleMenu: true,
     enabled: true,
-    component: Cliente,
+    component: client,
     authorization: [1]
   }
 ]
@@ -85,12 +85,12 @@ const Admin = (props) => {
 
   return (
     <Router>
-      <PainelLayout path="/">
+      <PanelLayout path="/">
         {rotasAutorizadas.map(({ component: Component, route }, i) => (
           <Component key={i} path={route} />
         ))}
         <NotFound default />
-      </PainelLayout>
+      </PanelLayout>
     </Router>
   )
 }

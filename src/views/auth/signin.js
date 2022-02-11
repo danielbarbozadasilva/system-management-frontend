@@ -17,26 +17,20 @@ import { signInAction } from '../../store/auth/auth.action'
 import '../../assets/css/style.css'
 
 const SignIn = () => {
-  const [hasError, setHasError] = useState(false)
-
   const dispatch = useDispatch()
-
-  // vindo do reducer (tudo que tiver 'state' pega o estado do reducer)
+  const [hasError, setHasError] = useState(false)
   const error = useSelector((state) => state.auth.error)
   const loading = useSelector((state) => state.auth.loading)
 
-  // estado somente da view
   const [form, setForm] = useState({
     email: '',
-    senha: ''
+    password: ''
   })
 
   const handleChange = (props) => {
     const { value, name } = props.target
     setForm({
       ...form,
-
-      // pega o name dos inputs, o name é um array, para cada indice'[]' para cada indice vou inserir um valor e atribui no name
       [name]: value
     })
   }
@@ -45,12 +39,10 @@ const SignIn = () => {
 
   const submitForm = (event) => {
     event.preventDefault()
-
-    // manda para o action o meu estado com os dados e depois manda para o 'reducer'
     dispatch(signInAction(form))
   }
 
-  const isNotValid = () => form.email.length === 0 || form.senha.length === 0
+  const isNotValid = () => form.email.length === 0 || form.password.length === 0
 
   useEffect(() => {
     setHasError(error.length > 0)
@@ -63,7 +55,7 @@ const SignIn = () => {
           <div>
             <strong>OPS !!! </strong> Aconteceu um erro.
           </div>
-          <small>Verifique usuário e senha</small>
+          <small>Verifique usuário e password</small>
         </Alert>
         <SCard className="formularioLogar">
           <h2 tag="h4" className="text-login">
@@ -88,17 +80,17 @@ const SignIn = () => {
               </FormGroup>
               <FormGroup>
                 <label className="label" htmlFor="password">
-                  Senha:
+                  password:
                 </label>
                 <input
                   className="form-control"
                   disabled={loading}
                   type="password"
-                  name="senha"
-                  id="senha"
+                  name="password"
+                  id="password"
                   onChange={handleChange}
-                  value={form.senha || ''}
-                  placeholder="Informe sua senha"
+                  value={form.password || ''}
+                  placeholder="Informe sua password"
                 />
               </FormGroup>
               <SButton
@@ -109,8 +101,8 @@ const SignIn = () => {
                 type="button"
                 color={
                   isNotValid() || loading
-                    ? 'estilo-botao-desable'
-                    : 'estilo-botao'
+                    ? 'style-button-disable'
+                    : 'style-button'
                 }
                 disabled={isNotValid()}
                 size="sm"
@@ -131,12 +123,12 @@ const SignIn = () => {
             </Form>
           </CardBody>
           <CardFooter className="text-muted">
-            Não possui Cadastro?
-            <a className="linkSignin" href="/clientecadastro">
-              Cliente
+            Não possui subscription?
+            <a className="linkSignin" href="/clientsubscription">
+              client
             </a>
-            <a className="linkSignin" href="/fornecedorcadastro">
-              Fornecedor
+            <a className="linkSignin" href="/providersubscription">
+              provider
             </a>
           </CardFooter>
         </SCard>

@@ -14,4 +14,4 @@ export const deleteProductService = (productid) =>
   http.delete(`${baseUrl}/${productid}`)
 
 export const updateProductService = (providerid, productid, data) =>
-  http.put(`${baseUrl}/${providerid}/product/${productid}`, data)
+  http.put(`provider/${providerid}/product/${productid}`, data)

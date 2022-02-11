@@ -15,7 +15,7 @@ import {
 } from 'reactstrap'
 import styled from 'styled-components'
 import '../../assets/css/style.css'
-import LogoHeader from '../../assets/img/logo.png'
+import LogoHeader from '../../assets/img/image-regale-logo.png'
 import { Link } from '@reach/router'
 
 const NavLink = (props) => (
@@ -59,15 +59,15 @@ const Header = (props) => {
               <Nav className="mr-auto" navbar>
                 <NavItem>
                   <SNavLink to="/" path="/">
-                    Inicio
+                    home
                   </SNavLink>
                 </NavItem>
                 <>
                   <NavItem>
-                    <SNavLink to="/product">Produtos</SNavLink>
+                    <SNavLink to="/product">products</SNavLink>
                   </NavItem>
                   <NavItem>
-                    <SNavLink to="/provider">Fornecedores</SNavLink>
+                    <SNavLink to="/provider">provider</SNavLink>
                   </NavItem>
                 </>
               </Nav>
@@ -116,16 +116,16 @@ const Header = (props) => {
               <div>
                 <UncontrolledDropdown>
                   <SDropdownToggle
-                    id="botaoCad"
+                    id="cardButton"
                     className="btn btn--primary css-10sx58j"
                     caret
                   >
                     Sign up
                   </SDropdownToggle>
                   <SDropdownMenu>
-                    <SNavLink to="/clientecadastro">Cliente</SNavLink>
+                    <SNavLink to="/clientsubscription">client</SNavLink>
                     <DropdownItem divider />
-                    <SNavLink to="/fornecedorcadastro">Fornecedor</SNavLink>
+                    <SNavLink to="/providersubscription">provider</SNavLink>
                   </SDropdownMenu>
                 </UncontrolledDropdown>
 
