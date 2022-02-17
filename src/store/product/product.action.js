@@ -1,5 +1,6 @@
 import {
   listProductService,
+  listProductWithFilterService,
   listProductByIdService,
   deleteProductService,
   createProductService,
@@ -10,15 +11,26 @@ import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { getUser } from '~/config/storage'
 
-export const getAllProducts = (filter = '') => {
+export const getAllProducts = () => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.PRODUCT_LOADING, status: true })
-      const result = await listProductService(filter)
-      console.log(result.data.data)
+      const result = await listProductService()
       dispatch({ type: TYPES.PRODUCT_ALL, data: result.data.data })
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
+      toastr.error('Aconteceu um erro', error)
+    }
+  }
+}
+
+export const getAllProductsWithFilter = (filter = {}) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: TYPES.PRODUCT_LOADING, status: true })
+      const result = await listProductWithFilterService(filter)
+      dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
+    } catch (error) {
+      toastr.error('Aconteceu um erro', error)
     }
   }
 }

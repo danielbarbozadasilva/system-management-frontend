@@ -1,9 +1,12 @@
 import http from '~/config/http'
 const baseUrl = '/product'
 
-export const listProductService = (filter) => {
-  return http.get(baseUrl, filter)
-}
+export const listProductService = () =>
+  http.get(`${baseUrl}`)
+
+export const listProductWithFilterService = (filter) =>
+  http.get(`${baseUrl}/name/${filter.name}/filter/${filter.filter}`)
+
 export const listProductByIdService = (productid) =>
   http.get(`${baseUrl}/${productid}`)
 

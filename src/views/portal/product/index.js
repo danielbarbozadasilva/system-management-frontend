@@ -5,30 +5,31 @@ import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import Imagem from '../../../assets/img/image-portal-products.jpg'
-import { getAllProducts } from '../../../store/product/product.action'
-import { getAllProviders } from '~/store/provider/provider.action'
+import { getAllProducts, getAllProductsWithFilter } from '../../../store/product/product.action'
+// import { getAllProviders } from '~/store/provider/provider.action'
 
 function Products (props) {
   const dispatch = useDispatch()
+
   const products = useSelector((state) => state.product.all)
   const loading = useSelector((state) => state.auth.loading)
 
-  const getData = async () => {
-    console.log(props.tipo)
-    switch (props.tipo) {
-      case 'category':
-        await dispatch(getAllProducts({ category: props.id }))
-        break
-      case 'provider':
-        await dispatch(getAllProviders({ provider: props.id }))
-        break
-      default:
-        await dispatch(getAllProducts())
+  const getData = (props) => {
+    console.log('@@@@@@@@@@' + JSON.stringify(props))
+    console.log('@@@@@@@@@@' + JSON.stringify('000: ' + props?.id))
+    console.log('@@@@@@@@@@tipo' + JSON.stringify('000: ' + props.tipo))
+    if (props.tipo === '') {
+      console.log('TODOS------')
+      dispatch(getAllProducts())
+    } else {
+      console.log('FILTRO------')
+      dispatch(getAllProductsWithFilter({ name: props.tipo, filter: props.id }))
     }
   }
 
   useEffect(() => {
-    getData()
+    console.log('@@@@@@@@@@' + JSON.stringify(props))
+    getData(props)
   }, [])
 
   const ListProduct = (products) => {
@@ -60,7 +61,7 @@ function Products (props) {
             Escolha um <strong>produto</strong>
           </h1>
         </div>
-        <Boxproducts>
+        <BoxProducts>
           {console.log(products)}
           {!loading && products.length === 0
             ? (
@@ -68,11 +69,11 @@ function Products (props) {
               )
             : (
                 ListProduct(products))}
-        </Boxproducts>
+        </BoxProducts>
       </div>
     </div>
   )
 }
 export default Products
 
-const Boxproducts = styled(Row)``
+const BoxProducts = styled(Row)``
