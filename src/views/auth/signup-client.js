@@ -16,7 +16,7 @@ import {
   Col
 } from 'reactstrap'
 import { Select } from '@material-ui/core'
-import ufCity from '~/util/state-city.json'
+import ufCityFile from '../../util/state-city.json'
 
 const SignUpClient = () => {
   const dispatch = useDispatch()
@@ -27,7 +27,7 @@ const SignUpClient = () => {
   const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
   const [uf, setUf] = react.useState([])
-  const [citys, setcity] = react.useState([])
+  const [city, setCity] = react.useState([])
   const [formValidate, setFormValidate] = react.useState({})
   const [form, setForm] = react.useState({})
   const [disableInit, setDisableInit] = react.useState(true)
@@ -43,33 +43,33 @@ const SignUpClient = () => {
   }
 
   react.useEffect(() => {
-    const states = ufCity.states.map(({ name, sigla }) => ({ name, sigla }))
-    setUf(states)
+    const localization = ufCityFile.states.map(({ name, uf }) => ({ name, uf }))
+    setUf(localization)
   }, [])
 
   react.useEffect(() => {
-    const result = ufCity.states.find((item) => item.sigla === form.uf)
+    const result = ufCityFile.states.find((item) => item.uf === form.uf)
     if (result) {
-      setcity(result.citys)
+      setCity(result.city)
     }
   }, [form.uf])
 
-  const fieldValidate = (name, valor) => {
+  const fieldValidate = (name, value) => {
     let message = ''
     switch (name) {
       case 'name':
         var validRegex = /\d/g
-        if (validRegex.test(valor)) {
+        if (validRegex.test(value)) {
           message += 'Não pode conter números!'
-        } else if (valor.trim() === '') {
+        } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
-        } else if (valor.length <= 10) {
+        } else if (value.length <= 10) {
           message += 'Precisa ter mais que 10 caracteres!'
         }
         break
 
       case 'birthDate':
-        const datanasc = valor.replaceAll('-', '/')
+        const datanasc = value.replaceAll('-', '/')
 
         const dataAtual = moment().format('YYYY/MM/DD')
 
@@ -82,7 +82,7 @@ const SignUpClient = () => {
         break
 
       case 'uf':
-        const uf = valor
+        const uf = value
 
         if (uf === 'uf') {
           message += 'Selecione uma uf!'
@@ -90,10 +90,10 @@ const SignUpClient = () => {
         break
 
       case 'city':
-        const city = valor
+        const city = value
 
         if (city === 'city') {
-          message += 'Selecione uma city!'
+          message += 'Selecione uma cidade!'
         }
         break
 
@@ -101,15 +101,15 @@ const SignUpClient = () => {
         var filterEmail =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-        if (!filterEmail.test(valor)) {
+        if (!filterEmail.test(value)) {
           message += 'E-mail inválido!'
-        } else if (valor.replace(' ', '') === '') {
+        } else if (value.replace(' ', '') === '') {
           message += 'Campo em branco!'
         }
         break
 
       case 'password':
-        if (valor.length < 6) {
+        if (value.length < 6) {
           message += 'Não ter menos que 6 caracteres!'
         }
         break
@@ -235,11 +235,11 @@ const SignUpClient = () => {
                   }}
                 >
                   <option className='ufForm' value=''>
-                    UF
+                  selecione
                   </option>
-                  {uf?.map(({ name, sigla }, i) => (
-                    <option className='ufForm' key={i} value={sigla}>
-                      {sigla}
+                  {uf?.map(({ name, uf }, i) => (
+                    <option className='ufForm' key={i} value={uf}>
+                      {uf}
                     </option>
                   ))}
                   <FormFeedback>{formValidate.uf || ''}</FormFeedback>
@@ -269,7 +269,7 @@ const SignUpClient = () => {
                 >
                   <option value=''>selecione</option>
 
-                  {citys?.map((city, i) => (
+                  {city?.map((city, i) => (
                     <option key={i} value={city}>
                       {city}
                     </option>

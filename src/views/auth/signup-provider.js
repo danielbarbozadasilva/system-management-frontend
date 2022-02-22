@@ -15,7 +15,7 @@ import {
   Col
 } from 'reactstrap'
 import { Select } from '@material-ui/core'
-import ufCity from '~/util/state-city.json'
+import ufCityFile from '../../util/state-city.json'
 import { ValidateCnpj } from './cnpj-validate'
 
 const SignUpProvider = () => {
@@ -26,7 +26,7 @@ const SignUpProvider = () => {
   const error = useSelector((state) => state.auth.error)
   const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
-  const [uf, setuf] = useState([])
+  const [uf, setUf] = useState([])
   const [city, setCity] = useState([])
   const [formValidate, setFormValidate] = useState({})
   const [form, setForm] = useState({})
@@ -43,12 +43,12 @@ const SignUpProvider = () => {
   }
 
   useEffect(() => {
-    const states = ufCity.states.map(({ name, sigla }) => ({ name, sigla }))
-    setuf(states)
+    const localization = ufCityFile.states.map(({ name, uf }) => ({ name, uf }))
+    setUf(localization)
   }, [])
 
   useEffect(() => {
-    const result = ufCity.states.find((item) => item.sigla === form.uf)
+    const result = ufCityFile.states.find((item) => item.uf === form.uf)
     if (result) {
       setCity(result.city)
     }
@@ -350,10 +350,12 @@ const SignUpProvider = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option value=''>selecione</option>
-                  {uf?.map(({ name, sigla }, i) => (
-                    <option key={i} value={sigla}>
-                      {sigla}
+                  <option className='ufForm' value=''>
+                     selecione
+                  </option>
+                  {uf?.map(({ name, uf }, i) => (
+                    <option className='ufForm' key={i} value={uf}>
+                      {uf}
                     </option>
                   ))}
                   <FormFeedback>{formValidate.uf || ''}</FormFeedback>

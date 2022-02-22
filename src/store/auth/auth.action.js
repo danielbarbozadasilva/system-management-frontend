@@ -21,10 +21,11 @@ export const signInAction = (data) => {
       })
       .catch((error) => {
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
-        toastr.error(
-          'Login',
-          error.response?.data?.message || 'Erro ao tentar fazer login'
-        )
+        toastr.error('Login', 'Erro ao tentar fazer login')
+        // toastr.error(
+        //   'Login',
+        //   error.response?.data?.message || 'Erro ao tentar fazer login'
+        // )
       })
   }
 }
