@@ -54,74 +54,74 @@ const SignUpProvider = () => {
     }
   }, [form.uf])
 
-  const fieldValidate = (name, valor) => {
+  const fieldValidate = (name, value) => {
     let message = ''
     switch (name) {
       case 'socialName':
         var socialNameRegex = /\d/g
-        if (socialNameRegex.test(valor)) {
+        if (socialNameRegex.test(value)) {
           message += 'Não pode conter números!'
-        } else if (valor.trim() === '') {
+        } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
-        } else if (valor.length <= 10) {
-          message += 'Precisa ter mais que 10 caracteres!'
+        } else if (value.length <= 3) {
+          message += 'Precisa ter mais que 3 caracteres!'
         }
         break
 
       case 'fantasyName':
         var fantasyRegex = /\d/g
-        if (fantasyRegex.test(valor)) {
+        if (fantasyRegex.test(value)) {
           message += 'Não pode conter números!'
-        } else if (valor.trim() === '') {
+        } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
-        } else if (valor.length <= 10) {
-          message += 'Precisa ter mais que 10 caracteres!'
+        } else if (value.length <= 3) {
+          message += 'Precisa ter mais que 3 caracteres!'
         }
         break
 
       case 'cnpj':
-        if (!ValidateCnpj(valor)) {
+        if (!ValidateCnpj(value)) {
           message += 'CNPJ inválido!'
         }
         break
 
       case 'responsible':
         var nameregex = /\d/g
-        if (nameregex.test(valor)) {
+        if (nameregex.test(value)) {
           message += 'Não pode conter números!'
-        } else if (valor.trim() === '') {
+        } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
-        } else if (valor.length <= 10) {
+        } else if (value.length <= 10) {
           message += 'Precisa ter mais que 10 caracteres!'
         }
         break
 
       case 'phone':
-        // var filtraphone = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
+        var filtraphone = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
 
-        // if (!filtraphone.test(valor)) {
-        //   message += 'Número de phone inválido!'
-        // } else if (valor.replace(' ', '') === '') {
-        //   message += 'Campo em branco!'
-        // }
+        if (!filtraphone.test(value)) {
+          message += 'Número de phone inválido!'
+        } else if (value.replace(' ', '') === '') {
+          message += 'Campo em branco!'
+        }
         break
 
       case 'address':
-        if (valor === '') {
+        if (value === '') {
           message += 'Campo em branco!'
-        } else if (valor.length < 8) {
+        } else if (value.length < 8) {
           message += 'Endereço precisa ter mais que 8 caracteres!'
         }
         break
 
       case 'uf':
-        if (valor === 'selecione') {
+        if (value === 'selecione') {
           message += 'Selecione uma uf!'
         }
         break
 
       case 'city':
-        if (valor === 'selecione') {
+        if (value === 'selecione') {
           message += 'Selecione uma city!'
         }
         break
@@ -130,15 +130,15 @@ const SignUpProvider = () => {
         var filterEmail =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-        if (!filterEmail.test(valor)) {
+        if (!filterEmail.test(value)) {
           message += 'E-mail inválido!'
-        } else if (valor.replace(' ', '') === '') {
+        } else if (value.replace(' ', '') === '') {
           message += 'Campo em branco!'
         }
         break
 
       case 'password':
-        if (valor.length < 6) {
+        if (value.length < 6) {
           message += 'Não ter menos que 6 caracteres!'
         }
         break
@@ -225,7 +225,7 @@ const SignUpProvider = () => {
                   onChange={handleChange}
                   name='socialName'
                   placeholder='Insira o nome social'
-                  minLength='10'
+                  minLength='3'
                   maxLength='32'
                 />
                 <FormFeedback>{formValidate.socialName || ''}</FormFeedback>
@@ -244,7 +244,7 @@ const SignUpProvider = () => {
                   onChange={handleChange}
                   name='fantasyName'
                   placeholder='Insira o nome fantasia'
-                  minLength='10'
+                  minLength='3'
                   maxLength='32'
                 />
                 <FormFeedback>{formValidate.fantasyName || ''}</FormFeedback>
@@ -338,7 +338,7 @@ const SignUpProvider = () => {
                 margin='normal'
               >
                 <Label htmlFor='uf' id='subscription-uf-forn'>
-                  UF:
+                  Uf:
                 </Label>
                 <div />
                 <Select
@@ -370,7 +370,7 @@ const SignUpProvider = () => {
                 margin='normal'
               >
                 <Label htmlFor='uf' className='labelCity'>
-                  CIDADE:
+                  Cidade:
                 </Label>
 
                 <Select

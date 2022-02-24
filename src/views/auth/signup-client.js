@@ -57,20 +57,40 @@ const SignUpClient = () => {
   const fieldValidate = (name, value) => {
     let message = ''
     switch (name) {
-      case 'name':
+      case 'firstName':
         var validRegex = /\d/g
         if (validRegex.test(value)) {
           message += 'Não pode conter números!'
         } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
-        } else if (value.length <= 10) {
-          message += 'Precisa ter mais que 10 caracteres!'
+        } else if (value.length <= 3) {
+          message += 'Precisa ter mais que 3 caracteres!'
+        }
+        break
+
+      case 'lastName':
+        var validRegex = /\d/g
+        if (validRegex.test(value)) {
+          message += 'Não pode conter números!'
+        } else if (value.trim() === '') {
+          message += 'Não pode ser vazio!'
+        } else if (value.length <= 4) {
+          message += 'Precisa ter mais que 4 caracteres!'
+        }
+        break
+
+      case 'phone':
+        var validRegex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
+
+        if (!validRegex.test(value)) {
+          message += 'Número de telefone inválido!'
+        } else if (value.replace(' ', '') === '') {
+          message += 'Campo em branco!'
         }
         break
 
       case 'birthDate':
         const datanasc = value.replaceAll('-', '/')
-
         const dataAtual = moment().format('YYYY/MM/DD')
 
         if (!moment(datanasc).isValid) {
@@ -121,7 +141,7 @@ const SignUpClient = () => {
   const closeError = () => setHasError(false)
 
   const isNotValid = () => {
-    const inputs = ['name', 'birthDate', 'uf', 'city', 'email', 'password']
+    const inputs = ['firstName', 'lastName', 'birthDate', 'uf', 'city', 'email', 'password']
     const invalid = (label) =>
       !Object.keys(form).includes(label) || form[label].length === 0
 
@@ -146,11 +166,10 @@ const SignUpClient = () => {
 
   const insertData = () => {
     const nform = {
-      name: form.name,
-      birthDate:
-        new Date(form.birthDate)
-          .toLocaleDateString('pt-br')
-          .replaceAll('-', '/') || '',
+      firstName: form.firstName,
+      lastName: form.lastName,
+      phone: form.phone,
+      birthDate: form.birthDate,
       uf: form.uf,
       city: form.city,
       email: form.email,
@@ -163,7 +182,7 @@ const SignUpClient = () => {
   }
 
   return (
-    <Container className='formCad'>
+    <Container className='formPanel'>
       <Row className='justify-content-lg-center'>
         <Col sm={12} md={12} lg={12}>
           <div className='formCol'>
@@ -172,29 +191,48 @@ const SignUpClient = () => {
                 Cadastre-se
               </h2>
               <FormGroup>
-                <Label htmlFor='name' className='labelCli'>
-                  NOME:
+                <Label htmlFor='firstName' className='labelCli'>
+                  Nome:
                 </Label>
                 <Input
-                  invalid={formValidate.name}
+                  invalid={formValidate.firstName}
                   disabled={loading}
                   type='text'
-                  id='name'
-                  value={form.name || ''}
+                  id='firstName'
+                  value={form.firstName || ''}
                   onChange={handleChange}
-                  name='name'
-                  placeholder='Insira o seu name'
+                  name='firstName'
+                  placeholder='Insira o seu nome'
+                  minLength='4'
+                  maxLength='32'
+                  autoFocus
+                  required
+                />
+                <FormFeedback>{formValidate.firstName || ''}</FormFeedback>
+              </FormGroup>
+              <FormGroup>
+                <Label htmlFor='lastName' className='labelCli'>
+                  Sobrenome:
+                </Label>
+                <Input
+                  invalid={formValidate.lastName}
+                  disabled={loading}
+                  type='text'
+                  id='lastName'
+                  value={form.lastName || ''}
+                  onChange={handleChange}
+                  name='lastName'
+                  placeholder='Insira o seu sobrenome'
                   minLength='10'
                   maxLength='32'
                   autoFocus
                   required
                 />
-                <FormFeedback>{formValidate.name || ''}</FormFeedback>
+                <FormFeedback>{formValidate.lastName || ''}</FormFeedback>
               </FormGroup>
-
               <FormGroup>
                 <Label htmlFor='birthDate' className='labelCli'>
-                  DATA DE NASCIMENTO:
+                  Data de nascimento:
                 </Label>
                 <Input
                   invalid={formValidate.birthDate}
@@ -223,7 +261,7 @@ const SignUpClient = () => {
                 margin='larger'
               >
                 <Label htmlFor='uf' className='labelCli' id='subscription-uf-cli'>
-                  UF:
+                  Uf:
                 </Label>
                 <Select
                   native
@@ -235,7 +273,7 @@ const SignUpClient = () => {
                   }}
                 >
                   <option className='ufForm' value=''>
-                  selecione
+                    selecione
                   </option>
                   {uf?.map(({ name, uf }, i) => (
                     <option className='ufForm' key={i} value={uf}>
@@ -254,7 +292,7 @@ const SignUpClient = () => {
                 margin='normal'
               >
                 <Label htmlFor='uf' className='labelcity'>
-                  CIDADE:
+                  Cidade:
                 </Label>
 
                 <Select
@@ -282,7 +320,7 @@ const SignUpClient = () => {
             <div className='column2' id='infoColumn'>
               <FormGroup>
                 <Label htmlFor='email' className='labelCli'>
-                  E-MAIL:
+                  E-mail:
                 </Label>
                 <Input
                   invalid={formValidate.email}
@@ -298,8 +336,25 @@ const SignUpClient = () => {
               </FormGroup>
 
               <FormGroup>
+                <Label htmlFor='phone' className='labelCli'>
+                  Telefone:
+                </Label>
+                <Input
+                  invalid={formValidate.phone}
+                  disabled={loading}
+                  type='text'
+                  id='phone'
+                  value={form.phone || ''}
+                  onChange={handleChange}
+                  name='phone'
+                  placeholder='Insira seu telefone/cel'
+                />
+                <FormFeedback>{formValidate.phone || ''}</FormFeedback>
+              </FormGroup>
+
+              <FormGroup>
                 <Label htmlFor='password' className='labelCli'>
-                  SENHA:
+                  Senha:
                 </Label>
                 <Input
                   invalid={formValidate.password}
