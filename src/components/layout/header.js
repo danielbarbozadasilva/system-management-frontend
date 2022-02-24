@@ -40,34 +40,34 @@ const Header = (props) => {
 
   return (
     <header>
-      <SNavbar color="dark" dark expand="lg">
+      <SNavbar color='dark' dark expand='lg'>
         <Container>
-          <Link to="/" id="logoMain">
-            <img className="logo-img" src={LogoHeader} alt="logo" />
+          <Link to='/' id='logoMain'>
+            <img className='logo-img' src={LogoHeader} alt='logo' />
           </Link>
           <Tooltip
-            placement="top"
+            placement='top'
             isOpen={tooltipOpen}
             autohide={false}
-            target="logoMain"
+            target='logoMain'
             toggle={toggleTooltip}
           >
             Página Inicial
           </Tooltip>
           <>
             <Collapse isOpen={isOpen} navbar>
-              <Nav className="mr-auto" navbar>
+              <Nav className='mr-auto' navbar>
                 <NavItem>
-                  <SNavLink to="/" path="/">
+                  <SNavLink to='/' path='/'>
                     Home
                   </SNavLink>
                 </NavItem>
                 <>
                   <NavItem>
-                    <SNavLink to="/product">Produtos</SNavLink>
+                    <SNavLink to='/product'>Produtos</SNavLink>
                   </NavItem>
                   <NavItem>
-                    <SNavLink to="/provider">Fornecedores</SNavLink>
+                    <SNavLink to='/provider'>Fornecedores</SNavLink>
                   </NavItem>
                 </>
               </Nav>
@@ -75,34 +75,34 @@ const Header = (props) => {
 
             <Nav>
               <NavItem>
-                <SNavLink to="/signin">
-                  <div className="css-1wmxvcs">
-                    <a className="btn btn--icon" href="/sign-in">
+                <SNavLink to='/signin'>
+                  <div className='css-1wmxvcs'>
+                    <a className='btn btn--icon' href='/sign-in'>
                       <div>
                         <div>
                           <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="10 10 20 20"
-                            className="injected-svg"
-                            data-src="/static/images/inline-svgs/user.svg"
+                            xmlns='http://www.w3.org/2000/svg'
+                            viewBox='10 10 20 20'
+                            className='injected-svg'
+                            data-src='/static/images/inline-svgs/user.svg'
                           >
                             <g
-                              fill="none"
-                              fillRule="evenodd"
-                              transform="translate(10 10)"
+                              fill='none'
+                              fillRule='evenodd'
+                              transform='translate(10 10)'
                             >
-                              <path d="M0 0h20v20H0z" />
+                              <path d='M0 0h20v20H0z' />
                               <circle
-                                className="icon-white"
-                                cx="10"
-                                cy="6"
-                                r="3"
-                                fill="#464B4F"
+                                className='icon-white'
+                                cx='10'
+                                cy='6'
+                                r='3'
+                                fill='#464B4F'
                               />
                               <path
-                                className="icon-white"
-                                fill="#464B4F"
-                                d="M15 17s1-4.2-1-6c-2.3-1.5-5.7-1.5-8 0-2 1.8-1 6-1 6h10z"
+                                className='icon-white'
+                                fill='#464B4F'
+                                d='M15 17s1-4.2-1-6c-2.3-1.5-5.7-1.5-8 0-2 1.8-1 6-1 6h10z'
                               />
                             </g>
                           </svg>
@@ -116,16 +116,16 @@ const Header = (props) => {
               <div>
                 <UncontrolledDropdown>
                   <SDropdownToggle
-                    id="cardButton"
-                    className="btn btn--primary css-10sx58j"
+                    id='cardButton'
+                    className='btn btn--primary css-10sx58j'
                     caret
                   >
                     Sign up
                   </SDropdownToggle>
                   <SDropdownMenu>
-                    <SNavLink to="/registrationclient">Cliente</SNavLink>
+                    <SNavLink to='/registrationclient'>Cliente</SNavLink>
                     <DropdownItem divider />
-                    <SNavLink to="/registrationprovider">Fornecedor</SNavLink>
+                    <SNavLink to='/registrationprovider'>Fornecedor</SNavLink>
                   </SDropdownMenu>
                 </UncontrolledDropdown>
 
