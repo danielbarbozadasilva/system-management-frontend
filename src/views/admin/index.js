@@ -17,7 +17,7 @@ import Like from '~/views/admin/like'
 
 export const Menu = [
   {
-    title: 'home',
+    title: 'Início',
     icon: <DashboardIcon />,
     route: '/',
     visibleMenu: true,
@@ -26,7 +26,7 @@ export const Menu = [
     authorization: [1, 2, 3]
   },
   {
-    title: 'category',
+    title: 'Categorias',
     icon: <MdAppsIcon />,
     route: '/category',
     visibleMenu: true,
@@ -35,7 +35,7 @@ export const Menu = [
     authorization: [1]
   },
   {
-    title: 'products',
+    title: 'Produtos',
     icon: <MoreIcon />,
     route: '/product',
     visibleMenu: true,
@@ -44,7 +44,7 @@ export const Menu = [
     authorization: [2, 3]
   },
   {
-    title: 'provider',
+    title: 'Fornecedores',
     icon: <ShoppingCartIcon />,
     route: '/provider',
     visibleMenu: true,
@@ -62,7 +62,7 @@ export const Menu = [
     authorization: [2, 3]
   },
   {
-    title: 'client',
+    title: 'Clientes',
     icon: <PeopleIcon />,
     route: '/client',
     visibleMenu: true,
