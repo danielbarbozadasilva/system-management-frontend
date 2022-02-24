@@ -26,22 +26,22 @@ import { Button } from '@material-ui/core'
 
 const drawerWidth = 240
 
-export default function Dashboard(props) {
+export default function Dashboard (props) {
   const { name, typeUser } = useSelector((state) => state.auth.user)
   const dispatch = useDispatch()
 
   const userDefinition = {
     1: {
-      titulo: 'Administrador',
-      cor: '#4E6062'
+      title: 'Administrador',
+      color: '#4E6062'
     },
     2: {
-      titulo: 'provider',
-      cor: '#163D5C'
+      title: 'Fornecedor',
+      color: '#163D5C'
     },
     3: {
-      titulo: 'client',
-      cor: '#4B3204'
+      title: 'Cliente',
+      color: '#4B3204'
     }
   }
 
@@ -51,7 +51,7 @@ export default function Dashboard(props) {
     },
     toolbar: {
       paddingRight: 24,
-      backgroundColor: typeUser ? userDefinition[typeUser].cor : '#666',
+      backgroundColor: typeUser ? userDefinition[typeUser].color : '#666',
       color: '#fff'
     },
     toolbarText: {
@@ -137,12 +137,12 @@ export default function Dashboard(props) {
       height: 240
     },
     depositContext: {
-      flex: 1,
+      flex: 1
     },
     user: {
       padding: theme.spacing(1),
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'center'
 
     },
     userIcon: {
@@ -159,7 +159,7 @@ export default function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false)
   }
-  function handleLogout() {
+  function handleLogout () {
     dispatch(logoutAction())
   }
 
@@ -167,32 +167,32 @@ export default function Dashboard(props) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        position="absolute"
+        position='absolute'
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>
           <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
+            edge='start'
+            color='inherit'
+            aria-label='open drawer'
             onClick={handleDrawerOpen}
             className={classes.menuButton}
           >
             {!open ? <MenuIcon /> : <MenuOpenIcon />}
           </IconButton>
           <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
+            component='h1'
+            variant='h6'
+            color='inherit'
             noWrap
             className={classes.title}
           >
-            {typeUser ? userDefinition[typeUser].titulo : ''}
+            {typeUser ? userDefinition[typeUser].title : ''}
           </Typography>
           <Typography
-            component="h4"
-            variant="h6"
-            color="inherit"
+            component='h4'
+            variant='h6'
+            color='inherit'
             noWrap
             className={classes.user}
           >
@@ -205,7 +205,7 @@ export default function Dashboard(props) {
         </Toolbar>
       </AppBar>
       <Drawer
-        variant="permanent"
+        variant='permanent'
         classes={{
           paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
         }}
@@ -230,7 +230,7 @@ export default function Dashboard(props) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="xl" className={classes.container}>
+        <Container maxWidth='xl' className={classes.container}>
           <>{props.children}</>
         </Container>
       </main>
