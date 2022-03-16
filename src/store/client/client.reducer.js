@@ -20,17 +20,14 @@ const reducer = (state = INITIAL_STATE, action) => {
     case TYPES.CLIENT_CREATE:
       state.loading = false
       return state
-
     case TYPES.CLIENT_LIKE_LOADING:
       state.error = []
       state.loading = action.status
       return state
-
     case TYPES.CLIENT_LIKE:
       state.likes = action.data
       state.loading = false
       return state
-
     default:
       return state
   }

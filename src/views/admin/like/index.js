@@ -2,18 +2,17 @@ import React from 'react'
 import { Grid, CssBaseline } from '@material-ui/core'
 
 import Title from '../../../components/title/index'
-import DataList from '~/components/datagrid/index'
+import DataList from '../../../components/datagrid/index'
 
-import { getAllLikesClient } from '~/store/client/client.action'
+import { getAllLikesClientProduct } from '~/store/provider/provider.action'
 import { useDispatch, useSelector } from 'react-redux'
 
-const Curtida = () => {
+const Like = () => {
   const dispatch = useDispatch()
-  const curtidas = useSelector((state) => state.client.likes)
-  const loading = useSelector((state) => state.client.loading)
+  const listLikes = useSelector((state) => state.client.likes)
 
   const callStart = React.useCallback(() => {
-    dispatch(getAllLikesClient())
+    dispatch(getAllLikesClientProduct())
   }, [dispatch])
 
   React.useEffect(() => {
@@ -22,14 +21,14 @@ const Curtida = () => {
 
   const columns = [
     {
-      field: 'fantasyName',
-      headerName: 'Nome',
+      field: 'id',
+      headerName: 'ID',
       flex: 1,
       disableColumnMenu: true
     },
     {
-      field: 'email',
-      headerName: 'E-mail',
+      field: 'fantasyName',
+      headerName: 'Nome',
       flex: 1,
       disableColumnMenu: true
     }
@@ -38,15 +37,18 @@ const Curtida = () => {
   const actions = () => null
   return (
     <>
-      <Title title="Curtidas" actions={actions} />
+      <Title title='Curtidas' actions={actions} />
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>
-          <DataList data={curtidas} columns={columns} />
+          {console.log('listLikes', listLikes)}
+          <DataList
+            data={listLikes} columns={columns}
+          />
         </Grid>
       </Grid>
     </>
   )
 }
 
-export default Curtida
+export default Like

@@ -6,11 +6,11 @@ import styled from 'styled-components'
 
 const DataList = ({ data, modal, loading }) => {
   const mappedData = data.map((item) => {
-    const { imagem, status, ...resto } = item
+    const { image, status, ...rest } = item
     return {
-      ...resto,
-      status: status ? 'Ativa' : 'Inativa',
-      imagem: `${process.env.REACT_APP_API}${imagem}`
+      ...rest,
+      status: status ? 'ENABLE' : 'DISABLE',
+      image: `${process.env.REACT_APP_API}${image}`
     }
   })
 
@@ -23,10 +23,10 @@ const DataList = ({ data, modal, loading }) => {
   const actions = ({ id }) => {
     return (
       <>
-        <IconButton onClick={() => modal(2, id)} color="primary" size="small">
+        <IconButton onClick={() => modal(2, id)} color="primary" size="small">>
           <FiEdit />
         </IconButton>
-        <IconButton onClick={() => modal(3, id)} color="primary" size="small">
+        <IconButton onClick={() => modal(3, id)} color="primary" size="small">>
           <FiTrash2 />
         </IconButton>
       </>
@@ -34,8 +34,8 @@ const DataList = ({ data, modal, loading }) => {
   }
   const columns = [
     {
-      field: 'imagem',
-      headerName: 'Imagem',
+      field: 'image',
+      headerName: 'image',
       renderCell: thumb,
       width: 140,
       disableColumnMenu: true
@@ -47,7 +47,7 @@ const DataList = ({ data, modal, loading }) => {
       disableColumnMenu: true
     },
     {
-      field: 'descricao',
+      field: 'description',
       headerName: 'Descrição',
       flex: 2,
       disableColumnMenu: true

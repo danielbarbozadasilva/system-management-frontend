@@ -13,8 +13,8 @@ export const listProductByIdService = (productid) =>
 export const createProductService = (providerid, data) =>
   http.post(`provider/${providerid}/product`, data)
 
-export const deleteProductService = (productid) =>
-  http.delete(`${baseUrl}/${productid}`)
+export const deleteProductService = (providerid, productid) =>
+  http.delete(`provider/${providerid}/product/${productid}`)
 
-export const updateProductService = (providerid, productid, data) =>
-  http.put(`provider/${providerid}/product/${productid}`, data)
+export const updateProductService = (providerid, productid, data, config) =>
+  http.put(`/provider/${providerid}/product/${productid}`, data, config)

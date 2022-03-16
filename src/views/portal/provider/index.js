@@ -5,7 +5,7 @@ import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { getAllProviders } from '../../../store/provider/provider.action'
-import Imagem from '../../../assets/img/image-portal-providers.jpg'
+import image from '../../../assets/img/image-portal-providers.jpg'
 import Buscar from '../../../components/portal/filters/index'
 
 function Provider (props) {
@@ -22,10 +22,10 @@ function Provider (props) {
   const callprovider = useCallback(async (id, nameFilter) => {
     if (id) {
       useEffect(() => {
-        getData(id, nameFilter)
+        getData(id, nameFilter)      
       }, [])
     } else {
-      dispatch(await getAllProviders())
+      dispatch(getAllProviders())
     }
   }, [dispatch])
 
@@ -55,7 +55,7 @@ function Provider (props) {
         <Boxprovider>
           {!loading
             ? (
-                'Não há provider disponivel'
+                'Não há produtos disponiveis'
               )
             : (
               <Cardprovider item={{ ...item, status: true }} />
@@ -82,8 +82,8 @@ function Provider (props) {
       <div>
         <div className='container-fluid'>
           <div className='row'>
-            <div className='imagem'>
-              <img className='portalImage' src={Imagem} alt='' srcSet='' />
+            <div className='image'>
+              <img className='portalImage' src={image} alt='' srcSet='' />
             </div>
             <div className='text'>
               <h2>Encontre novas horizontes...</h2>

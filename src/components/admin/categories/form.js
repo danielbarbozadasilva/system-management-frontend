@@ -21,7 +21,7 @@ const Form = ({ submit, ...props }) => {
   const loading = useSelector((state) => state.category.loading)
 
   if (Object.keys(props).length > 0 && !isEdit) {
-    setPreview(process.env.REACT_APP_API + props?.data?.imagem)
+    setPreview(process.env.REACT_APP_API + props?.data?.image)
     setForm(props.data)
     setEdit(true)
   }
@@ -33,6 +33,7 @@ const Form = ({ submit, ...props }) => {
       [name]: value
     })
   }
+
   const handleSwitch = () => setForm({ ...form, status: !form.status })
 
   const handleSubmit = () => {
@@ -44,17 +45,18 @@ const Form = ({ submit, ...props }) => {
   }
 
   const removeImage = () => {
-    delete form.imagem
+    delete form.image
     setForm(form)
     setPreview('')
   }
+
   const previewImg = (props) => {
-    const imagem = props.target.files[0]
-    const url = URL.createObjectURL(imagem)
+    const image = props.target.files[0]
+    const url = URL.createObjectURL(image)
     setPreview(url)
     setForm({
       ...form,
-      imagem
+      image
     })
   }
 
@@ -63,10 +65,10 @@ const Form = ({ submit, ...props }) => {
       <Content noValidate>
         {preview.length > 0
           ? (
-            <Grid container direction="column">
+            <Grid container direction='column'>
               <Grid item sm={1} md={1} xl={1}>
                 <Image src={preview} />
-                <Button onClick={removeImage} component="label">
+                <Button onClick={removeImage} component='label'>
                   Remove
                 </Button>
               </Grid>
@@ -74,79 +76,79 @@ const Form = ({ submit, ...props }) => {
             )
           : (
             <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              component="label"
+              variant='contained'
+              color='primary'
+              size='small'
+              component='label'
             >
               Upload Foto
               <input
-                accept="image/*"
-                type="file"
-                name="imagem"
+                accept='image/*'
+                type='file'
+                name='image'
                 hidden
                 onChange={previewImg}
               />
             </Button>
             )}
         <TextField
-          size="small"
-          margin="normal"
-          variant="outlined"
+          size='small'
+          margin='normal'
+          variant='outlined'
           required
           fullWidth
-          id="name"
-          label="name"
-          name="name"
-          autoComplete="name"
+          id='name'
+          label='name'
+          name='name'
+          autoComplete='name'
           autoFocus
           value={form.name || ''}
           onChange={handleChange}
           disabled={loading}
         />
         <TextField
-          size="small"
+          size='small'
           multiline
           rows={3}
           rowsMax={6}
-          variant="outlined"
-          margin="normal"
+          variant='outlined'
+          margin='normal'
           required
           fullWidth
-          name="descricao"
-          label="Descrição"
-          type="text"
-          id="descricao"
+          name='description'
+          label='Descrição'
+          type='text'
+          id='description'
           disabled={loading}
           onChange={handleChange}
-          value={form.descricao || ''}
+          value={form.description || ''}
         />
         <FormControlLabel
           control={
             <Switch
               checked={form.status}
               onChange={handleSwitch}
-              name="status"
-              color="primary"
+              name='status'
+              color='primary'
               disabled={loading}
             />
           }
-          label="Status"
+          label='Status'
         />
         <Submit>
           <Button
-            size="small"
-            className="buttonSubmit"
-            type="submit"
-            variant="contained"
-            color="primary"
+            size='small'
+            className='buttonSubmit'
+            type='submit'
+            variant='contained'
+            color='primary'
             onClick={handleSubmit}
             disabled={loading}
           >
             {isEdit ? 'Atualizar' : 'Cadastrar'}
           </Button>
-          <Grid container direction="column">
-            <LinearProgress variant="determinate" value={percent} />
+          <Grid container direction='column'>
+            <LinearProgress variant='determinate' value={percent} />
             {loading && percent > 0 ? percent : ''}
           </Grid>
         </Submit>

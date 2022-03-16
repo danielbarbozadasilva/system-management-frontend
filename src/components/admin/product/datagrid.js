@@ -7,17 +7,12 @@ import styled from 'styled-components'
 
 const DataList = ({ data, modal, loading }) => {
   const mappedData = data.map((item) => {
-    const { imagem, status, preco, categoriaId, ...resto } = item
-
+    const { image, status, category, ...rest } = item
     return {
-      ...resto,
-      status: status ? 'Ativa' : 'Inativa',
-      imagem: `${process.env.REACT_APP_API}${imagem}`,
-      preco: parseFloat(preco).toLocaleString('pt-br', {
-        style: 'currency',
-        currency: 'BRL'
-      }),
-      categorianame: categoriaId.name
+      ...rest,
+      status: status,
+      image: `${process.env.REACT_APP_API}${image}`,
+      categoriaId: category
     }
   })
 
@@ -30,10 +25,10 @@ const DataList = ({ data, modal, loading }) => {
     return (
       <>
         {typeUser !== 3}
-        <IconButton onClick={() => modal(2, id)} color="primary" size="small">
+        <IconButton onClick={() => modal(2, id)} color='primary' size='small'>
           <FiEdit />
         </IconButton>
-        <IconButton onClick={() => modal(3, id)} color="primary" size="small">
+        <IconButton onClick={() => modal(3, id)} color='primary' size='small'>
           <FiTrash2 />
         </IconButton>
       </>
@@ -42,7 +37,7 @@ const DataList = ({ data, modal, loading }) => {
   }
   const columns = [
     {
-      field: 'imagem',
+      field: 'image',
       headerName: 'Imagem',
       renderCell: thumb,
       width: 140,
@@ -50,18 +45,18 @@ const DataList = ({ data, modal, loading }) => {
     },
     {
       field: 'name',
-      headerName: 'name',
+      headerName: 'Nome',
       flex: 2,
       disableColumnMenu: true
     },
     {
-      field: 'categorianame',
-      headerName: 'Categoria',
+      field: 'categoriaId',
+      headerName: 'ID Categoria',
       flex: 2,
       disableColumnMenu: true
     },
     {
-      field: 'preco',
+      field: 'price',
       headerName: 'Preço',
       width: 120,
       disableColumnMenu: true

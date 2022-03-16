@@ -17,13 +17,13 @@ const Form = ({ submit, ...props }) => {
     status: false
   })
 
+  const percent = useSelector((state) => state.product.upload?.percent || 0)
+  const loading = useSelector((state) => state.product.loading)
+  const categorias = useSelector((state) => state.category.all)
   const [isEdit, setEdit] = useState(false)
-  const percent = useSelector((state) => state.produto.upload?.percent || 0)
-  const loading = useSelector((state) => state.produto.loading)
-  const categorias = useSelector((state) => state.categoria.all)
 
   if (Object.keys(props).length > 0 && !isEdit) {
-    setPreview(process.env.REACT_APP_API + props?.data?.imagem)
+    setPreview(process.env.REACT_APP_API + props?.data?.image)
     setForm(props.data)
     setEdit(true)
   }
@@ -40,27 +40,27 @@ const Form = ({ submit, ...props }) => {
   const handleSubmit = () => {
     const newForm = {
       ...form,
-      categoria: form.categoriaId,
+      category: form.category,
       provider: (getUser().id),
-      preco: (form.preco).replace('R$', '').replace(',', '.'),
+      price: (form.price).replace('R$', '').replace(',', '.'),
+      image: form.image
     }
-    console.log(JSON.stringify(newForm))
     submit(newForm)
   }
 
   const removeImage = () => {
-    delete form.imagem
+    delete form.image
     setForm(form)
     setPreview('')
   }
 
   const previewImg = (props) => {
-    const imagem = props.target.files[0]
-    const url = URL.createObjectURL(imagem)
+    const image = props.target.files[0]
+    const url = URL.createObjectURL(image)
     setPreview(url)
     setForm({
       ...form,
-      imagem
+      image
     })
   }
 
@@ -69,10 +69,10 @@ const Form = ({ submit, ...props }) => {
       <Content noValidate>
         {preview.length > 0
           ? (
-            <Grid container direction="column">
+            <Grid container direction='column'>
               <Grid item sm={1} md={1} xl={1}>
                 <Image src={preview} />
-                <Button onClick={removeImage} component="label">
+                <Button onClick={removeImage} component='label'>
                   Remove
                 </Button>
               </Grid>
@@ -80,81 +80,81 @@ const Form = ({ submit, ...props }) => {
             )
           : (
             <Button
-              variant="contained"
-              color="primary"
-              size="small"
-              component="label"
+              variant='contained'
+              color='primary'
+              size='small'
+              component='label'
             >
-              Upload Foto
+              Enviar Foto
               <input
-                accept="image/*"
-                type="file"
-                name="imagem"
+                accept='image/*'
+                type='file'
+                name='image'
                 hidden
                 onChange={previewImg}
               />
             </Button>
             )}
         <TextField
-          size="small"
-          margin="normal"
-          variant="outlined"
+          size='small'
+          margin='normal'
+          variant='outlined'
           required
           fullWidth
-          id="name"
-          label="name"
-          name="name"
-          autoComplete="name"
+          id='name'
+          label='name'
+          name='name'
+          autoComplete='name'
           autoFocus
           value={form.name || ''}
           onChange={handleChange}
           disabled={loading}
         />
         <TextField
-          size="small"
+          size='small'
           multiline
           rows={3}
           rowsMax={6}
-          variant="outlined"
-          margin="normal"
+          variant='outlined'
+          margin='normal'
           required
           fullWidth
-          name="descricao"
-          label="Descrição"
-          type="text"
-          id="descricao"
+          name='description'
+          label='Descrição'
+          type='text'
+          id='description'
           disabled={loading}
           onChange={handleChange}
-          value={form.descricao || ''}
+          value={form.description || ''}
         />
 
         <TextField
-          size="small"
-          margin="normal"
-          variant="outlined"
+          size='small'
+          margin='normal'
+          variant='outlined'
           required
           fullWidth
-          name="preco"
-          label="Preço"
-          type="text"
-          id="preco"
+          name='price'
+          label='Preço'
+          type='text'
+          id='price'
           disabled={loading}
           onChange={handleChange}
-          value={form.preco || ''}
+          value={form.price || ''}
         />
         <Select
-          size="small"
-          variant="outlined"
+          size='small'
+          variant='outlined'
           fullWidth
           native
-          value={form.categoriaId || ''}
+          value={form.category || ''}
           onChange={handleChange}
           inputProps={{
-            name: 'categoriaId',
+            name: 'category',
             id: 'outlined-native-simple'
           }}
         >
-          <option value="">Selecione</option>
+          <option value=''>Selecione</option>
           {categorias?.map(({ id, name }, i) => (
             <option key={i} value={id}>
               {name}
@@ -163,18 +163,18 @@ const Form = ({ submit, ...props }) => {
         </Select>
         <Submit>
           <Button
-            size="small"
-            className="buttonSubmit"
-            type="submit"
-            variant="contained"
-            color="primary"
+            size='small'
+            className='buttonSubmit'
+            type='submit'
+            variant='contained'
+            color='primary'
             onClick={handleSubmit}
             disabled={loading}
           >
             {isEdit ? 'Atualizar' : 'Cadastrar'}
           </Button>
-          <Grid container direction="column">
-            <LinearProgress variant="determinate" value={percent} />
+          <Grid container direction='column'>
+            <LinearProgress variant='determinate' value={percent} />
             {loading && percent > 0 ? percent : ''}
           </Grid>
         </Submit>
@@ -189,6 +189,12 @@ const Content = styled.div`
   margin-bottom: 10px;
 `
 
+const Submit = styled.div`
+  margin: ${({ theme: t }) => t.spacing(0.5)};
+  .buttonSubmit {
+    margin: ${({ theme: t }) => t.spacing(3, 0, 2)};
+  }
+`
 const Box = styled(Paper)`
   padding: 16px;
 `
@@ -200,11 +206,4 @@ const Image = styled.img`
   border-radius: 20%;
   overflow: hidden;
   object-fit: cover;
-`
-
-const Submit = styled.div`
-  margin: ${({ theme: t }) => t.spacing(0.5)};
-  .buttonSubmit {
-    margin: ${({ theme: t }) => t.spacing(3, 0, 2)};
-  }
 `

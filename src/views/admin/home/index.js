@@ -26,7 +26,7 @@ function Home () {
   const actions = () => null
 
   const data = {
-    labels: ['provider', 'categories', 'products'],
+    labels: ['Fornecedor', 'Categorias', 'Produtos'],
     datasets: [
       {
         label: '# of Votes',

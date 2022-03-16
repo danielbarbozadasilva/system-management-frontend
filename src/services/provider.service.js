@@ -23,7 +23,7 @@ export const listProvidersByLocationService = (data) =>
 export const changeStatusService = (providerid, data) =>
   http.put(`${baseUrl}/${providerid}`, data)
 
-export const searchLikeProviderProductService = providerid =>
+export const searchLikeProviderProductService = (providerid) =>
   http.get(`${baseUrl}/${providerid}/product`)
 
 export const createLikeProductService = (providerid, productid) =>

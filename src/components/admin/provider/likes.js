@@ -7,7 +7,7 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 import DataList from '~/components/datagrid'
 
-const ListaCurtidas = ({ open, close, curtidas }) => {
+const ListLike = ({ open, close, curtidas }) => {
   const columnsCurtidas = [
     {
       field: 'clientId',
@@ -28,15 +28,15 @@ const ListaCurtidas = ({ open, close, curtidas }) => {
     <Dialog
       open={open}
       onClose={close}
-      aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description"
+      aria-labelledby='alert-dialog-title'
+      aria-describedby='alert-dialog-description'
     >
-      <DialogTitle id="alert-dialog-title">Lista de curtidas</DialogTitle>
+      <DialogTitle id='alert-dialog-title'>Lista de curtidas</DialogTitle>
       <DialogContent style={{ width: '500px ' }}>
         <DataList data={curtidas} columns={columnsCurtidas} loading={false} />
       </DialogContent>
       <DialogActions>
-        <Button onClick={close} color="primary" autoFocus>
+        <Button onClick={close} color='primary' autoFocus>
           fechar
         </Button>
       </DialogActions>
@@ -44,4 +44,4 @@ const ListaCurtidas = ({ open, close, curtidas }) => {
   )
 }
 
-export default ListaCurtidas
+export default ListLike

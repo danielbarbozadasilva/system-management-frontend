@@ -20,8 +20,8 @@ const Produto = () => {
   const [modal, setModal] = React.useState({})
 
   const products = useSelector((state) => state.product.all)
-  const loading = useSelector((state) => state.produto.loading)
-  const selected = useSelector((state) => state.produto.selected)
+  const loading = useSelector((state) => state.product.loading)
+  const selected = useSelector((state) => state.product.selected)
 
   const callProduto = useCallback(() => {
     dispatch(getAllProducts())
@@ -65,9 +65,7 @@ const Produto = () => {
   const actions = () => (
     <Button
       onClick={() => toogleModal(1, null)}
-      variant="contained"
-      color="primary"
-      size="small"
+      variant='contained'
     >
       Novo
     </Button>
@@ -75,7 +73,7 @@ const Produto = () => {
 
   return (
     <>
-      <Title title="Produto" subTitle="Página de Produto" actions={actions} />
+      <Title title='Produto' subTitle='Página de Produto' actions={actions} />
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={8}>
@@ -83,7 +81,7 @@ const Produto = () => {
         </Grid>
       </Grid>
       <DialogModal
-        title="Produto"
+        title='Produto'
         open={modal.status || false}
         close={closeModal}
       >

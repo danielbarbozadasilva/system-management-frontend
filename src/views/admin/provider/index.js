@@ -49,11 +49,10 @@ function Provider () {
 
     return (
       <>
-        <Tooltip title="Listar de curtida dos client">
+        <Tooltip title='Curtida dos clientes'>
           <AiFillStar
             className={curte ? 'iconeStar' : 'doNotShow'}
-            onClick={() => openLikeClient(row.likes)}
-            color="primary"
+            onClick={() => openLikeClient(row.likes)} color='primary'
           />
         </Tooltip>
       </>
@@ -65,11 +64,10 @@ function Provider () {
 
     return (
       <>
-        <Tooltip title="Listar produtos">
+        <Tooltip title='Listar produtos'>
           <IconButton
             className={product ? 'iconeStar' : 'doNotShow'}
-            onClick={() => openProduct(row.products)}
-            color="primary"
+            onClick={() => openProduct(row.products)} color='primary'
           >
             <MoreIcon />
           </IconButton>
@@ -83,8 +81,8 @@ function Provider () {
 
     return (
       <>
-        <Tooltip title={status ? 'Desativar' : 'Ativar'}>
-          <IconButton onClick={() => toggleActive(id, status)} color="primary">
+        <Tooltip title={status ? 'ENABLE' : 'DISABLE'}>
+          <IconButton onClick={() => toggleActive(id, status)} color='primary'>
             <>{!status ? <BsToggleOff /> : <BsToggleOn />}</>
           </IconButton>
         </Tooltip>
@@ -111,7 +109,7 @@ function Provider () {
     },
     {
       field: 'likes',
-      headerName: 'Qtd. Curtidas',
+      headerName: 'Qtd. likes',
       width: 150,
       align: 'center',
       renderCell: (row) => row?.value?.length,
@@ -153,8 +151,8 @@ function Provider () {
   return (
     <>
       <Title
-        title="provider"
-        subTitle="Página de categorias"
+        title='provider'
+        subTitle='Página de categorias'
         actions={actions}
       />
       <Grid container spacing={2}>
@@ -169,7 +167,7 @@ function Provider () {
         close={() => setModalProduct({ ...modalProduct, open: false })}
       />
       <ListLike
-        curtidas={modalLike.data}
+        likes={modalLike.data}
         open={modalLike.open}
         close={() => setModalLike({ ...modalLike, open: false })}
       />

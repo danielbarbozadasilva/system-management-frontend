@@ -45,22 +45,20 @@ const category = () => {
 
   const submitForm = (form) => {
     switch (modal.tipo) {
-      // create new category
       case 1:
         dispatch(createCategory(form))
         setModal(false)
         return
 
-      // update category
       case 2:
         dispatch(updateCategory(form))
         setModal(false)
         return
 
-      // remove category
       case 3:
         dispatch(removeCategory(modal.id)).then(() => setModal(false))
         return
+
       default:
         return false
     }
@@ -69,9 +67,9 @@ const category = () => {
   const actions = () => (
     <Button
       onClick={() => toogleModal(1, null)}
-      variant="contained"
-      color="primary"
-      size="small"
+      variant='contained'
+      color='primary'
+      size='small'
     >
       Novo
     </Button>
@@ -80,8 +78,8 @@ const category = () => {
   return (
     <>
       <Title
-        title="category"
-        subTitle="Página de categorias"
+        title='category'
+        subTitle='Página de categorias'
         actions={actions}
       />
       <Grid container spacing={2}>
@@ -92,7 +90,7 @@ const category = () => {
       </Grid>
 
       <DialogModal
-        title="category"
+        title='category'
         open={modal.status || false}
         close={closeModal}
       >

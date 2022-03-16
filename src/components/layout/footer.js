@@ -19,7 +19,7 @@ const Footer = (props) => {
           </div>
 
           <div className="col-lg-5 col-md-4 col-sm-12 col-xs-12 ">
-            <img className="imageFooter" src={imageFooter} alt="imagem do footer" />
+            <img className="imageFooter" src={imageFooter} alt="image do footer" />
           </div>
 
           <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 info">
