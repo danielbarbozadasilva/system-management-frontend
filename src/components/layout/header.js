@@ -59,7 +59,7 @@ const Header = (props) => {
               <Nav className='mr-auto' navbar>
                 <NavItem>
                   <SNavLink to='/' path='/'>
-                    Home
+                    Início
                   </SNavLink>
                 </NavItem>
                 <>
@@ -108,7 +108,7 @@ const Header = (props) => {
                           </svg>
                         </div>
                       </div>
-                      Sign in
+                      Logar
                     </a>
                   </div>
                 </SNavLink>
@@ -120,7 +120,7 @@ const Header = (props) => {
                     className='btn btn--primary css-10sx58j'
                     caret
                   >
-                    Sign up
+                    Cadastrar
                   </SDropdownToggle>
                   <SDropdownMenu>
                     <SNavLink to='/registrationclient'>Cliente</SNavLink>
