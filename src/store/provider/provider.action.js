@@ -20,10 +20,9 @@ export const getAllProviders = (namefilter) => {
       const namefilter = ''
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
       const result = await listAllProviderService(namefilter)
-      console.log(result.data.data)
       dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
+      toastr.error('Aconteceu um erro', error)
     }
   }
 }
@@ -34,7 +33,7 @@ export const getProviderById = (providerId) => {
       const result = await listProviderByIdService(providerId)
       dispatch({ type: TYPES.PROVIDER_PRODUCT_ID, data: result.data })
     } catch (error) {
-      toastr.error('provider', 'Erro ao carregar products')
+      toastr.error('provider', 'Erro ao carregar os produtos')
     }
   }
 }
@@ -43,10 +42,10 @@ export const createProvider = (data) => {
   return async (dispatch) => {
     try {
       await createProviderService(data)
-      toastr.success('provider', 'provider cadastrado com sucesso!')
+      toastr.success('Fornecedor', 'cadastrado com sucesso!')
       navigate('/signin')
     } catch (error) {
-      toastr.error('provider', 'Preencha todos os campos!')
+      toastr.error('Erro', 'Preencha todos os campos!')
     }
   }
 }
@@ -108,11 +107,11 @@ export const removeProvider = (providerId) => {
     try {
       const result = await removeProviderService(providerId)
       dispatch({ type: TYPES.PROVIDER_EDIT, data: result.data })
-      toastr.success('provider', 'Removido com sucesso')
+      toastr.success('Fornecedor', 'Removido com sucesso')
       dispatch(listAllProviderService())
     } catch (error) {
       toastr.error('aconteceu um erro', error)
-      toastr.error('provider', error.toString())
+      toastr.error('Fornecedor', error.toString())
     }
   }
 }
@@ -124,13 +123,13 @@ export const setStatusProvider = (id, ativo) => {
       if (ativo) {
         result = await changeStatusService(id, 'ENABLE')
         toastr.success(
-          `provider ${result.data.data.fantasyName}`,
+          `Fornecedor ${result.data.data.fantasyName}`,
           'Desativado com sucesso'
         )
       } else {
         result = await changeStatusService(id, 'DISABLE')
         toastr.success(
-          `provider ${result.data.data.fantasyName}`,
+          `Fornecedor ${result.data.data.fantasyName}`,
           'Ativado com sucesso'
         )
       }
@@ -150,7 +149,7 @@ export const getProduct = (id) => {
       const result = await listProviderByIdService(id)
       dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
     } catch (error) {
-      toastr.error('provider', 'Erro ao carregar products')
+      toastr.error('provider', 'Erro ao carregar os produtos')
     }
   }
 }
