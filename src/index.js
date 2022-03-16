@@ -11,12 +11,17 @@ import GlobalStyle from './config/globalStyled'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 
+import { ThemeProvider } from 'styled-components'
+import theme from './plugins/theme'
+
 ReactDOM.render(
   <Provider store={store}>
     <ReduxToastr />
-    <GlobalStyle />
-    <CssBaseline />
-    <Routers />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <CssBaseline />
+      <Routers />
+    </ThemeProvider>
   </Provider>,
   document.getElementById('root')
 )
