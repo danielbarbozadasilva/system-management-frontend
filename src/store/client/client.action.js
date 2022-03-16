@@ -23,10 +23,10 @@ export const createClient = (data) => {
   return async (dispatch) => {
     try {
       await createClientService(data)
-      toastr.success('client', 'client cadastrado com sucesso!')
+      toastr.success('Cadastrado!', 'Cliente cadastrado com sucesso!')
       navigate('/signin')
     } catch (error) {
-      toastr.error('client', 'ocorreu um erro!')
+      toastr.error('Erro!', 'ocorreu um erro!')
     }
   }
 }
@@ -44,6 +44,9 @@ export const getAllLikesClient = () => {
       const result = await listByIdClientService(clientId)
 
       dispatch({ type: TYPES.CLIENT_LIKE, data: result.data.data })
+      console.log('---FOI-')
+
+      console.log('----', result.data.data)
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
