@@ -20,11 +20,11 @@ export const listProvidersByLocationService = (data) =>
     `${baseUrl}/filter/uf/${data.uf}/city/${data.city}`
   )
 
-export const changeStatusService = (providerid, data) =>
-  http.put(`${baseUrl}/${providerid}`, data)
+export const changeStatusService = (providerid, status) =>
+  http.put(`${baseUrl}/${providerid}/status/${status}`)
 
 export const searchLikeProviderProductService = (providerid) =>
-  http.get(`${baseUrl}/${providerid}/product`)
+  http.get(`${baseUrl}/${providerid}/like`)
 
 export const createLikeProductService = (providerid, productid) =>
   http.post(`${baseUrl}/${providerid}/product/${productid}/like`)
