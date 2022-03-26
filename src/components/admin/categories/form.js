@@ -4,8 +4,6 @@ import {
   Button,
   Grid,
   Paper,
-  FormControlLabel,
-  Switch,
   LinearProgress
 } from '@material-ui/core'
 import styled from 'styled-components'
@@ -13,9 +11,7 @@ import { useSelector } from 'react-redux'
 
 const Form = ({ submit, ...props }) => {
   const [preview, setPreview] = useState('')
-  const [form, setForm] = useState({
-    status: false
-  })
+  const [form, setForm] = useState({})
   const [isEdit, setEdit] = useState(false)
   const percent = useSelector((state) => state.category.upload?.percent || 0)
   const loading = useSelector((state) => state.category.loading)
@@ -34,12 +30,9 @@ const Form = ({ submit, ...props }) => {
     })
   }
 
-  const handleSwitch = () => setForm({ ...form, status: !form.status })
-
   const handleSubmit = () => {
     const newForm = {
-      ...form,
-      status: form.status.toString()
+      ...form
     }
     submit(newForm)
   }
@@ -122,18 +115,6 @@ const Form = ({ submit, ...props }) => {
           disabled={loading}
           onChange={handleChange}
           value={form.description || ''}
-        />
-        <FormControlLabel
-          control={
-            <Switch
-              checked={form.status}
-              onChange={handleSwitch}
-              name='status'
-              color='primary'
-              disabled={loading}
-            />
-          }
-          label='Status'
         />
         <Submit>
           <Button

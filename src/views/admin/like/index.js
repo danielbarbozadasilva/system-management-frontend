@@ -4,15 +4,15 @@ import { Grid, CssBaseline } from '@material-ui/core'
 import Title from '../../../components/title/index'
 import DataList from '../../../components/datagrid/index'
 
-import { getAllLikesClientProduct } from '~/store/provider/provider.action'
+import { getAllLikesProviderProduct } from '~/store/provider/provider.action'
 import { useDispatch, useSelector } from 'react-redux'
 
 const Like = () => {
   const dispatch = useDispatch()
-  const listLikes = useSelector((state) => state.client.likes)
+  const listLikes = useSelector((state) => state.provider.likes)
 
   const callStart = React.useCallback(() => {
-    dispatch(getAllLikesClientProduct())
+    dispatch(getAllLikesProviderProduct())
   }, [dispatch])
 
   React.useEffect(() => {
@@ -27,7 +27,7 @@ const Like = () => {
       disableColumnMenu: true
     },
     {
-      field: 'fantasyName',
+      field: 'product',
       headerName: 'Nome',
       flex: 1,
       disableColumnMenu: true
@@ -41,7 +41,7 @@ const Like = () => {
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>
-          {console.log('listLikes', listLikes)}
+          {console.log(listLikes)}
           <DataList
             data={listLikes} columns={columns}
           />

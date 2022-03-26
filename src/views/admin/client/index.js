@@ -5,7 +5,7 @@ import Title from '~/components/title'
 import DataList from '~/components/datagrid'
 import { getAllClients } from '~/store/client/client.action'
 
-function client() {
+function client () {
   const dispatch = useDispatch()
 
   const client = useSelector((state) => state.client.all)
@@ -22,7 +22,7 @@ function client() {
   const columns = [
     {
       field: 'name',
-      headerName: 'name',
+      headerName: 'Nome',
       width: 230,
       align: 'center',
       headerAlign: 'center',
@@ -62,7 +62,7 @@ function client() {
     },
     {
       field: 'city',
-      headerName: 'city',
+      headerName: 'Cidade',
       width: 150,
       align: 'center',
       headerAlign: 'center',
@@ -74,7 +74,7 @@ function client() {
 
   return (
     <>
-      <Title title="client" actions={actions} />
+      <Title title='Clientes' actions={actions} />
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>

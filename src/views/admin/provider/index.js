@@ -11,6 +11,9 @@ import {
   getAllProviders,
   setStatusProvider
 } from '~/store/provider/provider.action'
+import {
+  getAllProductsWithFilter
+} from '~/store/product/product.action'
 import ListProduct from '~/components/admin/provider/product'
 import ListLike from '~/components/admin/provider/likes'
 import '../../../assets/css/style.css'
@@ -18,8 +21,8 @@ import '../../../assets/css/style.css'
 function Provider () {
   const dispatch = useDispatch()
   const [modalProduct, setModalProduct] = React.useState({})
-  const product = useSelector((state) => state.product.all)
   const provider = useSelector((state) => state.provider.all)
+
   const loading = useSelector((state) => state.provider.loading)
   const [modalLike, setModalLike] = React.useState(false, {})
   const idUser = useSelector((state) => state.auth.user)
@@ -45,14 +48,13 @@ function Provider () {
   }
 
   const actionModalLike = ({ row }) => {
-    const curte = Number(row?.likes) !== 0 && row?.kind !== 'provider'
-
+    const curte = row?.count_likes !== 0 && row?.kind === 'provider'
     return (
       <>
-        <Tooltip title='Curtida dos clientes'>
+        <Tooltip title='Curtidas do cliente'>
           <AiFillStar
             className={curte ? 'iconeStar' : 'doNotShow'}
-            onClick={() => openLikeClient(row.likes)} color='primary'
+            onClick={() => openLikeClient(row.result)} color='primary'
           />
         </Tooltip>
       </>
@@ -60,14 +62,13 @@ function Provider () {
   }
 
   const actionModalproduct = ({ row }) => {
-    const product = Number(row?.products) !== 0 && row?.kind !== 'provider'
-
+    const product = row?.count_likes !== 0 && row?.kind === 'provider'
     return (
       <>
         <Tooltip title='Listar produtos'>
           <IconButton
             className={product ? 'iconeStar' : 'doNotShow'}
-            onClick={() => openProduct(row.products)} color='primary'
+            onClick={() => openProduct(row.result_like)} color='primary'
           >
             <MoreIcon />
           </IconButton>
@@ -78,10 +79,9 @@ function Provider () {
 
   const actionModalStatus = ({ id, row }) => {
     const status = row.status === 'ENABLE'
-
     return (
       <>
-        <Tooltip title={status ? 'ENABLE' : 'DISABLE'}>
+        <Tooltip title={status ? 'DISABLE' : 'ENABLE'}>
           <IconButton onClick={() => toggleActive(id, status)} color='primary'>
             <>{!status ? <BsToggleOff /> : <BsToggleOn />}</>
           </IconButton>
@@ -94,7 +94,7 @@ function Provider () {
     {
       field: 'cnpj',
       headerName: 'Cnpj',
-      width: 220,
+      flex: 1,
       align: 'center',
       headerAlign: 'center',
       disableColumnMenu: true
@@ -102,33 +102,33 @@ function Provider () {
     {
       field: 'fantasyName',
       headerName: 'Nome fantasia',
-      width: 270,
+      flex: 1,
       align: 'center',
       headerAlign: 'center',
       disableColumnMenu: true
     },
-    {
-      field: 'likes',
-      headerName: 'Qtd. likes',
-      width: 150,
-      align: 'center',
-      renderCell: (row) => row?.value?.length,
-      headerAlign: 'center',
-      disableColumnMenu: true
-    },
+    // {
+    //   field: 'count_likes',
+    //   headerName: 'Qtd. likes',
+    //   width: 150,
+    //   renderCell: actionModalLike,
+    //   align: 'center',
+    //   headerAlign: 'center',
+    //   disableColumnMenu: true
+    // },
     {
       field: 'actionsLikes',
-      headerName: 'Clientes',
+      headerName: 'Likes cliente',
       align: 'center',
       renderCell: actionModalLike,
-      width: 150,
+      flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'actionsproducts',
       headerName: 'Produtos',
-      width: 120,
+      flex: 1,
       align: 'center',
       headerAlign: 'center',
       renderCell: actionModalproduct,
@@ -136,11 +136,11 @@ function Provider () {
     },
     {
       field: 'actionsStatus',
-      headerName: 'status',
+      headerName: 'Status',
       align: 'center',
       headerAlign: 'center',
       renderCell: actionModalStatus,
-      width: 110,
+      flex: 1,
       GridColDef: 'center',
       disableColumnMenu: true
     }
@@ -151,7 +151,7 @@ function Provider () {
   return (
     <>
       <Title
-        title='provider'
+        title='Fornecedores'
         subTitle='Página de categorias'
         actions={actions}
       />

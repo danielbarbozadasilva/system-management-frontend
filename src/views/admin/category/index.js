@@ -78,7 +78,7 @@ const category = () => {
   return (
     <>
       <Title
-        title='category'
+        title='Categorias'
         subTitle='Página de categorias'
         actions={actions}
       />
@@ -90,7 +90,7 @@ const category = () => {
       </Grid>
 
       <DialogModal
-        title='category'
+        title='Categoria'
         open={modal.status || false}
         close={closeModal}
       >
