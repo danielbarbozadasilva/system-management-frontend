@@ -6,10 +6,11 @@ import styled from 'styled-components'
 
 const DataList = ({ data, modal, loading }) => {
   const mappedData = data.map((item) => {
-    const { image, status, ...rest } = item
+    const { id, name, description, image } = item
     return {
-      ...rest,
-      status: status ? 'ENABLE' : 'DISABLE',
+      id: id,
+      name: name,
+      description: description,
       image: `${process.env.REACT_APP_API}${image}`
     }
   })
@@ -35,28 +36,36 @@ const DataList = ({ data, modal, loading }) => {
   const columns = [
     {
       field: 'image',
-      headerName: 'image',
+      headerName: 'Imagem',
+      flex: 1,
+      align: 'center',
+      headerAlign: 'center',
       renderCell: thumb,
-      width: 140,
       disableColumnMenu: true
     },
     {
       field: 'name',
-      headerName: 'name',
-      flex: 2,
+      headerName: 'Nome',
+      flex: 1,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'description',
       headerName: 'Descrição',
-      flex: 2,
+      flex: 1,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'actions',
       headerName: 'Ações',
       renderCell: actions,
-      width: 140,
+      flex: 1,
+      align: 'center',
+      headerAlign: 'center',
       disableColumnMenu: true
     }
   ]
