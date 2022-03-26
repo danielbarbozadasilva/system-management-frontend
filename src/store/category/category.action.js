@@ -58,25 +58,24 @@ export const createCategory = (data) => {
       Object.keys(data).map((k) => formData.append(k, data[k]))
       const result = await insertCategoryService(formData, config)
       dispatch({ type: TYPES.CATEGORY_CREATE, data: result.data })
-      toastr.success('category', 'category cadastrada com sucesso!')
+      toastr.success('Categoria', 'cadastrada com sucesso!')
       dispatch(getAllCategories())
     } catch (error) {
-      toastr.error('category', 'Preencha todos os campos!')
+      toastr.error('Categoria', 'Preencha todos os campos!')
     }
   }
 }
 
-export const editCategory = (id, formData) => {
+export const editCategory = (id) => {
   return async (dispatch) => {
     dispatch({
       type: TYPES.CATEGORY_UPLOAD,
       upload: 0
     })
     try {
-      const result = await updateCategoryService(id, formData)
-      dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
+      const result = await listCategoryByIdService(id)
+      dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data.data })
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
     }
   }
 }
@@ -109,13 +108,13 @@ export const updateCategory = ({ id, ...data }) => {
       .then((result) => {
         dispatch(editCategory(id, formData))
         dispatch(getAllCategories())
-        toastr.success('category', 'category atualizada com sucesso')
+        toastr.success('Categoria', 'atualizada com sucesso')
         return true
       })
       .catch((error) => {
         dispatch({ type: TYPES.CATEGORY_LOADING, status: false })
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
-        toastr.error('category', error.toString())
+        toastr.error('Categoria', error.toString())
       })
       .finally(() => {
         dispatch({ type: TYPES.CATEGORY_LOADING, status: false })
@@ -127,12 +126,11 @@ export const removeCategory = (id) => {
   return async (dispatch) => {
     try {
       const result = await removeCategoryProductService(id)
-      dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data })
+      dispatch({ type: TYPES.CATEGORY_REMOVE, data: result.data })
       toastr.success('Categoria', 'removida com sucesso')
       dispatch(getAllCategories())
     } catch (error) {
       toastr.error('Aconteceu um erro', error)
-      toastr.error('Categoria', error.toString())
     }
   }
 }

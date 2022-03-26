@@ -22,6 +22,10 @@ const reducer = (state = INITIAL_STATE, action) => {
       state.selected = action.data
       state.loading = false
       return state
+    case Types.CATEGORY_REMOVE:
+      state.selected = action.data
+      state.loading = false
+      return state
     case Types.CATEGORY_ID:
       state.dataById = action.data
       state.loading = false

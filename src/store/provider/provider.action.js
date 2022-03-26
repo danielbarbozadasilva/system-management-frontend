@@ -17,7 +17,6 @@ import { navigate } from '@reach/router'
 export const getAllProviders = (namefilter) => {
   return async (dispatch) => {
     try {
-      const namefilter = ''
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
       const result = await listAllProviderService(namefilter)
       dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
@@ -33,7 +32,7 @@ export const getProviderById = (providerId) => {
       const result = await listProviderByIdService(providerId)
       dispatch({ type: TYPES.PROVIDER_PRODUCT_ID, data: result.data })
     } catch (error) {
-      toastr.error('provider', 'Erro ao carregar os produtos')
+      toastr.error('Fornecedor', 'erro ao carregar os produtos')
     }
   }
 }
@@ -67,9 +66,9 @@ export const editProvider = (providerId) => {
 
 export const updateProvider = ({ providerId, ...data }) => {
   return (dispatch) => {
-    dispatch({ type: TYPES.provider_LOADING, status: true })
+    dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
     dispatch({
-      type: TYPES.provider_UPLOAD,
+      type: TYPES.PROVIDER_UPLOAD,
       upload: 0
     })
     const config = {
@@ -81,7 +80,7 @@ export const updateProvider = ({ providerId, ...data }) => {
           (progressEvent.loaded * 100) / progressEvent.total
         )
         dispatch({
-          type: TYPES.provider_UPLOAD,
+          type: TYPES.PROVIDER_UPLOAD,
           upload: percentCompleted
         })
       }
@@ -110,8 +109,7 @@ export const removeProvider = (providerId) => {
       toastr.success('Fornecedor', 'Removido com sucesso')
       dispatch(listAllProviderService())
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
-      toastr.error('Fornecedor', error.toString())
+      toastr.error('Aconteceu um erro', error.toString())
     }
   }
 }
@@ -121,15 +119,15 @@ export const setStatusProvider = (id, ativo) => {
     let result
     try {
       if (ativo) {
-        result = await changeStatusService(id, 'ENABLE')
+        const result = await changeStatusService(id, 'DISABLE')
         toastr.success(
-          `Fornecedor ${result.data.data.fantasyName}`,
+          `Fornecedor ${result.data.data.name}`,
           'Desativado com sucesso'
         )
       } else {
-        result = await changeStatusService(id, 'DISABLE')
+        const result = await changeStatusService(id, 'ENABLE')
         toastr.success(
-          `Fornecedor ${result.data.data.fantasyName}`,
+          `Fornecedor ${result.data.data.name}`,
           'Ativado com sucesso'
         )
       }
@@ -154,23 +152,24 @@ export const getProduct = (id) => {
   }
 }
 
-export const getAllLikesClientProduct = () => {
+export const getAllLikesProviderProduct = () => {
   return async (dispatch, getState) => {
     const {
       auth: {
-        user: { id: clientId }
+        user: { id: providerId }
       }
     } = getState()
 
     try {
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
-      const result = await searchLikeProviderProductService(clientId)
+      const result = await searchLikeProviderProductService(providerId)
       dispatch({
         type: TYPES.PROVIDER_LIKE_LIST,
-        data: result.data.data.data
+        data: result.data.data
       })
-    } catch (error) {}
-    return false
+    } catch (error) {
+
+    }
   }
 }
 

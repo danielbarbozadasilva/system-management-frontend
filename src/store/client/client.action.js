@@ -12,7 +12,7 @@ export const getAllClients = () => {
     try {
       dispatch({ type: TYPES.CLIENT_LOADING, status: true })
       const result = await listAllClientService()
-      dispatch({ type: TYPES.CLIENT_ALL, data: result.data })
+      dispatch({ type: TYPES.CLIENT_ALL, data: result.data.data })
     } catch (error) {
       toastr.error('Aconteceu um erro', error)
     }

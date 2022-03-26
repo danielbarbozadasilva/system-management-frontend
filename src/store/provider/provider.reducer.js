@@ -7,7 +7,8 @@ const INITIAL_STATE = {
   selected: {},
   products: [],
   providerById: [],
-  search: []
+  search: [],
+  likes: []
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -45,6 +46,10 @@ const reducer = (state = INITIAL_STATE, action) => {
       state.loading = false
       return state
     case TYPES.PROVIDER_CREATE:
+      state.loading = false
+      return state
+    case TYPES.PROVIDER_LIKE_LIST:
+      state.likes = action.data
       state.loading = false
       return state
     default:

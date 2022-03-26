@@ -27,8 +27,10 @@ export const getAllProductsWithFilter = (filter = {}) => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.PRODUCT_LOADING, status: true })
+      console.log('errr', filter)
+
       const result = await listProductWithFilterService(filter)
-      console.log('result', result.data.data)
+      console.log('errr', result.data.data)
       dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
     } catch (error) {
       toastr.error('Aconteceu um erro', error)
