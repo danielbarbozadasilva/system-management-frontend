@@ -14,17 +14,22 @@ import {
 import {
   getAllProductsWithFilter
 } from '~/store/product/product.action'
-import ListProduct from '~/components/admin/provider/product'
+
+import ListProduct from '~/components/admin/provider/products'
 import ListLike from '~/components/admin/provider/likes'
+import ListClient from '~/components/admin/provider/clients'
+
 import '../../../assets/css/style.css'
 
 function Provider () {
   const dispatch = useDispatch()
-  const [modalProduct, setModalProduct] = React.useState({})
-  const provider = useSelector((state) => state.provider.all)
 
-  const loading = useSelector((state) => state.provider.loading)
+  const [modalProduct, setModalProduct] = React.useState({})
+  const [modalClient, setModalClient] = React.useState(false, {})
   const [modalLike, setModalLike] = React.useState(false, {})
+
+  const provider = useSelector((state) => state.provider.all)
+  const loading = useSelector((state) => state.provider.loading)
   const idUser = useSelector((state) => state.auth.user)
 
   const callProvider = useCallback(() => {
@@ -42,33 +47,35 @@ function Provider () {
   function openProduct (row) {
     setModalProduct({ open: true, data: row })
   }
-
+  function openClient (row) {
+    setModalClient({ open: true, data: row })
+  }
   function openLikeClient (row) {
     setModalLike({ open: true, data: row })
   }
 
   const actionModalLike = ({ row }) => {
-    const curte = row?.count_likes !== 0 && row?.kind === 'provider'
+    const like = row?.result_count !== 0 && row?.kind === 'provider'
     return (
       <>
-        <Tooltip title='Curtidas do cliente'>
+        <Tooltip title='Curtidas'>
           <AiFillStar
-            className={curte ? 'iconeStar' : 'doNotShow'}
-            onClick={() => openLikeClient(row.result)} color='primary'
+            className={like ? 'iconeStar' : 'doNotShow'}
+            onClick={() => openLikeClient(row.result_likes)} color='primary'
           />
         </Tooltip>
       </>
     )
   }
 
-  const actionModalproduct = ({ row }) => {
-    const product = row?.count_likes !== 0 && row?.kind === 'provider'
+  const actionModalProduct = ({ row }) => {
+    const product = row?.result_products.length !== 0 && row?.kind === 'provider'
     return (
       <>
         <Tooltip title='Listar produtos'>
           <IconButton
             className={product ? 'iconeStar' : 'doNotShow'}
-            onClick={() => openProduct(row.result_like)} color='primary'
+            onClick={() => openProduct(row?.result_products)} color='primary'
           >
             <MoreIcon />
           </IconButton>
@@ -76,14 +83,28 @@ function Provider () {
       </>
     )
   }
-
+  const actionModalClient = ({ row }) => {
+    const client = row?.result_client.length !== 0
+    return (
+      <>
+        <Tooltip title='Listar clientes'>
+          <IconButton
+            className={client ? 'iconeStar' : 'doNotShow'}
+            onClick={() => openClient(row?.result_client)} color='primary'
+          >
+            <MoreIcon />
+          </IconButton>
+        </Tooltip>
+      </>
+    )
+  }
   const actionModalStatus = ({ id, row }) => {
     const status = row.status === 'ENABLE'
     return (
       <>
         <Tooltip title={status ? 'DISABLE' : 'ENABLE'}>
           <IconButton onClick={() => toggleActive(id, status)} color='primary'>
-            <>{!status ? <BsToggleOff /> : <BsToggleOn />}</>
+            <>{status ? <BsToggleOn /> : <BsToggleOff />}</>
           </IconButton>
         </Tooltip>
       </>
@@ -107,20 +128,19 @@ function Provider () {
       headerAlign: 'center',
       disableColumnMenu: true
     },
-    // {
-    //   field: 'count_likes',
-    //   headerName: 'Qtd. likes',
-    //   width: 150,
-    //   renderCell: actionModalLike,
-    //   align: 'center',
-    //   headerAlign: 'center',
-    //   disableColumnMenu: true
-    // },
+    {
+      field: 'result_count',
+      headerName: 'Qtd. likes',
+      width: 150,
+      align: 'center',
+      headerAlign: 'center',
+      disableColumnMenu: true
+    },
     {
       field: 'actionsLikes',
-      headerName: 'Likes cliente',
-      align: 'center',
+      headerName: 'Likes',
       renderCell: actionModalLike,
+      align: 'center',
       flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
@@ -131,7 +151,15 @@ function Provider () {
       flex: 1,
       align: 'center',
       headerAlign: 'center',
-      renderCell: actionModalproduct,
+      renderCell: actionModalProduct,
+      disableColumnMenu: true
+    }, {
+      field: 'actionsClient',
+      headerName: 'Clientes',
+      flex: 1,
+      align: 'center',
+      headerAlign: 'center',
+      renderCell: actionModalClient,
       disableColumnMenu: true
     },
     {
@@ -165,6 +193,11 @@ function Provider () {
         open={modalProduct.open}
         products={modalProduct.data}
         close={() => setModalProduct({ ...modalProduct, open: false })}
+      />
+      <ListClient
+        open={modalClient.open}
+        clients={modalClient.data}
+        close={() => setModalClient({ ...modalClient, open: false })}
       />
       <ListLike
         likes={modalLike.data}

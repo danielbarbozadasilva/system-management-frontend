@@ -5,14 +5,22 @@ import Title from '../../../components/title/index'
 import DataList from '../../../components/datagrid/index'
 
 import { getAllLikesProviderProduct } from '~/store/provider/provider.action'
+import { getAllLikesClient } from '~/store/client/client.action'
+
 import { useDispatch, useSelector } from 'react-redux'
 
 const Like = () => {
   const dispatch = useDispatch()
-  const listLikes = useSelector((state) => state.provider.likes)
+  const listLikeClient = useSelector((state) => state.client.likes)
+  const listLikeProvider = useSelector((state) => state.provider.likes)
+  const typeUser = useSelector((state) => state.auth.user.typeUser)
 
   const callStart = React.useCallback(() => {
-    dispatch(getAllLikesProviderProduct())
+    if (typeUser === 2) {
+      dispatch(getAllLikesProviderProduct())
+    } else {
+      dispatch(getAllLikesClient())
+    }
   }, [dispatch])
 
   React.useEffect(() => {
@@ -27,7 +35,7 @@ const Like = () => {
       disableColumnMenu: true
     },
     {
-      field: 'product',
+      field: 'name',
       headerName: 'Nome',
       flex: 1,
       disableColumnMenu: true
@@ -41,9 +49,8 @@ const Like = () => {
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>
-          {console.log(listLikes)}
           <DataList
-            data={listLikes} columns={columns}
+            data={typeUser === 3 ? listLikeClient : listLikeProvider} columns={columns}
           />
         </Grid>
       </Grid>
