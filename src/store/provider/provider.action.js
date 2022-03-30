@@ -7,7 +7,8 @@ import {
   listProvidersByLocationService,
   changeStatusService,
   searchLikeProviderProductService,
-  createLikeProductService
+  createLikeProductService,
+  removeLikeProviderProductService
 } from '~/services/provider.service'
 
 import TYPES from '~/store/types'
@@ -173,13 +174,22 @@ export const getAllLikesProviderProduct = () => {
   }
 }
 
-export const likeProduct = ({ name, providerId }) => {
+export const updateLikeProduct = ( productid, providerid, nameProduct, statusLike ) => {
   return async dispatch => {
-    try {
-      await createLikeProductService(providerId)
-      toastr.success('Curtida', `O produto ${name} foi curtido com sucesso.`)
-    } catch (error) {
-      toastr.error('Curtida', 'Erro ao fazer a curtida')
+    if (statusLike) {
+      try {
+        await removeLikeProviderProductService(providerid, productid)
+        toastr.success('Curtida', 'A curtida foi removida com sucesso.')
+      } catch (error) {
+        toastr.error('Curtida', 'Erro ao remover a curtida o produto')
+      }
+    } else {
+      try {
+        await createLikeProductService(providerid, productid)
+        toastr.success('Curtida', `O produto ${nameProduct} foi curtido com sucesso.`)
+      } catch (error) {
+        toastr.error('Curtida', 'Erro ao fazer a curtida')
+      }
     }
   }
 }

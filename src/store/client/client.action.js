@@ -4,7 +4,7 @@ import { navigate } from '@reach/router'
 import {
   listAllClientService,
   createClientService,
-  listByIdClientService
+  listLikeByIdClientService
 } from '~/services/client.service'
 
 export const getAllClients = () => {
@@ -38,15 +38,10 @@ export const getAllLikesClient = () => {
         user: { id: clientId }
       }
     } = getState()
-
     try {
       dispatch({ type: TYPES.CLIENT_LIKE_LOADING, status: true })
-      const result = await listByIdClientService(clientId)
-
+      const result = await listLikeByIdClientService(clientId)
       dispatch({ type: TYPES.CLIENT_LIKE, data: result.data.data })
-      console.log('---FOI-')
-
-      console.log('----', result.data.data)
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
