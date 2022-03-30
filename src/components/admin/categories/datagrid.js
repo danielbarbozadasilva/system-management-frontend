@@ -24,10 +24,10 @@ const DataList = ({ data, modal, loading }) => {
   const actions = ({ id }) => {
     return (
       <>
-        <IconButton onClick={() => modal(2, id)} color="primary" size="small">>
+        <IconButton onClick={() => modal(2, id)} color="primary" size="small">
           <FiEdit />
         </IconButton>
-        <IconButton onClick={() => modal(3, id)} color="primary" size="small">>
+        <IconButton onClick={() => modal(3, id)} color="primary" size="small">
           <FiTrash2 />
         </IconButton>
       </>

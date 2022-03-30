@@ -1,11 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  updateLikeProduct
+} from '~/store/provider/provider.action'
 import { DataGrid } from '@material-ui/data-grid'
 import { FiTrash2, FiEdit } from 'react-icons/fi'
-import { IconButton } from '@material-ui/core'
-import styled from 'styled-components'
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
+import { IconButton, Tooltip } from '@material-ui/core'
 
 const DataList = ({ data, modal, loading }) => {
+  const dispatch = useDispatch()
+
   const mappedData = data.map((item) => {
     const { image, status, category, ...rest } = item
     return {
@@ -16,56 +22,106 @@ const DataList = ({ data, modal, loading }) => {
     }
   })
 
+  const toggleActive = (id, provider, name, statusLike) => {
+    dispatch(updateLikeProduct(id, provider, name, statusLike))
+  }
+
   const thumb = ({ formattedValue }) => {
     return <img src={formattedValue} />
   }
-  const typeUser = useSelector((state) => state.auth.user.typeUser)
 
-  const actions = ({ id }) => {
+  const actionLike = ({ id, row }) => {
+    const statusLike = row.result_likes[0]
     return (
       <>
-        {typeUser !== 3}
+        <Tooltip title={statusLike ? 'REMOVER CURTIDA' : 'CURTIR'}>
+          <IconButton onClick={() => toggleActive(id, row.provider, row.name, statusLike)} color='primary'>
+            <>{statusLike ? <AiFillStar /> : <AiOutlineStar />}</>
+          </IconButton>
+        </Tooltip>
+      </>
+    )
+  }
+
+  const actionEdit = ({ id, row }) => {
+    return (
+      <>
         <IconButton onClick={() => modal(2, id)} color='primary' size='small'>
           <FiEdit />
         </IconButton>
+      </>
+    )
+  }
+
+  const actionRemove = ({ id, row }) => {
+    return (
+      <>
         <IconButton onClick={() => modal(3, id)} color='primary' size='small'>
           <FiTrash2 />
         </IconButton>
       </>
-
     )
   }
+
   const columns = [
     {
       field: 'image',
       headerName: 'Imagem',
       renderCell: thumb,
-      width: 140,
+      align: 'center',
+      flex: 1,
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'name',
       headerName: 'Nome',
-      flex: 2,
+      align: 'center',
+      flex: 1,
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
-      field: 'categoriaId',
-      headerName: 'ID Categoria',
-      flex: 2,
+      field: 'categoryName',
+      headerName: 'Categoria',
+      align: 'center',
+      flex: 1,
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'price',
       headerName: 'Preço',
-      width: 120,
+      align: 'center',
+      flex: 1,
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
-      field: 'actions',
-      headerName: 'Ações',
-      renderCell: typeUser !== 3 ? actions : '',
-      width: 140,
+      field: 'actionLike',
+      headerName: 'Curtir',
+      renderCell: actionLike,
+      align: 'center',
+      flex: 1,
+      headerAlign: 'center',
+      disableColumnMenu: true
+    },
+    {
+      field: 'actionEdit',
+      headerName: 'Editar',
+      renderCell: actionEdit,
+      align: 'center',
+      flex: 1,
+      headerAlign: 'center',
+      disableColumnMenu: true
+    },
+    {
+      field: 'actionRemove',
+      headerName: 'Excluir',
+      renderCell: actionRemove,
+      align: 'center',
+      flex: 1,
+      headerAlign: 'center',
       disableColumnMenu: true
     }
   ]
