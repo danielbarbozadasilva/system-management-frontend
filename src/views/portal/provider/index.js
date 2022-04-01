@@ -22,7 +22,7 @@ function Provider (props) {
   const callprovider = useCallback(async (id, nameFilter) => {
     if (id) {
       useEffect(() => {
-        getData(id, nameFilter)      
+        getData(id, nameFilter)
       }, [])
     } else {
       dispatch(getAllProviders())

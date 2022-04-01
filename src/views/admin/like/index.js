@@ -31,13 +31,17 @@ const Like = () => {
     {
       field: 'id',
       headerName: 'ID',
+      align: 'center',
       flex: 1,
+      headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'name',
       headerName: 'Nome',
+      align: 'center',
       flex: 1,
+      headerAlign: 'center',
       disableColumnMenu: true
     }
   ]

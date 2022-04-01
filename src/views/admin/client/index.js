@@ -23,48 +23,48 @@ function client () {
     {
       field: 'name',
       headerName: 'Nome',
-      width: 230,
       align: 'center',
+      flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'birthDate',
       headerName: 'Data nascimento',
-      width: 210,
       align: 'center',
+      flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'email',
       headerName: 'E-mail',
-      width: 260,
       align: 'center',
+      flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'status',
       headerName: 'Status',
-      width: 100,
       align: 'center',
+      flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'uf',
       headerName: 'UF',
-      width: 100,
       align: 'center',
+      flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
     },
     {
       field: 'city',
       headerName: 'Cidade',
-      width: 150,
       align: 'center',
+      flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
     }

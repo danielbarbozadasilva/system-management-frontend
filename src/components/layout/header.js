@@ -40,7 +40,7 @@ const Header = (props) => {
 
   return (
     <header>
-      <SNavbar color='dark' dark expand='lg'>
+      <SNavbar expand='lg'>
         <Container>
           <Link to='/' id='logoMain'>
             <img className='logo-img' src={LogoHeader} alt='logo' />
@@ -75,50 +75,45 @@ const Header = (props) => {
 
             <Nav>
               <NavItem>
-                <SNavLink to='/signin'>
-                  <div className='css-1wmxvcs'>
-                    <a className='btn btn--icon' href='/sign-in'>
-                      <div>
-                        <div>
-                          <svg
-                            xmlns='http://www.w3.org/2000/svg'
-                            viewBox='10 10 20 20'
-                            className='injected-svg'
-                            data-src='/static/images/inline-svgs/user.svg'
-                          >
-                            <g
-                              fill='none'
-                              fillRule='evenodd'
-                              transform='translate(10 10)'
-                            >
-                              <path d='M0 0h20v20H0z' />
-                              <circle
-                                className='icon-white'
-                                cx='10'
-                                cy='6'
-                                r='3'
-                                fill='#464B4F'
-                              />
-                              <path
-                                className='icon-white'
-                                fill='#464B4F'
-                                d='M15 17s1-4.2-1-6c-2.3-1.5-5.7-1.5-8 0-2 1.8-1 6-1 6h10z'
-                              />
-                            </g>
-                          </svg>
-                        </div>
-                      </div>
-                      Logar
-                    </a>
+                <NavLink to='/signin' className='btn btn--icon'>
+                  <div>
+                    <div>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        viewBox='10 10 20 20'
+                        className='injected-svg'
+                        data-src='/static/images/inline-svgs/user.svg'
+                      >
+                        <g
+                          fill='none'
+                          fillRule='evenodd'
+                          transform='translate(10 10)'
+                        >
+                          <path d='M0 0h20v20H0z' />
+                          <circle
+                            className='icon-white'
+                            cx='10'
+                            cy='6'
+                            r='3'
+                            fill='#464B4F'
+                          />
+                          <path
+                            className='icon-white'
+                            fill='#464B4F'
+                            d='M15 17s1-4.2-1-6c-2.3-1.5-5.7-1.5-8 0-2 1.8-1 6-1 6h10z'
+                          />
+                        </g>
+                      </svg>
+                    </div>
                   </div>
-                </SNavLink>
+                  Logar
+                </NavLink>
               </NavItem>
               <div>
                 <UncontrolledDropdown>
                   <SDropdownToggle
                     id='cardButton'
-                    className='btn btn--primary css-10sx58j'
-                    caret
+                    className='btn btn--icon'
                   >
                     Cadastrar
                   </SDropdownToggle>
@@ -128,14 +123,9 @@ const Header = (props) => {
                     <SNavLink to='/registrationprovider'>Fornecedor</SNavLink>
                   </SDropdownMenu>
                 </UncontrolledDropdown>
-
-                <div>
-                  <div />
-                </div>
               </div>
             </Nav>
           </>
-
           <NavbarToggler onClick={toggle} />
         </Container>
       </SNavbar>

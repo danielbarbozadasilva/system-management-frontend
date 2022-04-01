@@ -5,16 +5,6 @@ import { IconButton } from '@material-ui/core'
 import styled from 'styled-components'
 
 const DataList = ({ data, modal, loading }) => {
-  const mappedData = data.map((item) => {
-    const { id, name, description, image } = item
-    return {
-      id: id,
-      name: name,
-      description: description,
-      image: `${process.env.REACT_APP_API}${image}`
-    }
-  })
-
   const thumb = ({ formattedValue }) => {
     return (
       <img src={formattedValue} />
@@ -24,10 +14,10 @@ const DataList = ({ data, modal, loading }) => {
   const actions = ({ id }) => {
     return (
       <>
-        <IconButton onClick={() => modal(2, id)} color="primary" size="small">
+        <IconButton onClick={() => modal(2, id)} color='primary' size='small'>
           <FiEdit />
         </IconButton>
-        <IconButton onClick={() => modal(3, id)} color="primary" size="small">
+        <IconButton onClick={() => modal(3, id)} color='primary' size='small'>
           <FiTrash2 />
         </IconButton>
       </>
@@ -76,7 +66,7 @@ const DataList = ({ data, modal, loading }) => {
 
   return (
     <BoxTable>
-      <DataGrid rows={mappedData} columns={columns} pageSize={10} />
+      <DataGrid rows={data} columns={columns} pageSize={10} />
     </BoxTable>
   )
 }

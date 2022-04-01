@@ -23,13 +23,13 @@ const Produto = () => {
   const loading = useSelector((state) => state.product.loading)
   const selected = useSelector((state) => state.product.selected)
 
-  const callProduto = useCallback(() => {
+  const callProduts = useCallback(() => {
     dispatch(getAllProducts())
   }, [dispatch])
 
   useEffect(() => {
-    callProduto()
-  }, [callProduto])
+    callProduts()
+  }, [callProduts])
 
   const toogleModal = (tipo = 1, id = null) => {
     if (id) {

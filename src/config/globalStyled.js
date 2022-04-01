@@ -9,8 +9,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     #root {
-        display:flex;
-        flex-direction:column;
+        display: flex;
+        flex-direction: column;
         height: 100vh;
     }
 

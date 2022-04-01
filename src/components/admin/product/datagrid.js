@@ -12,16 +12,6 @@ import { IconButton, Tooltip } from '@material-ui/core'
 const DataList = ({ data, modal, loading }) => {
   const dispatch = useDispatch()
 
-  const mappedData = data.map((item) => {
-    const { image, status, category, ...rest } = item
-    return {
-      ...rest,
-      status: status,
-      image: `${process.env.REACT_APP_API}${image}`,
-      categoriaId: category
-    }
-  })
-
   const toggleActive = (id, provider, name, statusLike) => {
     dispatch(updateLikeProduct(id, provider, name, statusLike))
   }
@@ -132,7 +122,7 @@ const DataList = ({ data, modal, loading }) => {
 
   return (
     <BoxTable>
-      <DataGrid rows={mappedData} columns={columns} pageSize={10} />
+      <DataGrid rows={data} columns={columns} pageSize={10} />
     </BoxTable>
   )
 }
