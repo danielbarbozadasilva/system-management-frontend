@@ -10,7 +10,7 @@ import {
   createLikeProductService,
   removeLikeProviderProductService
 } from '~/services/provider.service'
-
+import { getAllProducts } from '~/store/product/product.action'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
@@ -115,27 +115,15 @@ export const removeProvider = (providerId) => {
   }
 }
 
-export const setStatusProvider = (id, ativo) => {
+export const setStatusProvider = (id, status) => {
   return async (dispatch, getState) => {
-    let result
     try {
-      if (ativo) {
-        const result = await changeStatusService(id, 'DISABLE')
-        toastr.success(
-          `Fornecedor ${result.data.data.name}`,
-          'Desativado com sucesso'
-        )
-      } else {
-        const result = await changeStatusService(id, 'ENABLE')
-        toastr.success(
-          `Fornecedor ${result.data.data.name}`,
-          'Ativado com sucesso'
-        )
-      }
+      const result = await changeStatusService(id, status)
+      const msg = status === 'ENABLE' ? 'Ativado' : 'Desativado'
+      toastr.success(`Fornecedor ${result.data.data.name}`, `${msg} com sucesso`)
       const all = getState().provider.all
       const index = all.findIndex(item => item.id === id)
       all[index].status = result.data.data.status
-
       dispatch({ type: TYPES.PROVIDER_ALL, data: [...all] })
     } catch (err) {}
   }
@@ -174,7 +162,7 @@ export const getAllLikesProviderProduct = () => {
   }
 }
 
-export const updateLikeProduct = ( productid, providerid, nameProduct, statusLike ) => {
+export const updateLikeProduct = (productid, providerid, nameProduct, statusLike) => {
   return async dispatch => {
     if (statusLike) {
       try {
@@ -188,9 +176,11 @@ export const updateLikeProduct = ( productid, providerid, nameProduct, statusLik
         await createLikeProductService(providerid, productid)
         toastr.success('Curtida', `O produto ${nameProduct} foi curtido com sucesso.`)
       } catch (error) {
-        toastr.error('Curtida', 'Erro ao fazer a curtida')
+        const { data } = error.response
+        toastr.error('Curtida', data.message.details)
       }
     }
+    dispatch(getAllProducts())
   }
 }
 

@@ -14,6 +14,7 @@ import Category from './category/index'
 import Client from './client/index'
 import { useSelector } from 'react-redux'
 import Like from '~/views/admin/like'
+import ProviderEvaluete from '~/views/admin/provider/evalueteProvider'
 
 export const Menu = [
   {
@@ -41,7 +42,7 @@ export const Menu = [
     visibleMenu: true,
     enabled: true,
     component: Product,
-    authorization: [2, 3]
+    authorization: [2]
   },
   {
     title: 'Fornecedores',
@@ -51,6 +52,15 @@ export const Menu = [
     enabled: true,
     component: Provider,
     authorization: [1]
+  },
+  {
+    title: 'Avaliar Fornecedor',
+    icon: <ShoppingCartIcon />,
+    route: '/providerevaluete',
+    visibleMenu: true,
+    enabled: true,
+    component: ProviderEvaluete,
+    authorization: [3]
   },
   {
     title: 'Curtidas',
@@ -82,7 +92,7 @@ const Admin = (props) => {
 
   return (
     <Router>
-      <PanelLayout path="/">
+      <PanelLayout path='/'>
         {rotasAutorizadas.map(({ component: Component, route }, i) => (
           <Component key={i} path={route} />
         ))}

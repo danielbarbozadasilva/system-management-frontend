@@ -2,7 +2,6 @@ import React, { useEffect, useCallback } from 'react'
 import { Grid, CssBaseline, IconButton, Tooltip } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
 import { AiFillStar } from 'react-icons/ai'
-
 import Title from '~/components/title'
 import DataList from '~/components/datagrid'
 import { BsToggleOff, BsToggleOn } from 'react-icons/bs'
@@ -11,15 +10,12 @@ import {
   getAllProviders,
   setStatusProvider
 } from '~/store/provider/provider.action'
-import {
-  getAllProductsWithFilter
-} from '~/store/product/product.action'
+import '../../../assets/css/style.css'
 
 import ListProduct from '~/components/admin/provider/products'
 import ListLike from '~/components/admin/provider/likes'
 import ListClient from '~/components/admin/provider/clients'
 
-import '../../../assets/css/style.css'
 
 function Provider () {
   const dispatch = useDispatch()
@@ -30,7 +26,6 @@ function Provider () {
 
   const provider = useSelector((state) => state.provider.all)
   const loading = useSelector((state) => state.provider.loading)
-  const idUser = useSelector((state) => state.auth.user)
 
   const callProvider = useCallback(() => {
     dispatch(getAllProviders())
@@ -103,7 +98,7 @@ function Provider () {
     return (
       <>
         <Tooltip title={status ? 'DISABLE' : 'ENABLE'}>
-          <IconButton onClick={() => toggleActive(id, status)} color='primary'>
+          <IconButton onClick={() => toggleActive(id, status ? 'DISABLE' : 'ENABLE')} color='primary'>
             <>{status ? <BsToggleOn /> : <BsToggleOff />}</>
           </IconButton>
         </Tooltip>
@@ -175,12 +170,11 @@ function Provider () {
   ]
 
   const actions = () => null
-
   return (
     <>
       <Title
         title='Fornecedores'
-        subTitle='Página de categorias'
+        subTitle='Página de fornecedores'
         actions={actions}
       />
       <Grid container spacing={2}>

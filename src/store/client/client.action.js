@@ -1,10 +1,13 @@
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
+import { getAllProviders } from '~/store/provider/provider.action'
 import {
   listAllClientService,
   createClientService,
-  listLikeByIdClientService
+  listLikeByIdClientService,
+  createLikeProviderService,
+  removeLikeProviderService
 } from '~/services/client.service'
 
 export const getAllClients = () => {
@@ -27,6 +30,24 @@ export const createClient = (data) => {
       navigate('/signin')
     } catch (error) {
       toastr.error('Erro!', 'ocorreu um erro!')
+    }
+  }
+}
+
+export const updateLikeClientProvider = (providerid, clientid, name, statusLike) => {
+  return async dispatch => {
+    try {
+      if (statusLike) {
+        await removeLikeProviderService(providerid, clientid)
+        toastr.success('Curtida', 'A curtida foi removida com sucesso.')
+      } else {
+        await createLikeProviderService(providerid, clientid)
+        toastr.success('Curtida', `O fornecedor ${name} foi curtido com sucesso.`)
+      }
+      dispatch(getAllProviders())
+    } catch (error) {
+      const { data } = error.response
+      toastr.error('Curtida', data.message.details)
     }
   }
 }
