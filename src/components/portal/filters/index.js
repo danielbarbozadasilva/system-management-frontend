@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Label } from 'reactstrap'
 import { Select } from '@material-ui/core'
 import UFCity from '../../../util/state-city.json'
-import { getListProviderUfCity } from '../../../store/provider/provider.action'
+import { getListProviderUfCity, getAllProviders } from '../../../store/provider/provider.action'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 const Buscar = () => {
   const dispatch = useDispatch()
+
   const error = useSelector((state) => state.auth.error)
   const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
@@ -17,6 +20,7 @@ const Buscar = () => {
     }))
   )
   const [city, setCity] = useState([])
+  const [order, setOrder] = useState([])
   const [form, setForm] = useState({})
 
   const handleChange = async (props) => {
@@ -26,7 +30,11 @@ const Buscar = () => {
     }
     form[name] = value
     setForm({ ...form }, form)
-    dispatch(await getListProviderUfCity(form))
+    if (name == 'city' || name == 'uf') {
+      dispatch(await getListProviderUfCity(form))
+    } else {
+      dispatch(await getAllProviders(value))
+    }
   }
 
   useEffect(() => {
@@ -37,55 +45,71 @@ const Buscar = () => {
   }, [form.uf])
 
   return (
-    <div className='dataSearchProvider'>
-      <h4>
-        <strong>Filtrar</strong>
-      </h4>
-      <Label htmlFor='uf' className='dataProvider'>
-        UF:
-      </Label>
-      <Select
-        className='dataProvider'
-        native
-        value={form.uf || ''}
-        onChange={handleChange}
-        inputProps={{
-          name: 'uf',
-          id: 'outlined-native-simple'
-        }}
-      >
-        <option value='x'>selecione</option>
-        {uf?.map(({ name, uf }, i) => (
-          <option key={i} value={uf}>
-            {uf}
-          </option>
-        ))}
-      </Select>
+    <Box sx={{ pb: 10 }} className='dataSearchProvider'>
+      <Box>
+        <Typography>Filtrar</Typography>
+        <Label htmlFor='uf'>
+          UF:
+        </Label>
+        <Select
+          className='portalProviderText'
+          native
+          value={form.uf || ''}
+          onChange={handleChange}
+          inputProps={{
+            name: 'uf',
+            id: 'outlined-native-simple'
+          }}
+        >
+          <option value='x'>selecione</option>
+          {uf?.map(({ name, uf }, i) => (
+            <option key={i} value={uf}>
+              {uf}
+            </option>
+          ))}
+        </Select>
 
-      <Label htmlFor='uf' className='dataProvider'>
-        Cidade:
-      </Label>
+        <Label htmlFor='uf' className='portalProviderText'>
+          Cidade:
+        </Label>
 
-      <Select
-        className='dataProvider'
-        native
-        value={form.city || 'x'}
-        onChange={handleChange}
-        style={{ marginLeft: '8px' }}
-        inputProps={{
-          name: 'city',
-          id: 'outlined-native-simple'
-        }}
-      >
-        <option value='x'>selecione</option>
+        <Select
+          className='portalProviderText'
+          native
+          value={form.city || 'x'}
+          onChange={handleChange}
+          inputProps={{
+            name: 'city',
+            id: 'outlined-native-simple'
+          }}
+        >
+          <option value='x'>selecione</option>
+          {city?.map((city, i) => (
+            <option key={i} value={city}>
+              {city}
+            </option>
+          ))}
+        </Select>
+      </Box>
 
-        {city?.map((city, i) => (
-          <option key={i} value={city}>
-            {city}
-          </option>
-        ))}
-      </Select>
-    </div>
+      <Box>
+        <Typography>Ordenar</Typography>
+        <Select
+          className='portalProviderText'
+          native
+          value={form.order || 'x'}
+          onChange={handleChange}
+          inputProps={{
+            name: 'order',
+            id: 'outlined-native-simple'
+          }}
+        >
+          <option value='x'>selecione</option>
+          <option value='like'>Ordem de Curtidas</option>
+          <option value='alphabetical'>Ordem Alfabética</option>
+        </Select>
+      </Box>
+    </Box>
   )
 }
 export default Buscar
