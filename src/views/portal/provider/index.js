@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { getAllProviders } from '../../../store/provider/provider.action'
 import image from '../../../assets/img/image-portal-providers.jpg'
-import Buscar from '../../../components/portal/filters/index'
+import Buscar from '../../../components/portal/filters_provider/index'
 
 function Provider (props) {
   const dispatch = useDispatch()
