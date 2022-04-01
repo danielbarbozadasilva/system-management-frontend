@@ -44,6 +44,11 @@
   padding: 0px 20px
 }
 
+.portalProviderTextStyle{
+  margin-bottom: 20px;
+  padding: 5px 20px
+}
+
 .text {
   width: 100%;
   top: 45%;
