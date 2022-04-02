@@ -11,29 +11,29 @@ import './style.css'
 import { FaHeart } from 'react-icons/fa'
 
 const CardProduct = (props) => {
-  const { id, name, description, price, image } = props.item
+  const { name, description, price, image } = props.item
 
   return (
     <div>
-          <SCard>
-            {image?.length > 0
-              ? (
-                <SCardImg src={process.env.REACT_APP_API + image} />
-                )
-              : (
-                  ''
-                )}
-            <div className='item-icon-heart'>
-              <FaHeart />
-            </div>
+      <SCard>
+        {image?.length > 0
+          ? (
+            <SCardImg src={process.env.REACT_APP_API + image} />
+            )
+          : (
+              ''
+            )}
+        <div className='item-icon-heart'>
+          <FaHeart />
+        </div>
 
-            <CardBody>
-              <CardTitle className='titleCard'>{name}</CardTitle>
-              <hr />
-              <CardText className='cardDescription'>{description}</CardText>
-              <CardText className='cardProductPrice' />
-            </CardBody>
-          </SCard>
+        <CardBody>
+          <CardTitle className='titleCard'>{name}</CardTitle>
+          <hr />
+          <CardText className='cardProductPrice'>{price}</CardText>
+          <CardText className='cardDescription'>{description}</CardText>
+        </CardBody>
+      </SCard>
     </div>
   )
 }

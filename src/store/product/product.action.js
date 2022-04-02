@@ -23,14 +23,11 @@ export const getAllProducts = () => {
   }
 }
 
-export const getAllProductsWithFilter = (filter = {}) => {
+export const getAllProductsWithFilter = (name, filter) => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.PRODUCT_LOADING, status: true })
-      console.log('errr', filter)
-
-      const result = await listProductWithFilterService(filter)
-      console.log('errr', result.data.data)
+      const result = await listProductWithFilterService(name, filter)
       dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
     } catch (error) {
       toastr.error('Aconteceu um erro', error)
