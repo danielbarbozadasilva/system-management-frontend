@@ -18,7 +18,7 @@ const CardProduct = (props) => {
       <SCard>
         {image?.length > 0
           ? (
-            <SCardImg src={process.env.REACT_APP_API + image} />
+            <SCardImg src={image} />
             )
           : (
               ''

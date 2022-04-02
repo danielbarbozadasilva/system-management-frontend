@@ -20,22 +20,22 @@ const CardItem = (props) => {
       <SCard>
         {image?.length > 0
           ? (
-            <SCardImg src={process.env.REACT_APP_API + image} />
+            <SCardImg src={image} />
             )
           : (
               ''
             )}
-        <div className="item-icon-heart">
+        <div className='item-icon-heart'>
           <FaHeart />
         </div>
 
         <CardBody>
-          <CardTitle className="titleCard">{name}</CardTitle>
+          <CardTitle className='titleCard'>{name}</CardTitle>
           <hr />
-          <CardSubtitle className="subtitleCard">
+          <CardSubtitle className='subtitleCard'>
             Os mais <strong>Deliciosos</strong>
           </CardSubtitle>
-          <CardText className="cardDescription">{description}</CardText>
+          <CardText className='cardDescription'>{description}</CardText>
 
           <SButton onClick={() => navigate(`/product/category/${id}`)}>
             Produtos
