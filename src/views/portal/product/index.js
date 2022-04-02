@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import CardProduct from '../../../components/portal/card/card_product'
 import Loading from '../../../components/portal/loading'
 import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import image from '../../../assets/img/image-portal-products.jpg'
+
+import CardProduct from '../../../components/portal/card/card_product'
 import { getAllProducts, getAllProductsWithFilter } from '../../../store/product/product.action'
+import FilterSearch from '../../../components/portal/filters/filter_search'
+import FilterProduct from '../../../components/portal/filters/filter_products'
 
 function Products (props) {
   const dispatch = useDispatch()
@@ -40,7 +43,7 @@ function Products (props) {
   }
 
   return (
-    <div>
+    <>
       <div className='container-fluid'>
         <div className='image'>
           <img className='portalImage' src={image} alt='' srcSet='' />
@@ -54,17 +57,22 @@ function Products (props) {
             Escolha um <strong>produto</strong>
           </h1>
         </div>
-        <BoxProducts>
-          {console.log(products)}
-          {!loading && products.length === 0
-            ? (
-              <h1 className='noShowProduct'>Não há produtos disponiveis</h1>
-              )
-            : (
-                ListProduct(products))}
-        </BoxProducts>
+        <div className='container-fluid'>
+          <div className='row'>
+            <FilterSearch />
+            <FilterProduct />
+            <BoxProducts>
+              {!loading && products.length === 0
+                ? (
+                  <h1 className='noShowProduct'>Não há produtos disponiveis</h1>
+                  )
+                : (
+                    ListProduct(products))}
+            </BoxProducts>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 export default Products
