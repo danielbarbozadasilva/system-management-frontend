@@ -5,9 +5,17 @@ import { IconButton } from '@material-ui/core'
 import styled from 'styled-components'
 
 const DataList = ({ data, modal, loading }) => {
+  const mappedData = data.map(item => {
+    const { image, ...resto } = item
+    return {
+      ...resto,
+      image: `${process.env.REACT_APP_API}${image}`
+    }
+  })
+  
   const thumb = ({ formattedValue }) => {
     return (
-      <img src={formattedValue} />
+      <img src={formattedValue} className="formatImage"/>
     )
   }
 
@@ -27,7 +35,7 @@ const DataList = ({ data, modal, loading }) => {
     {
       field: 'image',
       headerName: 'Imagem',
-      flex: 1,
+      width: 140,
       align: 'center',
       headerAlign: 'center',
       renderCell: thumb,
@@ -66,7 +74,7 @@ const DataList = ({ data, modal, loading }) => {
 
   return (
     <BoxTable>
-      <DataGrid rows={data} columns={columns} pageSize={10} />
+      <DataGrid rows={mappedData} columns={columns} pageSize={10} />
     </BoxTable>
   )
 }

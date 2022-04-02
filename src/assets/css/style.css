@@ -56,6 +56,10 @@
   z-index: 100;
 }
 
+.formatImage{
+  width: 80px;
+}
+
 .text h2 {
   font-weight: 400;
   font-family: 'Great Vibes', handwriting;

@@ -16,8 +16,18 @@ const DataList = ({ data, modal, loading }) => {
     dispatch(updateLikeProduct(id, provider, name, statusLike))
   }
 
+  const mappedData = data.map(item => {
+    const { image, ...resto } = item
+    return {
+      ...resto,
+      image: `${process.env.REACT_APP_API}${image}`
+    }
+  })
+  
   const thumb = ({ formattedValue }) => {
-    return <img src={formattedValue} />
+    return (
+      <img src={formattedValue} className="formatImage"/>
+    )
   }
 
   const actionLike = ({ id, row }) => {
@@ -122,7 +132,7 @@ const DataList = ({ data, modal, loading }) => {
 
   return (
     <BoxTable>
-      <DataGrid rows={data} columns={columns} pageSize={10} />
+      <DataGrid rows={mappedData} columns={columns} pageSize={10} />
     </BoxTable>
   )
 }
