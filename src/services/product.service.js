@@ -4,8 +4,8 @@ const baseUrl = '/product'
 export const listProductService = () =>
   http.get(`${baseUrl}`)
 
-export const listProductWithFilterService = (filter) =>
-  http.get(`${baseUrl}/name/${filter.name}/filter/${filter.filter}`)
+export const listProductWithFilterService = (name, filter) =>
+  http.get(`${baseUrl}/name/${name}/filter/${filter}`)
 
 export const listProductByIdService = (productid) =>
   http.get(`${baseUrl}/${productid}`)
