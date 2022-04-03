@@ -17,6 +17,7 @@ import {
 import { Select } from '@material-ui/core'
 import ufCityFile from '../../util/state-city.json'
 import { ValidateCnpj } from './cnpj-validate'
+import InputMask from 'react-input-mask'
 
 const SignUpProvider = () => {
   const dispatch = useDispatch()
@@ -254,19 +255,27 @@ const SignUpProvider = () => {
                 <Label htmlFor='cnpj' className='labelprovider'>
                   Cnpj:
                 </Label>
-
-                <Input
-                  invalid={formValidate.cnpj}
-                  disabled={loading}
-                  type='text'
-                  name='cnpj'
-                  id='cnpj'
-                  onChange={handleChange}
+                <InputMask
+                  mask='99.999.999/9999-99'
                   value={form.cnpj || ''}
-                  placeholder='Informe o CNPJ (apenas números)'
-                  maxLength='18'
-                  required
-                />
+                  disabled={false}
+                  maskChar=' '
+                  onChange={handleChange}
+                >
+                  {() => (
+                    <Input
+                      invalid={formValidate.cnpj}
+                      disabled={loading}
+                      type='text'
+                      name='cnpj'
+                      id='cnpj'
+                      value={form.cnpj || ''}
+                      autoComplete='cnpj'
+                      placeholder='Informe o CNPJ'
+                      required
+                    />
+                  )}
+                </InputMask>
                 <FormFeedback>{formValidate.cnpj || ''}</FormFeedback>
               </FormGroup>
 
@@ -294,19 +303,30 @@ const SignUpProvider = () => {
                 <Label htmlFor='phone' className='labelprovider'>
                   Telefone:
                 </Label>
-                <Input
-                  invalid={formValidate.phone}
-                  disabled={loading}
-                  type='text'
-                  id='phone'
+                <InputMask
+                  mask='+55 (99) 9999-9999'
+                  disabled={false}
+                  maskChar=' '
                   value={form.phone || ''}
                   onChange={handleChange}
-                  name='phone'
-                  placeholder='Informe o seu telefone'
-                  minLength='8'
-                  maxLength='25'
-                  required
-                />
+                >
+                  {() => (
+                    <Input
+                      invalid={formValidate.phone}
+                      disabled={loading}
+                      type='text'
+                      id='phone'
+                      value={form.phone || ''}
+                      onChange={handleChange}
+                      name='phone'
+                      autoComplete='false'
+                      placeholder='Informe o seu telefone'
+                      minLength='8'
+                      maxLength='25'
+                      required
+                    />
+                  )}
+                </InputMask>
                 <FormFeedback>{formValidate.phone || ''}</FormFeedback>
               </FormGroup>
               <FormGroup>
@@ -351,7 +371,7 @@ const SignUpProvider = () => {
                   }}
                 >
                   <option className='ufForm' value=''>
-                     selecione
+                    selecione
                   </option>
                   {uf?.map(({ name, uf }, i) => (
                     <option className='ufForm' key={i} value={uf}>

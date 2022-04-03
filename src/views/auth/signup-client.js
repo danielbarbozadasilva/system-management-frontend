@@ -17,6 +17,7 @@ import {
 } from 'reactstrap'
 import { Select } from '@material-ui/core'
 import ufCityFile from '../../util/state-city.json'
+import InputMask from 'react-input-mask'
 
 const SignUpClient = () => {
   const dispatch = useDispatch()
@@ -339,16 +340,30 @@ const SignUpClient = () => {
                 <Label htmlFor='phone' className='labelCli'>
                   Telefone:
                 </Label>
-                <Input
-                  invalid={formValidate.phone}
-                  disabled={loading}
-                  type='text'
-                  id='phone'
+                <InputMask
+                  mask='+55 (99) 9999-9999'
+                  disabled={false}
+                  maskChar=' '
                   value={form.phone || ''}
                   onChange={handleChange}
-                  name='phone'
-                  placeholder='Insira seu telefone/cel'
-                />
+                >
+                  {() => (
+                    <Input
+                      invalid={formValidate.phone}
+                      disabled={loading}
+                      type='text'
+                      id='phone'
+                      value={form.phone || ''}
+                      onChange={handleChange}
+                      name='phone'
+                      placeholder='Informe o seu telefone'
+                      minLength='8'
+                      maxLength='25'
+                      required
+                    />
+                  )}
+                </InputMask>
+
                 <FormFeedback>{formValidate.phone || ''}</FormFeedback>
               </FormGroup>
 
