@@ -17,7 +17,7 @@ const Form = ({ submit, ...props }) => {
   const loading = useSelector((state) => state.category.loading)
 
   if (Object.keys(props).length > 0 && !isEdit) {
-    setPreview(process.env.REACT_APP_API + props?.data?.image)
+    setPreview(props?.data?.image)
     setForm(props.data)
     setEdit(true)
   }

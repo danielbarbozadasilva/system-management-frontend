@@ -23,7 +23,7 @@ const Form = ({ submit, ...props }) => {
   const [isEdit, setEdit] = useState(false)
 
   if (Object.keys(props).length > 0 && !isEdit) {
-    setPreview(process.env.REACT_APP_API + props?.data?.image)
+    setPreview(props?.data?.image)
     setForm(props.data)
     setEdit(true)
   }
