@@ -43,6 +43,14 @@ const Like = () => {
       flex: 1,
       headerAlign: 'center',
       disableColumnMenu: true
+    },
+    {
+      field: typeUser === 2 ? 'price' : 'email',
+      headerName: typeUser === 2 ? 'Preço' : 'E-mail',
+      align: 'center',
+      flex: 1,
+      headerAlign: 'center',
+      disableColumnMenu: true
     }
   ]
 

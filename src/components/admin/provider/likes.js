@@ -10,15 +10,15 @@ import DataList from '~/components/datagrid'
 const ListLike = ({ likes, open, close }) => {
   const columnsCurtidas = [
     {
-      field: 'id',
-      headerName: 'ID',
+      field: 'nameProduct',
+      headerName: 'Nome',
       flex: 1,
       width: 340,
       disableColumnMenu: true
     },
     {
-      field: 'product',
-      headerName: 'Produto',
+      field: 'priceProduct',
+      headerName: 'Preço',
       flex: 1,
       width: 340,
       disableColumnMenu: true
@@ -33,7 +33,7 @@ const ListLike = ({ likes, open, close }) => {
       aria-describedby='alert-dialog-description'
     >
       <DialogTitle id='alert-dialog-title'>Lista de curtidas</DialogTitle>
-      <DialogContent style={{ width: '500px ' }}>
+      <DialogContent style={{ width: '500px' }}>
         <DataList data={likes} columns={columnsCurtidas} loading={false} />
       </DialogContent>
       <DialogActions>
