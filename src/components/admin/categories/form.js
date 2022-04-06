@@ -8,13 +8,26 @@ import {
 } from '@material-ui/core'
 import styled from 'styled-components'
 import { useSelector } from 'react-redux'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 200
+    }
+  }
+}))
 
 const Form = ({ submit, ...props }) => {
+  const classes = useStyles()
+
   const [preview, setPreview] = useState('')
   const [form, setForm] = useState({})
   const [isEdit, setEdit] = useState(false)
   const percent = useSelector((state) => state.category.upload?.percent || 0)
   const loading = useSelector((state) => state.category.loading)
+  const [formValidate, setFormValidate] = useState({})
 
   if (Object.keys(props).length > 0 && !isEdit) {
     setPreview(props?.data?.image)
@@ -24,10 +37,53 @@ const Form = ({ submit, ...props }) => {
 
   const handleChange = (props) => {
     const { value, name } = props.target
+    fieldValidate(name, value)
     setForm({
       ...form,
       [name]: value
     })
+  }
+
+  const isNotValid = () => {
+    const inputs = [
+      'name',
+      'description'
+    ]
+    const invalid = (label) =>
+      !Object.keys(form).includes(label) || form[label].length === 0
+
+    const validate =
+      Object.values(formValidate).filter((item) => item !== '').length > 0
+
+    return inputs.some((item) => invalid(item)) || validate
+  }
+
+  const fieldValidate = (nome, value) => {
+    let menssage = ''
+    switch (nome) {
+      case 'name':
+        var regex = /\d/g
+        if (regex.test(value)) {
+          menssage += 'Não pode conter números!'
+        } else if (value.trim() === '') {
+          menssage += 'Não pode ser vazio!'
+        } else if (value.length <= 5) {
+          menssage += 'Precisa ter mais que 5 caracteres!'
+        }
+        break
+
+      case 'description':
+        var regex = /\d/g
+        if (regex.test(value)) {
+          menssage += 'Nome não pode conter números!'
+        } else if (value.trim() === '') {
+          menssage += 'Nome não pode ser vazio!'
+        } else if (value.length <= 10) {
+          menssage += 'Precisa ter mais que 10 caracteres!'
+        }
+        break
+    }
+    setFormValidate({ ...formValidate, [nome]: menssage })
   }
 
   const handleSubmit = () => {
@@ -55,7 +111,7 @@ const Form = ({ submit, ...props }) => {
 
   return (
     <Box>
-      <Content noValidate>
+      <form className={classes.root} noValidate autoComplete='off'>
         {preview.length > 0
           ? (
             <Grid container direction='column'>
@@ -68,81 +124,78 @@ const Form = ({ submit, ...props }) => {
             </Grid>
             )
           : (
-            <Button
-              variant='contained'
-              color='primary'
-              size='small'
-              component='label'
-            >
-              Upload Foto
-              <input
-                accept='image/*'
-                type='file'
-                name='image'
-                hidden
-                onChange={previewImg}
-              />
-            </Button>
+            <Grid container direction='row'>
+              <Button
+                variant='contained'
+                color='primary'
+                size='small'
+                component='label'
+              >
+                Upload Foto
+                <input
+                  accept='image/*'
+                  type='file'
+                  name='image'
+                  hidden
+                  onChange={previewImg}
+                />
+              </Button>
+            </Grid>
             )}
+
         <TextField
           size='small'
+          error={formValidate.name || ''}
           margin='normal'
-          variant='outlined'
-          required
           fullWidth
-          id='name'
-          label='name'
+          id='standard-error-helper-text'
+          label='Nome'
           name='name'
-          autoComplete='name'
           autoFocus
           value={form.name || ''}
           onChange={handleChange}
+          helperText={formValidate.name || ''}
           disabled={loading}
         />
+
         <TextField
           size='small'
-          multiline
-          rows={3}
-          rowsMax={6}
-          variant='outlined'
+          error={formValidate.description || ''}
           margin='normal'
-          required
           fullWidth
           name='description'
           label='Descrição'
           type='text'
-          id='description'
-          disabled={loading}
-          onChange={handleChange}
+          id='standard-error-helper-text'
           value={form.description || ''}
+          onChange={handleChange}
+          helperText={formValidate.description || ''}
+          disabled={loading}
         />
+
         <Submit>
           <Button
             size='small'
-            className='buttonSubmit'
+            className={
+              isNotValid() || loading ? 'buttonSubmit button-style-disable' : 'buttonSubmit button-style'
+            }
+            disabled={isNotValid()}
             type='submit'
             variant='contained'
-            color='primary'
             onClick={handleSubmit}
-            disabled={loading}
           >
-            {isEdit ? 'Atualizar' : 'Cadastrar'}
+            {isEdit ? 'Atualizar' : 'Enviar'}
           </Button>
           <Grid container direction='column'>
             <LinearProgress variant='determinate' value={percent} />
-            {loading && percent > 0 ? percent : ''}
           </Grid>
         </Submit>
-      </Content>
+      </form>
     </Box>
   )
 }
 
 export default Form
-
-const Content = styled.div`
-  margin-bottom: 10px;
-`
 
 const Box = styled(Paper)`
   padding: 16px;
