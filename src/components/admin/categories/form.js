@@ -47,7 +47,8 @@ const Form = ({ submit, ...props }) => {
   const isNotValid = () => {
     const inputs = [
       'name',
-      'description'
+      'description',
+      'image'
     ]
     const invalid = (label) =>
       !Object.keys(form).includes(label) || form[label].length === 0
@@ -60,9 +61,10 @@ const Form = ({ submit, ...props }) => {
 
   const fieldValidate = (nome, value) => {
     let menssage = ''
+    const regex = /\d/g
+
     switch (nome) {
       case 'name':
-        var regex = /\d/g
         if (regex.test(value)) {
           menssage += 'Não pode conter números!'
         } else if (value.trim() === '') {
@@ -73,7 +75,6 @@ const Form = ({ submit, ...props }) => {
         break
 
       case 'description':
-        var regex = /\d/g
         if (regex.test(value)) {
           menssage += 'Nome não pode conter números!'
         } else if (value.trim() === '') {
@@ -124,7 +125,7 @@ const Form = ({ submit, ...props }) => {
             </Grid>
             )
           : (
-            <Grid container direction='row'>
+            <Grid container direction='column'>
               <Button
                 variant='contained'
                 color='primary'
@@ -138,6 +139,7 @@ const Form = ({ submit, ...props }) => {
                   name='image'
                   hidden
                   onChange={previewImg}
+                  disabled={loading}
                 />
               </Button>
             </Grid>
