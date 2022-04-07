@@ -3,6 +3,7 @@ import { getToken } from './storage'
 import store from '../store'
 import { logoutAction } from '../store/auth/auth.action'
 import { navigate } from '@reach/router'
+import { toastr } from 'react-redux-toastr'
 
 const { REACT_APP_VERSION: version, REACT_APP_API: api } = process.env
 const urlApi = api + version
@@ -23,7 +24,8 @@ http.interceptors.response.use(
       case 401:
         if (getToken()) {
           store.dispatch(logoutAction())
-          navigate('/')
+          navigate('/signin')
+          toastr.info('Token temporário expirado!')
         }
         return Promise.reject(error)
       default:
