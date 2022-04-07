@@ -147,7 +147,7 @@ const Form = ({ submit, ...props }) => {
 
         <TextField
           size='small'
-          error={formValidate.name || ''}
+          error={!!formValidate.name}
           margin='normal'
           fullWidth
           id='standard-error-helper-text'
@@ -162,7 +162,7 @@ const Form = ({ submit, ...props }) => {
 
         <TextField
           size='small'
-          error={formValidate.description || ''}
+          error={!!formValidate.description}
           margin='normal'
           fullWidth
           name='description'
