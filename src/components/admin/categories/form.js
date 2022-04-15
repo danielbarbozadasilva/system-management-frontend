@@ -149,7 +149,6 @@ const Form = ({ submit, ...props }) => {
           size='small'
           error={!!formValidate.name}
           margin='normal'
-          fullWidth
           id='standard-error-helper-text'
           label='Nome'
           name='name'
@@ -164,7 +163,6 @@ const Form = ({ submit, ...props }) => {
           size='small'
           error={!!formValidate.description}
           margin='normal'
-          fullWidth
           name='description'
           label='Descrição'
           type='text'
@@ -200,14 +198,14 @@ const Form = ({ submit, ...props }) => {
 export default Form
 
 const Box = styled(Paper)`
-  padding: 16px;
+  padding: 25px;
 `
 const Image = styled.img`
   max-width: 170px;
   max-height: 170px;
   margin: 10px;
   border: thin solid #eee;
-  border-radius: 3px;
+  border-radius: 5%;
   overflow: hidden;
   object-fit: cover;
 `

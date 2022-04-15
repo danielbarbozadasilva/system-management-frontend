@@ -16,7 +16,7 @@ import {
 } from 'reactstrap'
 import { Select } from '@material-ui/core'
 import ufCityFile from '../../util/state-city.json'
-import { ValidateCnpj } from './cnpj-validate'
+import { ValidateCnpj } from '../../util/validations/cnpj-validate'
 import InputMask from 'react-input-mask'
 
 const SignUpProvider = () => {
@@ -57,26 +57,31 @@ const SignUpProvider = () => {
 
   const fieldValidate = (name, value) => {
     let message = ''
+    let regex = ''
     switch (name) {
       case 'socialName':
-        var socialNameRegex = /\d/g
-        if (socialNameRegex.test(value)) {
+        regex = /\d/g
+        if (regex.test(value)) {
           message += 'Não pode conter números!'
         } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
         } else if (value.length <= 3) {
           message += 'Precisa ter mais que 3 caracteres!'
+        } else if (value.length >= 30) {
+          message += 'Precisa ter menos que 30 caracteres!'
         }
         break
 
       case 'fantasyName':
-        var fantasyRegex = /\d/g
-        if (fantasyRegex.test(value)) {
+        regex = /\d/g
+        if (regex.test(value)) {
           message += 'Não pode conter números!'
         } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
         } else if (value.length <= 3) {
           message += 'Precisa ter mais que 3 caracteres!'
+        } else if (value.length >= 30) {
+          message += 'Precisa ter menos que 30 caracteres!'
         }
         break
 
@@ -87,20 +92,22 @@ const SignUpProvider = () => {
         break
 
       case 'responsible':
-        var nameregex = /\d/g
-        if (nameregex.test(value)) {
+        regex = /\d/g
+        if (regex.test(value)) {
           message += 'Não pode conter números!'
         } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
-        } else if (value.length <= 10) {
-          message += 'Precisa ter mais que 10 caracteres!'
+        } else if (value.length <= 5) {
+          message += 'Precisa ter mais que 5 caracteres!'
+        } else if (value.length >= 30) {
+          message += 'Precisa ter menos que 30 caracteres!'
         }
         break
 
       case 'phone':
-        var filtraphone = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
+        regex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
 
-        if (!filtraphone.test(value)) {
+        if (!regex.test(value)) {
           message += 'Número de phone inválido!'
         } else if (value.replace(' ', '') === '') {
           message += 'Campo em branco!'
@@ -110,8 +117,10 @@ const SignUpProvider = () => {
       case 'address':
         if (value === '') {
           message += 'Campo em branco!'
-        } else if (value.length < 8) {
-          message += 'Endereço precisa ter mais que 8 caracteres!'
+        } else if (value.length <= 10) {
+          message += 'Precisa ter menos que 10 caracteres!'
+        } else if (value.length >= 30) {
+          message += 'Precisa ter mais que 30 caracteres!'
         }
         break
 
@@ -128,10 +137,10 @@ const SignUpProvider = () => {
         break
 
       case 'email':
-        var filterEmail =
+        regex =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-        if (!filterEmail.test(value)) {
+        if (!regex.test(value)) {
           message += 'E-mail inválido!'
         } else if (value.replace(' ', '') === '') {
           message += 'Campo em branco!'
@@ -139,8 +148,10 @@ const SignUpProvider = () => {
         break
 
       case 'password':
-        if (value.length < 6) {
-          message += 'Não ter menos que 6 caracteres!'
+        if (value.length <= 5) {
+          message += 'Precisa ter menos que 5 caracteres!'
+        } else if (value.length >= 20) {
+          message += 'Precisa ter mais que 20 caracteres!'
         }
         break
     }
@@ -226,8 +237,6 @@ const SignUpProvider = () => {
                   onChange={handleChange}
                   name='socialName'
                   placeholder='Insira o nome social'
-                  minLength='3'
-                  maxLength='32'
                 />
                 <FormFeedback>{formValidate.socialName || ''}</FormFeedback>
               </FormGroup>
@@ -245,8 +254,6 @@ const SignUpProvider = () => {
                   onChange={handleChange}
                   name='fantasyName'
                   placeholder='Insira o nome fantasia'
-                  minLength='3'
-                  maxLength='32'
                 />
                 <FormFeedback>{formValidate.fantasyName || ''}</FormFeedback>
               </FormGroup>
@@ -270,7 +277,6 @@ const SignUpProvider = () => {
                       name='cnpj'
                       id='cnpj'
                       value={form.cnpj || ''}
-                      autoComplete='cnpj'
                       placeholder='Informe o CNPJ'
                       required
                     />
@@ -292,8 +298,6 @@ const SignUpProvider = () => {
                   onChange={handleChange}
                   name='responsible'
                   placeholder='Insira o name do responsável'
-                  minLength='10'
-                  maxLength='32'
                   required
                 />
                 <FormFeedback>{formValidate.responsible || ''}</FormFeedback>
@@ -319,10 +323,7 @@ const SignUpProvider = () => {
                       value={form.phone || ''}
                       onChange={handleChange}
                       name='phone'
-                      autoComplete='false'
                       placeholder='Informe o seu telefone'
-                      minLength='8'
-                      maxLength='25'
                       required
                     />
                   )}
@@ -342,8 +343,6 @@ const SignUpProvider = () => {
                   onChange={handleChange}
                   name='address'
                   placeholder='Informe o endereço'
-                  minLength='8'
-                  maxLength='40'
                   required
                 />
                 <FormFeedback>{formValidate.address || ''}</FormFeedback>
@@ -360,7 +359,6 @@ const SignUpProvider = () => {
                 <Label htmlFor='uf' id='subscription-uf-forn'>
                   Uf:
                 </Label>
-                <div />
                 <Select
                   native
                   value={form.uf || ''}
@@ -370,13 +368,9 @@ const SignUpProvider = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option className='ufForm' value=''>
-                    selecione
-                  </option>
+                  <option className='ufForm' value=''>selecione</option>
                   {uf?.map(({ name, uf }, i) => (
-                    <option className='ufForm' key={i} value={uf}>
-                      {uf}
-                    </option>
+                    <option className='ufForm' key={i} value={uf}>{uf}</option>
                   ))}
                   <FormFeedback>{formValidate.uf || ''}</FormFeedback>
                 </Select>
@@ -445,8 +439,6 @@ const SignUpProvider = () => {
                   onChange={handleChange}
                   value={form.password || ''}
                   placeholder='Informe sua password'
-                  minLength='6'
-                  maxLength='10'
                   required
                 />
                 <FormFeedback>{formValidate.password || ''}</FormFeedback>
@@ -474,22 +466,6 @@ const SignUpProvider = () => {
                       'Cadastrar'
                     )}
               </Button>
-              <Alert
-                color='success'
-                isOpen={success}
-                toggle={() => setSuccess(!success)}
-              >
-                <div>
-                  <strong>provider </strong> cadastrado com sucesso.
-                </div>
-                <div>Você será redirecionado em 5 segundos.</div>
-              </Alert>
-              <Alert color='danger' isOpen={hasError} toggle={closeError}>
-                <div>
-                  <strong>OPS !!! </strong> Aconteceu um erro.
-                </div>
-                <small>Verifique seus dados.</small>
-              </Alert>
             </div>
           </div>
         </Col>

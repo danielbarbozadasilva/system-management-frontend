@@ -57,10 +57,11 @@ const SignUpClient = () => {
 
   const fieldValidate = (name, value) => {
     let message = ''
+    let regex = ''
     switch (name) {
       case 'firstName':
-        var validRegex = /\d/g
-        if (validRegex.test(value)) {
+        regex = /\d/g
+        if (regex.test(value)) {
           message += 'Não pode conter números!'
         } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
@@ -70,8 +71,8 @@ const SignUpClient = () => {
         break
 
       case 'lastName':
-        var validRegex = /\d/g
-        if (validRegex.test(value)) {
+        regex = /\d/g
+        if (regex.test(value)) {
           message += 'Não pode conter números!'
         } else if (value.trim() === '') {
           message += 'Não pode ser vazio!'
@@ -81,9 +82,9 @@ const SignUpClient = () => {
         break
 
       case 'phone':
-        var validRegex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
+        regex = /^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/
 
-        if (!validRegex.test(value)) {
+        if (!regex.test(value)) {
           message += 'Número de telefone inválido!'
         } else if (value.replace(' ', '') === '') {
           message += 'Campo em branco!'
@@ -103,26 +104,22 @@ const SignUpClient = () => {
         break
 
       case 'uf':
-        const uf = value
-
-        if (uf === 'uf') {
+        if (value === 'uf') {
           message += 'Selecione uma uf!'
         }
         break
 
       case 'city':
-        const city = value
-
-        if (city === 'city') {
+        if (value === 'city') {
           message += 'Selecione uma cidade!'
         }
         break
 
       case 'email':
-        var filterEmail =
+        regex =
           /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-        if (!filterEmail.test(value)) {
+        if (!regex.test(value)) {
           message += 'E-mail inválido!'
         } else if (value.replace(' ', '') === '') {
           message += 'Campo em branco!'
@@ -131,7 +128,7 @@ const SignUpClient = () => {
 
       case 'password':
         if (value.length < 6) {
-          message += 'Não ter menos que 6 caracteres!'
+          message += 'A senha não pode ter menos que 6 caracteres!'
         }
         break
     }
@@ -207,7 +204,6 @@ const SignUpClient = () => {
                   minLength='4'
                   maxLength='32'
                   autoFocus
-                  required
                 />
                 <FormFeedback>{formValidate.firstName || ''}</FormFeedback>
               </FormGroup>
@@ -224,10 +220,6 @@ const SignUpClient = () => {
                   onChange={handleChange}
                   name='lastName'
                   placeholder='Insira o seu sobrenome'
-                  minLength='10'
-                  maxLength='32'
-                  autoFocus
-                  required
                 />
                 <FormFeedback>{formValidate.lastName || ''}</FormFeedback>
               </FormGroup>
@@ -357,9 +349,6 @@ const SignUpClient = () => {
                       onChange={handleChange}
                       name='phone'
                       placeholder='Informe o seu telefone'
-                      minLength='8'
-                      maxLength='25'
-                      required
                     />
                   )}
                 </InputMask>
@@ -380,8 +369,6 @@ const SignUpClient = () => {
                   onChange={handleChange}
                   value={form.password || ''}
                   placeholder='Informe sua password'
-                  minLength='6'
-                  maxLength='10'
                 />
                 <FormFeedback>{formValidate.password || ''}</FormFeedback>
               </FormGroup>
@@ -408,22 +395,6 @@ const SignUpClient = () => {
                       'Cadastrar'
                     )}
               </Button>
-              <Alert
-                color='success'
-                isOpen={success}
-                toggle={() => setSuccess(!success)}
-              >
-                <div>
-                  <strong>user </strong> cadastrado com sucesso.
-                </div>
-                <div>Você será redirecionado em 5 segundos.</div>
-              </Alert>
-              <Alert color='danger' isOpen={hasError} toggle={closeError}>
-                <div>
-                  <strong>OPS !!! </strong> Aconteceu um erro.
-                </div>
-                <small>Verifique seus dados.</small>
-              </Alert>
             </div>
           </div>
         </Col>
