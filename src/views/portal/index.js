@@ -1,71 +1,72 @@
-import InicioPortal from '~/views/portal/inicio/index'
-import ProdutoPortal from '~/views/portal/produto'
-import FornecedorPortal from '~/views/portal/fornecedor'
-import Fornecedor from '~/views/auth/singup-fornecedor'
-import Cliente from '~/views/auth/singup-cliente'
-import SignIn from '~/views/auth/signin'
 import { Router } from '@reach/router'
+
+import Home from '~/views/portal/home/index'
+import PortalProduct from '~/views/portal/product'
+import PortalProvider from '~/views/portal/provider'
+import SignUpProvider from '~/views/auth/signup-provider'
+import SignUpClient from '~/views/auth/signup-client'
+import SignIn from '~/views/auth/signin'
 
 import Layout from '~/components/layout'
 
 const Menu = [
   {
-    title: 'Home',
+    title: 'home',
     icons: '',
     route: '/',
     visibleMenu: true,
     enabled: true,
-    component: InicioPortal
+    component: Home
   },
   {
-    title: 'Produtos',
+    title: 'products',
     icons: '',
     route: '/product',
     visibleMenu: true,
     enabled: true,
-    component: ProdutoPortal
+    component: PortalProduct
   },
   {
-    title: 'ViewsProduto',
+    title: 'viewProduct',
     icons: '',
     route: '/product/category/:id',
-    tipo: 'categoria',
+    tipo: 'category',
     visibleMenu: true,
     enabled: true,
-    component: ProdutoPortal
+    component: PortalProduct
   },
   {
-    title: 'ViewsProdutoFornec',
+    title: 'viewProductProvider',
     icons: '',
     route: '/product/provider/:id',
-    tipo: 'fornecedor',
+    tipo: 'provider',
     visibleMenu: true,
     enabled: true,
-    component: ProdutoPortal
+    component: PortalProduct
   },
   {
-    title: 'ViewsFornecedor',
+    title: 'viewProvider',
     icons: '',
     route: '/provider',
     visibleMenu: true,
     enabled: true,
-    component: FornecedorPortal
+    component: PortalProvider
   },
   {
-    title: 'FornecedorCadastro',
+    title: 'registrationprovider',
     icons: '',
     route: '/registrationprovider',
     visibleMenu: true,
     enabled: true,
-    component: Fornecedor
+    component: SignUpProvider
   },
   {
-    title: 'ClienteCadastro',
+    title: 'registrationclient',
     icons: '',
     route: '/registrationclient',
     visibleMenu: true,
     enabled: true,
-    component: Cliente
+    component: SignUpClient
   },
   {
     title: 'SignIn',
@@ -81,7 +82,7 @@ const Portal = (props) => {
   return (
     <>
       <Router>
-        <Layout path="/">
+        <Layout path='/'>
           {Menu.map(({ component: Component, route, tipo = '' }, i) => (
             <Component key={i} path={route} tipo={tipo} />
           ))}

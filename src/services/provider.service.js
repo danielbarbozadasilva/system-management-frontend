@@ -1,8 +1,8 @@
 import http from '~/config/http'
 const baseUrl = '/provider'
 
-export const listAllProviderService = (data) =>
-  http.get(`${baseUrl}/filter/${data.like}/${data.alphabetical}`)
+export const listAllProviderService = (namefilter = 'alphabetical') =>
+  http.get(`${baseUrl}/filter/${namefilter}`)
 
 export const listProviderByIdService = providerid =>
   http.get(`${baseUrl}/${providerid}`)
@@ -20,11 +20,11 @@ export const listProvidersByLocationService = (data) =>
     `${baseUrl}/filter/uf/${data.uf}/city/${data.city}`
   )
 
-export const changeStatusService = (providerid, data) =>
-  http.put(`${baseUrl}/${providerid}`, data)
+export const changeStatusService = (providerid, status) =>
+  http.put(`${baseUrl}/${providerid}/status/${status}`)
 
-export const searchLikeProviderProductService = providerid =>
-  http.get(`${baseUrl}/${providerid}/product`)
+export const searchLikeProviderProductService = (providerid) =>
+  http.get(`${baseUrl}/${providerid}/like`)
 
 export const createLikeProductService = (providerid, productid) =>
   http.post(`${baseUrl}/${providerid}/product/${productid}/like`)
