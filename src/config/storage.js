@@ -10,8 +10,8 @@ const getToken = () => {
 
 const getUser = () => {
   const data = JSON.parse(localStorage.getItem(TOKEN_KEY))
-  if (data && data.usuarioDTO) {
-    return data.usuarioDTO
+  if (data && data.userDTO) {
+    return data.userDTO
   }
   return false
 }

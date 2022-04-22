@@ -6,8 +6,8 @@ import styled from 'styled-components'
 const Head = ({ title, actions: Actions }) => {
   return (
     <Title>
-      <Typography variant="subtitle1">{title}</Typography>
-      <Typography variant="subtitle1">
+      <Typography variant='subtitle1'>{title}</Typography>
+      <Typography variant='subtitle1'>
         <Actions />
       </Typography>
     </Title>
@@ -27,5 +27,5 @@ const Title = styled(Box)`
 `
 
 Head.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string
 }

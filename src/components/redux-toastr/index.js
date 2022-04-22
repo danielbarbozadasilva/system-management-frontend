@@ -5,10 +5,10 @@ const Toastr = () => (
     timeOut={3500}
     newestOnTop={false}
     preventDuplicates
-    position="top-right"
+    position='top-right'
     getState={(state) => state.toastr}
-    transitionIn="bounceIn"
-    transitionOut="fadeOut"
+    transitionIn='bounceIn'
+    transitionOut='fadeOut'
     progressBar
     closeOnToastrClick
   />

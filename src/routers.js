@@ -6,7 +6,7 @@ import { isAuthenticated } from './config/storage'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   if (!isAuthenticated()) {
-    return <Redirect to="/signin" noThrow />
+    return <Redirect to='/signin' noThrow />
   }
   return <Component {...rest} />
 }
@@ -14,8 +14,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const Routers = () => (
   <>
     <Router>
-      <PortalView path="/*" />
-      <PrivateRoute component={AdminView} path="/admin/*" />
+      <PortalView path='/*' />
+      <PrivateRoute component={AdminView} path='/admin/*' />
     </Router>
   </>
 )

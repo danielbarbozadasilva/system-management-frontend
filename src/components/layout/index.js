@@ -7,7 +7,7 @@ const Layout = (props) => {
   document.title = 'Regale'
   return (
     <>
-      <Header titulo={props.nomeDaPagina} />
+      <Header />
       <Main>{props.children}</Main>
       <Footer />
     </>
@@ -16,6 +16,4 @@ const Layout = (props) => {
 
 export default Layout
 
-const Main = styled.main`
-
-`
+const Main = styled.main``

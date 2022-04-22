@@ -1,5 +1,4 @@
 import { Router } from '@reach/router'
-
 import {
   Dashboard as DashboardIcon,
   ShoppingCart as ShoppingCartIcon,
@@ -7,34 +6,33 @@ import {
   More as MoreIcon,
   Apps as MdAppsIcon
 } from '@material-ui/icons'
-
-import PainelLayout from '~/components/layout/layout-painel'
-import Inicio from '~/views/admin/inicio/inicio'
-import Produto from '~/views/admin/produto/index'
-import Fornecedor from '~/views/admin/fornecedor'
-import Categoria from './categoria/index'
-import Cliente from './cliente/index'
+import PanelLayout from '~/components/layout/layout-panel'
+import Home from '~/views/admin/home/index'
+import Product from '~/views/admin/product/index'
+import Provider from '~/views/admin/provider'
+import Category from './category/index'
+import Client from './client/index'
 import { useSelector } from 'react-redux'
-import Curtida from '~/views/admin/curtida'
+import Like from '~/views/admin/like'
+import ProviderEvaluete from '~/views/admin/provider/evalueteProvider'
 
-/* 1 - Administrador 2 - Fornecedor 3 - Cliente */
 export const Menu = [
   {
-    title: 'Home',
+    title: 'Início',
     icon: <DashboardIcon />,
     route: '/',
     visibleMenu: true,
     enabled: true,
-    component: Inicio,
+    component: Home,
     authorization: [1, 2, 3]
   },
   {
-    title: 'Categoria',
+    title: 'Categorias',
     icon: <MdAppsIcon />,
     route: '/category',
     visibleMenu: true,
     enabled: true,
-    component: Categoria,
+    component: Category,
     authorization: [1]
   },
   {
@@ -43,17 +41,26 @@ export const Menu = [
     route: '/product',
     visibleMenu: true,
     enabled: true,
-    component: Produto,
-    authorization: [2, 3]
+    component: Product,
+    authorization: [2]
   },
   {
-    title: 'Fornecedor',
+    title: 'Fornecedores',
     icon: <ShoppingCartIcon />,
     route: '/provider',
     visibleMenu: true,
     enabled: true,
-    component: Fornecedor,
+    component: Provider,
     authorization: [1]
+  },
+  {
+    title: 'Avaliar Fornecedor',
+    icon: <ShoppingCartIcon />,
+    route: '/providerevaluete',
+    visibleMenu: true,
+    enabled: true,
+    component: ProviderEvaluete,
+    authorization: [3]
   },
   {
     title: 'Curtidas',
@@ -61,36 +68,36 @@ export const Menu = [
     route: '/like',
     visibleMenu: true,
     enabled: true,
-    component: Curtida,
+    component: Like,
     authorization: [2, 3]
   },
   {
-    title: 'Cliente',
+    title: 'Clientes',
     icon: <PeopleIcon />,
     route: '/client',
     visibleMenu: true,
     enabled: true,
-    component: Cliente,
+    component: Client,
     authorization: [1]
   }
 ]
 
 const Admin = (props) => {
-  const tipoUsuario = useSelector((state) => state.auth.usuario.tipoUsuario)
+  const typeUser = useSelector((state) => state.auth.user.typeUser)
   const rotasAutorizadas = Menu.filter((route) =>
-    route.authorization.includes(tipoUsuario)
+    route.authorization.includes(typeUser)
   )
 
   const NotFound = () => <h2>Não autorizado</h2>
 
   return (
     <Router>
-      <PainelLayout path="/">
+      <PanelLayout path='/'>
         {rotasAutorizadas.map(({ component: Component, route }, i) => (
           <Component key={i} path={route} />
         ))}
         <NotFound default />
-      </PainelLayout>
+      </PanelLayout>
     </Router>
   )
 }

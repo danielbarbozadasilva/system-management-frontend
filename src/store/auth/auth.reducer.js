@@ -4,7 +4,7 @@ import { getToken, getUser } from '../../config/storage'
 const INITIAL_STATE = {
   loading: false,
   token: getToken() || '',
-  usuario: getUser() || {},
+  user: getUser() || {},
   error: [],
   registered: false
 }
@@ -17,13 +17,13 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state
     case TYPES.SIGN_IN:
       state.token = action.data.token
-      state.usuario = action.data.usuarioDTO
+      state.user = action.data.userDTO
       state.loading = false
       return state
     case TYPES.SIGN_UP:
       state.registered = true
       state.token = action.data.token
-      state.usuario = action.data.usuario
+      state.user = action.data.user
       state.loading = false
       return state
     case TYPES.SIGN_ERROR:
@@ -31,7 +31,7 @@ const reducer = (state = INITIAL_STATE, action) => {
       return state
     case TYPES.SIGN_OUT:
       state.token = ''
-      state.usuario = {}
+      state.user = {}
       state.isAdmin = false
       state.error = []
       return state
