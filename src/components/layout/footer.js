@@ -2,7 +2,6 @@ import React from 'react'
 import imageFooter from '../../assets/img/image-regale-footer.png'
 import { FaFacebookSquare, FaInstagramSquare, FaWhatsappSquare } from 'react-icons/fa'
 import { MdLocationOn, MdMailOutline, MdPhone } from 'react-icons/md'
-import '../../assets/css/style.css'
 
 const Footer = (props) => {
   return (
@@ -19,7 +18,7 @@ const Footer = (props) => {
           </div>
 
           <div className="col-lg-5 col-md-4 col-sm-12 col-xs-12 ">
-            <img className="imageFooter" src={imageFooter} alt="image do footer" />
+            <img className="imageFooter" src={imageFooter} alt="imagem do footer" />
           </div>
 
           <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12 info">

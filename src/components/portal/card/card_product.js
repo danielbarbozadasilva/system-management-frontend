@@ -1,37 +1,24 @@
 import React from 'react'
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle
-} from 'reactstrap'
+import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap'
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
 
 const CardProduct = (props) => {
   const { name, description, price, image } = props.item
-
   return (
     <div>
       <SCard>
-        {image?.length > 0
-          ? (
-            <SCardImg src={image} />
-            )
-          : (
-              ''
-            )}
-        <div className='item-icon-heart'>
+        {image?.length > 0 ? <SCardImg src={image} /> : ''}
+        <div className="item-icon-heart">
           <FaHeart />
         </div>
 
         <CardBody>
-          <CardTitle className='titleCard'>{name}</CardTitle>
+          <CardTitle className="titleCard">{name}</CardTitle>
           <hr />
-          <CardText className='cardProductPrice'>{price}</CardText>
-          <CardText className='cardDescription'>{description}</CardText>
+          <CardText className="cardProductPrice">{price}</CardText>
+          <CardText className="cardDescription">{description}</CardText>
         </CardBody>
       </SCard>
     </div>

@@ -2,7 +2,6 @@ import React, * as react from 'react'
 import * as moment from 'moment'
 import { createClient } from '~/store/client/client.action'
 import { useDispatch, useSelector } from 'react-redux'
-import '../../assets/css/style.css'
 import {
   FormGroup,
   Label,

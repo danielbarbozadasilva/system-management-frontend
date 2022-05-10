@@ -10,7 +10,6 @@ import {
   getAllProviders,
   setStatusProvider
 } from '~/store/provider/provider.action'
-import '../../../assets/css/style.css'
 
 import ListProduct from '~/components/admin/provider/products'
 import ListLike from '~/components/admin/provider/likes'

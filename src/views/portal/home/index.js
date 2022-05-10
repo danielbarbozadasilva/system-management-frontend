@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCategories } from '../../../store/category/category.action'
-import '../../../assets/css/style.css'
 import Image from '../../../assets/img/image-portal-categories.jpg'
 
 const Home = () => {
