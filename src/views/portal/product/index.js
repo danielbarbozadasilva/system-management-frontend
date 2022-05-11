@@ -6,21 +6,27 @@ import { Col, Row } from 'reactstrap'
 import image from '../../../assets/img/image-portal-products.jpg'
 
 import CardProduct from '../../../components/portal/card/card_product'
-import { getAllProducts, getAllProductsWithFilter } from '../../../store/product/product.action'
+import { getAllProductsWithFilter } from '../../../store/product/product.action'
+import { getCategoryById } from '../../../store/category/category.action'
+import { getProviderById } from '../../../store/provider/provider.action'
+
 import FilterSearch from '../../../components/portal/filters/filter_search'
 import FilterProduct from '../../../components/portal/filters/filter_products'
 
-function Products (props) {
+function Products(props) {
   const dispatch = useDispatch()
 
   const products = useSelector((state) => state.product.all)
   const loading = useSelector((state) => state.auth.loading)
 
   const getData = (props) => {
-    if (props.tipo === '') {
-      dispatch(getAllProducts())
+    if (props.id && props.tipo === 'category') {
+      dispatch(getCategoryById(props.id))
     } else {
       dispatch(getAllProductsWithFilter({ name: props.tipo, filter: props.id }))
+    }
+    if (props.tipo === 'provider') {
+      dispatch(getProviderById(props.id))
     }
   }
 
@@ -28,10 +34,10 @@ function Products (props) {
     getData(props)
   }, [])
 
-  const ListProduct = (products) => {
+  const ListProduct = (props) => {
     return products.map((item, i) => {
       return (
-        <Col className='portalCard' md='6' xl='4' sm='12' xs='12' key={i}>
+        <Col className="portalCard" md="6" xl="4" sm="12" xs="12" key={i}>
           <CardProduct item={{ ...item }} />
         </Col>
       )
@@ -44,30 +50,35 @@ function Products (props) {
 
   return (
     <>
-      <div className='container-fluid'>
-        <div className='image'>
-          <img className='portalImage' src={image} alt='' srcSet='' />
+      <div className="container-fluid">
+        <div className="image">
+          <img className="portalImage" src={image} alt="" srcSet="" />
         </div>
-        <div className='text'>
+        <div className="text">
           <h2>Nossos produtos...</h2>
           <h2>os mais saborosos!</h2>
         </div>
-        <div className='textCategory'>
-          <h1 className='textCat'>
+        <div className="textCategory">
+          <h1 className="textCat">
             Escolha um <strong>produto</strong>
           </h1>
         </div>
-        <div className='container-fluid'>
-          <div className='row'>
-            <FilterSearch />
-            <FilterProduct />
+        <div className="container-fluid">
+          <div className="row">
+            {props?.tipo === '' ? (
+              <>
+                <FilterSearch />
+                <FilterProduct />
+              </>
+            ) : (
+              ''
+            )}
             <BoxProducts>
-              {!loading && products.length === 0
-                ? (
-                  <h1 className='noShowProduct'>Não há produtos disponiveis</h1>
-                  )
-                : (
-                    ListProduct(products))}
+              {products.length === 0 ? (
+                <h1 className="noShowProduct">Não há produtos disponiveis</h1>
+              ) : (
+                ListProduct(props)
+              )}
             </BoxProducts>
           </div>
         </div>

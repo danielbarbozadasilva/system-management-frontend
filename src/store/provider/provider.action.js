@@ -31,10 +31,8 @@ export const getProviderById = (providerId) => {
   return async (dispatch) => {
     try {
       const result = await listProviderByIdService(providerId)
-      dispatch({ type: TYPES.PROVIDER_PRODUCT_ID, data: result.data })
-    } catch (error) {
-      toastr.error('Fornecedor', 'erro ao carregar os produtos')
-    }
+      dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data})
+    } catch (error) {}
   }
 }
 

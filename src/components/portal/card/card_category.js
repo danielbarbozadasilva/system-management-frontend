@@ -31,7 +31,7 @@ const CardItem = (props) => {
           </CardSubtitle>
           <CardText className="cardDescription">{description}</CardText>
 
-          <SButton onClick={() => navigate(`/category/${id}/product`)}>
+          <SButton onClick={() => navigate(`/product/category/${id}`)}>
             Produtos
           </SButton>
         </CardBody>

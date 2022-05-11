@@ -20,14 +20,12 @@ export const getAllCategories = () => {
   }
 }
 
-export const getcategoryById = (id) => {
+export const getCategoryById = (id) => {
   return async (dispatch) => {
-    dispatch({
-      type: TYPES.CATEGORY_ID
-    })
     try {
+      dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
       const result = await listCategoryByIdService(id)
-      dispatch({ type: TYPES.CATEGORY_ID, data: result.data })
+      dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
     } catch (error) {
       toastr.error('aconteceu um erro', error)
     }
@@ -75,8 +73,7 @@ export const editCategory = (id) => {
     try {
       const result = await listCategoryByIdService(id)
       dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data.data })
-    } catch (error) {
-    }
+    } catch (error) {}
   }
 }
 
