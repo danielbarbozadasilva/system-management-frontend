@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { Col, Row } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllCategories } from '../../../store/category/category.action'
-import '../../../assets/css/style.css'
 import Image from '../../../assets/img/image-portal-categories.jpg'
 
 const Home = () => {
@@ -35,7 +34,7 @@ const Home = () => {
     <>
       <div className='container-fluid'>
         <div className='Image'>
-          <img className='portalImage' src={Image} alt='' srcSet='' />
+          <img className='Image' src={Image} alt='' srcSet='' />
         </div>
         <div className='text'>
           <h2>Feito para saborear...</h2>

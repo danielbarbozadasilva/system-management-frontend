@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { createProvider } from '~/store/provider/provider.action'
 import { useDispatch, useSelector } from 'react-redux'
-import '../../assets/css/style.css'
 import {
   FormGroup,
   Label,

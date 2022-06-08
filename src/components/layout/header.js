@@ -14,7 +14,6 @@ import {
   DropdownMenu
 } from 'reactstrap'
 import styled from 'styled-components'
-import '../../assets/css/style.css'
 import LogoHeader from '../../assets/img/image-regale-logo.png'
 import { Link } from '@reach/router'
 

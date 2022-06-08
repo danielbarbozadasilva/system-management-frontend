@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {
   updateLikeProduct
 } from '~/store/provider/provider.action'
@@ -23,7 +23,7 @@ const DataList = ({ data, modal, loading }) => {
   }
 
   const actionLike = ({ id, row }) => {
-    const statusLike = row.result_likes[0]
+    const statusLike = row.likes
     return (
       <>
         <Tooltip title={statusLike ? 'REMOVER CURTIDA' : 'CURTIR'}>
@@ -74,7 +74,7 @@ const DataList = ({ data, modal, loading }) => {
       disableColumnMenu: true
     },
     {
-      field: 'categoryName',
+      field: 'category',
       headerName: 'Categoria',
       align: 'center',
       flex: 1,

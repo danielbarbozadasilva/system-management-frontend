@@ -2,7 +2,6 @@ import React, * as react from 'react'
 import * as moment from 'moment'
 import { createClient } from '~/store/client/client.action'
 import { useDispatch, useSelector } from 'react-redux'
-import '../../assets/css/style.css'
 import {
   FormGroup,
   Label,
@@ -247,17 +246,11 @@ const SignUpClient = () => {
                 </FormFeedback>
               </FormGroup>
 
-              <FormGroup
-                variant='outlined'
-                fullWidth
-                size='medium'
-                margin='larger'
-              >
-                <Label htmlFor='uf' className='labelCli' id='subscription-uf-cli'>
+              <FormGroup>
+                <Label>
                   Uf:
                 </Label>
                 <Select
-                  native
                   value={form.uf || ''}
                   onChange={handleChange}
                   inputProps={{
@@ -265,11 +258,11 @@ const SignUpClient = () => {
                     id: 'outlined-native-simple'
                   }}
                 >
-                  <option className='ufForm' value=''>
+                  <option value=''>
                     selecione
                   </option>
                   {uf?.map(({ name, uf }, i) => (
-                    <option className='ufForm' key={i} value={uf}>
+                    <option key={i} value={uf}>
                       {uf}
                     </option>
                   ))}
@@ -277,14 +270,8 @@ const SignUpClient = () => {
                 </Select>
               </FormGroup>
 
-              <FormGroup
-                id='subscription-city'
-                variant='outlined'
-                size='small'
-                fullWidth
-                margin='normal'
-              >
-                <Label htmlFor='uf' className='labelcity'>
+              <FormGroup>
+                <Label>
                   Cidade:
                 </Label>
 

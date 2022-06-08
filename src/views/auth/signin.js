@@ -14,7 +14,6 @@ import {
 import styled from 'styled-components'
 import { Sign } from '../../assets/styled'
 import { signInAction } from '../../store/auth/auth.action'
-import '../../assets/css/style.css'
 
 const SignIn = () => {
   const dispatch = useDispatch()

@@ -10,7 +10,7 @@ import DataList from '~/components/datagrid'
 const ListLike = ({ likes, open, close }) => {
   const columnsCurtidas = [
     {
-      field: 'nameProduct',
+      field: 'name',
       headerName: 'Nome',
       flex: 1,
       width: 340,

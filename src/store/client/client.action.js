@@ -17,7 +17,7 @@ export const getAllClients = () => {
       const result = await listAllClientService()
       dispatch({ type: TYPES.CLIENT_ALL, data: result.data.data })
     } catch (error) {
-      toastr.error('Aconteceu um erro', error)
+      toastr.error('Ocorreu um erro', error)
     }
   }
 }
@@ -64,7 +64,7 @@ export const getAllLikesClient = () => {
       const result = await listLikeByIdClientService(clientId)
       dispatch({ type: TYPES.CLIENT_LIKE, data: result.data.data })
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
+      toastr.error('Ocorreu um erro', error)
     }
     return false
   }

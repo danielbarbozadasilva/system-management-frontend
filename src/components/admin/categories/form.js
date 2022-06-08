@@ -45,11 +45,7 @@ const Form = ({ submit, ...props }) => {
   }
 
   const isNotValid = () => {
-    const inputs = [
-      'name',
-      'description',
-      'image'
-    ]
+    const inputs = ['name', 'description', 'image']
     const invalid = (label) =>
       !Object.keys(form).includes(label) || form[label].length === 0
 
@@ -112,46 +108,44 @@ const Form = ({ submit, ...props }) => {
 
   return (
     <Box>
-      <form className={classes.root} noValidate autoComplete='off'>
-        {preview.length > 0
-          ? (
-            <Grid container direction='column'>
-              <Grid item sm={1} md={1} xl={1}>
-                <Image src={preview} />
-                <Button onClick={removeImage} component='label'>
-                  Remove
-                </Button>
-              </Grid>
-            </Grid>
-            )
-          : (
-            <Grid container direction='column'>
-              <Button
-                variant='contained'
-                color='primary'
-                size='small'
-                component='label'
-              >
-                Upload Foto
-                <input
-                  accept='image/*'
-                  type='file'
-                  name='image'
-                  hidden
-                  onChange={previewImg}
-                  disabled={loading}
-                />
+      <form className={classes.root} noValidate autoComplete="off">
+        {preview?.length > 0 ? (
+          <Grid container direction="column">
+            <Grid item sm={1} md={1} xl={1}>
+              <Image src={preview} />
+              <Button onClick={removeImage} component="label">
+                Remove
               </Button>
             </Grid>
-            )}
+          </Grid>
+        ) : (
+          <Grid container direction="column">
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              component="label"
+            >
+              Upload Foto
+              <input
+                accept="image/*"
+                type="file"
+                name="image"
+                hidden
+                onChange={previewImg}
+                disabled={loading}
+              />
+            </Button>
+          </Grid>
+        )}
 
         <TextField
-          size='small'
+          size="small"
           error={!!formValidate.name}
-          margin='normal'
-          id='standard-error-helper-text'
-          label='Nome'
-          name='name'
+          margin="normal"
+          id="standard-error-helper-text"
+          label="Nome"
+          name="name"
           autoFocus
           value={form.name || ''}
           onChange={handleChange}
@@ -160,13 +154,13 @@ const Form = ({ submit, ...props }) => {
         />
 
         <TextField
-          size='small'
+          size="small"
           error={!!formValidate.description}
-          margin='normal'
-          name='description'
-          label='Descrição'
-          type='text'
-          id='standard-error-helper-text'
+          margin="normal"
+          name="description"
+          label="Descrição"
+          type="text"
+          id="standard-error-helper-text"
           value={form.description || ''}
           onChange={handleChange}
           helperText={formValidate.description || ''}
@@ -175,19 +169,21 @@ const Form = ({ submit, ...props }) => {
 
         <Submit>
           <Button
-            size='small'
+            size="small"
             className={
-              isNotValid() || loading ? 'buttonSubmit button-style-disable' : 'buttonSubmit button-style'
+              isNotValid() || loading
+                ? 'buttonSubmit button-style-disable'
+                : 'buttonSubmit button-style'
             }
             disabled={isNotValid()}
-            type='submit'
-            variant='contained'
+            type="submit"
+            variant="contained"
             onClick={handleSubmit}
           >
             {isEdit ? 'Atualizar' : 'Enviar'}
           </Button>
-          <Grid container direction='column'>
-            <LinearProgress variant='determinate' value={percent} />
+          <Grid container direction="column">
+            <LinearProgress variant="determinate" value={percent} />
           </Grid>
         </Submit>
       </form>

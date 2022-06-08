@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Select } from '@material-ui/core'
+import React from 'react'
+import { useDispatch } from 'react-redux'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { makeStyles } from '@material-ui/core/styles'
@@ -36,19 +35,23 @@ const FilterSearch = () => {
   }
 
   return (
-    <Box sx={{ pb: 10 }} className='dataSearchProvider'>
+    <Box sx={{ pb: 10 }} className="dataSearchProvider">
       <Box sx={{ pb: 3 }}>
         <Typography>Buscar</Typography>
-        <Paper component='form' className={classes.root}>
+        <Paper component="form" className={classes.root}>
           <InputBase
             className={classes.input}
-            placeholder='Digite o produto'
+            placeholder="Digite o produto"
             onChange={handleChange}
             inputProps={{
               name: 'nameFilter'
             }}
           />
-          <IconButton type='submit' className={classes.iconButton} aria-label='search'>
+          <IconButton
+            type="submit"
+            className={classes.iconButton}
+            aria-label="search"
+          >
             <SearchIcon />
           </IconButton>
         </Paper>

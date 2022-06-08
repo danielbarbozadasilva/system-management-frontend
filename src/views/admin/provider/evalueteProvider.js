@@ -33,6 +33,7 @@ const ProviderEvaluete = () => {
         <Tooltip title={statusLike ? 'REMOVER CURTIDA' : 'CURTIR'}>
           <IconButton onClick={() => toggleActive(id, idUser, row.fantasyName, statusLike)} color='primary'>
             <>{statusLike ? <AiFillStar /> : <AiOutlineStar />}</>
+
           </IconButton>
         </Tooltip>
       </>
