@@ -34,7 +34,7 @@ const Home = () => {
     <>
       <div className='container-fluid'>
         <div className='Image'>
-          <img className='portalImage' src={Image} alt='' srcSet='' />
+          <img className='Image' src={Image} alt='' srcSet='' />
         </div>
         <div className='text'>
           <h2>Feito para saborear...</h2>

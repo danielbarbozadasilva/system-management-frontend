@@ -1,6 +1,7 @@
 import {
   listAllCategoryService,
   listCategoryByIdService,
+  listCategoryByIdProductService,
   insertCategoryService,
   updateCategoryService,
   removeCategoryProductService
@@ -15,19 +16,19 @@ export const getAllCategories = () => {
       const result = await listAllCategoryService()
       dispatch({ type: TYPES.CATEGORY_ALL, data: result.data.data })
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
+      toastr.error('Ocorreu um erro', error)
     }
   }
 }
 
-export const getCategoryById = (id) => {
+export const getCategoryByProductId = (id) => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
-      const result = await listCategoryByIdService(id)
+      const result = await listCategoryByIdProductService(id)
       dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
     } catch (error) {
-      toastr.error('aconteceu um erro', error)
+      toastr.error('Ocorreu um erro', error)
     }
   }
 }
@@ -59,7 +60,7 @@ export const createCategory = (data) => {
       toastr.success('Categoria', 'cadastrada com sucesso!')
       dispatch(getAllCategories())
     } catch (error) {
-      toastr.error('Categoria', 'Preencha todos os campos!')
+      toastr.error('Categoria', 'preencha todos os campos!')
     }
   }
 }
@@ -127,7 +128,7 @@ export const removeCategory = (id) => {
       toastr.success('Categoria', 'removida com sucesso')
       dispatch(getAllCategories())
     } catch (error) {
-      toastr.error('Aconteceu um erro', error)
+      toastr.error('Ocorreu um erro', error)
     }
   }
 }
