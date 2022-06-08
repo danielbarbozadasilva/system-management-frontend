@@ -7,20 +7,18 @@ import Title from '~/components/title/index'
 import { getAllProducts } from '~/store/product/product.action'
 import { getAllCategories } from '~/store/category/category.action'
 import { getAllProviders } from '~/store/provider/provider.action'
-import { getAllClients } from '~/store/client/client.action'
 
 function Home () {
   const dispatch = useDispatch()
 
   const provider = useSelector((state) => state.provider.all)
   const categories = useSelector((state) => state.category.all)
-  const client = useSelector((state) => state.client.all)
   const products = useSelector((state) => state.product.all)
+  
   React.useEffect(() => {
     dispatch(getAllProducts())
     dispatch(getAllCategories())
     dispatch(getAllProviders())
-    dispatch(getAllClients())
   }, [dispatch])
 
   const actions = () => null

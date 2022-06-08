@@ -7,7 +7,7 @@ import image from '../../../assets/img/image-portal-products.jpg'
 
 import CardProduct from '../../../components/portal/card/card_product'
 import { getAllProductsWithFilter } from '../../../store/product/product.action'
-import { getCategoryById } from '../../../store/category/category.action'
+import { getCategoryByProductId } from '../../../store/category/category.action'
 import { getProviderById } from '../../../store/provider/provider.action'
 
 import FilterSearch from '../../../components/portal/filters/filter_search'
@@ -21,11 +21,10 @@ function Products(props) {
 
   const getData = (props) => {
     if (props.id && props.tipo === 'category') {
-      dispatch(getCategoryById(props.id))
-    } else {
+      dispatch(getCategoryByProductId(props.id))
+    } else if (!props.id) {
       dispatch(getAllProductsWithFilter({ name: props.tipo, filter: props.id }))
-    }
-    if (props.tipo === 'provider') {
+    } else if (props.tipo === 'provider') {
       dispatch(getProviderById(props.id))
     }
   }
@@ -74,7 +73,7 @@ function Products(props) {
               ''
             )}
             <BoxProducts>
-              {products.length === 0 ? (
+              {!loading && products.length === 0 ? (
                 <h1 className="noShowProduct">Não há produtos disponiveis</h1>
               ) : (
                 ListProduct(props)
