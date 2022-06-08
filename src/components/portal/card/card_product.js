@@ -1,11 +1,12 @@
 import React from 'react'
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap'
+import { AiFillStar } from 'react-icons/ai'
 import styled from 'styled-components'
 import './style.css'
 import { FaHeart } from 'react-icons/fa'
 
 const CardProduct = (props) => {
-  const { name, description, price, image } = props.item
+  const { name, description, price, image, likes } = props.item
   return (
     <div>
       <SCard>
@@ -19,6 +20,13 @@ const CardProduct = (props) => {
           <hr />
           <CardText className="cardProductPrice">{price}</CardText>
           <CardText className="cardDescription">{description}</CardText>
+          {likes === true? (
+            <CardText>
+              <SAiFillStar />{likes}
+            </CardText>
+          ) : (
+            ''
+          )}
         </CardBody>
       </SCard>
     </div>
@@ -53,5 +61,11 @@ const SCardImg = styled(CardImg)`
   box-shadow: none;
   width: 295px;
   min-height: 231px;
+  object-fit: cover;
+`
+
+const SAiFillStar = styled(AiFillStar)`
+  width: 20px;
+  height: 20px;
   object-fit: cover;
 `

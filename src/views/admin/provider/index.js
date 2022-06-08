@@ -49,7 +49,7 @@ function Provider () {
   }
 
   const actionModalLike = ({ row }) => {
-    const like = row?.result_count !== 0 && row?.kind === 'provider'
+    const like = row?.count_likes_products !== 0 && row?.kind === 'provider'
     return (
       <>
         <Tooltip title='Curtidas'>
@@ -123,7 +123,7 @@ function Provider () {
       disableColumnMenu: true
     },
     {
-      field: 'result_count',
+      field: 'count_likes_products',
       headerName: 'Qtd. likes',
       width: 150,
       align: 'center',

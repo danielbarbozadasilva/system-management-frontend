@@ -45,7 +45,7 @@ const Like = () => {
       disableColumnMenu: true
     },
     {
-      field: typeUser === 2 ? 'price' : 'email',
+      field: typeUser === 2 ? 'priceProduct' : 'email',
       headerName: typeUser === 2 ? 'Preço' : 'E-mail',
       align: 'center',
       flex: 1,
@@ -62,7 +62,7 @@ const Like = () => {
         <CssBaseline />
         <Grid item md={12} xl={12}>
           <DataList
-            data={typeUser === 3 ? listLikeClient : listLikeProvider} columns={columns}
+            data={typeUser === 3 ? listLikeClient.provider : listLikeProvider} columns={columns}
           />
         </Grid>
       </Grid>
