@@ -6,7 +6,7 @@ import {
   createProductService,
   updateProductService
 } from '~/services/product.service'
-
+import { getProduct } from '../provider/provider.action'
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { getUser } from '~/config/storage'
@@ -18,7 +18,7 @@ export const getAllProducts = () => {
       const result = await listProductService()
       dispatch({ type: TYPES.PRODUCT_ALL, data: result.data.data })
     } catch (error) {
-      toastr.error('Aconteceu um erro', error)
+      toastr.error('Ocorreu um erro', error)
     }
   }
 }
@@ -30,7 +30,7 @@ export const getAllProductsWithFilter = (name, filter) => {
       const result = await listProductWithFilterService(name, filter)
       dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
     } catch (error) {
-      toastr.error('Aconteceu um erro', error)
+      toastr.error('Ocorreu um erro', error)
     }
   }
 }
@@ -61,9 +61,9 @@ export const createProduct = (data) => {
       const result = await createProductService(providerId, formData)
       dispatch({ type: TYPES.PRODUCT_CREATE, data: result.data })
       toastr.success('Produto', 'Produto cadastrado com sucesso')
-      dispatch(getAllProducts())
+      dispatch(getProduct())
     } catch (error) {
-      toastr.error('Produto', 'deu ruim')
+      toastr.error('Produto', 'ocorreu um erro.')
     }
   }
 }
@@ -95,7 +95,7 @@ export const updateProduct = (data) => {
       const result = await updateProductService(providerId, productId, formData, config)
       dispatch({ type: TYPES.PRODUCT_UPDATE, data: result.data })
       toastr.success('Produto', 'Produto atualizado com sucesso')
-      dispatch(getAllProducts())
+      dispatch(getProduct())
     } catch (error) {
       toastr.error('Atualização', 'ocorreu um erro!')
     }
@@ -109,8 +109,8 @@ export const removeProduct = (productId) => {
       const providerId = getUser().id
       const result = await deleteProductService(providerId, productId)
       dispatch({ type: TYPES.PRODUCT_REMOVE, data: result.data })
-      toastr.success('Produto', 'Removido com sucesso')
-      dispatch(getAllProducts())
+      toastr.success('Produto', 'removido com sucesso')
+      dispatch(getProduct())
     } catch (error) {
       toastr.error('Produto', error.toString())
     }
@@ -127,7 +127,7 @@ export const editProduct = (id) => {
       const result = await listProductByIdService(id)
       dispatch({ type: TYPES.PRODUCT_EDIT, data: result.data.data })
     } catch (error) {
-      toastr.error('Aconteceu um erro', error)
+      toastr.error('Ocorreu um erro', error)
     }
   }
 }
