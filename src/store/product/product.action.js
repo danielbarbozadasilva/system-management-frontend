@@ -104,7 +104,6 @@ export const updateProduct = (data) => {
 
 export const removeProduct = (productId) => {
   return async (dispatch) => {
-    console.log('productId' + productId)
     try {
       const providerId = getUser().id
       const result = await deleteProductService(providerId, productId)
