@@ -2,6 +2,7 @@
   "author": "Daniel Barboza da Silva",
   "license": "GPL-3.0-or-later",
   "name": "gestao_confeitarias",
+  "description": "frontend - Sistema de gestão de confeitarias",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -52,9 +53,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
-    "lint": "npx eslint ./src --fix",
-    "prepare": "husky install"
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -69,28 +68,25 @@
     ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^16.0.1",
-    "@commitlint/config-conventional": "^16.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-root-import": "^6.6.0",
     "babel-plugin-styled-components": "^1.12.0",
     "customize-cra": "^1.0.0",
+    "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-config-standard-jsx": "^10.0.0",
     "eslint-config-standard-react": "^11.0.1",
     "eslint-import-resolver-babel-plugin-root-import": "^1.1.1",
-    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-makestyles": "^0.1.11",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-unused-imports": "^1.1.1",
-    "git-commit-msg-linter": "^2.3.11",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.1.5",
+    "prettier": "^2.3.0",
     "react-app-rewired": "^2.1.8",
     "redux-devtools-extension": "^2.13.9"
   }
