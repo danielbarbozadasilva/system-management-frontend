@@ -7,7 +7,7 @@ import SignUpProvider from '~/views/auth/signup-provider'
 import SignUpClient from '~/views/auth/signup-client'
 import SignIn from '~/views/auth/signin'
 
-import Layout from '~/components/layout'
+import Layout from '~/components/layout/main'
 
 const Menu = [
   {

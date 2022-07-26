@@ -1,5 +1,5 @@
 import React from 'react'
-import imageFooter from '../../assets/img/image-regale-footer.png'
+import imageFooter from '../../../assets/img/image-regale-footer.png'
 import { FaFacebookSquare, FaInstagramSquare, FaWhatsappSquare } from 'react-icons/fa'
 import { MdLocationOn, MdMailOutline, MdPhone } from 'react-icons/md'
 

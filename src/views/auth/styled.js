@@ -24,6 +24,15 @@ export const Submit = styled.div`
     margin: ${({ theme: t }) => t.spacing(3, 0, 2)};
   }
 `
+
 export const LoadingSubmit = styled(CircularProgress)`
   color: ${({ theme: t }) => t.palette.primary};
+`
+
+export const Sign = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  min-height: 100%;
 `

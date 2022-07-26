@@ -12,7 +12,7 @@ import {
   Spinner
 } from 'reactstrap'
 import styled from 'styled-components'
-import { Sign } from '../../assets/styled'
+import { Sign } from './styled'
 import { signInAction } from '../../store/auth/auth.action'
 
 const SignIn = () => {
