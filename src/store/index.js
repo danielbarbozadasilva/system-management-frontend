@@ -1,10 +1,8 @@
-// import as libs
 import { applyMiddleware, combineReducers, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import multi from 'redux-multi'
 
-// importação dos reducers
 import { reducer as toastrReducer } from 'react-redux-toastr'
 import SignReducer from './auth/auth.reducer'
 import categoryReducer from './category/category.reducer'
