@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   registered: false
 }
 
-const reducer = (state = INITIAL_STATE, action) => {
+const reducer = ({ ...state } = INITIAL_STATE, action) => {
   switch (action.type) {
     case TYPES.SIGN_LOADING:
       state.error = []

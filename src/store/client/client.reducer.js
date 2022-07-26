@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   likes: []
 }
 
-const reducer = (state = INITIAL_STATE, action) => {
+const reducer = ({ ...state } = INITIAL_STATE, action) => {
   switch (action.type) {
     case TYPES.CLIENT_LOADING:
       state.error = []
