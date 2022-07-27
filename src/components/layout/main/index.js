@@ -1,7 +1,8 @@
 import React from 'react'
-import Header from '../header'
-import Footer from '../footer'
-import styled from 'styled-components'
+import Header from '../header/index'
+import Footer from '../footer/index'
+import '../../../assets/css/style.css'
+import { Main } from '../styled'
 
 const Layout = (props) => {
   document.title = 'Regale'
@@ -15,5 +16,3 @@ const Layout = (props) => {
 }
 
 export default Layout
-
-const Main = styled.main``

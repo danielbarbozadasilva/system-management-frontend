@@ -15,26 +15,18 @@ export const SNavbar = styled(Navbar)`
 `
 export const SDropdownMenu = styled(Dropdown.Menu)`
   padding: 10px;
-  background-color: #f8f9fa !important;  
+  background-color: #f8f9fa !important;
 `
 
 export const SDropdownToggle = styled(Dropdown.Toggle)`
-  padding: 0.725rem 0.805rem 0.4375rem;  
-  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.725rem 0.805rem 0.4375rem;
   text-align: center;
   color: rgb(74, 34, 26) !important;
   border-color: rgba(70, 75, 79, 0.2);
-  margin-right: 5px;  
+  margin-right: 5px;
   color: #464b4f;
-  @media screen and (max-width: 990px) {
-    margin-left: 40%;
-  }
-  @media screen and (max-width: 770px) {
-    margin-left: 37%;
-  }
-  @media screen and (max-width: 490px) {
-    margin-left: 33%;
-  }
+  
 `
 
 export const SDiv = styled.div`
@@ -42,7 +34,7 @@ export const SDiv = styled.div`
   text-decoration: none;
   top: 0;
   display: inline-block;
-  font-size: 0.9rem;
+  font-size: 1rem;
   line-height: 1.5;
   list-style: none;
   padding-left: 50px;
@@ -65,7 +57,6 @@ export const SDiv = styled.div`
 `
 
 export const SLogin = styled.div`
-  text-transform: uppercase;
   border-color: rgba(70, 75, 79, 0.2);
   border: 1px solid rgba(70, 75, 79, 0.2);
   @media screen and (max-width: 990px) {
@@ -102,8 +93,9 @@ export const SContainer = styled(Container)`
   position: center;
   text-align: center;
   font-size: 24px;
-  background-color: #501417;
-  color: #f1deb8;
+  color: white;
+  background-color: #dbc084;
+
 `
 
 export const WebsiteRights = styled.div`
@@ -135,7 +127,7 @@ export const ColInfo = styled(Col)`
 export const SocialIconLink = styled.a`
   font-size: 40px;
   padding-left: 28px;
-  color: #f1deb8;
+  color: white;
   &:hover {
     color: #c7b7ba;
     transition: 0.5s ease-out;
@@ -147,17 +139,18 @@ export const FooterLinkTitle = styled.h1`
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 3px;
-  color: #f1deb8;
-  border-left: 5px solid #f1deb8;
+  color: white;
+  border-left: 5px solid white;
   padding: 5px 40px;
   margin: 10px 0px;
 `
 
 export const FooterName = styled.h1`
-  font-size: 14px;
-  text-transform: uppercase;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 3px;
+  text-align: center;
+  color: white;
   @media screen and (max-width: 990px) {
     display: none;
   }
@@ -165,8 +158,8 @@ export const FooterName = styled.h1`
 
 export const FooterImg = styled.img`
   position: center;
-  width: 250px;
-  heigth: 250px;
+  width: 125px;
+  heigth: 125px;
   margin-top: 70px;
   margin-bottom: 25px;
   @media screen and (max-width: 990px) {
