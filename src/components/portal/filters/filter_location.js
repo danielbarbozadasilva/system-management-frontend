@@ -40,13 +40,11 @@ const FilterLocation = () => {
   }, [form.uf])
 
   return (
-    <Box sx={{ pb: 10 }} className='dataSearchProvider'>
+    <Box sx={{ pb: 10 }} className="dataSearchProvider">
       <Typography>Filtrar</Typography>
-      <Label htmlFor='uf'>
-        UF:
-      </Label>
+      <Label htmlFor="uf">UF:</Label>
       <Select
-        className='portalProviderText'
+        className="portalProviderText"
         native
         value={form.uf || ''}
         onChange={handleChange}
@@ -54,7 +52,7 @@ const FilterLocation = () => {
           name: 'uf'
         }}
       >
-        <option value='x'>selecione</option>
+        <option value="x">selecione</option>
         {uf?.map(({ name, uf }, i) => (
           <option key={i} value={uf}>
             {uf}
@@ -62,12 +60,12 @@ const FilterLocation = () => {
         ))}
       </Select>
 
-      <Label htmlFor='uf' className='portalProviderText'>
+      <Label htmlFor="uf" className="portalProviderText">
         Cidade:
       </Label>
 
       <Select
-        className='portalProviderText'
+        className="portalProviderText"
         native
         value={form.city || 'x'}
         onChange={handleChange}
@@ -75,7 +73,7 @@ const FilterLocation = () => {
           name: 'city'
         }}
       >
-        <option value='x'>selecione</option>
+        <option value="x">selecione</option>
         {city?.map((city, i) => (
           <option key={i} value={city}>
             {city}

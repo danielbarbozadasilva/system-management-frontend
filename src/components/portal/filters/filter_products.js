@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Select } from '@material-ui/core'
+import { useDispatch } from 'react-redux'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import { getAllProductsWithFilter } from '../../../store/product/product.action'
+import { Select } from '@material-ui/core'
 
 const FilterProduct = () => {
   const dispatch = useDispatch()
@@ -16,22 +16,22 @@ const FilterProduct = () => {
   }
 
   return (
-    <Box sx={{ pb: 10 }} className='dataSearchProvider'>
-      <Box sx={{ pb: 1 }}>
-        <Typography>Ordenar</Typography>
+    <Box sx={{ pl: 5 }}>
+      <Box sx={{ pt: 2, pl: 5 }}>
+        <Typography sx={{ pb: 1 }}>Ordenar</Typography>
         <Select
-          className='portalProviderTextStyle'
           native
-          value={order}
+          defaultValue={'x'}
           onChange={handleChange}
           inputProps={{
-            name: 'order'
+            name: 'order',
+            id: 'outlined-native-simple'
           }}
         >
-          <option value='x'>selecione</option>
-          <option value='like'>Curtidas</option>
-          <option value='price'>Valor</option>
-          <option value='description'>Descrição</option>
+          <option value="x">selecione</option>
+          <option value="like">Curtidas</option>
+          <option value="price">Valor</option>
+          <option value="description">Descrição</option>
         </Select>
       </Box>
     </Box>

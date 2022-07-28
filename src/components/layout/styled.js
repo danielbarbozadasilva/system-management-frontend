@@ -26,7 +26,6 @@ export const SDropdownToggle = styled(Dropdown.Toggle)`
   border-color: rgba(70, 75, 79, 0.2);
   margin-right: 5px;
   color: #464b4f;
-  
 `
 
 export const SDiv = styled.div`
@@ -95,7 +94,6 @@ export const SContainer = styled(Container)`
   font-size: 24px;
   color: white;
   background-color: #dbc084;
-
 `
 
 export const WebsiteRights = styled.div`

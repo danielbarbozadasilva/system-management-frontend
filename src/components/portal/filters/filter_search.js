@@ -35,9 +35,9 @@ const FilterSearch = () => {
   }
 
   return (
-    <Box sx={{ pb: 10 }} className="dataSearchProvider">
+    <Box sx={{ pl: 10 }}>
       <Box sx={{ pb: 3 }}>
-        <Typography>Buscar</Typography>
+        <Typography sx={{ pb: 1 }}>Buscar</Typography>
         <Paper component="form" className={classes.root}>
           <InputBase
             className={classes.input}
