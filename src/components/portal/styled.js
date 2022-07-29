@@ -211,6 +211,13 @@ export const ContainerCapion = styled.div`
   border-left: 1px solid #ccc;
 `
 
+export const SMessage = styled.div`
+  padding: 2%;
+  @media screen and (max-width: 460px) {
+    padding: 5%;
+  }
+`
+
 export const STextCardContainer = styled.h6`
   padding-left: 2.5%;
 `

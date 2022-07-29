@@ -13,14 +13,15 @@ import {
   TextTitle,
   SButtonTitle,
   ContainerCapion,
-  ContainerCards
+  ContainerCards,
+  SMessage
 } from '../../../components/portal/styled'
 
 function Provider(props) {
   const dispatch = useDispatch()
 
-  const provider = useSelector((state) => state.provider.all)
   const loading = useSelector((state) => state.auth.loading)
+  const provider = useSelector((state) => state.provider.all)
 
   const getData = () => {
     dispatch(getAllProviders(props.nameFilter))
@@ -85,12 +86,12 @@ function Provider(props) {
       <ContainerCards>
         {props.id ? (
           !loading ? (
-            <h6>Não há produtos disponiveis</h6>
+            <SMessage>Não há produtos disponiveis</SMessage>
           ) : (
-            <CardProvider item={{ ...item, status: true }} />
+            <CardProvider item={{ ...item }} />
           )
         ) : !loading && provider.length === 0 ? (
-          <h6>Não há fornecedores disponiveis</h6>
+          <SMessage>Não há fornecedores disponiveis</SMessage>
         ) : (
           listProvider(provider)
         )}

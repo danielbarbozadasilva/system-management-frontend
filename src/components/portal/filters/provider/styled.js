@@ -2,13 +2,16 @@ import styled from 'styled-components'
 import Form from 'react-bootstrap/Form'
 
 export const SBox = styled.div`
-  margin: 1.5% 4%;
-  margin-bottom: 2%;
+  margin: 0% 4%;
   color: #501417;
+  @media screen and (max-width: 620px) {
+    padding: 0% 7%;
+  }
 `
 
-export const STitle = styled.h5`
-  padding: 10px 20px;
+export const STitle = styled.h6`
+  padding: 0px 20px;
+  margin-top: 20px;
 `
 
 export const SLabel = styled(Form.Label)`
