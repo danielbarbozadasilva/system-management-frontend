@@ -3,9 +3,9 @@ import { Router } from '@reach/router'
 import Home from '~/views/portal/home/index'
 import PortalProduct from '~/views/portal/product'
 import PortalProvider from '~/views/portal/provider'
-import SignUpProvider from '~/views/auth/signup-provider'
-import SignUpClient from '~/views/auth/signup-client'
-import SignIn from '~/views/auth/signin'
+import SignUpProvider from '~/views/auth/signup/provider/index'
+import SignUpClient from '~/views/auth/signup/client/index'
+import SignIn from '~/views/auth/signin/index'
 
 import Layout from '~/components/layout/main'
 
