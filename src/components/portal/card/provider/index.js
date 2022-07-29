@@ -1,13 +1,13 @@
 import React from 'react'
 import { Card } from 'react-bootstrap'
 import { navigate } from '@reach/router'
-import { SCard, SButton, SCardText, SCardTitle } from '../styled'
+import { SCardProvider, SButton, SCardText, SCardTitle } from './styled'
 
 const Cardprovider = (props) => {
   const { id, fantasyName, address, uf, city, phone } = props.item
   return (
     <div>
-      <SCard>
+      <SCardProvider>
         <Card.Body>
           <SCardTitle>{fantasyName}</SCardTitle>
           <SCardText>
@@ -38,7 +38,7 @@ const Cardprovider = (props) => {
             </SButton>
           )}
         </Card.Body>
-      </SCard>
+      </SCardProvider>
     </div>
   )
 }

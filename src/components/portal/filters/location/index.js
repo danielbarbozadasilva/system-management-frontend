@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Label } from 'reactstrap'
+import { useDispatch } from 'react-redux'
 import { Select } from '@material-ui/core'
-import UFCity from '../../../util/state-city.json'
-import { getListProviderUfCity } from '../../../store/provider/provider.action'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import UFCity from '../../../../util/state-city.json'
+import { getListProviderUfCity } from '../../../../store/provider/provider.action'
+import { SBox, STitle, SLabel } from './styled'
 
 const FilterLocation = () => {
   const dispatch = useDispatch()
@@ -21,7 +19,6 @@ const FilterLocation = () => {
 
   const handleChange = async (props) => {
     const { value, name } = props.target
-    console.log(value, name)
     if (value == 'x' && name == 'uf') {
       dispatch(await getListProviderUfCity(value))
     }
@@ -40,11 +37,10 @@ const FilterLocation = () => {
   }, [form.uf])
 
   return (
-    <Box sx={{ pb: 10 }} className="dataSearchProvider">
-      <Typography>Filtrar</Typography>
-      <Label htmlFor="uf">UF:</Label>
+    <SBox>
+      <STitle>Filtrar</STitle>
+      <SLabel htmlFor="uf">UF:</SLabel>
       <Select
-        className="portalProviderText"
         native
         value={form.uf || ''}
         onChange={handleChange}
@@ -60,12 +56,8 @@ const FilterLocation = () => {
         ))}
       </Select>
 
-      <Label htmlFor="uf" className="portalProviderText">
-        Cidade:
-      </Label>
-
+      <SLabel htmlFor="uf">Cidade:</SLabel>
       <Select
-        className="portalProviderText"
         native
         value={form.city || 'x'}
         onChange={handleChange}
@@ -80,7 +72,7 @@ const FilterLocation = () => {
           </option>
         ))}
       </Select>
-    </Box>
+    </SBox>
   )
 }
 export default FilterLocation

@@ -1,13 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import InputBase from '@material-ui/core/InputBase'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
-import { getAllProductsWithFilter } from '../../../store/product/product.action'
+import { getAllProductsWithFilter } from '../../../../store/product/product.action'
+import { STitle, SBox } from './styled'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,28 +34,26 @@ const FilterSearch = () => {
   }
 
   return (
-    <Box sx={{ pl: 10 }}>
-      <Box sx={{ pb: 3 }}>
-        <Typography sx={{ pb: 1 }}>Buscar</Typography>
-        <Paper component="form" className={classes.root}>
-          <InputBase
-            className={classes.input}
-            placeholder="Digite o produto"
-            onChange={handleChange}
-            inputProps={{
-              name: 'nameFilter'
-            }}
-          />
-          <IconButton
-            type="submit"
-            className={classes.iconButton}
-            aria-label="search"
-          >
-            <SearchIcon />
-          </IconButton>
-        </Paper>
-      </Box>
-    </Box>
+    <SBox>
+      <STitle>Buscar</STitle>
+      <Paper component="form" className={classes.root}>
+        <InputBase
+          className={classes.input}
+          placeholder="Digite o produto"
+          onChange={handleChange}
+          inputProps={{
+            name: 'nameFilter'
+          }}
+        />
+        <IconButton
+          type="submit"
+          className={classes.iconButton}
+          aria-label="search"
+        >
+          <SearchIcon />
+        </IconButton>
+      </Paper>
+    </SBox>
   )
 }
 export default FilterSearch

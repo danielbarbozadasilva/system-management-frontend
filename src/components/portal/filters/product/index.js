@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
-import { getAllProductsWithFilter } from '../../../store/product/product.action'
+import { getAllProductsWithFilter } from '../../../../store/product/product.action'
 import { Select } from '@material-ui/core'
+import { SBox, STitle } from './styled'
 
 const FilterProduct = () => {
   const dispatch = useDispatch()
@@ -16,9 +15,9 @@ const FilterProduct = () => {
   }
 
   return (
-    <Box sx={{ pl: 5 }}>
-      <Box sx={{ pt: 2, pl: 5 }}>
-        <Typography sx={{ pb: 1 }}>Ordenar</Typography>
+    <SBox>
+      <STitle>Ordenar</STitle>
+      <div>
         <Select
           native
           defaultValue={'x'}
@@ -33,8 +32,8 @@ const FilterProduct = () => {
           <option value="price">Valor</option>
           <option value="description">Descrição</option>
         </Select>
-      </Box>
-    </Box>
+      </div>
+    </SBox>
   )
 }
 export default FilterProduct

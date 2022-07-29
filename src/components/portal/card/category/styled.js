@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { Card, Row } from 'react-bootstrap'
-import { AiFillStar } from 'react-icons/ai'
+import { Card } from 'react-bootstrap'
 import { FaHeart } from 'react-icons/fa'
 
 export const SCard = styled(Card)`
@@ -83,10 +82,6 @@ export const SButton = styled.button`
   }
 `
 
-export const SPriceCardText = styled(Card.Text)`
-  font-size: 22px;
-`
-
 export const SFaHeart = styled(FaHeart)`
   width: 68px;
   height: 38px;
@@ -99,91 +94,5 @@ export const SFaHeart = styled(FaHeart)`
   z-index: 3;
   left: 50%;
   transform: translateX(-50%);
-`
-
-export const SAiFillStar = styled(AiFillStar)`
-  width: 20px;
-  height: 20px;
-  color: rgb(100, 100, 42);
-  object-fit: cover;
-`
-
-export const StyleImg = styled.img`
-  background-position: cover;
-  object-fit: cover;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  height: 550px;
-  margin-bottom: 100px;
-`
-
-export const ContainerTitle = styled.div`
-  width: 100%;
-  top: 14%;
-  position: absolute;
-  z-index: 100;
-  @media screen and (max-width: 730px) {
-    top: 8%;
-  }
-`
-
-export const TextTitle = styled.h1`
-  font-weight: 400;
-  font-family: 'Great Vibes', handwriting;
-  word-wrap: break-word;
-  color: white;
-  font-size: 70px;
-  color: #ebebeb;
-  text-align: center;
-  @media screen and (max-width: 730px) {
-    font-size: 55px;
-  }
-`
-
-export const SButtonTitle = styled.button`
-  position: absolute;
-  bottom: -60px;
-  font-family: 'Helvetica Neue';
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  font-size: 16px;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  background: #be8c60;
-  transition: color 0.3s ease, opacity 0.3s ease;
-  :hover {
-    box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
-    transition: 1s;
-    opacity: 0.5;
-  }
-`
-
-export const ContainerCards = styled(Row)`
-  margin: 60px auto;
-  padding: 2%;
-  @media screen and (max-width: 770px) {
-    margin: 5% 15%;
-  }
-  @media screen and (max-width: 640px) {
-    margin: 5% 8%;
-  }
-  @media screen and (max-width: 550px) {
-    margin: 5% 4%;
-  }
-  @media screen and (max-width: 460px) {
-    margin: 5% 0%;
-  }
-`
-
-export const ContainerCapion = styled.div`
-  margin-left: 45px;
-  margin-bottom: 50px;
-  padding: 10px;
-  border-left: 1px solid #ccc;
+  padding: 7px;
 `
