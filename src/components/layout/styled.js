@@ -58,10 +58,15 @@ export const SDiv = styled.div`
 export const SLogin = styled.div`
   border-color: rgba(70, 75, 79, 0.2);
   border: 1px solid rgba(70, 75, 79, 0.2);
+  padding: 0.625rem 0.625rem 0.4375rem;
+  &:hover {
+    border-color: rgba(70, 75, 79, 0.2);
+    border: 1px solid #4a221a;
+    transition: 0.2s ease-out;
+  }
   @media screen and (max-width: 990px) {
     border: none;
   }
-  padding: 0.625rem 0.625rem 0.4375rem;
 `
 
 export const SNavbarLogo = styled.img`
@@ -106,7 +111,7 @@ export const WebsiteRights = styled.div`
 
 export const ColNetworks = styled(Col)`
   text-align: left;
-  margin: 50px;
+  margin: 80px;
   @media screen and (max-width: 990px) {
     margin: 0;
     padding-top: 30px;
@@ -115,7 +120,7 @@ export const ColNetworks = styled(Col)`
 
 export const ColInfo = styled(Col)`
   text-align: right;
-  margin: 50px;
+  margin: 80px;
   @media screen and (max-width: 990px) {
     padding-top: 30px;
     margin: 0;

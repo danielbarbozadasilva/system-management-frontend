@@ -55,7 +55,6 @@ const FilterLocation = () => {
           </option>
         ))}
       </Select>
-
       <SLabel htmlFor="uf">Cidade:</SLabel>
       <Select
         native
