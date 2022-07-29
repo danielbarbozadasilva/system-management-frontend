@@ -9,7 +9,7 @@ import {
   SCardSubtitle,
   SFaHeart,
   SButton
-} from '../styled'
+} from './styled'
 
 const CardItem = (props) => {
   const { id, name, description, image } = props.item
@@ -17,7 +17,7 @@ const CardItem = (props) => {
     <div>
       <SCard>
         {image?.length > 0 ? <SCardImg src={image} /> : ''}
-        <SFaHeart style={{ padding: '7px' }} />
+        <SFaHeart />
         <Card.Body>
           <SCardTitle>{name}</SCardTitle>
           <hr />

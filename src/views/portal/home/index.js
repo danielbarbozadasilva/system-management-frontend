@@ -13,7 +13,7 @@ import {
   SButtonTitle,
   ContainerCards,
   ContainerCapion
-} from '../../../components/portal/card/styled'
+} from '../../../components/portal/styled'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -51,7 +51,7 @@ const Home = () => {
           <br />
           encontre as delícias da sua região
         </TextTitle>
-        <SButtonTitle onClick={() => navigate(`/signup`)}>
+        <SButtonTitle onClick={() => navigate(`/registrationclient`)}>
           Encontrar
         </SButtonTitle>
       </ContainerTitle>

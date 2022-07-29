@@ -8,7 +8,7 @@ import {
   SFaHeart,
   SAiFillStar,
   SPriceCardText
-} from '../styled'
+} from './styled'
 
 const CardProduct = (props) => {
   const { name, description, price, image, likes } = props.item
@@ -16,20 +16,13 @@ const CardProduct = (props) => {
     <div>
       <SCard>
         {image?.length > 0 ? <SCardImg src={image} /> : ''}
-        <SFaHeart style={{ padding: '7px' }} />
+        <SFaHeart />
         <Card.Body>
           <SCardTitle>{name}</SCardTitle>
           <hr />
           <SPriceCardText>{price}</SPriceCardText>
           <SCardText>{description}</SCardText>
-          {likes === true ? (
-            <SCardText>
-              <SAiFillStar />
-              {likes}
-            </SCardText>
-          ) : (
-            ''
-          )}
+          {likes === true ? <SAiFillStar /> : ''}
         </Card.Body>
       </SCard>
     </div>
