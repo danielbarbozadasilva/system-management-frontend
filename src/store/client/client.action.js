@@ -68,18 +68,12 @@ export const updateLikeClientProvider = (
   }
 }
 
-export const getAllLikesClient = () => {
-  return async (dispatch, getState) => {
-    const {
-      auth: {
-        user: { id: clientId }
-      }
-    } = getState()
+export const getAllLikesClient = (id) => {
+  return async (dispatch) => {
     try {
       dispatch({ type: TYPES.CLIENT_LIKE_LOADING, status: true })
-      const result = await listLikeByIdClientService(clientId)
-      dispatch({ type: TYPES.CLIENT_LIKE, data: result.data.data })
+      const result = await listLikeByIdClientService(id)
+      dispatch({ type: TYPES.CLIENT_LIKE, data: result.data.data.provider })
     } catch (error) {}
-    return false
   }
 }

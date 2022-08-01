@@ -11,7 +11,7 @@ import {
 
 import Title from '~/components/title'
 import DialogModal from '~/components/dialog'
-import Form from '~/components/admin/categories/form'
+import Form from '~/components/admin/categories/form/index'
 import DataList from '~/components/admin/categories/datagrid'
 import Remove from '~/components/admin/categories/remove'
 
@@ -84,7 +84,7 @@ const category = () => {
       />
       <Grid container spacing={2}>
         <CssBaseline />
-        <Grid item md={12} xl={8}>
+        <Grid item md={12} xl={12}>
           <DataList data={category} loading={loading} modal={toogleModal} />
         </Grid>
       </Grid>

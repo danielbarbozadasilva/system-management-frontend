@@ -3,8 +3,7 @@ const baseUrl = '/category'
 
 export const listAllCategoryService = () => http.get(baseUrl)
 
-export const listCategoryByIdService = (id) =>
-  http.get(`${baseUrl}/${id}`)
+export const listCategoryByIdService = (id) => http.get(`${baseUrl}/${id}`)
 
 export const listCategoryByIdProductService = (id) =>
   http.get(`${baseUrl}/${id}/product`)
