@@ -2,7 +2,10 @@ import styled from 'styled-components'
 import Form from 'react-bootstrap/Form'
 
 export const SBox = styled.div`
-  padding: 2% 11%
+  padding: 2% 11%;
+  @media screen and (max-width: 415px) {
+    padding: 1% 3%;
+  }
 `
 
 export const STitle = styled.h5`

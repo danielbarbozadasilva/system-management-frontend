@@ -209,12 +209,15 @@ export const ContainerCapion = styled.div`
   margin-bottom: 50px;
   padding: 10px;
   border-left: 1px solid #ccc;
+  @media screen and (max-width: 415px) {
+    margin-left: 7%;
+  }
 `
 
 export const SMessage = styled.div`
   padding: 2%;
   @media screen and (max-width: 460px) {
-    padding: 5%;
+    padding: 2% 10%;
   }
 `
 

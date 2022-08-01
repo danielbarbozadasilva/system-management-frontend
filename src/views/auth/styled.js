@@ -9,6 +9,10 @@ export const SForm = styled(Form)`
   box-shadow: 0px 2px 15px 6px rgba(0, 0, 0, 0.11);
   padding: 50px;
   position: center;
+  @media screen and (max-width: 415px) {
+    margin: 100px auto;
+    width: 100%;
+  }
 `
 
 export const SColFooter = styled(Col)`
@@ -43,7 +47,7 @@ export const SButton = styled.button`
   box-shadow: 0 4px 12px 0 rgb(226 60 82 / 20%);
   background-image: linear-gradient(to left, #4f2821, #aa4938);
   --bs-text-opacity: 1;
-  color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
+  color: white;
   border: none;
 `
 

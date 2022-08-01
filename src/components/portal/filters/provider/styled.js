@@ -7,6 +7,9 @@ export const SBox = styled.div`
   @media screen and (max-width: 620px) {
     padding: 0% 7%;
   }
+  @media screen and (max-width: 415px) {
+    padding: 0% 5.5%;
+  }
 `
 
 export const STitle = styled.h6`

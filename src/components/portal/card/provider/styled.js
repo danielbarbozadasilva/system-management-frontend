@@ -16,6 +16,9 @@ export const SCardProvider = styled(Card)`
   @media screen and (max-width: 770px) {
     margin-bottom: 25%;
   }
+   @media screen and (max-width: 415px) {
+    width: 80%;
+  }
   :hover {
     box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
     transition: 1s;

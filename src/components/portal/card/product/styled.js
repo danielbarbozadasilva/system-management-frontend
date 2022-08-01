@@ -18,6 +18,9 @@ export const SCard = styled(Card)`
   @media screen and (max-width: 770px) {
     margin-bottom: 25%;
   }
+  @media screen and (max-width: 415px) {
+    width: 80%;
+  }
   :hover {
     box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
     transition: 1s;
@@ -34,6 +37,9 @@ export const SCardImg = styled(Card.Img)`
   width: 295px;
   min-height: 231px;
   object-fit: cover;
+  @media screen and (max-width: 415px) {
+    width: 100%;
+  }
 `
 
 export const SCardProvider = styled(Card)`
@@ -51,6 +57,7 @@ export const SCardProvider = styled(Card)`
   @media screen and (max-width: 770px) {
     margin-bottom: 25%;
   }
+  
   :hover {
     box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
     transition: 1s;
@@ -139,6 +146,9 @@ export const StyleImg = styled.img`
   width: 100%;
   height: 550px;
   margin-bottom: 100px;
+  @media screen and (max-width: 415px) {
+    width: 100%;
+  }
 `
 
 export const ContainerTitle = styled.div`
