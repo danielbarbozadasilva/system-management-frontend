@@ -7,6 +7,7 @@ import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import styled from 'styled-components'
 import { getAllProviders } from '~/store/provider/provider.action'
 import { updateLikeClientProvider } from '~/store/client/client.action'
+import Loading from '../../../components/loading/index'
 
 const ProviderEvaluete = () => {
   const dispatch = useDispatch()
@@ -31,9 +32,13 @@ const ProviderEvaluete = () => {
     return (
       <>
         <Tooltip title={statusLike ? 'REMOVER CURTIDA' : 'CURTIR'}>
-          <IconButton onClick={() => toggleActive(id, idUser, row.fantasyName, statusLike)} color='primary'>
+          <IconButton
+            onClick={() =>
+              toggleActive(id, idUser, row.fantasyName, statusLike)
+            }
+            color="primary"
+          >
             <>{statusLike ? <AiFillStar /> : <AiOutlineStar />}</>
-
           </IconButton>
         </Tooltip>
       </>
@@ -77,16 +82,13 @@ const ProviderEvaluete = () => {
   ]
 
   if (loading) {
-    return <p>carregando...</p>
+    return <Loading />
   }
 
   const actions = () => null
   return (
     <>
-      <Title
-        title='Avalie os fornecedores'
-        actions={actions}
-      />
+      <Title title="Avalie os fornecedores" actions={actions} />
       <Grid container spacing={2}>
         <CssBaseline />
         <Grid item md={12} xl={12}>

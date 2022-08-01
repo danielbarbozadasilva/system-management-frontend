@@ -8,6 +8,7 @@ import { DataGrid } from '@material-ui/data-grid'
 import { FiTrash2, FiEdit } from 'react-icons/fi'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { IconButton, Tooltip } from '@material-ui/core'
+import Loading from '../../../components/loading/index'
 
 const DataList = ({ data, modal, loading }) => {
   const dispatch = useDispatch()
@@ -119,7 +120,7 @@ const DataList = ({ data, modal, loading }) => {
   ]
 
   if (loading) {
-    return <p>carregando...</p>
+    return <Loading />
   }
 
   return (
