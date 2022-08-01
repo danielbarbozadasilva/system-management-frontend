@@ -1,8 +1,7 @@
 import React from 'react'
 import { DataGrid } from '@material-ui/data-grid'
-import styled from 'styled-components'
 import Loading from '../../components/loading/index'
-
+import { BoxTable } from './styled'
 const DataList = ({ data, columns, loading }) => {
   if (loading) {
     return <Loading />
@@ -16,8 +15,3 @@ const DataList = ({ data, columns, loading }) => {
 }
 
 export default DataList
-
-const BoxTable = styled.div`
-  height: 600px;
-  width: 100%;
-`

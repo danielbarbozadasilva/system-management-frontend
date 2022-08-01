@@ -1,12 +1,6 @@
 import React, { useState } from 'react'
-import {
-  TextField,
-  Button,
-  Grid,
-  Paper,
-  LinearProgress
-} from '@material-ui/core'
-import styled from 'styled-components'
+import { TextField, Button, Grid, LinearProgress } from '@material-ui/core'
+import { SBox, Image, Submit } from './styled'
 import { useSelector } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -107,7 +101,7 @@ const Form = ({ submit, ...props }) => {
   }
 
   return (
-    <Box>
+    <SBox>
       <form className={classes.root} noValidate autoComplete="off">
         {preview?.length > 0 ? (
           <Grid container direction="column">
@@ -138,44 +132,43 @@ const Form = ({ submit, ...props }) => {
             </Button>
           </Grid>
         )}
-
-        <TextField
-          size="small"
-          error={!!formValidate.name}
-          margin="normal"
-          id="standard-error-helper-text"
-          label="Nome"
-          name="name"
-          autoFocus
-          value={form.name || ''}
-          onChange={handleChange}
-          helperText={formValidate.name || ''}
-          disabled={loading}
-        />
-
-        <TextField
-          size="small"
-          error={!!formValidate.description}
-          margin="normal"
-          name="description"
-          label="Descrição"
-          type="text"
-          id="standard-error-helper-text"
-          value={form.description || ''}
-          onChange={handleChange}
-          helperText={formValidate.description || ''}
-          disabled={loading}
-        />
-
+        <div>
+          <TextField
+            autoFocus
+            size="small"
+            error={!!formValidate.name}
+            margin="normal"
+            id="standard-error-helper-text"
+            label="Nome"
+            name="name"
+            value={form.name || ''}
+            onChange={handleChange}
+            helperText={formValidate.name || ''}
+            disabled={loading}
+          />
+        </div>
+        <div>
+          <TextField
+            size="small"
+            error={!!formValidate.description}
+            margin="normal"
+            name="description"
+            label="Descrição"
+            type="text"
+            id="standard-error-helper-text"
+            value={form.description || ''}
+            onChange={handleChange}
+            helperText={formValidate.description || ''}
+            disabled={loading}
+            multiline
+            minRows={2}
+            maxRows={4}
+          />
+        </div>
         <Submit>
           <Button
             size="small"
-            className={
-              isNotValid() || loading
-                ? 'buttonSubmit button-style-disable'
-                : 'buttonSubmit button-style'
-            }
-            disabled={isNotValid()}
+            disabled={isNotValid() || loading ? true : false}
             type="submit"
             variant="contained"
             onClick={handleSubmit}
@@ -187,28 +180,8 @@ const Form = ({ submit, ...props }) => {
           </Grid>
         </Submit>
       </form>
-    </Box>
+    </SBox>
   )
 }
 
 export default Form
-
-const Box = styled(Paper)`
-  padding: 25px;
-`
-const Image = styled.img`
-  max-width: 170px;
-  max-height: 170px;
-  margin: 10px;
-  border: thin solid #eee;
-  border-radius: 5%;
-  overflow: hidden;
-  object-fit: cover;
-`
-
-const Submit = styled.div`
-  margin: ${({ theme: t }) => t.spacing(0.5)};
-  .buttonSubmit {
-    margin: ${({ theme: t }) => t.spacing(3, 0, 2)};
-  }
-`

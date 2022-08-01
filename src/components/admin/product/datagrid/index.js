@@ -1,14 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
 import { useDispatch } from 'react-redux'
-import {
-  updateLikeProduct
-} from '~/store/provider/provider.action'
+import { updateLikeProduct } from '~/store/provider/provider.action'
 import { DataGrid } from '@material-ui/data-grid'
 import { FiTrash2, FiEdit } from 'react-icons/fi'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
 import { IconButton, Tooltip } from '@material-ui/core'
-import Loading from '../../../components/loading/index'
+import Loading from '../../../loading/index'
+import { BoxTable, SImg } from './styled'
 
 const DataList = ({ data, modal, loading }) => {
   const dispatch = useDispatch()
@@ -18,9 +16,7 @@ const DataList = ({ data, modal, loading }) => {
   }
 
   const thumb = ({ formattedValue }) => {
-    return (
-      <img src={formattedValue} className='formatImage' />
-    )
+    return <SImg src={formattedValue} />
   }
 
   const actionLike = ({ id, row }) => {
@@ -28,7 +24,10 @@ const DataList = ({ data, modal, loading }) => {
     return (
       <>
         <Tooltip title={statusLike ? 'REMOVER CURTIDA' : 'CURTIR'}>
-          <IconButton onClick={() => toggleActive(id, row.provider, row.name, statusLike)} color='primary'>
+          <IconButton
+            onClick={() => toggleActive(id, row.provider, row.name, statusLike)}
+            color="primary"
+          >
             <>{statusLike ? <AiFillStar /> : <AiOutlineStar />}</>
           </IconButton>
         </Tooltip>
@@ -39,7 +38,7 @@ const DataList = ({ data, modal, loading }) => {
   const actionEdit = ({ id, row }) => {
     return (
       <>
-        <IconButton onClick={() => modal(2, id)} color='primary' size='small'>
+        <IconButton onClick={() => modal(2, id)} color="primary" size="small">
           <FiEdit />
         </IconButton>
       </>
@@ -49,7 +48,7 @@ const DataList = ({ data, modal, loading }) => {
   const actionRemove = ({ id, row }) => {
     return (
       <>
-        <IconButton onClick={() => modal(3, id)} color='primary' size='small'>
+        <IconButton onClick={() => modal(3, id)} color="primary" size="small">
           <FiTrash2 />
         </IconButton>
       </>
@@ -131,8 +130,3 @@ const DataList = ({ data, modal, loading }) => {
 }
 
 export default DataList
-
-const BoxTable = styled.div`
-  height: 600px;
-  width: 100%;
-`

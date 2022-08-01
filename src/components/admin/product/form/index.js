@@ -3,16 +3,15 @@ import {
   TextField,
   Button,
   Grid,
-  Paper,
   LinearProgress,
   Select,
   MenuItem,
   FormHelperText,
   FormControl
 } from '@material-ui/core'
-import styled from 'styled-components'
+import { SBox, Image, Submit } from './styled'
 import { useSelector } from 'react-redux'
-import { getUser } from '../../../config/storage'
+import { getUser } from '../../../../config/storage'
 import { makeStyles } from '@material-ui/core/styles'
 import { getMoney } from '~/util/validations/price-validation'
 
@@ -52,13 +51,7 @@ const Form = ({ submit, ...props }) => {
   }
 
   const isNotValid = () => {
-    const inputs = [
-      'name',
-      'description',
-      'image',
-      'category',
-      'price'
-    ]
+    const inputs = ['name', 'description', 'image', 'category', 'price']
     const invalid = (label) =>
       !Object.keys(form).includes(label) || form[label].length === 0
 
@@ -113,7 +106,7 @@ const Form = ({ submit, ...props }) => {
     const newForm = {
       ...form,
       category: form.category,
-      provider: (getUser().id),
+      provider: getUser().id,
       price: getMoney(form.price).replace('R$', '').replace(',', '.')
     }
     submit(newForm)
@@ -136,61 +129,60 @@ const Form = ({ submit, ...props }) => {
   }
 
   return (
-    <Box>
-      <form className={classes.root} noValidate autoComplete='off'>
-        {preview.length > 0
-          ? (
-            <Grid container direction='column'>
-              <Grid item sm={1} md={1} xl={1}>
-                <Image src={preview} />
-                <Button onClick={removeImage} component='label'>
-                  Remove
-                </Button>
-              </Grid>
-            </Grid>
-            )
-          : (
-            <Grid container direction='column'>
-              <Button
-                variant='contained'
-                color='primary'
-                size='small'
-                component='label'
-              >
-                Enviar Foto
-                <input
-                  accept='image/*'
-                  type='file'
-                  name='image'
-                  hidden
-                  onChange={previewImg}
-                  disabled={loading}
-                />
+    <SBox>
+      <form className={classes.root} noValidate autoComplete="off">
+        {preview.length > 0 ? (
+          <Grid container direction="column">
+            <Grid item sm={1} md={1} xl={1}>
+              <Image src={preview} />
+              <Button onClick={removeImage} component="label">
+                Remove
               </Button>
             </Grid>
+          </Grid>
+        ) : (
+          <Grid container direction="column">
+            <Button
+              variant="contained"
+              color="primary"
+              size="small"
+              component="label"
+            >
+              Enviar Foto
+              <input
+                accept="image/*"
+                type="file"
+                name="image"
+                hidden
+                onChange={previewImg}
+                disabled={loading}
+              />
+            </Button>
+          </Grid>
+        )}
 
-            )}
         <TextField
-          size='small'
-          error={!!formValidate.name}
-          margin='normal'
-          id='standard-error-helper-text'
-          label='Nome'
-          name='name'
           autoFocus
+          size="small"
+          error={!!formValidate.name}
+          margin="normal"
+          id="standard-error-helper-text"
+          label="Nome"
+          name="name"
           value={form.name || ''}
           onChange={handleChange}
           helperText={formValidate.name || ''}
           disabled={loading}
         />
+
         <TextField
-          size='small'
+          size="small"
           error={!!formValidate.description}
-          margin='normal'
-          name='description'
-          label='Descrição'
-          type='text'
-          id='standard-error-helper-text'
+          margin="normal"
+          name="description"
+          label="Descrição"
+          type="text"
+          id="standard-error-helper-text"
           value={form.description || ''}
           onChange={handleChange}
           helperText={formValidate.description || ''}
@@ -198,13 +190,13 @@ const Form = ({ submit, ...props }) => {
         />
 
         <TextField
-          size='small'
+          size="small"
           error={!!formValidate.price}
-          margin='normal'
-          name='price'
-          label='Preço'
-          type='text'
-          id='standard-error-helper-text'
+          margin="normal"
+          name="price"
+          label="Preço"
+          type="text"
+          id="standard-error-helper-text"
           value={getMoney(form.price) || ''}
           onChange={handleChange}
           helperText={formValidate.price || ''}
@@ -212,14 +204,14 @@ const Form = ({ submit, ...props }) => {
         />
 
         <FormControl
-          margin='normal'
+          margin="normal"
           className={classes.formControl}
           style={{ padding: '5px 10px' }}
           error={form.category === 0}
         >
           <Select
-            name='category'
-            label='Categoria'
+            name="category"
+            label="Categoria"
             inputProps={{
               name: 'category',
               id: 'outlined-native-simple'
@@ -228,55 +220,33 @@ const Form = ({ submit, ...props }) => {
             onChange={handleChange}
             disabled={loading}
           >
-            <MenuItem value='0'>Selecione</MenuItem>
+            <MenuItem value="0">Selecione</MenuItem>
             {categorias?.map(({ id, name }, i) => (
               <MenuItem key={i} value={id}>
                 {name}
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText error>{formValidate.category || ''}
-          </FormHelperText>
+          <FormHelperText error>{formValidate.category || ''}</FormHelperText>
         </FormControl>
         <Submit>
           <Button
-            size='small'
-            className={
-              isNotValid() || loading ? 'buttonSubmit button-style-disable' : 'buttonSubmit button-style'
-            }
-            disabled={isNotValid()}
-            type='submit'
-            variant='contained'
+            size="small"
+            disabled={isNotValid() || loading ? true : false}
+            type="submit"
+            variant="contained"
             onClick={handleSubmit}
           >
             {isEdit ? 'Atualizar' : 'Enviar'}
           </Button>
-          <Grid container direction='column'>
-            <LinearProgress variant='determinate' value={percent} />
+          <Grid container direction="column">
+            <LinearProgress variant="determinate" value={percent} />
           </Grid>
         </Submit>
       </form>
-    </Box>
+    </SBox>
   )
 }
 
 export default Form
 
-const Box = styled(Paper)`
-  padding: 25px;
-`
-const Image = styled.img`
-  max-width: 170px;
-  max-height: 170px;
-  margin: 10px;
-  border: thin solid #eee;
-  border-radius: 5%;
-  overflow: hidden;
-  object-fit: cover;
-`
-const Submit = styled.div`
-  margin: ${({ theme: t }) => t.spacing(0.5)};
-  .buttonSubmit {
-    margin: ${({ theme: t }) => t.spacing(3, 0, 2)};
-  }
-`
