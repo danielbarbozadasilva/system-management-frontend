@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { signInAction } from '../../../store/auth/auth.action'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,8 +7,6 @@ import { SForm, SColFooter, STextForm, SButton, STextLink } from '../styled'
 
 const SignIn = (props) => {
   const dispatch = useDispatch()
-  const [hasError, setHasError] = useState(false)
-  const error = useSelector((state) => state.auth.error)
   const loading = useSelector((state) => state.auth.loading)
 
   const [form, setForm] = useState({
@@ -24,16 +22,12 @@ const SignIn = (props) => {
     })
   }
 
-  const submitForm = async (event) => {
+  const submitForm = (event) => {
     event.preventDefault()
-    dispatch(await signInAction(form))
+    dispatch(signInAction(form))
   }
 
   const isNotValid = () => form.email.length === 0 || form.password.length === 0
-
-  useEffect(() => {
-    setHasError(error.length > 0)
-  }, [error])
 
   return (
     <Container>
@@ -69,17 +63,22 @@ const SignIn = (props) => {
             <Form.Group className="mb-3">
               <Form.Check type="checkbox" label="Lembrar credenciais" />
             </Form.Group>
-            <SButton type="button" disabled={isNotValid()} onClick={submitForm}>
-              {loading ? (
-                <>
-                  <Loading />
-                </>
-              ) : (
-                'Entrar'
-              )}
 
-              <i className="icon-angle-right ml-2" />
-            </SButton>
+            {loading ? (
+              <>
+                <Loading />
+              </>
+            ) : (
+              <SButton
+                type="button"
+                disabled={isNotValid()}
+                onClick={submitForm}
+              >
+                {!loading ? 'Entrar' : ''}
+                <i className="icon-angle-right ml-2" />
+              </SButton>
+            )}
+
             <SColFooter className="text-muted">
               Não possui cadastro?{' '}
               <STextLink href="/registrationclient">Cliente</STextLink>

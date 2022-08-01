@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { createProvider } from '../../../../store/provider/provider.action'
 import { useDispatch, useSelector } from 'react-redux'
 import { Col, Form } from 'react-bootstrap'
-import InputMask from 'react-input-mask'
 import { Select } from '@material-ui/core'
 import ufCityFile from '../../../../util/state-city.json'
+import { ValidateCnpj } from '../../../../util/validations/cnpj-validate'
+import InputMask from 'react-input-mask'
 import {
   SForm,
   STextForm,
@@ -17,26 +18,21 @@ import Loading from '../../../../components/loading'
 
 const SignUpProvider = () => {
   const dispatch = useDispatch()
-
-  const [hasError, setHasError] = useState(false)
-  const [success, setSuccess] = useState(false)
-  const error = useSelector((state) => state.auth.error)
   const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
+
   const [uf, setUf] = useState([])
   const [city, setCity] = useState([])
   const [formValidate, setFormValidate] = useState({})
   const [form, setForm] = useState({})
-  const [disableInit, setDisableInit] = useState(true)
 
   const handleChange = (props) => {
-    setDisableInit(false)
     const { value, name } = props.target
+    fieldValidate(name, value)
     setForm({
       ...form,
       [name]: value
     })
-    fieldValidate(name, value)
   }
 
   useEffect(() => {
@@ -129,7 +125,7 @@ const SignUpProvider = () => {
 
       case 'city':
         if (value === 'selecione') {
-          message += 'Selecione uma city!'
+          message += 'Selecione uma cidade!'
         }
         break
 
@@ -162,8 +158,6 @@ const SignUpProvider = () => {
     setFormValidate({ ...formValidate, [name]: message })
   }
 
-  const closeError = () => setHasError(false)
-
   const isNotValid = () => {
     const inputs = [
       'socialName',
@@ -187,19 +181,6 @@ const SignUpProvider = () => {
     return inputs.some((item) => invalid(item)) || validacoes
   }
 
-  useEffect(() => {
-    if (error.length > 0) {
-      setHasError(true)
-    } else {
-      setHasError(false)
-    }
-
-    if (registered) {
-      setSuccess(true)
-      setForm({})
-    }
-  }, [error, registered])
-
   const insertData = () => {
     const nform = {
       socialName: form.socialName,
@@ -214,10 +195,7 @@ const SignUpProvider = () => {
       password: form.password,
       auth: true
     }
-
-    dispatch(createProvider(nform)).then(() => {
-      setDisableInit(true)
-    })
+    dispatch(createProvider(nform))
   }
 
   return (
@@ -246,7 +224,6 @@ const SignUpProvider = () => {
           <SFormGroup>
             <Form.Label>*Nome fantasia:</Form.Label>
             <Form.Control
-              autoFocus
               invalid={formValidate.fantasyName}
               disabled={loading}
               type="text"
@@ -271,7 +248,7 @@ const SignUpProvider = () => {
               onChange={handleChange}
               name="cnpj"
               value={form.cnpj || ''}
-              placeholder="Informe o seu telefone"
+              placeholder="Informe o seu cnpj"
               invalid={formValidate.cnpj}
               disabled={loading}
             />
@@ -291,9 +268,8 @@ const SignUpProvider = () => {
               onChange={handleChange}
               name="responsible"
               placeholder="Insira o name do responsável"
-              required
             />
-            <Form.Control.Feedback>
+            <Form.Control.Feedback type="text">
               {formValidate.responsible || ''}
             </Form.Control.Feedback>
           </SFormGroup>
@@ -346,6 +322,7 @@ const SignUpProvider = () => {
             </Form.Control.Feedback>
           </SFormGroup>
         </Col>
+
         <Col>
           <SFormGroup>
             <Form.Label>*Telefone:</Form.Label>
@@ -377,9 +354,8 @@ const SignUpProvider = () => {
               onChange={handleChange}
               name="address"
               placeholder="Informe o seu endereço"
-              required
             />
-            <Form.Control.Feedback>
+            <Form.Control.Feedback type="text">
               {formValidate.address || ''}
             </Form.Control.Feedback>
           </SFormGroup>
@@ -437,29 +413,25 @@ const SignUpProvider = () => {
 
           {isNotValid() || loading ? (
             <SFormGroup>
-              <SDesabledButton
-                type="button"
-                disabled={isNotValid()}
-                onClick={insertData}
-              >
+              <SDesabledButton type="button" disabled={isNotValid()}>
                 Cadastrar
               </SDesabledButton>
             </SFormGroup>
           ) : (
             <SFormGroup>
-              <SButton
-                type="button"
-                disabled={isNotValid()}
-                onClick={insertData}
-              >
-                {loading ? (
-                  <>
-                    <Loading />
-                  </>
-                ) : (
-                  'Cadastrar'
-                )}
-              </SButton>
+              {loading ? (
+                <>
+                  <Loading />
+                </>
+              ) : (
+                <SButton
+                  type="button"
+                  disabled={isNotValid()}
+                  onClick={insertData}
+                >
+                  Cadastrar
+                </SButton>
+              )}
             </SFormGroup>
           )}
         </Col>

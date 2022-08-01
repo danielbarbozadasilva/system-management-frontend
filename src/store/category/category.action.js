@@ -15,9 +15,7 @@ export const getAllCategories = () => {
       dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
       const result = await listAllCategoryService()
       dispatch({ type: TYPES.CATEGORY_ALL, data: result.data.data })
-    } catch (error) {
-      toastr.error('Ocorreu um erro', error)
-    }
+    } catch (error) {}
   }
 }
 
@@ -27,9 +25,7 @@ export const getCategoryByProductId = (id) => {
       dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
       const result = await listCategoryByIdProductService(id)
       dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
-    } catch (error) {
-      toastr.error('Ocorreu um erro', error)
-    }
+    } catch (error) {}
   }
 }
 

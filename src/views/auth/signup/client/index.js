@@ -18,20 +18,14 @@ import Loading from '../../../../components/loading'
 
 const SignUpClient = () => {
   const dispatch = useDispatch()
-
-  const [hasError, setHasError] = useState(false)
-  const [success, setSuccess] = useState(false)
-  const error = useSelector((state) => state.auth.error)
-  const registered = useSelector((state) => state.auth.registered)
   const loading = useSelector((state) => state.auth.loading)
+
   const [uf, setUf] = useState([])
   const [city, setCity] = useState([])
   const [formValidate, setFormValidate] = useState({})
   const [form, setForm] = useState({})
-  const [disableInit, setDisableInit] = useState(true)
 
   const handleChange = (props) => {
-    setDisableInit(false)
     const { value, name } = props.target
     setForm({
       ...form,
@@ -164,20 +158,7 @@ const SignUpClient = () => {
     return inputs.some((item) => invalid(item)) || validations
   }
 
-  useEffect(() => {
-    if (error.length > 0) {
-      setHasError(true)
-    } else {
-      setHasError(false)
-    }
-
-    if (registered) {
-      setSuccess(true)
-      setForm({})
-    }
-  }, [error, registered])
-
-  const insertData = async () => {
+  const insertData = () => {
     const nform = {
       firstName: form.firstName,
       lastName: form.lastName,
@@ -189,10 +170,7 @@ const SignUpClient = () => {
       password: form.password,
       auth: true
     }
-
-    dispatch(await createClient(nform)).then(() => {
-      setDisableInit(true)
-    })
+    dispatch(createClient(nform))
   }
 
   return (
@@ -221,7 +199,6 @@ const SignUpClient = () => {
           <SFormGroup>
             <Form.Label>*Sobrenome:</Form.Label>
             <Form.Control
-              autoFocus
               invalid={formValidate.lastName}
               disabled={loading}
               type="text"
@@ -379,29 +356,25 @@ const SignUpClient = () => {
 
           {isNotValid() || loading ? (
             <SFormGroup>
-              <SDesabledButton
-                type="button"
-                disabled={isNotValid()}
-                onClick={insertData}
-              >
+              <SDesabledButton type="button" disabled={isNotValid()}>
                 Cadastrar
               </SDesabledButton>
             </SFormGroup>
           ) : (
             <SFormGroup>
-              <SButton
-                type="button"
-                disabled={isNotValid()}
-                onClick={insertData}
-              >
-                {loading ? (
-                  <>
-                    <Loading />
-                  </>
-                ) : (
-                  'Cadastrar'
-                )}
-              </SButton>
+              {loading ? (
+                <>
+                  <Loading />
+                </>
+              ) : (
+                <SButton
+                  type="button"
+                  disabled={isNotValid()}
+                  onClick={insertData}
+                >
+                  Cadastrar
+                </SButton>
+              )}
             </SFormGroup>
           )}
         </Col>
