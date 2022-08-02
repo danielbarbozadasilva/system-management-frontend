@@ -13,8 +13,10 @@ import Provider from '~/views/admin/provider'
 import Category from './category/index'
 import Client from './client/index'
 import { useSelector } from 'react-redux'
-import Like from '~/views/admin/like'
-import ProviderEvaluete from '~/views/admin/provider/evalueteProvider'
+import ClientLike from '~/views/admin/like/client/index'
+import ProviderLike from '~/views/admin/like/provider/index'
+import ProviderEvaluete from '~/views/admin/provider/evalueted'
+import Error404 from '../error/404/index'
 
 export const Menu = [
   {
@@ -63,13 +65,22 @@ export const Menu = [
     authorization: [3]
   },
   {
-    title: 'Curtidas',
+    title: 'Curtidas fornecedor',
     icon: <MoreIcon />,
-    route: '/like',
+    route: '/listlikeprovider',
     visibleMenu: true,
     enabled: true,
-    component: Like,
-    authorization: [2, 3]
+    component: ProviderLike,
+    authorization: [2]
+  },
+  {
+    title: 'Curtidas cliente',
+    icon: <MoreIcon />,
+    route: '/listlikeclient',
+    visibleMenu: true,
+    enabled: true,
+    component: ClientLike,
+    authorization: [3]
   },
   {
     title: 'Clientes',
@@ -88,15 +99,13 @@ const Admin = (props) => {
     route.authorization.includes(typeUser)
   )
 
-  const NotFound = () => <h2>Não autorizado</h2>
-
   return (
     <Router>
-      <PanelLayout path='/'>
+      <PanelLayout path="/">
         {rotasAutorizadas.map(({ component: Component, route }, i) => (
           <Component key={i} path={route} />
         ))}
-        <NotFound default />
+        <Error404 default />
       </PanelLayout>
     </Router>
   )
