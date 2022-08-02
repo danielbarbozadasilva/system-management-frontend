@@ -8,10 +8,10 @@ import {
   removeProduct
 } from '../../../store/product/product.action'
 import { getProduct } from '../../../store/provider/provider.action'
-import Form from '~/components/admin/product/form'
+import Form from '~/components/admin/product/form/index'
 import Title from '~/components/title'
 import DialogModal from '~/components/dialog'
-import DataList from '~/components/admin/product/datagrid'
+import DataList from '~/components/admin/product/datagrid/index'
 import Remove from '~/components/admin/product/remove'
 
 const Produto = () => {
