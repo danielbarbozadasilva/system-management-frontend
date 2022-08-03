@@ -31,18 +31,18 @@ const Produto = () => {
     callProduts()
   }, [callProduts])
 
-  const toogleModal = (tipo = 1, id = null) => {
+  const toogleModal = (type = 1, id = null) => {
     if (id) {
-      dispatch(editProduct(id)).then(() => setModal({ tipo, id, status: true }))
+      dispatch(editProduct(id)).then(() => setModal({ type, id, status: true }))
     } else {
-      setModal({ tipo, id, status: true })
+      setModal({ type, id, status: true })
     }
   }
 
-  const closeModal = () => setModal({ status: false, tipo: 1 })
+  const closeModal = () => setModal({ status: false, type: 1 })
 
   const submitForm = (form) => {
-    switch (modal.tipo) {
+    switch (modal.type) {
       case 1:
         dispatch(createProduct(form))
         setModal(false)
@@ -83,11 +83,11 @@ const Produto = () => {
         close={closeModal}
       >
         <>
-          {modal.tipo === 1 ? <Form submit={submitForm} /> : null}
-          {modal.tipo === 2 ? (
+          {modal.type === 1 ? <Form submit={submitForm} /> : null}
+          {modal.type === 2 ? (
             <Form submit={submitForm} data={selected} />
           ) : null}
-          {modal.tipo === 3 ? (
+          {modal.type === 3 ? (
             <Remove close={closeModal} remove={submitForm} />
           ) : null}
         </>

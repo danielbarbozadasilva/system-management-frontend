@@ -33,7 +33,7 @@ const Menu = [
     title: 'viewProduct',
     icons: '',
     route: '/product/category/:id',
-    tipo: 'category',
+    type: 'category',
     visibleMenu: true,
     enabled: true,
     component: PortalProduct
@@ -42,7 +42,7 @@ const Menu = [
     title: 'viewProductProvider',
     icons: '',
     route: '/product/provider/:id',
-    tipo: 'provider',
+    type: 'provider',
     visibleMenu: true,
     enabled: true,
     component: PortalProduct

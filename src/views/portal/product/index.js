@@ -26,11 +26,11 @@ function Products(props) {
   const loading = useSelector((state) => state.auth.loading)
 
   const getData = (props) => {
-    if (props.id && props.tipo === 'category') {
+    if (props.id && props.type === 'category') {
       dispatch(getCategoryByProductId(props.id))
     } else if (!props.id) {
-      dispatch(getAllProductsWithFilter({ name: props.tipo, filter: props.id }))
-    } else if (props.tipo === 'provider') {
+      dispatch(getAllProductsWithFilter({ name: props.type, filter: props.id }))
+    } else if (props.type === 'provider') {
       dispatch(getProviderById(props.id))
     }
   }
@@ -72,7 +72,7 @@ function Products(props) {
           Escolha um <strong>produto</strong>
         </h1>
       </ContainerCapion>
-      {props?.tipo === '' ? (
+      {props?.type === '' ? (
         <Row>
           <Col>
             <FilterSearch />

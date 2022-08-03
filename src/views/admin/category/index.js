@@ -31,20 +31,20 @@ const category = () => {
     callcategory()
   }, [callcategory])
 
-  const toogleModal = (tipo = 1, id = null) => {
+  const toogleModal = (type = 1, id = null) => {
     if (id) {
       dispatch(editCategory(id)).then(() =>
-        setModal({ tipo, id, status: true })
+        setModal({ type, id, status: true })
       )
     } else {
-      setModal({ tipo, id, status: true })
+      setModal({ type, id, status: true })
     }
   }
 
-  const closeModal = () => setModal({ status: false, tipo: 1 })
+  const closeModal = () => setModal({ status: false, type: 1 })
 
   const submitForm = (form) => {
-    switch (modal.tipo) {
+    switch (modal.type) {
       case 1:
         dispatch(createCategory(form))
         setModal(false)
@@ -67,9 +67,9 @@ const category = () => {
   const actions = () => (
     <Button
       onClick={() => toogleModal(1, null)}
-      variant='contained'
-      color='primary'
-      size='small'
+      variant="contained"
+      color="primary"
+      size="small"
     >
       Novo
     </Button>
@@ -78,8 +78,8 @@ const category = () => {
   return (
     <>
       <Title
-        title='Categorias'
-        subTitle='Página de categorias'
+        title="Categorias"
+        subTitle="Página de categorias"
         actions={actions}
       />
       <Grid container spacing={2}>
@@ -90,22 +90,18 @@ const category = () => {
       </Grid>
 
       <DialogModal
-        title='Categoria'
+        title="Categoria"
         open={modal.status || false}
         close={closeModal}
       >
         <>
-          {modal.tipo === 1 ? <Form submit={submitForm} /> : null}
-          {modal.tipo === 2
-            ? (
-              <Form submit={submitForm} data={selected} />
-              )
-            : null}
-          {modal.tipo === 3
-            ? (
-              <Remove close={closeModal} remove={submitForm} />
-              )
-            : null}
+          {modal.type === 1 ? <Form submit={submitForm} /> : null}
+          {modal.type === 2 ? (
+            <Form submit={submitForm} data={selected} />
+          ) : null}
+          {modal.type === 3 ? (
+            <Remove close={closeModal} remove={submitForm} />
+          ) : null}
         </>
       </DialogModal>
     </>
