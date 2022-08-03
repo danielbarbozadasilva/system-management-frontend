@@ -192,8 +192,7 @@ const SignUpProvider = () => {
       uf: form.uf,
       city: form.city,
       email: form.email,
-      password: form.password,
-      auth: true
+      password: form.password
     }
     dispatch(createProvider(nform))
   }
