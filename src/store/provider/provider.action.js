@@ -45,7 +45,7 @@ export const createProvider = (data) => {
         http.defaults.headers.token = result.data.data.token
         dispatch({ type: TYPES.SIGN_IN, data: result.data?.data })
         toastr.success('Fornecedor', 'cadastrado com sucesso!')
-        navigate('/admin')
+        navigate('/analysis')
       }
     } catch (error) {
       const { data } = error?.response
@@ -65,7 +65,7 @@ export const editProvider = (providerId) => {
       const result = await updateProviderService(providerId)
       dispatch({ type: TYPES.PROVIDER_EDIT, data: result.data })
     } catch (error) {
-      toastr.error('Ocorreu um erro', error)
+      toastr.error('Erro', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -96,13 +96,13 @@ export const updateProvider = ({ providerId, ...data }) => {
     updateProviderService(providerId, formData)
       .then((result) => {
         dispatch(editProvider(providerId))
-        dispatch(listAllProviderService())
+        dispatch(getAllProviders())
         toastr.success('Fornecedor', 'atualizado com sucesso')
         dispatch({ type: TYPES.PROVIDER_UPLOAD })
       })
       .catch((error) => {
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
-        toastr.error('Fornecedor', error.toString())
+        toastr.error('Erro', 'ocorreu um erro ao realizar a operação!')
       })
   }
 }
@@ -113,9 +113,9 @@ export const removeProvider = (providerId) => {
       const result = await removeProviderService(providerId)
       dispatch({ type: TYPES.PROVIDER_EDIT, data: result.data })
       toastr.success('Fornecedor', 'Removido com sucesso')
-      dispatch(listAllProviderService())
+      dispatch(getAllProviders())
     } catch (error) {
-      toastr.error('Aconteceu um erro', error.toString())
+      toastr.error('Erro', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }

@@ -59,7 +59,7 @@ export const createProduct = (data) => {
       toastr.success('Produto', 'Produto cadastrado com sucesso')
       dispatch(getProduct())
     } catch (error) {
-      toastr.error('Produto', 'ocorreu um erro.')
+      toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -98,7 +98,7 @@ export const updateProduct = (data) => {
       toastr.success('Produto', 'Produto atualizado com sucesso')
       dispatch(getProduct())
     } catch (error) {
-      toastr.error('Atualização', 'ocorreu um erro!')
+      toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -112,7 +112,7 @@ export const removeProduct = (productId) => {
       toastr.success('Produto', 'removido com sucesso')
       dispatch(getProduct())
     } catch (error) {
-      toastr.error('Produto', error.toString())
+      toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -127,7 +127,7 @@ export const editProduct = (id) => {
       const result = await listProductByIdService(id)
       dispatch({ type: TYPES.PRODUCT_EDIT, data: result.data.data })
     } catch (error) {
-      toastr.error('Ocorreu um erro', error)
+      toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
