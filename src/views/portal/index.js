@@ -7,6 +7,7 @@ import PortalProvider from '~/views/portal/provider'
 import SignUpProvider from '~/views/auth/signup/provider/index'
 import SignUpClient from '~/views/auth/signup/client/index'
 import SignIn from '~/views/auth/signin/index'
+import Analysis from '../auth/analysis/index'
 import Error403 from '../error/403/index'
 import Error404 from '../error/404/index'
 import Error500 from '../error/500/index'
@@ -77,6 +78,14 @@ const Menu = [
     visibleMenu: true,
     enabled: true,
     component: SignIn
+  },
+  {
+    title: 'Analysis',
+    icons: '',
+    route: '/analysis',
+    visibleMenu: true,
+    enabled: true,
+    component: Analysis
   },
   {
     title: 'NotAuthorized',
