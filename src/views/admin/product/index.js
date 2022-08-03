@@ -70,10 +70,10 @@ const Produto = () => {
 
   return (
     <>
-      <Title title="Produto" subTitle="Página de Produto" actions={actions} />
+      <Title title="Produtos" subTitle="Página de Produto" actions={actions} />
       <Grid container spacing={2}>
         <CssBaseline />
-        <Grid item md={12} xl={8}>
+        <Grid item md={12} xl={12}>
           <DataList data={products} loading={loading} modal={toogleModal} />
         </Grid>
       </Grid>
