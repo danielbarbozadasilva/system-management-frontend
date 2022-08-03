@@ -2,6 +2,7 @@ import React from 'react'
 import { DataGrid } from '@material-ui/data-grid'
 import Loading from '../../components/loading/index'
 import { BoxTable } from './styled'
+
 const DataList = ({ data, columns, loading }) => {
   if (loading) {
     return <Loading />
