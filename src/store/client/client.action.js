@@ -1,11 +1,11 @@
 import TYPES from '~/store/types'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
-import { getAllProviders } from '~/store/provider/provider.action'
 import { saveAuth } from '../../config/storage'
 import http from '../../config/http'
 import {
   listAllClientService,
+  listByIdClientService,
   createClientService,
   listLikeByIdClientService,
   createLikeProviderService,
@@ -18,6 +18,16 @@ export const getAllClients = () => {
       dispatch({ type: TYPES.CLIENT_LOADING, status: true })
       const result = await listAllClientService()
       dispatch({ type: TYPES.CLIENT_ALL, data: result.data.data })
+    } catch (error) {}
+  }
+}
+
+export const listByIdClient = (clientId) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: TYPES.CLIENT_LOADING, status: true })
+      const result = await listByIdClientService(clientId)
+      dispatch({ type: TYPES.CLIENT_ID, data: result.data.data })
     } catch (error) {}
   }
 }
@@ -60,11 +70,11 @@ export const updateLikeClientProvider = (
           `O fornecedor ${name} foi curtido com sucesso.`
         )
       }
-      dispatch(getAllProviders())
     } catch (error) {
       const { data } = error.response
       toastr.error('Curtida', data.message.details)
     }
+    dispatch(listByIdClient(clientid))
   }
 }
 
