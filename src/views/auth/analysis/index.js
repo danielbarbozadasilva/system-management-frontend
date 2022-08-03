@@ -9,7 +9,7 @@ const Analysis = () => {
           <SForm>
             <STextForm>Conta criada com sucesso!</STextForm>
             <h5>
-              Agora é só aguardar que o administrador vai liberar seu acesso.
+              Agora é só aguardar que o administrador liberará seu acesso.
             </h5>
             <h5>Assim que ele autorizar você receberá um e-mail com a confirmação.</h5>
           </SForm>
