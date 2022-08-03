@@ -142,12 +142,9 @@ export const StyleImg = styled.img`
 
 export const ContainerTitle = styled.div`
   width: 100%;
-  top: 14%;
+  top: 140px;
   position: absolute;
   z-index: 100;
-  @media screen and (max-width: 730px) {
-    top: 8%;
-  }
 `
 
 export const TextTitle = styled.h1`
