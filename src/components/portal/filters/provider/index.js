@@ -21,10 +21,11 @@ const Order = (props) => {
       <SContainer>
         <Select
           native
-          value={order}
+          defaultValue={'x'}
           onChange={handleChange}
           inputProps={{
-            name: 'order'
+            name: 'order',
+            id: 'outlined-native-simple'
           }}
         >
           <option value="x">selecione</option>
