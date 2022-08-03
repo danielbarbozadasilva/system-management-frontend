@@ -14,9 +14,7 @@ export const SCard = styled(Card)`
   width: 310px;
   margin-left: 40px;
   margin-right: 40px;
-  @media screen and (max-width: 770px) {
-    margin-bottom: 25%;
-  }
+  margin-bottom: 25%;
   @media screen and (max-width: 415px) {
     width: 80%;
   }

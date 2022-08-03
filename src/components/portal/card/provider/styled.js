@@ -13,10 +13,8 @@ export const SCardProvider = styled(Card)`
   width: 310px;
   margin-left: 40px;
   margin-right: 40px;
-  @media screen and (max-width: 770px) {
-    margin-bottom: 25%;
-  }
-   @media screen and (max-width: 415px) {
+  margin-bottom: 25%;
+  @media screen and (max-width: 415px) {
     width: 80%;
   }
   :hover {
