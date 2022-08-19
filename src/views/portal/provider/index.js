@@ -8,6 +8,7 @@ import Image from '../../../assets/img/image-portal-providers.jpg'
 import FilterOrder from '../../../components/portal/filters/provider'
 import FilterLocation from '../../../components/portal/filters/location/index'
 import {
+  ContainerImage,
   StyleImg,
   ContainerTitle,
   TextTitle,
@@ -57,9 +58,9 @@ function Provider(props) {
 
   return (
     <>
-      <div>
+      <ContainerImage>
         <StyleImg src={Image} />
-      </div>
+      </ContainerImage>
 
       <ContainerTitle>
         <TextTitle>

@@ -10,6 +10,7 @@ import { getProviderById } from '../../../store/provider/provider.action'
 import FilterSearch from '../../../components/portal/filters/search'
 import FilterProduct from '../../../components/portal/filters/product'
 import {
+  ContainerImage,
   StyleImg,
   ContainerTitle,
   TextTitle,
@@ -55,9 +56,9 @@ function Products(props) {
 
   return (
     <>
-      <div>
+      <ContainerImage>
         <StyleImg src={Image} />
-      </div>
+      </ContainerImage>
 
       <ContainerTitle>
         <TextTitle>

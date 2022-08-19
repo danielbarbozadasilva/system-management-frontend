@@ -130,6 +130,10 @@ export const SAiFillStar = styled(AiFillStar)`
   object-fit: cover;
 `
 
+export const ContainerImage = styled.div`
+  margin-bottom: 100px;
+`
+
 export const StyleImg = styled.img`
   background-position: cover;
   object-fit: cover;
@@ -137,7 +141,6 @@ export const StyleImg = styled.img`
   background-size: cover;
   width: 100%;
   height: 550px;
-  margin-bottom: 100px;
 `
 
 export const ContainerTitle = styled.div`

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllCategories } from '../../../store/category/category.action'
 import Image from '../../../assets/img/image-portal-categories.jpg'
 import {
+  ContainerImage,
   StyleImg,
   ContainerTitle,
   TextTitle,
@@ -41,9 +42,9 @@ const Home = () => {
 
   return (
     <>
-      <div>
+      <ContainerImage>
         <StyleImg src={Image} />
-      </div>
+      </ContainerImage>
 
       <ContainerTitle>
         <TextTitle>
