@@ -229,7 +229,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 * React-icons
 * React-redux-toastr
 * React-toast
-* Reactstrap
+* React-bootstrap
 * Redux-multi
 * Redux-thunk
 * React-helmet
@@ -246,3 +246,190 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 * UseParams
 * Custom Hooks
 * Router
+<br/>
+<br/>
+<br/>
+
+> ## **Telas**
+<br/>
+
+## **Tela Inicial - Categorias**
+<br/>
+<img src="./src/assets/img/prints/img01.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Produtos**
+<br/>
+<img src="./src/assets/img/prints/img02.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img03.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Login**
+<br/>
+<img src="./src/assets/img/prints/img04.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Clientes**
+<br/>
+<img src="./src/assets/img/prints/img05.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img06.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Home**
+<br/>
+<img src="./src/assets/img/prints/img07.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Manter Categorias**
+<br/>
+<img src="./src/assets/img/prints/img08.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Manter Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img09.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Listar Clientes**
+<br/>
+<img src="./src/assets/img/prints/img010.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Home**
+<br/>
+<img src="./src/assets/img/prints/img011.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Manter Produtos**
+<br/>
+<img src="./src/assets/img/prints/img012.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Curtidas Recebidas**
+<br/>
+<img src="./src/assets/img/prints/img013.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Home**
+<br/>
+<img src="./src/assets/img/prints/img014.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Avaliar Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/img015.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Curtidas Recebidas**
+<br/>
+<img src="./src/assets/img/prints/img016.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+## **Responsividade - IPhone XR**
+<br/>
+
+## **Tela Inicial - Categorias**
+<br/>
+<img src="./src/assets/img/prints/img017.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+## **Tela de Produtos**
+<br/>
+<img src="./src/assets/img/prints/img018.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img019.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Login**
+<br/>
+<img src="./src/assets/img/prints/img022.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Clientes**
+<br/>
+<img src="./src/assets/img/prints/img020.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img021.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
