@@ -28,7 +28,7 @@ export const SDropdownToggle = styled(Dropdown.Toggle)`
   color: #464b4f;
 `
 
-export const SDiv = styled.div`
+export const SLink = styled.div`
   font-family: 'Montserrat', sans-serif !important;
   text-decoration: none;
   top: 0;

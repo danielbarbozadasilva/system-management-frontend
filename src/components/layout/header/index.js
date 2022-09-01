@@ -2,7 +2,7 @@ import React from 'react'
 import { Container, Nav, Navbar, Dropdown } from 'react-bootstrap'
 import {
   SNavbar,
-  SDiv,
+  SLink,
   SLogin,
   SNavbarLogo,
   SNavbarToggle,
@@ -38,38 +38,40 @@ const Header = (props) => {
         <Container>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <SDiv>
+              <SLink>
                 <NavLink to="/">Home</NavLink>
-              </SDiv>
-              <SDiv>
+              </SLink>
+              <SLink>
                 <NavLink to="/product">Produtos</NavLink>
-              </SDiv>
-              <SDiv>
+              </SLink>
+              <SLink>
                 <NavLink to="/provider">Fornecedores</NavLink>
-              </SDiv>
+              </SLink>
             </Nav>
           </Navbar.Collapse>
 
           <SNavbar.Collapse className="justify-content-end">
             <Nav>
-              <SDiv>
+              <SLink>
                 <NavLink to="/signin">
                   <SLogin>
                     <FaUser style={{ marginRight: '10px' }} />
                     Logar
                   </SLogin>
                 </NavLink>
-              </SDiv>
-              <SDiv>
+              </SLink>
+              <SLink>
                 <Dropdown>
-                <SDropdownToggle variant="Secondary">Cadastrar</SDropdownToggle>
+                  <SDropdownToggle variant="Secondary">
+                    Cadastrar
+                  </SDropdownToggle>
                   <SDropdownMenu>
                     <NavLink to="/registrationclient">Cliente</NavLink>
                     <Dropdown.Item />
                     <NavLink to="/registrationprovider">Fornecedor</NavLink>
                   </SDropdownMenu>
                 </Dropdown>
-              </SDiv>
+              </SLink>
             </Nav>
           </SNavbar.Collapse>
         </Container>
