@@ -1,6 +1,7 @@
 import {
   listAllCategoryService,
   listCategoryByIdService,
+  listCategoryByIdProductService,
   insertCategoryService,
   updateCategoryService,
   removeCategoryProductService
@@ -14,23 +15,17 @@ export const getAllCategories = () => {
       dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
       const result = await listAllCategoryService()
       dispatch({ type: TYPES.CATEGORY_ALL, data: result.data.data })
-    } catch (error) {
-      toastr.error('aconteceu um erro', error)
-    }
+    } catch (error) {}
   }
 }
 
-export const getcategoryById = (id) => {
+export const getCategoryByProductId = (id) => {
   return async (dispatch) => {
-    dispatch({
-      type: TYPES.CATEGORY_ID
-    })
     try {
-      const result = await listCategoryByIdService(id)
-      dispatch({ type: TYPES.CATEGORY_ID, data: result.data })
-    } catch (error) {
-      toastr.error('aconteceu um erro', error)
-    }
+      dispatch({ type: TYPES.CATEGORY_LOADING, status: true })
+      const result = await listCategoryByIdProductService(id)
+      dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
+    } catch (error) {}
   }
 }
 
@@ -61,7 +56,7 @@ export const createCategory = (data) => {
       toastr.success('Categoria', 'cadastrada com sucesso!')
       dispatch(getAllCategories())
     } catch (error) {
-      toastr.error('Categoria', 'Preencha todos os campos!')
+      toastr.error('Categoria', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -75,8 +70,7 @@ export const editCategory = (id) => {
     try {
       const result = await listCategoryByIdService(id)
       dispatch({ type: TYPES.CATEGORY_EDIT, data: result.data.data })
-    } catch (error) {
-    }
+    } catch (error) {}
   }
 }
 
@@ -114,7 +108,7 @@ export const updateCategory = ({ id, ...data }) => {
       .catch((error) => {
         dispatch({ type: TYPES.CATEGORY_LOADING, status: false })
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
-        toastr.error('Categoria', error.toString())
+        toastr.error('Categoria', 'ocorreu um erro ao realizar a operação!')
       })
       .finally(() => {
         dispatch({ type: TYPES.CATEGORY_LOADING, status: false })
@@ -130,7 +124,7 @@ export const removeCategory = (id) => {
       toastr.success('Categoria', 'removida com sucesso')
       dispatch(getAllCategories())
     } catch (error) {
-      toastr.error('Aconteceu um erro', error)
+      toastr.error('Categoria', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }

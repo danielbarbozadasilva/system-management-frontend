@@ -1,92 +1,241 @@
-# **Management React**
-We are constantly faced with new commercial establishments, many of which do not have a means of promotion or are not easily located. The REGALE System came to solve this problem, with a focus on bakeries, it allows the user, through a web system, to locate the bakeries close to their residence.
+# **Front-End ReactJs Sistema REGALE**
+## **Introdução**
+A todo momento surgem novos estabelecimentos comerciais, muitos dos quais não têm os meios de promoção ou são de difícil localização. O Sistema REGALE possui a proposta de solucionar esse problema, com foco em confeitarias, ele permite ao usuário através de um sistema web localizar as confeitarias mais próximas da sua localidade. Assim como os produtos ofertados.
+
+O Front-End foi desenvolvido utilizando o ReactJs.
 <br/>
 <br/>
 
-> ## Product scope
-The System aims to list the bakeries and manage them, enabling consultation by customers. The project aims to promote the bakeries, especially those that are starting on the market, or that are not well known. Allows you to offer more product options and prices.
+A API foi desenvolvida utilizando o NodeJs, ExpressJs e o Banco de dados MongoDB. E está disponível para consulta no link abaixo:
+```
+git clone https://github.com/danielbarbozadasilva/system-management-backend.git
+```
+<br/>
+
+## **Escopo do produto**
+O Sistema tem como objetivo listar as confeitarias e gerenciá-las, possibilitando a consulta por parte dos clientes. O projeto tem como objetivo divulgar as confeitarias, principalmente aquelas que estão começando no mercado, ou que ainda não são muito conhecidas. Permitindo também ao cliente mais opções de produtos e preços.
 <br/>
 <br/>
 
-> ## General description
-REGALE is a web system that aims to establish a relationship between the customer and a specific market niche. All of its features were designed and designed to provide comfort and convenience to users.
+## **Descrição geral**
+REGALE é um sistema web que visa estabelecer um relacionamento entre o cliente e um nicho de mercado específico. Todas as suas funcionalidades foram pensadas para proporcionar conforto e comodidade aos seus usuários.
 
-The System's proposal is to publicize the establishment, which is a recurrent problem in bakeries that are just starting on the market, as they still don't have a way to publicize their business.
+A proposta do Sistema é divulgar o estabelecimento, problema recorrente em confeitarias que estão iniciando no mercado, pois ainda não possuem uma forma eficaz de divulgação.
 
-In addition to publicizing the establishments, the System provides a user-friendly interface for the customer to list the bakeries and manage them and the 'customer' user. The users of the system are the administrator, the owner of the bakery and the customer. Where everyone has access to the system according to their credentials and access permissions. In addition, the System has an initial screen that allows the public to easily navigate between categories, products and suppliers.
+Além de divulgar os estabelecimentos, o Sistema disponibiliza uma interface amigável e de fácil uso por parte do usuário da plataforma. Os usuários do sistema são o administrador, o proprietário da confeitaria (fornecedor) e o cliente. Onde todos possuem acesso ao sistema de acordo com as suas credenciais e permissões. 
+
+O Sistema permite ao Administrador gerenciar categorias, fornecedores e clientes. O proprietário da confeitaria pode gerenciar seus produtos, assim como favoritá-los. O cliente possui a opção de avaliar os fornecedores. Além disso, o Sistema possui uma tela inicial que permite ao público em geral navegar facilmente através de filtros de busca entre categorias, produtos e fornecedores.
 <br/>
 <br/>
 
-> ## Functional requirements
-[FR1] It is necessary to handle admin user authentication. Explanation: The System must allow admin access based on his credentials. Blocking any access attempts by other users.
+## **Instalação**
+Clone o repositório na pasta de sua preferência.
+```
+git clone https://github.com/danielbarbozadasilva/system-management-frontend.git
+```
 
-[FR2] Only authorized supplier users can access the system. Explanation: The System must allow access to suppliers based on their credentials. Blocking any access attempts by other users.
+Abra a pasta do repositório clonado, e crie um arquivo ".env", exemplo:
+```
+REACT_APP_API=http://localhost:3011
+REACT_APP_VERSION=/v1
+REACT_APP_TOKEN_KEY=gestao
+```
 
-[FR3] It is necessary to handle client authentication. Explanation: The System must allow access to clients based on their credentials. Blocking any access attempts by other users.
+Abra a pasta do repositório clonado, e instale as dependências do projeto através do comando:
+```
+yarn install
+```
 
-[FR4] The admin user must register categories. Explanation: The System will allow the admin user to register new categories.
+Execute o comando para rodar o projeto:
+```
+yarn start
+```
+<br/>
 
-[FR5] The supplier user must register. Explanation: The System will allow the supplier user to register.
+# **Levantamento de requisitos**
 
-[FR6] The admin user must authorize vendor access to the system. Explanation: The admin user may or may not authorize the access of suppliers to the system.
+## **Requisitos funcionais**
+<br/>
 
-[FR7] The supplier user can register the product. Explanation: The System makes available to the supplier user the possibility of registering their products in the system.
+RF001 – O sistema deve controlar a autenticação dos usuários.
 
-[FR8] The client user must register. Explanation: The System will allow the customer to register in the system.
+RF002 – O sistema deve manter cadastro de clientes.
 
-[FR9] The admin user must be able to view all suppliers listed in alphabetical order. Explanation: The System allows the admin to view the suppliers registered in the system.
+RF003 – O sistema deve manter cadastro de fornecedores.
 
-[FR10] The supplier user can view the products in a listing and they will have the category information. Explanation: The System should display the supplier user a listing of the products, as well as the category information.
+RF004 – O sistema deve manter categorias.
 
-[FR11] The admin user must be able to view products by supplier. Explanation: The System allows the admin user to view the products by their respective suppliers.
+RF005 – O sistema deve manter produtos.
 
-[FR12] After access approval/cancellation, the system sends an email message to the supplier. Explanation: The System must send an activation or inactivation confirmation email to the supplier, in case the System admin revokes or allows the access by the supplier.
+RF006 – O sistema deve aprovar ou bloquear o acesso do fornecedor.
 
-[FR13] The client user can bookmark up to three providers. Explanation: The System should allow only three suppliers to be favored by the customer.
+RF007 – O sistema deve enviar um e-mail ao fornecedor informando a ativação ou bloqueio da conta.
 
-[FR14] The admin user must be able to view customers by supplier. Explanation: The System must allow the administrator user access to the data grouped by customers/supplier
+RF008 – O sistema deve favoritar fornecedores.
 
-[FR15] The supplier user can mark up to three products as favorites. Explanation: The System should allow only three products to be favored by the supplier.
+RF009 – O sistema deve favoritar produtos.
 
-[FR16] All users have the possibility to list the suppliers sorted by number of favorites and in alphabetical order. Explanation: The System should display the supplier data sorted by number of favorites and in alphabetical order.
+RF010 – O sistema deve listar os clientes por fornecedor.
 
-[FR17] All users have the ability to list products by category sorted by favorite, by value and by description. Explanation: The System should display products by category sorted by favorite, by value and by description.
+RF011 – O sistema deve listar os fornecedores ordenados por número de curtidas e por ordem alfabética.
 
-[FR18] All users need to define the location (UF and city) to search. Explanation: The System should display filter users by locality (UF and city).
+RF012 – O sistema deve listar os produtos por categoria.
+
+RF013 – O sistema deve filtrar os produtos por nome e ordenação.
+
+RF014 – O sistema deve listar os produtos por fornecedor.
+
+RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabética.
+
 <br/>
 <br/>
 
-> ## License
-- GPLv3 License
+## **Requisitos não funcionais**
+<br/>
+
+| Identificação | Classificação | Descrição |
+| --- | --- | --- |
+|RNF001   |Implementação     | O back-end do sistema deve ser desenvolvido em NodeJs e ExpressJs.    |
+|RNF002   |Implementação     | O front-end do sistema deve ser desenvolvido em ReactJs.    |
+|RNF003   |Implementação     | O banco de dados a ser utilizado é o MongoDB.     |
+|RNF004   |Implementação     | O sistema deve funcionar em Sistemas Operacionais Windows, Mac e Linux.    |
+|  |  |  |
+
 <br/>
 <br/>
 
-> ## Methodologies and Designs
+## **Regras de negócio**
+<br/>
 
+| Controle de acesso (RN001) |  |
+| --- | --- |
+|`Descrição:` Os acessos permitidos ao sistema serão: Administrador, Fornecedor (confeitaria) e Cliente. O usuário anônimo terá acesso apenas ao portal do site.    |
+|  |
+
+| Controle de veracidade (RN02) |  |
+| --- | --- |
+|`Descrição:` Apenas fornecedores autorizados pelo administrador poderão ter acesso ao sistema.    |
+|  |
+
+| Limite de ação (RN003) |  |
+| --- | --- |
+|`Descrição:` Apenas o Administrador poderá incluir, editar e excluir categorias no sistema.  |
+|  |
+
+| Limite de ação (RN004) |  |
+| --- | --- |
+|`Descrição:` Apenas o Administrador poderá visualizar informações sobre os clientes.  |
+|  |
+
+| Controle de estoque (RN005) |  |
+| --- | --- |
+|`Descrição:` Somente o gerente da confeitaria (fornecedor) terá permissão para incluir, alterar e excluir seus produtos no sistema.  |
+|  |
+
+| Limite de ação (RN006) |  |
+| --- | --- |
+|`Descrição:` Somente o gerente da confeitaria (fornecedor) terá permissão de favoritar os seus próprios produtos.   |
+|  |
+
+| Limite de ação (RN007) |  |
+| --- | --- |
+|`Descrição:` O gerente da confeitaria (fornecedor) terá permissão de favoritar apenas 3 (três) de seus próprios produtos.   |
+|  |
+
+| Limite de ação (RN008) |  |
+| --- | --- |
+|`Descrição:` Somente o cliente terá permissão de favoritar a confeitaria (fornecedor).   |
+|  |
+
+| Limite de ação (RN009) |  |
+| --- | --- |
+|`Descrição:` O cliente terá permissão de favoritar apenas 3 (três) fornecedores.   |
+|  |
+
+<br/>
+<br/>
+
+# **Lista de atores e casos de uso**
+<br/>
+
+## Lista de atores que interagem com o sistema:
+<br/>
+
+* Administrador
+* Fornecedor (dono da confeitaria)
+* Cliente
+* Anônimo
+<br/>
+<br/>
+
+## Lista de Casos de Uso:
+<br/>
+
+1 - Manter categorias
+
+2 - Manter fornecedores
+
+3 - Manter clientes
+
+4 - Aprovar cadastro de fornecedores
+
+5 - Manter produtos
+
+6 - Avaliar produtos
+
+7 - Avaliar fornecedores
+
+8 - pesquisar categorias
+
+9 - pesquisar produtos
+
+10 - pesquisar fornecedores
+<br/>
+<br/>
+
+## **Diagrama de Casos de uso**
+<br/>
+<img src="./docs/diagrama_de_casos_de_uso.png" alt="Diagrama de Casos de uso"/>
+
+<br/>
+<br/>
+
+> ## Licença
+- Licença GPLv3
+<br/>
+<br/>
+<br/>
+
+> ## Metodologias e Padrões
 * Responsive Layout
 * Conventional Commits
+* Camelcase
 * GitFlow
+<br/>
+<br/>
+<br/>
 
-> ## Libraries and Tools
+> ## Bibliotecas e Ferramentas
 
 * React
 * Reach Router
+* Styled-components
 * Axios
 * Git
-* NPM
-* Husky
-* Lint Staged
 * Eslint
-* Standard Javascript Style
+* Prettier
 * Chart
+* Material UI
 * React-icons
 * React-redux-toastr
 * React-toast
-* Reactstrap
+* React-bootstrap
 * Redux-multi
 * Redux-thunk
-* Redux-thunk
-* Styled-components
+* React-helmet
+<br/>
+<br/>
+<br/>
 
 > ## React Features
 
@@ -97,21 +246,207 @@ In addition to publicizing the establishments, the System provides a user-friend
 * UseParams
 * Custom Hooks
 * Router
+<br/>
+<br/>
+<br/>
 
-> ## Git Features
+> ## **Telas**
+<br/>
 
-* Alias
-* Log Personalizado
-* Branch
-* Reset
-* Amend
-* Tag
-* Stash
-* Rebase
-* Merge
-* Add
-* Commit
-* Push
-* Pull
-* Shortlog
-* Status
+## **Tela Inicial - Categorias**
+<br/>
+<img src="./src/assets/img/prints/img01.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Produtos**
+<br/>
+<img src="./src/assets/img/prints/img02.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img03.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Login**
+<br/>
+<img src="./src/assets/img/prints/img04.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Clientes**
+<br/>
+<img src="./src/assets/img/prints/img05.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img06.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Home**
+<br/>
+<img src="./src/assets/img/prints/img07.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Manter Categorias**
+<br/>
+<img src="./src/assets/img/prints/img08.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Manter Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img09.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Listar Clientes**
+<br/>
+<img src="./src/assets/img/prints/img010.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+## **E-mail Enviado ao Ativar o Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/img023.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **E-mail Enviado ao Desativar o Fornecedor**
+
+<br/>
+<img src="./src/assets/img/prints/img24.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Home**
+<br/>
+<img src="./src/assets/img/prints/img011.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Manter Produtos**
+<br/>
+<img src="./src/assets/img/prints/img012.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Curtidas Recebidas**
+<br/>
+<img src="./src/assets/img/prints/img013.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Home**
+<br/>
+<img src="./src/assets/img/prints/img014.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Avaliar Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/img015.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Curtidas Efetuadas**
+<br/>
+<img src="./src/assets/img/prints/img016.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Responsividade - IPhone XR**
+<br/>
+
+## **Tela Inicial - Categorias**
+<br/>
+<img src="./src/assets/img/prints/img017.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+## **Tela de Produtos**
+<br/>
+<img src="./src/assets/img/prints/img018.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img019.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Login**
+<br/>
+<img src="./src/assets/img/prints/img022.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Clientes**
+<br/>
+<img src="./src/assets/img/prints/img020.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/img021.png" alt="" width=350px />
+<br/>
+<br/>
+<br/>
+<br/>

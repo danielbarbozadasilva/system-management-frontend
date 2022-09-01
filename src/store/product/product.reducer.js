@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   upload: {}
 }
 
-const reducer = (state = INITIAL_STATE, action) => {
+const reducer = ({ ...state } = INITIAL_STATE, action) => {
   switch (action.type) {
     case TYPES.PRODUCT_LOADING:
       state.error = []

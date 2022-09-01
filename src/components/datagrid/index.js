@@ -1,22 +1,32 @@
 import React from 'react'
-import { DataGrid } from '@material-ui/data-grid'
-import styled from 'styled-components'
+import { DataGrid, GridToolbar } from '@mui/x-data-grid'
+import Loading from '../../components/loading/index'
+import { BoxTable } from './styled'
 
 const DataList = ({ data, columns, loading }) => {
   if (loading) {
-    return <p>carregando...</p>
+    return <Loading />
   }
 
   return (
     <BoxTable>
-      <DataGrid rows={data} columns={columns} pageSize={10} />
+      <DataGrid
+        rows={data}
+        columns={columns}
+        loading={loading}
+        pageSize={10}
+        disableColumnSelector
+        disableDensitySelector
+        components={{ Toolbar: GridToolbar }}
+        componentsProps={{
+          toolbar: {
+            showQuickFilter: true,
+            quickFilterProps: { debounceMs: 500 }
+          }
+        }}
+      />
     </BoxTable>
   )
 }
 
 export default DataList
-
-const BoxTable = styled.div`
-  height: 600px;
-  width: 100%;
-`

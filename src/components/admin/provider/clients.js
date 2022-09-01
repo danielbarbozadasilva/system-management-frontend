@@ -12,6 +12,8 @@ const ListClient = ({ clients, open, close }) => {
     {
       field: 'name',
       headerName: 'Nome',
+      align: 'center',
+      headerAlign: 'center',
       flex: 1,
       width: 340,
       disableColumnMenu: true
@@ -19,6 +21,8 @@ const ListClient = ({ clients, open, close }) => {
     {
       field: 'email',
       headerName: 'E-mail',
+      align: 'center',
+      headerAlign: 'center',
       flex: 1,
       width: 340,
       disableColumnMenu: true
