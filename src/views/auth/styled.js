@@ -20,6 +20,7 @@ export const SFormSign = styled(Form)`
   margin: 120px auto;
   background-color: #fafafa;
   color: #4f2821;
+  box-shadow: 0px 2px 15px 6px rgba(0, 0, 0, 0.11);
   padding: 50px;
   position: center;
   @media screen and (max-width: 500px) {
