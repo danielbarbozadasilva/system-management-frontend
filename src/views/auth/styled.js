@@ -24,6 +24,7 @@ export const SFormSign = styled(Form)`
   padding: 50px;
   position: center;
   @media screen and (max-width: 500px) {
+    box-shadow: none;
     margin-top: 17%;
     width: 100%;
   }
