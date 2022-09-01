@@ -91,6 +91,9 @@ export const Main = styled.div`
   text-align: justify;
   color: #771700;
   min-height: 100vh;
+  @media screen and (max-width: 500px) {
+    min-height: 80vh;
+  }
 `
 
 export const SContainer = styled(Container)`

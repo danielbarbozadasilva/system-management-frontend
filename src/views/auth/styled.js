@@ -1,7 +1,7 @@
 import { Col, Form } from 'react-bootstrap'
 import styled from 'styled-components'
 
-export const SForm = styled(Form)`
+export const SFormSignup = styled(Form)`
   width: 85%;
   margin: 120px auto;
   background-color: #fafafa;
@@ -9,8 +9,21 @@ export const SForm = styled(Form)`
   box-shadow: 0px 2px 15px 6px rgba(0, 0, 0, 0.11);
   padding: 50px;
   position: center;
-  @media screen and (max-width: 415px) {
-    margin: 100px auto;
+  @media screen and (max-width: 500px) {
+    margin: 0px auto;
+    width: 100%;
+  }
+`
+
+export const SFormSign = styled(Form)`
+  width: 85%;
+  margin: 120px auto;
+  background-color: #fafafa;
+  color: #4f2821;
+  padding: 50px;
+  position: center;
+  @media screen and (max-width: 500px) {
+    margin-top: 17%;
     width: 100%;
   }
 `

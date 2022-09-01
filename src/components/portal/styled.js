@@ -148,6 +148,9 @@ export const ContainerTitle = styled.div`
   top: 140px;
   position: absolute;
   z-index: 100;
+  @media screen and (max-width: 500px) {
+    top: 185px;
+  }
 `
 
 export const TextTitle = styled.h1`
@@ -159,7 +162,7 @@ export const TextTitle = styled.h1`
   color: #ebebeb;
   text-align: center;
   @media screen and (max-width: 730px) {
-    font-size: 55px;
+    font-size: 50px;
   }
 `
 
