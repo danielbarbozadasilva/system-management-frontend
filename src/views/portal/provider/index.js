@@ -1,29 +1,37 @@
 import React, { useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Cardprovider from '../../../components/portal/card/card_provider'
+import CardProvider from '../../../components/portal/card/provider'
 import Loading from '../../../components/portal/loading'
-import styled from 'styled-components'
-import { Col, Row } from 'reactstrap'
+import { Col, Row } from 'react-bootstrap'
 import { getAllProviders } from '../../../store/provider/provider.action'
-import image from '../../../assets/img/image-portal-providers.jpg'
-import FilterOrder from '../../../components/portal/filters/filter_provider'
-import FilterLocation from '../../../components/portal/filters/filter_location'
+import Image from '../../../assets/img/image-portal-providers.jpg'
+import FilterOrder from '../../../components/portal/filters/provider'
+import FilterLocation from '../../../components/portal/filters/location/index'
+import {
+  ContainerImage,
+  StyleImg,
+  ContainerTitle,
+  TextTitle,
+  SButtonTitle,
+  ContainerCapion,
+  ContainerCards,
+  SMessage
+} from '../../../components/portal/styled'
 
-function Provider (props) {
+function Provider(props) {
   const dispatch = useDispatch()
+
   const loading = useSelector((state) => state.auth.loading)
+  const provider = useSelector((state) => state.provider.all)
 
-  const id = props.id
-  const nameFilter = props.nameFilter
-
-  const getData = (id, nameFilter) => {
-    dispatch(getAllProviders(nameFilter))
+  const getData = () => {
+    dispatch(getAllProviders(props.nameFilter))
   }
 
-  const callprovider = useCallback(async (id, nameFilter) => {
-    if (id) {
+  const callprovider = useCallback(() => {
+    if (props.id) {
       useEffect(() => {
-        getData(id, nameFilter)
+        getData()
       }, [])
     } else {
       dispatch(getAllProviders())
@@ -37,8 +45,8 @@ function Provider (props) {
   const listProvider = (provider) => {
     return provider.map((item, i) => {
       return (
-        <Col className='portalCard' md='6' xl='4' sm='12' xs='12' key={i}>
-          <Cardprovider item={{ ...item }} />
+        <Col md="6" xl="4" sm="12" xs="12" key={i}>
+          <CardProvider item={{ ...item }} />
         </Col>
       )
     })
@@ -48,68 +56,49 @@ function Provider (props) {
     return <Loading />
   }
 
-  const ProdProvider = () => {
-    const provider = useSelector((state) => state.provider.all)
+  return (
+    <>
+      <ContainerImage>
+        <StyleImg src={Image} />
+      </ContainerImage>
 
-    if (id) {
-      return (
-        <Boxprovider>
-          {!loading
-            ? (
-                'Não há produtos disponiveis'
-              )
-            : (
-              <Cardprovider item={{ ...item, status: true }} />
-              )}
-        </Boxprovider>
-      )
-    } else {
-      return (
-        <Boxprovider>
-          {!loading && provider.length === 0
-            ? (
-              <h1 className='noShowProduct'>Não há fornecedores</h1>
-              )
-            : (
-                listProvider(provider)
-              )}
-        </Boxprovider>
-      )
-    }
-  }
+      <ContainerTitle>
+        <TextTitle>
+          Encontre novas horizontes...
+          <br />
+          os melhores fornecedores!
+        </TextTitle>
+        <SButtonTitle onClick={() => navigate(`/registrationclient`)}>
+          Encontrar
+        </SButtonTitle>
+      </ContainerTitle>
 
-  const PortalSearch = () => {
-    return (
-      <div>
-        <div className='container-fluid'>
-          <div className='row'>
-            <div className='image'>
-              <img className='portalImage' src={image} alt='' srcSet='' />
-            </div>
-            <div className='text'>
-              <h2>Encontre novas horizontes...</h2>
-              <h2>os melhores fornecedores!</h2>
-            </div>
-            <div className='textCategory'>
-              <h1 className='textCat'>
-                Escolha um <strong>fornecedor</strong>
-              </h1>
-            </div>
-          </div>
-        </div>
-        <div className='container-fluid'>
-          <div className='row'>
-            <FilterLocation />
-            <FilterOrder />
-            <ProdProvider />
-          </div>
-        </div>
-      </div>
-    )
-  }
-  return <PortalSearch />
+      <ContainerCapion>
+        <h1>
+          Escolha um <strong>fornecedor</strong>
+        </h1>
+      </ContainerCapion>
+
+      <Row>
+        <FilterLocation />
+        <FilterOrder />
+      </Row>
+
+      <ContainerCards>
+        {props.id ? (
+          !loading ? (
+            <SMessage>Não há produtos disponiveis</SMessage>
+          ) : (
+            <CardProvider item={{ ...item }} />
+          )
+        ) : !loading && provider.length === 0 ? (
+          <SMessage>Não há fornecedores disponiveis</SMessage>
+        ) : (
+          listProvider(provider)
+        )}
+      </ContainerCards>
+    </>
+  )
 }
 
 export default Provider
-
-const Boxprovider = styled(Row)``

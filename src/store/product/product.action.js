@@ -17,9 +17,7 @@ export const getAllProducts = () => {
       dispatch({ type: TYPES.PRODUCT_LOADING, status: true })
       const result = await listProductService()
       dispatch({ type: TYPES.PRODUCT_ALL, data: result.data.data })
-    } catch (error) {
-      toastr.error('Ocorreu um erro', error)
-    }
+    } catch (error) {}
   }
 }
 
@@ -29,9 +27,7 @@ export const getAllProductsWithFilter = (name, filter) => {
       dispatch({ type: TYPES.PRODUCT_LOADING, status: true })
       const result = await listProductWithFilterService(name, filter)
       dispatch({ type: TYPES.PRODUCT_WITH_FILTER, data: result.data.data })
-    } catch (error) {
-      toastr.error('Ocorreu um erro', error)
-    }
+    } catch (error) {}
   }
 }
 
@@ -63,7 +59,7 @@ export const createProduct = (data) => {
       toastr.success('Produto', 'Produto cadastrado com sucesso')
       dispatch(getProduct())
     } catch (error) {
-      toastr.error('Produto', 'ocorreu um erro.')
+      toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -92,19 +88,23 @@ export const updateProduct = (data) => {
       Object.keys(data).map((k) => formData.append(k, data[k]))
       const productId = data.id
       const providerId = getUser().id
-      const result = await updateProductService(providerId, productId, formData, config)
+      const result = await updateProductService(
+        providerId,
+        productId,
+        formData,
+        config
+      )
       dispatch({ type: TYPES.PRODUCT_UPDATE, data: result.data })
       toastr.success('Produto', 'Produto atualizado com sucesso')
       dispatch(getProduct())
     } catch (error) {
-      toastr.error('Atualização', 'ocorreu um erro!')
+      toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
 
 export const removeProduct = (productId) => {
   return async (dispatch) => {
-    console.log('productId' + productId)
     try {
       const providerId = getUser().id
       const result = await deleteProductService(providerId, productId)
@@ -112,7 +112,7 @@ export const removeProduct = (productId) => {
       toastr.success('Produto', 'removido com sucesso')
       dispatch(getProduct())
     } catch (error) {
-      toastr.error('Produto', error.toString())
+      toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -127,7 +127,7 @@ export const editProduct = (id) => {
       const result = await listProductByIdService(id)
       dispatch({ type: TYPES.PRODUCT_EDIT, data: result.data.data })
     } catch (error) {
-      toastr.error('Ocorreu um erro', error)
+      toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }

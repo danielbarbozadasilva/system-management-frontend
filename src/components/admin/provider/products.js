@@ -12,6 +12,8 @@ const ListProduct = ({ open, close, products }) => {
     {
       field: 'name',
       headerName: 'Nome',
+      align: 'center',
+      headerAlign: 'center',
       flex: 1,
       width: 340,
       disableColumnMenu: true
@@ -19,6 +21,8 @@ const ListProduct = ({ open, close, products }) => {
     {
       field: 'price',
       headerName: 'Preço',
+      align: 'center',
+      headerAlign: 'center',
       flex: 1,
       width: 340,
       disableColumnMenu: true

@@ -1,3 +1,8 @@
+import TYPES from '~/store/types'
+import { saveAuth } from '../../config/storage'
+import http from '../../config/http'
+import { toastr } from 'react-redux-toastr'
+import { navigate } from '@reach/router'
 import {
   listAllProviderService,
   listProviderByIdService,
@@ -10,9 +15,6 @@ import {
   createLikeProductService,
   removeLikeProviderProductService
 } from '~/services/provider.service'
-import TYPES from '~/store/types'
-import { toastr } from 'react-redux-toastr'
-import { navigate } from '@reach/router'
 
 export const getAllProviders = (namefilter) => {
   return async (dispatch) => {
@@ -20,9 +22,7 @@ export const getAllProviders = (namefilter) => {
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
       const result = await listAllProviderService(namefilter)
       dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
-    } catch (error) {
-      toastr.error('Ocorreu um erro', error)
-    }
+    } catch (error) {}
   }
 }
 
@@ -38,11 +38,19 @@ export const getProviderById = (providerId) => {
 export const createProvider = (data) => {
   return async (dispatch) => {
     try {
-      await createProviderService(data)
-      toastr.success('Fornecedor', 'cadastrado com sucesso!')
-      navigate('/signin')
+      const result = await createProviderService(data)
+
+      if (result.data.data) {
+        saveAuth(result.data.data)
+        http.defaults.headers.token = result.data.data.token
+        dispatch({ type: TYPES.SIGN_IN, data: result.data?.data })
+        toastr.success('Fornecedor', 'cadastrado com sucesso!')
+        navigate('/analysis')
+      }
     } catch (error) {
-      toastr.error('Erro', 'preencha todos os campos!')
+      const { data } = error?.response
+      toastr.error('Erro', ...data?.message?.details)
+      dispatch({ type: TYPES.SIGN_ERROR, data: error })
     }
   }
 }
@@ -57,7 +65,7 @@ export const editProvider = (providerId) => {
       const result = await updateProviderService(providerId)
       dispatch({ type: TYPES.PROVIDER_EDIT, data: result.data })
     } catch (error) {
-      toastr.error('Ocorreu um erro', error)
+      toastr.error('Erro', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -88,13 +96,13 @@ export const updateProvider = ({ providerId, ...data }) => {
     updateProviderService(providerId, formData)
       .then((result) => {
         dispatch(editProvider(providerId))
-        dispatch(listAllProviderService())
+        dispatch(getAllProviders())
         toastr.success('Fornecedor', 'atualizado com sucesso')
         dispatch({ type: TYPES.PROVIDER_UPLOAD })
       })
       .catch((error) => {
         dispatch({ type: TYPES.SIGN_ERROR, data: error })
-        toastr.error('Fornecedor', error.toString())
+        toastr.error('Erro', 'ocorreu um erro ao realizar a operação!')
       })
   }
 }
@@ -105,9 +113,9 @@ export const removeProvider = (providerId) => {
       const result = await removeProviderService(providerId)
       dispatch({ type: TYPES.PROVIDER_EDIT, data: result.data })
       toastr.success('Fornecedor', 'Removido com sucesso')
-      dispatch(listAllProviderService())
+      dispatch(getAllProviders())
     } catch (error) {
-      toastr.error('Aconteceu um erro', error.toString())
+      toastr.error('Erro', 'ocorreu um erro ao realizar a operação!')
     }
   }
 }
@@ -140,9 +148,7 @@ export const getProduct = () => {
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
       const result = await listProviderByIdService(clientId)
       dispatch({ type: TYPES.PROVIDER_PRODUCT_ID, data: result.data.data })
-    } catch (error) {
-      toastr.error('Fornecedor', 'erro ao carregar os produtos')
-    }
+    } catch (error) {}
   }
 }
 
@@ -201,8 +207,6 @@ export const getListProviderUfCity = (data) => {
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
       const result = await listProvidersByLocationService(data)
       dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
-    } catch (error) {
-      toastr.error('Aconteceu um erro', error)
-    }
+    } catch (error) {}
   }
 }
