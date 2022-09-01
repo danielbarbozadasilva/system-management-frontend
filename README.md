@@ -1,6 +1,6 @@
 # **Front-End ReactJs Sistema REGALE**
 ## **Introdução**
-A todo momento surgem novos estabelecimentos comerciais, muitos dos quais não têm os meios de promoção ou são de difícil localização. O Sistema REGALE possui a proposta de solucionar esse problema, com foco em confeitarias, ele permite ao usuário através de um sistema web localizar as confeitarias mais próximas a sua localidade. Assim como os produtos ofertados por elas.
+A todo momento surgem novos estabelecimentos comerciais, muitos dos quais não têm os meios de promoção ou são de difícil localização. O Sistema REGALE possui a proposta de solucionar esse problema, com foco em confeitarias, ele permite ao usuário através de um sistema web localizar as confeitarias mais próximas da sua localidade. Assim como os produtos ofertados.
 
 O Front-End foi desenvolvido utilizando o ReactJs.
 <br/>
@@ -13,7 +13,7 @@ git clone https://github.com/danielbarbozadasilva/system-management-backend.git
 <br/>
 
 ## **Escopo do produto**
-O Sistema tem como objetivo listar as confeitarias e gerenciá-las, possibilitando a consulta por parte dos clientes. O projeto tem como objetivo divulgar as confeitarias, principalmente aquelas que estão começando no mercado, ou que não são muito conhecidas. Permite oferecer mais opções de produtos e preços.
+O Sistema tem como objetivo listar as confeitarias e gerenciá-las, possibilitando a consulta por parte dos clientes. O projeto tem como objetivo divulgar as confeitarias, principalmente aquelas que estão começando no mercado, ou que ainda não são muito conhecidas. Permitindo também ao cliente mais opções de produtos e preços.
 <br/>
 <br/>
 
@@ -22,7 +22,7 @@ REGALE é um sistema web que visa estabelecer um relacionamento entre o cliente 
 
 A proposta do Sistema é divulgar o estabelecimento, problema recorrente em confeitarias que estão iniciando no mercado, pois ainda não possuem uma forma eficaz de divulgação.
 
-Além de divulgar os estabelecimentos, o Sistema disponibiliza uma interface amigável e de fácil uso por parte do usuário da plataforma. Os usuários do sistema são o administrador, o proprietário da confeitaria (fornecedor) e o cliente. Onde todos têm acesso ao sistema de acordo com suas credenciais e permissões de acesso. 
+Além de divulgar os estabelecimentos, o Sistema disponibiliza uma interface amigável e de fácil uso por parte do usuário da plataforma. Os usuários do sistema são o administrador, o proprietário da confeitaria (fornecedor) e o cliente. Onde todos possuem acesso ao sistema de acordo com as suas credenciais e permissões. 
 
 O Sistema permite ao Administrador gerenciar categorias, fornecedores e clientes. O proprietário da confeitaria pode gerenciar seus produtos, assim como favoritá-los. O cliente possui a opção de avaliar os fornecedores. Além disso, o Sistema possui uma tela inicial que permite ao público em geral navegar facilmente através de filtros de busca entre categorias, produtos e fornecedores.
 <br/>
@@ -95,9 +95,9 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 | Identificação | Classificação | Descrição |
 | --- | --- | --- |
-|RNF001   |Implementação     |O back-end do sistema deve ser desenvolvido em NodeJs e ExpressJs.    |
+|RNF001   |Implementação     | O back-end do sistema deve ser desenvolvido em NodeJs e ExpressJs.    |
 |RNF002   |Implementação     | O front-end do sistema deve ser desenvolvido em ReactJs.    |
-|RNF003   |Implementação     |O banco de dados a ser utilizado é o MongoDB.     |
+|RNF003   |Implementação     | O banco de dados a ser utilizado é o MongoDB.     |
 |RNF004   |Implementação     | O sistema deve funcionar em Sistemas Operacionais Windows, Mac e Linux.    |
 |  |  |  |
 
@@ -109,7 +109,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 | Controle de acesso (RN001) |  |
 | --- | --- |
-|`Descrição:` Os acessos permitidos ao sistema serão: Administrador, Fornecedor (confeitaria) e Cliente. O usuário anonimo terá acesso apenas ao portal do site.    |
+|`Descrição:` Os acessos permitidos ao sistema serão: Administrador, Fornecedor (confeitaria) e Cliente. O usuário anônimo terá acesso apenas ao portal do site.    |
 |  |
 
 | Controle de veracidade (RN02) |  |
@@ -162,7 +162,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 <br/>
 
 * Administrador
-* Fornecedor (confeitaria)
+* Fornecedor (dono da confeitaria)
 * Cliente
 * Anônimo
 <br/>
@@ -333,6 +333,24 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 <br/>
 <br/>
 
+
+## **E-mail Enviado ao Ativar o Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/img023.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **E-mail Enviado ao Desativar o Fornecedor**
+
+<br/>
+<img src="./src/assets/img/prints/img24.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
 ## **Dashboard do Fornecedor - Home**
 <br/>
 <img src="./src/assets/img/prints/img011.png" alt=""/>
@@ -373,14 +391,13 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 <br/>
 <br/>
 
-## **Dashboard do Cliente - Curtidas Recebidas**
+## **Dashboard do Cliente - Curtidas Efetuadas**
 <br/>
 <img src="./src/assets/img/prints/img016.png" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
-
 
 ## **Responsividade - IPhone XR**
 <br/>
