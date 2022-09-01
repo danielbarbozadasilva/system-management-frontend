@@ -7,7 +7,7 @@ import InputMask from 'react-input-mask'
 import { Select } from '@material-ui/core'
 import ufCityFile from '../../../../util/state-city.json'
 import {
-  SForm,
+  SFormSignup,
   STextForm,
   SButton,
   SDesabledButton,
@@ -174,7 +174,7 @@ const SignUpClient = () => {
   }
 
   return (
-    <SForm autoComplete="off">
+    <SFormSignup autoComplete="off">
       <STextForm>Cadastre-se</STextForm>
       <SContainer>
         <Col>
@@ -379,7 +379,7 @@ const SignUpClient = () => {
           )}
         </Col>
       </SContainer>
-    </SForm>
+    </SFormSignup>
   )
 }
 

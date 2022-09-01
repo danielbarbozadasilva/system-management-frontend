@@ -7,7 +7,7 @@ import ufCityFile from '../../../../util/state-city.json'
 import { ValidateCnpj } from '../../../../util/validations/cnpj-validate'
 import InputMask from 'react-input-mask'
 import {
-  SForm,
+  SFormSignup,
   STextForm,
   SButton,
   SDesabledButton,
@@ -198,7 +198,7 @@ const SignUpProvider = () => {
   }
 
   return (
-    <SForm autoComplete="off">
+    <SFormSignup autoComplete="off">
       <STextForm>Cadastre-se</STextForm>
       <SContainer>
         <Col>
@@ -435,7 +435,7 @@ const SignUpProvider = () => {
           )}
         </Col>
       </SContainer>
-    </SForm>
+    </SFormSignup>
   )
 }
 

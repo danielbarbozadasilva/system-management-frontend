@@ -3,7 +3,7 @@ import { Container, Row, Col, Form } from 'react-bootstrap'
 import { signInAction } from '../../../store/auth/auth.action'
 import { useDispatch, useSelector } from 'react-redux'
 import Loading from '../../../components/loading/index'
-import { SForm, SColFooter, STextForm, SButton, STextLink } from '../styled'
+import { SFormSign, SColFooter, STextForm, SButton, STextLink } from '../styled'
 
 const SignIn = (props) => {
   const dispatch = useDispatch()
@@ -33,7 +33,7 @@ const SignIn = (props) => {
     <Container>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
-          <SForm>
+          <SFormSign>
             <STextForm>Login</STextForm>
             <Form.Group className="mb-3">
               <Form.Label>E-mail</Form.Label>
@@ -80,11 +80,11 @@ const SignIn = (props) => {
             )}
 
             <SColFooter className="text-muted">
-              Não possui cadastro?{' '}
+              <h6>Não possui cadastro?</h6>
               <STextLink href="/registrationclient">Cliente</STextLink>
               <STextLink href="/registrationprovider">Fornecedor</STextLink>
             </SColFooter>
-          </SForm>
+          </SFormSign>
         </Col>
       </Row>
     </Container>
