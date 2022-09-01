@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Loading from '../../../components/portal/loading'
-import { Col, Row } from 'reactstrap'
+import { Col, Row } from 'react-bootstrap'
 import Image from '../../../assets/img/image-portal-products.jpg'
 import CardProduct from '../../../components/portal/card/product'
 import { getAllProductsWithFilter } from '../../../store/product/product.action'
