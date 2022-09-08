@@ -1,7 +1,7 @@
 import http from '~/config/http'
 const baseUrl = '/provider'
 
-export const listAllProviderService = (namefilter = 'alphabetical') =>
+export const listAllProviderService = (namefilter) =>
   http.get(`${baseUrl}/filter/${namefilter}`)
 
 export const listProviderByIdService = (providerid) =>
@@ -9,14 +9,14 @@ export const listProviderByIdService = (providerid) =>
 
 export const createProviderService = (data) => http.post(baseUrl, data)
 
-export const updateProviderService = (providerid, data) =>
-  http.put(`${baseUrl}/${providerid}`, data)
+export const updateProviderService = (providerid, data, config = {}) =>
+  http.put(`${baseUrl}/${providerid}`, data, config)
 
 export const removeProviderService = (providerid) =>
   http.delete(`${baseUrl}/${providerid}`)
 
-export const listProvidersByLocationService = (data) =>
-  http.get(`${baseUrl}/filter/uf/${data.uf}/city/${data.city}`)
+export const listProvidersByLocationService = (uf, city) =>
+  http.get(`${baseUrl}/filter/uf/${uf}/city/${city}`)
 
 export const changeStatusService = (providerid, status) =>
   http.put(`${baseUrl}/${providerid}/status/${status}`)

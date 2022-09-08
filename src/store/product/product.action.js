@@ -32,7 +32,7 @@ export const getAllProductsWithFilter = (name, filter) => {
 }
 
 export const createProduct = (data) => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -54,7 +54,7 @@ export const createProduct = (data) => {
       const formData = new FormData()
       Object.keys(data).map((k) => formData.append(k, data[k]))
       const providerId = getUser().id
-      const result = await createProductService(providerId, formData)
+      const result = await createProductService(providerId, formData, config)
       dispatch({ type: TYPES.PRODUCT_CREATE, data: result.data })
       toastr.success('Produto', 'Produto cadastrado com sucesso')
       dispatch(getProduct())
@@ -65,7 +65,7 @@ export const createProduct = (data) => {
 }
 
 export const updateProduct = (data) => {
-  return async (dispatch, getState) => {
+  return async (dispatch) => {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -106,8 +106,7 @@ export const updateProduct = (data) => {
 export const removeProduct = (productId) => {
   return async (dispatch) => {
     try {
-      const providerId = getUser().id
-      const result = await deleteProductService(providerId, productId)
+      const result = await deleteProductService(productId)
       dispatch({ type: TYPES.PRODUCT_REMOVE, data: result.data })
       toastr.success('Produto', 'removido com sucesso')
       dispatch(getProduct())

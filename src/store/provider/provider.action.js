@@ -93,7 +93,7 @@ export const updateProvider = ({ providerId, ...data }) => {
     }
     const formData = new FormData()
     Object.keys(data).map((k) => formData.append(k, data[k]))
-    updateProviderService(providerId, formData)
+    updateProviderService(providerId, formData, config)
       .then((result) => {
         dispatch(editProvider(providerId))
         dispatch(getAllProviders())
@@ -171,12 +171,7 @@ export const getAllLikesProviderProduct = () => {
   }
 }
 
-export const updateLikeProduct = (
-  productid,
-  providerid,
-  nameProduct,
-  statusLike
-) => {
+export const updateLikeProduct = (productid, providerid, name, statusLike) => {
   return async (dispatch) => {
     if (statusLike) {
       try {
@@ -188,10 +183,7 @@ export const updateLikeProduct = (
     } else {
       try {
         await createLikeProductService(providerid, productid)
-        toastr.success(
-          'Curtida',
-          `O produto ${nameProduct} foi curtido com sucesso.`
-        )
+        toastr.success('Curtida', `O produto ${name} foi curtido com sucesso.`)
       } catch (error) {
         const { data } = error.response
         toastr.error('Curtida', data.message.details)
@@ -201,11 +193,11 @@ export const updateLikeProduct = (
   }
 }
 
-export const getListProviderUfCity = (data) => {
+export const getListProviderUfCity = (uf, city) => {
   return async (dispatch) => {
     try {
       dispatch({ type: TYPES.PROVIDER_LOADING, status: true })
-      const result = await listProvidersByLocationService(data)
+      const result = await listProvidersByLocationService(uf, city)
       dispatch({ type: TYPES.PROVIDER_ALL, data: result.data.data })
     } catch (error) {}
   }

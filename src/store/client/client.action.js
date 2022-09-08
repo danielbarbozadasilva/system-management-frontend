@@ -1,8 +1,8 @@
 import TYPES from '~/store/types'
+import http from '../../config/http'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 import { saveAuth } from '../../config/storage'
-import http from '../../config/http'
 import {
   listAllClientService,
   listByIdClientService,
@@ -52,15 +52,10 @@ export const createClient = (data) => {
   }
 }
 
-export const updateLikeClientProvider = (
-  providerid,
-  clientid,
-  name,
-  statusLike
-) => {
+export const updateLikeClientProvider = (providerid, clientid, name, like) => {
   return async (dispatch) => {
     try {
-      if (statusLike) {
+      if (like) {
         await removeLikeProviderService(providerid, clientid)
         toastr.success('Curtida', 'A curtida foi removida com sucesso.')
       } else {

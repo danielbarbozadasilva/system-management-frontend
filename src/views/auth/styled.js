@@ -61,7 +61,6 @@ export const SButton = styled.button`
   padding-right: 1.5rem;
   box-shadow: 0 4px 12px 0 rgb(226 60 82 / 20%);
   background-image: linear-gradient(to left, #4f2821, #aa4938);
-  --bs-text-opacity: 1;
   color: white;
   border: none;
 `

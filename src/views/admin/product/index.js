@@ -88,7 +88,7 @@ const Produto = () => {
             <Form submit={submitForm} data={selected} />
           ) : null}
           {modal.type === 3 ? (
-            <Remove close={closeModal} remove={submitForm} />
+            <Remove open={!!modal} close={closeModal} remove={submitForm} />
           ) : null}
         </>
       </DialogModal>
