@@ -14,7 +14,7 @@ import DialogModal from '~/components/dialog'
 import DataList from '~/components/admin/product/datagrid/index'
 import Remove from '~/components/admin/product/remove'
 
-const Produto = () => {
+const Product = () => {
   const dispatch = useDispatch()
   const [modal, setModal] = React.useState({})
 
@@ -96,4 +96,4 @@ const Produto = () => {
   )
 }
 
-export default Produto
+export default Product

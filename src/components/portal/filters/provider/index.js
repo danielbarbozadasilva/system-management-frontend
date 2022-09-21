@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Select } from '@material-ui/core'
 import { getAllProviders } from '../../../../store/provider/provider.action'
@@ -18,8 +18,9 @@ const Order = (props) => {
       <SContainer>
         <Select native defaultValue={'fantasyName'} onChange={handleChange}>
           <option value="fantasyName">selecione</option>
-          <option value="result_likes">Curtidas</option>
+          <option value="likes">Curtidas</option>
           <option value="fantasyName">Alfabética</option>
+          <option value="clients">Mais popular</option>
         </Select>
       </SContainer>
     </SBox>

@@ -53,8 +53,8 @@ export const createProduct = (data) => {
     try {
       const formData = new FormData()
       Object.keys(data).map((k) => formData.append(k, data[k]))
-      const providerId = getUser().id
-      const result = await createProductService(providerId, formData, config)
+      const provider = getUser().id
+      const result = await createProductService(provider, formData, config)
       dispatch({ type: TYPES.PRODUCT_CREATE, data: result.data })
       toastr.success('Produto', 'Produto cadastrado com sucesso')
       dispatch(getProduct())
@@ -106,7 +106,8 @@ export const updateProduct = (data) => {
 export const removeProduct = (productId) => {
   return async (dispatch) => {
     try {
-      const result = await deleteProductService(productId)
+      const providerId = getUser().id
+      const result = await deleteProductService(providerId, productId)
       dispatch({ type: TYPES.PRODUCT_REMOVE, data: result.data })
       toastr.success('Produto', 'removido com sucesso')
       dispatch(getProduct())
@@ -116,14 +117,15 @@ export const removeProduct = (productId) => {
   }
 }
 
-export const editProduct = (id) => {
+export const editProduct = (productId) => {
   return async (dispatch) => {
     dispatch({
       type: TYPES.PRODUCT_UPLOAD,
       upload: 0
     })
     try {
-      const result = await listProductByIdService(id)
+      const providerId = getUser().id
+      const result = await listProductByIdService(providerId, productId)
       dispatch({ type: TYPES.PRODUCT_EDIT, data: result.data.data })
     } catch (error) {
       toastr.error('Produto', 'ocorreu um erro ao realizar a operação!')

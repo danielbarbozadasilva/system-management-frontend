@@ -18,13 +18,12 @@ import Loading from '../../../../components/loading'
 
 const SignUpProvider = () => {
   const dispatch = useDispatch()
-  const registered = useSelector((state) => state.auth.registered)
-  const loading = useSelector((state) => state.auth.loading)
 
   const [uf, setUf] = useState([])
   const [city, setCity] = useState([])
   const [formValidate, setFormValidate] = useState({})
   const [form, setForm] = useState({})
+  const loading = useSelector((state) => state.auth.loading)
 
   const handleChange = (props) => {
     const { value, name } = props.target
