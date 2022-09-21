@@ -1,19 +1,13 @@
 import http from '~/config/http'
 const baseUrl = '/provider'
 
-export const listAllProviderService = (namefilter) =>
+export const listAllProviderService = (namefilter = 'fantasyName') =>
   http.get(`${baseUrl}/filter/${namefilter}`)
 
 export const listProviderByIdService = (providerid) =>
   http.get(`${baseUrl}/${providerid}`)
 
 export const createProviderService = (data) => http.post(baseUrl, data)
-
-export const updateProviderService = (providerid, data, config = {}) =>
-  http.put(`${baseUrl}/${providerid}`, data, config)
-
-export const removeProviderService = (providerid) =>
-  http.delete(`${baseUrl}/${providerid}`)
 
 export const listProvidersByLocationService = (uf, city) =>
   http.get(`${baseUrl}/filter/uf/${uf}/city/${city}`)
