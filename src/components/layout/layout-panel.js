@@ -12,7 +12,6 @@ import IconButton from '@material-ui/core/IconButton'
 import Container from '@material-ui/core/Container'
 import Hidden from '@material-ui/core/Hidden'
 import { logoutAction } from '~/store/auth/auth.action'
-
 import {
   Menu as MenuIcon,
   MenuOpen as MenuOpenIcon,
@@ -156,9 +155,11 @@ export default function Dashboard (props) {
   const handleDrawerOpen = () => {
     setOpen(!open)
   }
+  
   const handleDrawerClose = () => {
     setOpen(false)
   }
+
   function handleLogout () {
     dispatch(logoutAction())
   }

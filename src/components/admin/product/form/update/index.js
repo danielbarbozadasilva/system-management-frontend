@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Form = ({ submit }) => {
+const FormProductUpdate = ({ submit }) => {
   const classes = useStyles()
   const selected = useSelector((state) => state.product.selected)
   const [form, setForm] = useState({ ...selected })
@@ -199,4 +199,4 @@ const Form = ({ submit }) => {
   )
 }
 
-export default Form
+export default FormProductUpdate

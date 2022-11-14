@@ -1,14 +1,5 @@
 import React, { useState } from 'react'
-import {
-  TextField,
-  Button,
-  Grid,
-  LinearProgress,
-  Select,
-  MenuItem,
-  FormHelperText,
-  FormControl
-} from '@material-ui/core'
+import { TextField, Button, Grid, LinearProgress } from '@material-ui/core'
 import { SBox, Image, Submit, SButton } from '../styled'
 import { useSelector } from 'react-redux'
 import { getUser } from '../../../../../config/storage'
@@ -17,7 +8,7 @@ import { formatPriceField } from '~/util/validations/price-validation'
 import {
   fieldValidate,
   isNotValid
-} from '../../../../../util/validations/form-product'
+} from '../../../../../util/validations/form-category'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,14 +19,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const FormProductRegister = ({ submit }) => {
+const FormCategoryUpdate = ({ submit }) => {
   const classes = useStyles()
-  const [preview, setPreview] = useState('')
-  const [form, setForm] = useState({})
+  const selected = useSelector((state) => state.category.selected)
+  const [form, setForm] = useState({ ...selected })
+  const [preview, setPreview] = useState(selected.image)
   const percent = useSelector((state) => state.product.upload?.percent || 0)
   const loading = useSelector((state) => state.product.loading)
   const [formValidate, setFormValidate] = useState({})
-  const categories = useSelector((state) => state.category.all)
 
   const handleChange = (props) => {
     const { value, name } = props.target
@@ -76,7 +67,7 @@ const FormProductRegister = ({ submit }) => {
   return (
     <SBox>
       <form className={classes.root} noValidate autoComplete="off">
-        {preview.length > 0 ? (
+        {preview?.length > 0 ? (
           <Grid container direction="column">
             <Grid item sm={1} md={1} xl={1}>
               <Image src={preview} />
@@ -93,7 +84,7 @@ const FormProductRegister = ({ submit }) => {
               size="small"
               component="label"
             >
-              Enviar Foto
+              Upload Foto
               <input
                 accept="image/*"
                 type="file"
@@ -105,76 +96,39 @@ const FormProductRegister = ({ submit }) => {
             </Button>
           </Grid>
         )}
-
-        <TextField
-          autoFocus
-          size="small"
-          error={!!formValidate.name}
-          margin="normal"
-          id="standard-error-helper-text"
-          label="Nome"
-          name="name"
-          value={form.name || ''}
-          onChange={handleChange}
-          helperText={formValidate.name || ''}
-          disabled={loading}
-        />
-
-        <TextField
-          size="small"
-          error={!!formValidate.description}
-          margin="normal"
-          name="description"
-          label="Descrição"
-          type="text"
-          id="standard-error-helper-text"
-          value={form.description || ''}
-          onChange={handleChange}
-          helperText={formValidate.description || ''}
-          disabled={loading}
-        />
-
-        <TextField
-          size="small"
-          error={!!formValidate.price}
-          margin="normal"
-          name="price"
-          label="Preço"
-          type="text"
-          id="standard-error-helper-text"
-          inputProps={{ maxLength: 8 }}
-          value={form.price || ''}
-          onChange={handleChange}
-          helperText={formValidate.price || ''}
-          disabled={loading}
-        />
-
-        <FormControl
-          margin="normal"
-          className={classes.formControl}
-          style={{ padding: '5px 10px' }}
-          error={form.category === 0}
-        >
-          <Select
-            name="category"
-            label="Categoria"
-            inputProps={{
-              name: 'category',
-              id: 'outlined-native-simple'
-            }}
-            value={form.category || '0'}
+        <div>
+          <TextField
+            autoFocus
+            size="small"
+            error={!!formValidate.name}
+            margin="normal"
+            id="standard-error-helper-text"
+            label="Nome"
+            name="name"
+            value={form.name || ''}
             onChange={handleChange}
+            helperText={formValidate.name || ''}
             disabled={loading}
-          >
-            <MenuItem value="0">Selecione</MenuItem>
-            {categories?.map(({ id, name }, i) => (
-              <MenuItem key={i} value={id}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-          <FormHelperText error>{formValidate.category || ''}</FormHelperText>
-        </FormControl>
+          />
+        </div>
+        <div>
+          <TextField
+            size="small"
+            error={!!formValidate.description}
+            margin="normal"
+            name="description"
+            label="Descrição"
+            type="text"
+            id="standard-error-helper-text"
+            value={form.description || ''}
+            onChange={handleChange}
+            helperText={formValidate.description || ''}
+            disabled={loading}
+            multiline
+            minRows={2}
+            maxRows={4}
+          />
+        </div>
         <Submit>
           {loading ? (
             <>
@@ -188,7 +142,7 @@ const FormProductRegister = ({ submit }) => {
               disabled={isNotValid(form, formValidate)}
               onClick={submitForm}
             >
-              Cadastrar
+              Atualizar
             </SButton>
           )}
         </Submit>
@@ -197,4 +151,4 @@ const FormProductRegister = ({ submit }) => {
   )
 }
 
-export default FormProductRegister
+export default FormCategoryUpdate
