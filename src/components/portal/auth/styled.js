@@ -51,7 +51,6 @@ export const STextLink = styled.a`
 `
 
 export const SButton = styled.button`
-  background-color: #fafafa;
   box-shadow: 0px 2px 15px 6px rgb(0 0 0 / 11%);
   margin: 20px 0px;
   padding-top: 7px;
@@ -63,19 +62,9 @@ export const SButton = styled.button`
   background-image: linear-gradient(to left, #4f2821, #aa4938);
   color: white;
   border: none;
-`
-
-export const SDesabledButton = styled.button`
-  text-align: center;
-  font-size: 16px;
-  border: 1px solid rgb(228, 224, 224);
-  padding: 5px 25px;
-  color: #771700;
-  margin: 20px 0px;
-  &:hover {
-    text-decoration: underline;
-    background-color: white;
-    transition: 0.5s ease-out;
+  :disabled {
+    box-shadow: none;
+    background-image: linear-gradient(to left, #c1a9a4, #c1a9a4);
   }
 `
 
