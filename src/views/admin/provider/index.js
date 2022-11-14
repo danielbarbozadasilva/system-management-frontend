@@ -39,9 +39,11 @@ function Provider() {
   function openProduct(row) {
     setModalProduct({ open: true, data: row })
   }
+
   function openClient(row) {
     setModalClient({ open: true, data: row })
   }
+  
   function openLikeClient(row) {
     setModalLike({ open: true, data: row })
   }

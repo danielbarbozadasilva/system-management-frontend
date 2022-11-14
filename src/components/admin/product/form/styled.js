@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Button } from '@material-ui/core'
 
 export const Image = styled.img`
   max-width: 170px;
@@ -23,4 +24,15 @@ export const SInput = styled.input`
 export const SBox = styled.div`
   width: 600px;
   padding: 20px 80px;
+`
+
+export const SButton = styled(Button)`
+  background-color: #303f9f;
+  color: white;
+  :hover {
+    background-color: #5c6abc;
+  }
+  :disabled {
+    background-color: #dddddd;
+  }
 `

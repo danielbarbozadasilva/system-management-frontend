@@ -8,19 +8,17 @@ import {
   removeProduct
 } from '../../../store/product/product.action'
 import { getProduct } from '../../../store/provider/provider.action'
-import Form from '~/components/admin/product/form/index'
+import FormProductRegister from '~/components/admin/product/form/register/index'
+import FormProductUpdate from '~/components/admin/product/form/update/index'
 import Title from '~/components/title'
 import DialogModal from '~/components/dialog'
 import DataList from '~/components/admin/product/datagrid/index'
-import Remove from '~/components/admin/product/remove'
+import Remove from '~/components/admin/product/form/remove'
 
 const Product = () => {
   const dispatch = useDispatch()
   const [modal, setModal] = React.useState({})
-
   const products = useSelector((state) => state.provider.providerById)
-  const selected = useSelector((state) => state.product.selected)
-
   const loading = useSelector((state) => state.product.loading)
 
   const callProduts = useCallback(() => {
@@ -83,11 +81,11 @@ const Product = () => {
         close={closeModal}
       >
         <>
-          {modal.type === 1 ? <Form submit={submitForm} /> : null}
-          {modal.type === 2 ? (
-            <Form submit={submitForm} data={selected} />
-          ) : null}
-          {modal.type === 3 ? (
+          {modal.type === 1 ? (
+            <FormProductRegister submit={submitForm} />
+          ) : modal.type === 2 ? (
+            <FormProductUpdate submit={submitForm} />
+          ) : modal.type === 3 ? (
             <Remove open={!!modal} close={closeModal} remove={submitForm} />
           ) : null}
         </>
