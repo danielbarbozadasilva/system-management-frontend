@@ -55,8 +55,7 @@ const FormSignUpClient = ({ submit }) => {
       uf: form.uf,
       city: form.city,
       email: form.email,
-      password: form.password,
-      auth: true
+      password: form.password
     }
     submit(nform)
   }
