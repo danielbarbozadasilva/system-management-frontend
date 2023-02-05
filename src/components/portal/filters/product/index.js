@@ -6,12 +6,10 @@ import { SBox, STitle } from './styled'
 
 const FilterProduct = () => {
   const dispatch = useDispatch()
-  const [order, setOrder] = useState([])
 
   const handleChange = async (props) => {
     const { value } = props.target
-    setOrder(value)
-    dispatch(getAllProductsWithFilter(value, null))
+    dispatch(getAllProductsWithFilter(value))
   }
 
   return (
@@ -20,15 +18,11 @@ const FilterProduct = () => {
       <div>
         <Select
           native
-          defaultValue={'x'}
+          defaultValue={'description'}
           onChange={handleChange}
-          inputProps={{
-            name: 'order',
-            id: 'outlined-native-simple'
-          }}
         >
-          <option value="x">selecione</option>
-          <option value="like">Curtidas</option>
+          <option value="description">selecione</option>
+          <option value="count">Curtidas</option>
           <option value="price">Valor</option>
           <option value="description">Descrição</option>
         </Select>

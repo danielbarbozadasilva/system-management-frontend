@@ -30,7 +30,7 @@ const FilterSearch = () => {
 
   const handleChange = async (props) => {
     const { value, name } = props.target
-    dispatch(getAllProductsWithFilter(value || ' ', name))
+    dispatch(getAllProductsWithFilter(name, value))
   }
 
   return (
@@ -42,7 +42,7 @@ const FilterSearch = () => {
           placeholder="Digite o produto"
           onChange={handleChange}
           inputProps={{
-            name: 'nameFilter'
+            name: ' '
           }}
         />
         <IconButton

@@ -5,9 +5,7 @@ const INITIAL_STATE = {
   all: [],
   upload: {},
   selected: {},
-  products: [],
   providerById: [],
-  search: [],
   likes: []
 }
 
@@ -21,31 +19,8 @@ const reducer = ({ ...state } = INITIAL_STATE, action) => {
       state.all = action.data
       state.loading = false
       return state
-    case TYPES.PROVIDER_ALL_SEARCH:
-      state.search = action.data
-      state.loading = false
-      return state
-    case TYPES.PROVIDER_EDIT:
-      state.selected = action.data
-      state.loading = false
-      return state
-    case TYPES.PROVIDER_UPLOAD:
-      state.upload = action.upload
-      state.loading = false
-      return state
-    case TYPES.PROVIDER_SELECT:
-      state.selected = action.data
-      state.loading = false
-      return state
-    case TYPES.PROVIDER_PRODUCTS:
-      state.products = action.data
-      state.loading = false
-      return state
     case TYPES.PROVIDER_PRODUCT_ID:
       state.providerById = action.data
-      state.loading = false
-      return state
-    case TYPES.PROVIDER_CREATE:
       state.loading = false
       return state
     case TYPES.PROVIDER_LIKE_LIST:

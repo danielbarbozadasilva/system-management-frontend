@@ -9,11 +9,15 @@ import {
   FormHelperText,
   FormControl
 } from '@material-ui/core'
-import { SBox, Image, Submit } from './styled'
+import { SBox, Image, Submit, SButton } from '../styled'
 import { useSelector } from 'react-redux'
-import { getUser } from '../../../../config/storage'
+import { getUser } from '../../../../../config/storage'
 import { makeStyles } from '@material-ui/core/styles'
-import { getMoney } from '~/util/validations/price-validation'
+import { formatPriceField } from '~/util/validations/price-validation'
+import {
+  fieldValidate,
+  isNotValid
+} from '../../../../../util/validations/form-product'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,90 +28,31 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-const Form = ({ submit, ...props }) => {
+const FormProductRegister = ({ submit }) => {
   const classes = useStyles()
-
   const [preview, setPreview] = useState('')
   const [form, setForm] = useState({})
-  const [isEdit, setEdit] = useState(false)
   const percent = useSelector((state) => state.product.upload?.percent || 0)
   const loading = useSelector((state) => state.product.loading)
   const [formValidate, setFormValidate] = useState({})
-  const categorias = useSelector((state) => state.category.all)
-
-  if (Object.keys(props).length > 0 && !isEdit) {
-    setPreview(props?.data?.image)
-    setForm(props.data)
-    setEdit(true)
-  }
+  const categories = useSelector((state) => state.category.all)
 
   const handleChange = (props) => {
     const { value, name } = props.target
-    fieldValidate(name, value)
+    const message = fieldValidate(name, value)
+    setFormValidate({ ...formValidate, [name]: message })
     setForm({
       ...form,
       [name]: value
     })
   }
 
-  const isNotValid = () => {
-    const inputs = ['name', 'description', 'image', 'category', 'price']
-    const invalid = (label) =>
-      !Object.keys(form).includes(label) || form[label].length === 0
-
-    const validate =
-      Object.values(formValidate).filter((item) => item !== '').length > 0
-
-    return inputs.some((item) => invalid(item)) || validate
-  }
-
-  const fieldValidate = (nome, value) => {
-    let menssage = ''
-    let regex = ''
-    switch (nome) {
-      case 'name':
-        regex = /\d/g
-        if (regex.test(value)) {
-          menssage += 'Não pode conter números!'
-        } else if (value.trim() === '') {
-          menssage += 'Não pode ser vazio!'
-        } else if (value.length <= 5) {
-          menssage += 'Precisa ter mais que 5 caracteres!'
-        }
-        break
-
-      case 'description':
-        regex = /\d/g
-        if (regex.test(value)) {
-          menssage += 'Nome não pode conter números!'
-        } else if (value.trim() === '') {
-          menssage += 'Nome não pode ser vazio!'
-        } else if (value.length <= 10) {
-          menssage += 'Precisa ter mais que 10 caracteres!'
-        }
-        break
-
-      case 'price':
-        if (value === 'R$0,0') {
-          menssage += 'O preço não pode ser nulo!'
-        }
-        break
-
-      case 'category':
-        if (value == 0) {
-          menssage += 'Selecione uma categoria!'
-        }
-        break
-    }
-    setFormValidate({ ...formValidate, [nome]: menssage })
-  }
-
-  const handleSubmit = () => {
+  const submitForm = () => {
     const newForm = {
       ...form,
       category: form.category,
       provider: getUser().id,
-      price: getMoney(form.price).replace('R$', '').replace(',', '.')
+      price: formatPriceField(form.price)
     }
     submit(newForm)
   }
@@ -198,7 +143,7 @@ const Form = ({ submit, ...props }) => {
           type="text"
           id="standard-error-helper-text"
           inputProps={{ maxLength: 8 }}
-          value={getMoney(form.price) || ''}
+          value={form.price || ''}
           onChange={handleChange}
           helperText={formValidate.price || ''}
           disabled={loading}
@@ -222,7 +167,7 @@ const Form = ({ submit, ...props }) => {
             disabled={loading}
           >
             <MenuItem value="0">Selecione</MenuItem>
-            {categorias?.map(({ id, name }, i) => (
+            {categories?.map(({ id, name }, i) => (
               <MenuItem key={i} value={id}>
                 {name}
               </MenuItem>
@@ -231,23 +176,25 @@ const Form = ({ submit, ...props }) => {
           <FormHelperText error>{formValidate.category || ''}</FormHelperText>
         </FormControl>
         <Submit>
-          <Button
-            size="small"
-            disabled={isNotValid() || loading ? true : false}
-            type="submit"
-            variant="contained"
-            onClick={handleSubmit}
-          >
-            {isEdit ? 'Atualizar' : 'Enviar'}
-          </Button>
-          <Grid container direction="column">
-            <LinearProgress variant="determinate" value={percent} />
-          </Grid>
+          {loading ? (
+            <>
+              <Grid container direction="column">
+                <LinearProgress variant="determinate" value={percent} />
+              </Grid>
+            </>
+          ) : (
+            <SButton
+              type="button"
+              disabled={isNotValid(form, formValidate)}
+              onClick={submitForm}
+            >
+              Cadastrar
+            </SButton>
+          )}
         </Submit>
       </form>
     </SBox>
   )
 }
 
-export default Form
-
+export default FormProductRegister

@@ -8,10 +8,11 @@ export const listCategoryByIdService = (id) => http.get(`${baseUrl}/${id}`)
 export const listCategoryByIdProductService = (id) =>
   http.get(`${baseUrl}/${id}/product`)
 
-export const insertCategoryService = (data) => http.post(baseUrl, data)
+export const insertCategoryService = (data, config = {}) =>
+  http.post(baseUrl, data, config)
 
-export const updateCategoryService = (id, data) =>
-  http.put(`${baseUrl}/${id}`, data)
+export const updateCategoryService = (id, data, config = {}) =>
+  http.put(`${baseUrl}/${id}`, data, config)
 
 export const removeCategoryProductService = (id) =>
   http.delete(`${baseUrl}/${id}`)
