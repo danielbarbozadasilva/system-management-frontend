@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Select } from '@material-ui/core'
 import UFCity from '../../../../util/state-city.json'
 import { getListProviderUfCity } from '../../../../store/provider/provider.action'
-import { SBox, STitle, SLabel } from './styled'
+import { SBox, STitle, SLabel, SButton } from './styled'
 
 const FilterLocation = () => {
   const dispatch = useDispatch()
@@ -15,26 +15,34 @@ const FilterLocation = () => {
     }))
   )
   const [city, setCity] = useState([])
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({
+    uf: '',
+    city: ''
+  })
 
   const handleChange = async (props) => {
     const { value, name } = props.target
-    if (value == 'x' && name == 'uf') {
-      dispatch(await getListProviderUfCity(value))
-    }
+
     form[name] = value
     setForm({ ...form }, form)
-    if (name == 'city' || name == 'uf') {
-      dispatch(await getListProviderUfCity(form))
-    }
   }
 
   useEffect(() => {
     const result = UFCity.states.find((item) => item.uf == form.uf)
     if (result) {
       setCity(result.city)
+    } else {
+      setCity([])
     }
   }, [form.uf])
+
+  const submitForm = () => {
+    dispatch(getListProviderUfCity(form.uf, form.city))
+  }
+
+  const isNotValid = () => {
+    return form.uf?.length === 0 || form.city?.length === 0
+  }
 
   return (
     <SBox>
@@ -48,7 +56,7 @@ const FilterLocation = () => {
           name: 'uf'
         }}
       >
-        <option value="x">selecione</option>
+        <option value="">selecione</option>
         {uf?.map(({ name, uf }, i) => (
           <option key={i} value={uf}>
             {uf}
@@ -58,19 +66,23 @@ const FilterLocation = () => {
       <SLabel htmlFor="uf">Cidade:</SLabel>
       <Select
         native
-        value={form.city || 'x'}
+        value={form.city || ''}
         onChange={handleChange}
         inputProps={{
           name: 'city'
         }}
       >
-        <option value="x">selecione</option>
+        <option value="">selecione</option>
         {city?.map((city, i) => (
           <option key={i} value={city}>
             {city}
           </option>
         ))}
       </Select>
+
+      <SButton type="button" disabled={isNotValid()} onClick={submitForm}>
+        Buscar
+      </SButton>
     </SBox>
   )
 }

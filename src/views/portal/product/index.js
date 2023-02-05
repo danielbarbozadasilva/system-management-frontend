@@ -30,7 +30,7 @@ function Products(props) {
     if (props.id && props.type === 'category') {
       dispatch(getCategoryByProductId(props.id))
     } else if (!props.id) {
-      dispatch(getAllProductsWithFilter({ name: props.type, filter: props.id }))
+      dispatch(getAllProductsWithFilter())
     } else if (props.type === 'provider') {
       dispatch(getProviderById(props.id))
     }

@@ -106,51 +106,20 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Regras de negócio**
 <br/>
+<br/>
 
-| Controle de acesso (RN001) |  |
-| --- | --- |
-|`Descrição:` Os acessos permitidos ao sistema serão: Administrador, Fornecedor (confeitaria) e Cliente. O usuário anônimo terá acesso apenas ao portal do site.    |
-|  |
-
-| Controle de veracidade (RN02) |  |
-| --- | --- |
-|`Descrição:` Apenas fornecedores autorizados pelo administrador poderão ter acesso ao sistema.    |
-|  |
-
-| Limite de ação (RN003) |  |
-| --- | --- |
-|`Descrição:` Apenas o Administrador poderá incluir, editar e excluir categorias no sistema.  |
-|  |
-
-| Limite de ação (RN004) |  |
-| --- | --- |
-|`Descrição:` Apenas o Administrador poderá visualizar informações sobre os clientes.  |
-|  |
-
-| Controle de estoque (RN005) |  |
-| --- | --- |
-|`Descrição:` Somente o gerente da confeitaria (fornecedor) terá permissão para incluir, alterar e excluir seus produtos no sistema.  |
-|  |
-
-| Limite de ação (RN006) |  |
-| --- | --- |
-|`Descrição:` Somente o gerente da confeitaria (fornecedor) terá permissão de favoritar os seus próprios produtos.   |
-|  |
-
-| Limite de ação (RN007) |  |
-| --- | --- |
-|`Descrição:` O gerente da confeitaria (fornecedor) terá permissão de favoritar apenas 3 (três) de seus próprios produtos.   |
-|  |
-
-| Limite de ação (RN008) |  |
-| --- | --- |
-|`Descrição:` Somente o cliente terá permissão de favoritar a confeitaria (fornecedor).   |
-|  |
-
-| Limite de ação (RN009) |  |
-| --- | --- |
-|`Descrição:` O cliente terá permissão de favoritar apenas 3 (três) fornecedores.   |
-|  |
+| Identificação | Classificação | Descrição |
+| --- | --- | --- |
+|RN001   |Controle de acesso     |Os acessos permitidos ao sistema serão: Administrador, Fornecedor (confeitaria) e Cliente. O usuário anônimo terá acesso apenas ao portal do site.    |
+|RN002   |Controle de veracidade     | Apenas fornecedores autorizados pelo administrador poderão ter acesso ao sistema.    |
+|RN003   |Limite de ação     |Apenas o Administrador poderá incluir, editar e excluir categorias no sistema.     |
+|RN004   |Limite de ação     | Apenas o Administrador poderá visualizar informações sobre os clientes.    |
+|RN005   |Controle de estoque     | Somente o gerente da confeitaria (fornecedor) terá permissão para incluir, alterar e excluir seus produtos no sistema.    |
+|RN006   |Limite de ação     | Somente o gerente da confeitaria (fornecedor) terá permissão de favoritar os seus próprios produtos.  
+|RN007   |Limite de ação     | O gerente da confeitaria (fornecedor) terá permissão de favoritar apenas 3 (três) de seus próprios produtos.   
+|RN008   |Limite de ação     | Somente o cliente terá permissão de favoritar a confeitaria (fornecedor).  
+|RN009   |Limite de ação     | O cliente terá permissão de favoritar apenas 3 (três) fornecedores.  
+|  |  |  |
 
 <br/>
 <br/>
@@ -255,7 +224,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela Inicial - Categorias**
 <br/>
-<img src="./src/assets/img/prints/img01.png" alt=""/>
+<img src="./src/assets/img/prints/1.png" alt=""/>
 <br/>
 <br/>
 <br/>
@@ -263,7 +232,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Produtos**
 <br/>
-<img src="./src/assets/img/prints/img02.png" alt=""/>
+<img src="./src/assets/img/prints/2.png" alt=""/>
 <br/>
 <br/>
 <br/>
@@ -271,7 +240,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Fornecedores**
 <br/>
-<img src="./src/assets/img/prints/img03.png" alt=""/>
+<img src="./src/assets/img/prints/3.png" alt=""/>
 <br/>
 <br/>
 <br/>
@@ -279,7 +248,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Login**
 <br/>
-<img src="./src/assets/img/prints/img04.png" alt=""/>
+<img src="./src/assets/img/prints/4.png" alt=""/>
 <br/>
 <br/>
 <br/>
@@ -287,7 +256,15 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Cadastro de Clientes**
 <br/>
-<img src="./src/assets/img/prints/img05.png" alt=""/>
+<img src="./src/assets/img/prints/5.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Clientes - Validação em tempo real**
+<br/>
+<img src="./src/assets/img/prints/5v.png" alt=""/>
 <br/>
 <br/>
 <br/>
@@ -295,7 +272,15 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Cadastro de Fornecedores**
 <br/>
-<img src="./src/assets/img/prints/img06.png" alt=""/>
+<img src="./src/assets/img/prints/6.png" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Tela de Cadastro de Fornecedores -  Validação em tempo real**
+<br/>
+<img src="./src/assets/img/prints/6v.png" alt=""/>
 <br/>
 <br/>
 <br/>
@@ -303,7 +288,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Dashboard do Administrador - Home**
 <br/>
-<img src="./src/assets/img/prints/img07.png" alt=""/>
+<img src="./src/assets/img/prints/7.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
@@ -311,32 +296,191 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Dashboard do Administrador - Manter Categorias**
 <br/>
-<img src="./src/assets/img/prints/img08.png" alt=""/>
+<img src="./src/assets/img/prints/8.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
-## **Dashboard do Administrador - Manter Fornecedores**
+## **Dashboard do Administrador - Manter Categorias - Cadastrar Categoria**
 <br/>
-<img src="./src/assets/img/prints/img09.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Dashboard do Administrador - Listar Clientes**
-<br/>
-<img src="./src/assets/img/prints/img010.png" alt=""/>
+<img src="./src/assets/img/prints/9.jpg" alt=""/>
 <br/>
 <br/>
 <br/>
 <br/>
 
+## **Dashboard do Administrador - Manter Categorias - Atualizar Categoria**
+<br/>
+<img src="./src/assets/img/prints/10.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Manter Categorias - Deletar Categoria**
+<br/>
+<img src="./src/assets/img/prints/11.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Fornecedores - Consultar Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/12.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Fornecedores - Listar Curtidas**
+<br/>
+<img src="./src/assets/img/prints/13.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Fornecedores - Listar Produtos**
+<br/>
+<img src="./src/assets/img/prints/14.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Fornecedores - Listar Clientes**
+<br/>
+<img src="./src/assets/img/prints/15.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Fornecedores - Buscar Fornecedores**
+<br/>
+<img src="./src/assets/img/prints/16.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Clientes - Listar Clientes**
+<br/>
+<img src="./src/assets/img/prints/17.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Administrador - Clientes - Buscar Clientes**
+<br/>
+<img src="./src/assets/img/prints/18.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Home**
+<br/>
+<img src="./src/assets/img/prints/19.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Manter Produtos**
+<br/>
+<img src="./src/assets/img/prints/20.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Cadastrar Produtos**
+<br/>
+<img src="./src/assets/img/prints/21.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Atualizar Produtos**
+<br/>
+<img src="./src/assets/img/prints/22.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Excluir Produtos**
+<br/>
+<img src="./src/assets/img/prints/23.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Curtidas Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/24.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Fornecedor - Buscar Curtidas Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/25.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Home**
+<br/>
+<img src="./src/assets/img/prints/26.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Avaliar Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/27.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Buscar Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/28.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Buscar Avaliação Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/29.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+## **Dashboard do Cliente - Avaliações do Fornecedor**
+<br/>
+<img src="./src/assets/img/prints/30.jpg" alt=""/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 ## **E-mail Enviado ao Ativar o Fornecedor**
 <br/>
-<img src="./src/assets/img/prints/img023.png" alt=""/>
+<img src="./src/assets/img/prints/37.png" alt="" />
 <br/>
 <br/>
 <br/>
@@ -345,55 +489,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 ## **E-mail Enviado ao Desativar o Fornecedor**
 
 <br/>
-<img src="./src/assets/img/prints/img24.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Dashboard do Fornecedor - Home**
-<br/>
-<img src="./src/assets/img/prints/img011.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Dashboard do Fornecedor - Manter Produtos**
-<br/>
-<img src="./src/assets/img/prints/img012.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Dashboard do Fornecedor - Curtidas Recebidas**
-<br/>
-<img src="./src/assets/img/prints/img013.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Dashboard do Cliente - Home**
-<br/>
-<img src="./src/assets/img/prints/img014.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Dashboard do Cliente - Avaliar Fornecedor**
-<br/>
-<img src="./src/assets/img/prints/img015.png" alt=""/>
-<br/>
-<br/>
-<br/>
-<br/>
-
-## **Dashboard do Cliente - Curtidas Efetuadas**
-<br/>
-<img src="./src/assets/img/prints/img016.png" alt=""/>
+<img src="./src/assets/img/prints/38.png" alt=""/>
 <br/>
 <br/>
 <br/>
@@ -404,7 +500,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela Inicial - Categorias**
 <br/>
-<img src="./src/assets/img/prints/img017.png" alt="" width=350px />
+<img src="./src/assets/img/prints/31.png" alt="" width=350px />
 <br/>
 <br/>
 <br/>
@@ -413,7 +509,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Produtos**
 <br/>
-<img src="./src/assets/img/prints/img018.png" alt="" width=350px />
+<img src="./src/assets/img/prints/32.png" alt="" width=350px />
 <br/>
 <br/>
 <br/>
@@ -421,7 +517,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Fornecedores**
 <br/>
-<img src="./src/assets/img/prints/img019.png" alt="" width=350px />
+<img src="./src/assets/img/prints/33.png" alt="" width=350px />
 <br/>
 <br/>
 <br/>
@@ -429,7 +525,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Login**
 <br/>
-<img src="./src/assets/img/prints/img022.png" alt="" width=350px />
+<img src="./src/assets/img/prints/36.png" alt="" width=350px />
 <br/>
 <br/>
 <br/>
@@ -437,7 +533,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Cadastro de Clientes**
 <br/>
-<img src="./src/assets/img/prints/img020.png" alt="" width=350px />
+<img src="./src/assets/img/prints/34.png" alt="" width=350px />
 <br/>
 <br/>
 <br/>
@@ -445,7 +541,7 @@ RF015 – O sistema deve filtrar os fornecedores por localidade e ordem alfabét
 
 ## **Tela de Cadastro de Fornecedores**
 <br/>
-<img src="./src/assets/img/prints/img021.png" alt="" width=350px />
+<img src="./src/assets/img/prints/35.png" alt="" width=350px />
 <br/>
 <br/>
 <br/>

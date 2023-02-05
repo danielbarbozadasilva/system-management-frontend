@@ -27,7 +27,7 @@ const ProviderLike = () => {
       disableColumnMenu: true
     },
     {
-      field: 'name',
+      field: 'nameProvider',
       headerName: 'Nome',
       align: 'center',
       flex: 1,

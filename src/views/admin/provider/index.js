@@ -39,9 +39,11 @@ function Provider() {
   function openProduct(row) {
     setModalProduct({ open: true, data: row })
   }
+
   function openClient(row) {
     setModalClient({ open: true, data: row })
   }
+  
   function openLikeClient(row) {
     setModalLike({ open: true, data: row })
   }
@@ -53,7 +55,7 @@ function Provider() {
         <Tooltip title="Listar Curtidas">
           <span>
             <IconButton
-              onClick={() => openLikeClient(row.result_likes)}
+              onClick={() => openLikeClient(row.likes)}
               disabled={like ? false : true}
               color="primary"
             >
@@ -86,13 +88,13 @@ function Provider() {
   }
 
   const actionModalClient = ({ row }) => {
-    const client = row?.result_client.length !== 0
+    const client = row?.clients.length !== 0
     return (
       <>
         <Tooltip title="Listar clientes">
           <span>
             <IconButton
-              onClick={() => openClient(row?.result_client)}
+              onClick={() => openClient(row?.clients)}
               disabled={client ? false : true}
               color="primary"
             >

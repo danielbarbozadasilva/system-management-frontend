@@ -1,8 +1,8 @@
 import TYPES from '~/store/types'
+import http from '../../config/http'
 import { toastr } from 'react-redux-toastr'
 import { navigate } from '@reach/router'
 import { saveAuth } from '../../config/storage'
-import http from '../../config/http'
 import {
   listAllClientService,
   listByIdClientService,
@@ -45,19 +45,14 @@ export const createClient = (data) => {
         navigate('/admin')
       }
     } catch (error) {
-      const { data } = error?.response
-      toastr.error('Erro', ...data?.message?.details)
+      const { data } = error.response
+      toastr.error('Erro', data.message)
       dispatch({ type: TYPES.SIGN_ERROR, data: error })
     }
   }
 }
 
-export const updateLikeClientProvider = (
-  providerid,
-  clientid,
-  name,
-  statusLike
-) => {
+export const updateLikeClientProvider = (providerid, clientid, name, statusLike) => {
   return async (dispatch) => {
     try {
       if (statusLike) {
@@ -65,14 +60,11 @@ export const updateLikeClientProvider = (
         toastr.success('Curtida', 'A curtida foi removida com sucesso.')
       } else {
         await createLikeProviderService(providerid, clientid)
-        toastr.success(
-          'Curtida',
-          `O fornecedor ${name} foi curtido com sucesso.`
-        )
+        toastr.success('Curtida', `Fornecedor ${name} curtido com sucesso.`)
       }
     } catch (error) {
       const { data } = error.response
-      toastr.error('Curtida', data.message.details)
+      toastr.error('Curtida', data.message)
     }
     dispatch(listByIdClient(clientid))
   }

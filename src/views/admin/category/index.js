@@ -8,20 +8,18 @@ import {
   getAllCategories,
   createCategory
 } from '~/store/category/category.action'
-
 import Title from '~/components/title'
 import DialogModal from '~/components/dialog'
-import Form from '~/components/admin/categories/form/index'
+import FormCategoryRegister from '~/components/admin/categories/form/register/index'
+import FormCategoryUpdate from '~/components/admin/categories/form/update/index'
 import DataList from '~/components/admin/categories/datagrid'
-import Remove from '~/components/admin/categories/remove'
+import Remove from '~/components/admin/categories/form/remove'
 
 const category = () => {
   const dispatch = useDispatch()
   const [modal, setModal] = React.useState({})
-
   const category = useSelector((state) => state.category.all)
   const loading = useSelector((state) => state.category.loading)
-  const selected = useSelector((state) => state.category.selected)
 
   const callcategory = useCallback(() => {
     dispatch(getAllCategories())
@@ -95,12 +93,12 @@ const category = () => {
         close={closeModal}
       >
         <>
-          {modal.type === 1 ? <Form submit={submitForm} /> : null}
-          {modal.type === 2 ? (
-            <Form submit={submitForm} data={selected} />
-          ) : null}
-          {modal.type === 3 ? (
-            <Remove close={closeModal} remove={submitForm} />
+          {modal.type === 1 ? (
+            <FormCategoryRegister submit={submitForm} />
+          ) : modal.type === 2 ? (
+            <FormCategoryUpdate submit={submitForm} />
+          ) : modal.type === 3 ? (
+            <Remove open={!!modal} close={closeModal} remove={submitForm} />
           ) : null}
         </>
       </DialogModal>

@@ -22,9 +22,6 @@ const reducer = ({ ...state } = INITIAL_STATE, action) => {
       state.select = action.data
       state.loading = false
       return state
-    case TYPES.CLIENT_CREATE:
-      state.loading = false
-      return state
     case TYPES.CLIENT_LIKE_LOADING:
       state.error = []
       state.loading = action.status

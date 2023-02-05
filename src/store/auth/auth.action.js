@@ -20,7 +20,7 @@ export const signInAction = (data) => {
       }
     } catch (error) {
       const { data } = error.response
-      toastr.error('Erro', ...data.message.details)
+      toastr.error('Erro', data.message)
       dispatch({ type: TYPES.SIGN_ERROR, data: error })
     }
   }
